@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../assets/styles/auth.css";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Dropdown } from "react-bootstrap";
 import WhiteLogo from "../assets/images/binair-white-logo.svg";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
@@ -51,7 +51,7 @@ const Auth = () => {
                       </Form.Group>
                     </Col>
                     <Col>
-                      <Form.Group className=" mb-3" controlId="formBasicEmail">
+                      <Form.Group className=" mb-3" controlId="">
                         <Form.Label>
                           <h4>Nama Belakang</h4>
                         </Form.Label>
@@ -63,21 +63,52 @@ const Auth = () => {
                       </Form.Group>
                     </Col>
                   </Row>
-
-                  <Form.Group className=" mb-3" controlId="formBasicEmail">
+                  <Row>
+                    <Col>
+                      <Form.Group className=" mb-3" controlId="">
+                        <Form.Label>
+                          <h4>Nomor Ponsel</h4>
+                        </Form.Label>
+                        <PhoneInput
+                          international
+                          defaultCountry="ID"
+                          value={value}
+                          onChange={setValue}
+                          countryCallingCodeEditable={false}
+                          className="form-input-phone"
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col>
+                      <Form.Group className=" mb-3" controlId="">
+                        <Form.Label>
+                          <h4>Jenis Kelamin</h4>
+                        </Form.Label>
+                        <br />
+                        <select className="dropdown-toggle">
+                          <option value="male">
+                            <h4>Laki - Laki</h4>
+                          </option>
+                          <option value="female">
+                            <h4>Perempuan</h4>
+                          </option>
+                          <option value="other">
+                            <h4>Khusus</h4>
+                          </option>
+                        </select>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Form.Group className=" mb-3" controlId="">
                     <Form.Label>
-                      <h4>Nomor Ponsel</h4>
+                      <h4>Alamat</h4>
                     </Form.Label>
-                    <PhoneInput
-                      international
-                      defaultCountry="ID"
-                      value={value}
-                      onChange={setValue}
-                      countryCallingCodeEditable={false}
-                      className="form-input-phone"
+                    <Form.Control
+                      type="text"
+                      className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
+                      placeholder="Masukan Alamat Rumah"
                     />
                   </Form.Group>
-
                   <Form.Group className=" mb-3" controlId="formBasicEmail">
                     <Form.Label>
                       <h4>Email</h4>
