@@ -99,16 +99,6 @@ const Auth = () => {
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Form.Group className=" mb-3" controlId="">
-                    <Form.Label>
-                      <h4>Alamat</h4>
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
-                      placeholder="Masukan Alamat Rumah"
-                    />
-                  </Form.Group>
                   <Form.Group className=" mb-3" controlId="formBasicEmail">
                     <Form.Label>
                       <h4>Email</h4>
