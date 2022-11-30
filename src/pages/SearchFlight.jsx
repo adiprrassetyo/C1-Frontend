@@ -26,7 +26,7 @@ const SearchFlight = () => {
                         <h3><strong>Pilih Penerbangan Keberangkatan</strong></h3>
                         <p>JKTA - DPS <span>|</span> RAB, 23 NOV</p>
                     </Col>
-                    <Col sm={2}>
+                    <Col xs={2}>
                         <Button variant="outline-info">Ubah Pencarian</Button>{' '}
                     </Col>
                 </Row>
@@ -37,11 +37,11 @@ const SearchFlight = () => {
                 <Card className="search-content m-3">
                     <Card.Header className="search-header ps-4 pt-3">
                         <Row>
-                            <Col xs={10}>
+                            <Col xs={9}>
                                 <h2><strong>Penerbangan keberangkatan ke Bali Denpasar</strong></h2>
                                 <p>Rab, 23 Nov 2022 <span>|</span> 1 Traveler</p>
                             </Col>
-                            <Col xs={2}>
+                            <Col xs={3}>
                                 <Button
                                     variant="light"
                                     type="submit"
@@ -54,7 +54,7 @@ const SearchFlight = () => {
                     </Card.Header>
                     <Card.Body className="search-body">
                         <Row className="filter flex-filter">
-                            <Col className="ms-3 p-3" md={1}>
+                            <Col className="ms-1 p-3" md={1}>
                                 <h3>Filter :</h3>
                             </Col>
                             <Col className="m-1" md={1}>
@@ -71,14 +71,14 @@ const SearchFlight = () => {
                                     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                                 </DropdownButton>
                             </Col>
-                            <Col className="m-1 ms-5" md={1}>
+                            <Col className="m-1 ms-2" md={1}>
                                 <DropdownButton id="dropdown-basic-button" title="Maskapai">
                                     <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                                     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                                 </DropdownButton>
                             </Col>
-                            <Col className="m-1 ms-4" md={1}>
+                            <Col className="m-1 ms-2" md={1}>
                                 <DropdownButton id="dropdown-basic-button" title="Keberangkatan">
                                     <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
