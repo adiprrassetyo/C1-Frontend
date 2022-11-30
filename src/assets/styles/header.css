@@ -15,10 +15,16 @@ nav.sticky{
 .nav, .row{
     width: 100%;
 }
+.selected-link{
+    color: red;
+}
 .nav-dropdown{
     display: inline-block;
 }
-.btn-login{
+.dropdown-toggle{
+    border: none !important;
+}
+.button-login{
     background-color: #fff;
     box-shadow: 0px 2px 8px 0 rgba(0,0,0,0.10);
     padding: 10px 20px;
@@ -26,7 +32,7 @@ nav.sticky{
     border-radius: 5px;
     color: #9A9A9D;
 }
-.btn-login:hover{
+.button-login:hover{
     background-color: #fff;
 }
 .nav-dropdown a{

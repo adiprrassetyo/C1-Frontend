@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Navbar, Nav, Container, NavDropdown, Button, Row, Col, Offcanvas, Form }from "react-bootstrap";
+import {Navbar, Nav, Container, NavDropdown, Button, Offcanvas }from "react-bootstrap";
 import logo from "../assets/images/binair-logo.svg";
 import english_flag from "../assets/images/english-flag.svg";
 import indo_flag from "../assets/images/indo-flag.svg";
@@ -23,7 +23,7 @@ const Header = () => {
         <Navbar key={expand} expand={expand} className={`${sticky ? "sticky" : ""}`}>
           <Container>
             <Navbar.Brand>
-            <Nav.Link href="/home" > <img src={logo} alt="logo" /> </Nav.Link>
+            <Nav.Link href="/" > <img src={logo} alt="logo" /> </Nav.Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -34,7 +34,7 @@ const Header = () => {
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                  <Navbar.Brand>
-                    <Nav.Link href="/home" > <img src={logo} alt="logo" /> </Nav.Link>
+                    <Nav.Link href="/" > <img src={logo} alt="logo" /> </Nav.Link>
                     </Navbar.Brand>
                 </Offcanvas.Title>
               </Offcanvas.Header>
@@ -45,7 +45,7 @@ const Header = () => {
                   <Nav.Link href="/booking" className="text-secondary">Pemesanan</Nav.Link>
                 </Nav>
                 <div className="">
-                    <NavDropdown title="Language" className="nav-dropdown me-3 mt-2">
+                    <NavDropdown title="Language" className="nav-dropdown me-3 mt-2" >
                     <NavDropdown.Item>
                       <img src={english_flag} width="20" alt="flag" />
                       <span className="ml-2"> English</span>
@@ -59,7 +59,7 @@ const Header = () => {
                     <NavDropdown.Item>US</NavDropdown.Item>
                     <NavDropdown.Item>IDR</NavDropdown.Item>
                   </NavDropdown>
-                  <Button href="#" className="btn btn-light btn-login">Login</Button> 
+                  <Button href="/auth" className="btn btn-light button-login">Login</Button> 
                 </div>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

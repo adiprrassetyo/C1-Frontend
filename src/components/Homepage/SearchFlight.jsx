@@ -64,7 +64,7 @@ const SearchFlight = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Traveler</Form.Label>
                 <DropdownButton
-          variant="outline-secondary"
+          
           title={countDewasa+countAnak+countBaby + ` Traveler`}
           id="dropdown-traveler"
           
