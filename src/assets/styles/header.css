@@ -1,0 +1,54 @@
+.navbar{
+    padding: 16px 0px;
+    transition: 0.3s;
+}
+.navbar-brand img{
+    margin-bottom: 8px;
+}
+nav.sticky{
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav, .row{
+    width: 100%;
+}
+.nav-dropdown{
+    display: inline-block;
+}
+.btn-login{
+    background-color: #fff;
+    box-shadow: 0px 2px 8px 0 rgba(0,0,0,0.10);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #9A9A9D;
+}
+.btn-login:hover{
+    background-color: #fff;
+}
+.nav-dropdown a{
+    color: #4A4A4A;
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .nav-dropdown{
+        display: block;
+        padding: 6px 0;
+    }
+    .btn-login{
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .nav-dropdown{
+        display: block;
+        padding: 6px 0;
+    }
+    .btn-login{
+        margin-top: 20px;
+    }
+}

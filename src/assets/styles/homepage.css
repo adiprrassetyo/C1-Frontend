@@ -1,0 +1,54 @@
+.banner{
+    margin-top: 64px;
+}
+.banner-title{
+    font-size: 44px;
+    color: #59595B;
+    font-weight: bold;
+    margin-bottom: 48px;
+}
+.feature-section{
+    margin-top: 80px;
+}
+.feature-col{
+    margin-bottom: 32px;
+}
+.feature-title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #59595B;
+}
+.promo-section{
+    margin-top: 74px;
+}
+.see-more-btn{
+     background-color: #F37C20;
+    border: none;
+}
+.see-more-btn:hover{
+     background-color: #F37C20;
+}
+.mobile-mockup{
+    position: absolute;
+    margin-top:80px;
+    //margin-left: 75px;
+}
+.mobile-section{
+    margin-top: 180px;
+   height: 290px;
+    background-color: #13A2D7;
+    margin-bottom: 80px;
+}
+.text-mobile-section{
+    margin-top:80px;
+}
+.text-mobile-section p{
+    font-size: 22px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.jumbotron{
+    //background-color: blue;
+}
+
