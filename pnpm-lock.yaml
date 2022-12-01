@@ -5,9 +5,11 @@ specifiers:
   '@types/react-dom': ^18.0.8
   '@vitejs/plugin-react': ^2.2.0
   bootstrap: ^5.2.2
+  hamburger-react: ^2.5.0
   places-autocomplete-react: ^1.0.10
   react: ^18.2.0
   react-bootstrap: ^2.6.0
+  react-bootstrap-icons: ^1.10.2
   react-dom: ^18.2.0
   react-phone-number-input: ^3.2.12
   react-router: ^6.4.3
@@ -16,9 +18,11 @@ specifiers:
 
 dependencies:
   bootstrap: 5.2.2
+  hamburger-react: 2.5.0_react@18.2.0
   places-autocomplete-react: 1.0.10_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-bootstrap: 2.6.0_2zx2umvpluuhvlq44va5bta2da
+  react-bootstrap-icons: 1.10.2_react@18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-phone-number-input: 3.2.12_biqbaboplfbrettd7655fr4n2y
   react-router: 6.4.3_react@18.2.0
@@ -1752,6 +1756,14 @@ packages:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
     engines: {node: '>=4'}
 
+  /hamburger-react/2.5.0_react@18.2.0:
+    resolution: {integrity: sha512-5GSXe+ucxTPJ0SkhIsPQ/PRDweZPIKya1lfahAuExx31SdheeUA4uOPfQIAirbKona8hvo79VDr5LJQzPXsdpw==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /has-flag/3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
     engines: {node: '>=4'}
@@ -1884,6 +1896,15 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
+    dev: false
+
+  /react-bootstrap-icons/1.10.2_react@18.2.0:
+    resolution: {integrity: sha512-PC72g6uARdSxZH+ViBbul3FRWKuIhiJajahwt1h0daPBDw789KqpA+x3hrJpSUyQMF0PQ9LfWxu1a0O67bqPeg==}
+    peerDependencies:
+      react: '>=16.8.6'
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
     dev: false
 
   /react-bootstrap/2.6.0_2zx2umvpluuhvlq44va5bta2da:
