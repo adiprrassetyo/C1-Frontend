@@ -10,6 +10,7 @@ specifiers:
   places-autocomplete-react: ^1.0.10
   react: ^18.2.0
   react-bootstrap: ^2.6.0
+  react-bootstrap-icons: ^1.10.2
   react-dom: ^18.2.0
   react-phone-number-input: ^3.2.12
   react-redux: ^8.0.5
@@ -24,6 +25,7 @@ dependencies:
   places-autocomplete-react: 1.0.10_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-bootstrap: 2.6.0_2zx2umvpluuhvlq44va5bta2da
+  react-bootstrap-icons: 1.10.2_react@18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-phone-number-input: 3.2.12_biqbaboplfbrettd7655fr4n2y
   react-redux: 8.0.5_cn3ejhfta5lq2dae4xucvtkwvu
@@ -1990,6 +1992,15 @@ packages:
 
   /proxy-from-env/1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
+    dev: false
+
+  /react-bootstrap-icons/1.10.2_react@18.2.0:
+    resolution: {integrity: sha512-PC72g6uARdSxZH+ViBbul3FRWKuIhiJajahwt1h0daPBDw789KqpA+x3hrJpSUyQMF0PQ9LfWxu1a0O67bqPeg==}
+    peerDependencies:
+      react: '>=16.8.6'
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
     dev: false
 
   /react-bootstrap/2.6.0_2zx2umvpluuhvlq44va5bta2da:
