@@ -1,34 +1,57 @@
 import * as auth from "../services/authService";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const registerUser = createAsyncThunk("user/register", async (user, navigate) => {
-  navigate('')
-  try {
-    const res = await auth.register(user);
-    if(res.data.status == "success"){
-      navigate('/auth')
+export const registerUser = createAsyncThunk(
+  "user/register",
+  async ({ formData, redirect }, { rejectWithValue }) => {
+    try {
+      const res = await auth.register(formData);
+
+      if (res.data.status == "success") {
+        setTimeout(() => {
+          redirect("/auth");
+        }, 3000);
+      }
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return rejectWithValue(error.response);
     }
-    return res.data;
-  } catch (error) {
-    console.error(error);
   }
-});
-export const loginUser = createAsyncThunk("user/login", async (user, navigate) => {
-  try {
-    const res = await auth.login(user);
-    if(res.data.status == "success"){
-      navigate('/')
+);
+
+export const loginUser = createAsyncThunk(
+  "user/login",
+  async ({ formData, redirect }, { rejectWithValue }) => {
+    try {
+      const res = await auth.login(formData);
+
+      if (res.data.status == "success") {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ token: res.data.data.accessToken })
+        );
+
+        setTimeout(() => {
+          if (res.data.data.role === "admin") {
+            redirect("/dashboard");
+          }
+          redirect("/");
+        }, 3000);
+      }
+
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return rejectWithValue(error.response);
     }
-    return res.data;
-  } catch (error) {
-    console.error(error);
   }
-});
+);
 export const logoutUser = createAsyncThunk("user/logout", async (navigate) => {
   try {
     const res = await auth.logout();
-    if(res.data.status == "success"){
-      navigate('/')
+    if (res.data.status == "success") {
+      navigate("/");
     }
     return res.data;
   } catch (error) {
@@ -42,40 +65,58 @@ const authSlice = createSlice({
     loading: false,
     message: "",
     user: {},
+    status: "",
   },
-  reducers: {},
+  reducers: {
+    clearState: (state, action) => {
+      return {
+        loading: false,
+        message: "",
+        user: {},
+        status: "",
+      };
+    },
+  },
   extraReducers: {
     //register
     [registerUser.pending]: (state, action) => {
-      return { ...state, loading: true };
+      return { ...state, loading: true, message: "Processing your action..." };
     },
     [registerUser.fulfilled]: (state, action) => {
       return {
         loading: false,
         message: action.payload.message,
         user: action.payload.data,
+        status: action.payload.status,
       };
     },
     [registerUser.rejected]: (state, action) => {
-      return { ...state, loading: false };
+      return {
+        loading: false,
+        message: action.payload?.data.message,
+        user: {},
+        status: "error",
+      };
     },
     //login
     [loginUser.pending]: (state, action) => {
-      return { ...state, loading: true };
+      return { ...state, loading: true, message: "Processing your action..." };
     },
     [loginUser.fulfilled]: (state, action) => {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ token: action.payload.data.accessToken })
-      );
       return {
         loading: false,
-        message: action.payload.message,
-        user: action.payload.data,
+        message: action.payload?.message,
+        user: action.payload?.data,
+        status: action.payload?.status,
       };
     },
     [loginUser.rejected]: (state, action) => {
-      return { ...state, loading: false };
+      return {
+        loading: false,
+        message: action.payload?.data.message,
+        user: {},
+        status: "error",
+      };
     },
     //logout
     [logoutUser.pending]: (state, action) => {
@@ -95,6 +136,6 @@ const authSlice = createSlice({
   },
 });
 
-export const {} = userSlice.actions;
+export const { clearState } = authSlice.actions;
 
-export default userSlice.reducer;
+export default authSlice.reducer;
