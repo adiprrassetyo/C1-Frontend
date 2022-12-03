@@ -1,0 +1,10 @@
+.btn-backHome {
+  width: 100%;
+  height: 55px;
+  background: #f37c20;
+  border: none;
+}
+
+.btn-backHome:hover {
+  background: #ea741a;
+}

@@ -288,7 +288,7 @@ const Auth = () => {
                     </Row>
                   </Form.Group>
                   <Button
-                    variant="primary"
+                    variant="info"
                     type="submit"
                     className="btn-login my-3"
                   >
