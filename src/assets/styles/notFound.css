@@ -8,3 +8,11 @@
 .btn-backHome:hover {
   background: #ea741a;
 }
+
+.btn-backHome:focus{
+  background: #ea741a;
+}
+
+main .notFound {
+  background: red;
+}

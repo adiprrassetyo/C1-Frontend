@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <main className="d-flex bg-white w-100 h-100  align-items-center justify-content-center">
+    <main className="notFound d-flex bg-white w-100 h-100  align-items-center justify-content-center">
       <Stack
         direction="horizontal"
         className="container-sm"
