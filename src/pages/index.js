@@ -1,6 +1,6 @@
 import Flight from "./Flight";
 import Home from "./Home";
 import Auth from "./Auth";
-import SearchFlight from "./SearchFlight";
+import Tickets from "./Tickets";
 
-export { Flight, Home, Auth, SearchFlight };
+export { Flight, Home, Auth, Tickets };
