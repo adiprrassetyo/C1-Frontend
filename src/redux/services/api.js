@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default axios.create({
+const API = axios.create({
   baseURL: "https://binair-backend-production.up.railway.app/api/v1",
 });
 
@@ -12,3 +12,5 @@ API.interceptors.request.use((req) => {
   }
   return req;
 });
+
+export default API;
