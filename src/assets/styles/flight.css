@@ -1,0 +1,217 @@
+*{
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #ea741a;
+    --bs-btn-active-border-color: #ea741a 1px solid;
+    --second-color: #ea741a;
+}
+.flight{
+    padding: 0;
+}
+.jumbotron{
+    height: 100vh;
+    background-image: url("../images/flight-image.png");
+    background-size: cover;
+}
+.jumbotron-content{
+    padding: 30vh 10vw 30vh 10vw;
+    gap: 20px;
+}
+.flight-form{
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.btn-switch-form{
+    border: var(--second-color) 1px solid;
+}
+.btn-check:checked + .btn{
+    border: var(--second-color) 1px solid;
+}
+.switch-city-btn{
+    box-shadow: grey 0px 2px 3px 0px;
+    border-radius: 30px;
+    height: 70px;
+    border: none;
+}
+.popover-container{
+    padding: 0;
+}
+.popover-trigger , .popover-trigger:hover{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: black;
+    text-align: start;
+}
+.popover-trigger:active{
+    width: 100%;
+    background-color: var(--second-color);
+    border: none;
+    color: white;
+    text-align: start;
+}
+#popover-positioned-top{
+    width: 100%;
+}
+.set-traveler{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+.set-traveler .btn-active{
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    color: var(--second-color);
+    background-color: transparent;
+    border: var(--second-color) 1px solid;
+}
+.set-traveler .btn-active:hover, .set-traveler .btn-active:active{
+    color: white;
+    background-color: var(--second-color);
+    border: var(--second-color) 1px solid;
+}
+.set-traveler .btn-inactive{
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    color: grey;
+    background-color: silver;
+    border: silver 1px solid;
+}
+.set-traveler .btn-inactive:hover, .set-traveler .btn-inactive:active{
+    cursor: disabled;
+    pointer-events: all !important;
+    color: grey;
+    background-color: silver;
+    border: silver 1px solid;
+}
+.jumbotron h2{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+.recomendation{
+    padding: 15vh 10vw 15vh 10vw;
+}
+.recomendation h3{
+    font-weight: bold;
+}
+.recomendation-card{
+    height: 250px;
+    margin: 10px;
+    padding: 15px;
+    color: white;
+}
+.recomendation-card span{
+    font-weight: bold;
+}
+.recomendation-card h3{
+    line-height: 28px;
+}
+.rc-1{
+    background-image: url("../images/rec-1.png");
+    background-size: cover;
+}
+.rc-2{
+    background-image: url("../images/rec-2.png");
+    background-size: cover;
+}
+.rc-3{
+    background-image: url("../images/rec-3.png");
+    background-size: cover;
+}
+.rc-4{
+    background-image: url("../images/rec-4.png");
+    background-size: cover;
+}
+.rc-5{
+    background-image: url("../images/rec-5.png");
+    background-size: cover;
+}
+.rc-6{
+    background-image: url("../images/rec-6.png");
+    background-size: cover;
+}
+.rec-icon{
+    width: 25px;
+    height: fit-content;
+}
+.service{
+    padding: 15vh 10vw 15vh 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    border-top: #DEDEDE 1px solid;
+    border-bottom: #DEDEDE 1px solid;
+}
+.card-img-top{
+    height: 150px;
+    width: fit-content;
+}
+.card{
+    border: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.card-footer{
+    border: none;
+    background-color: transparent;
+}
+.mobile{
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0;
+}
+.mobile-content{
+    height: 70%;
+    background: linear-gradient(
+        112.87deg,
+        #13a2d7 0%,
+        #3492b5 45.3%,
+        #8bbcce 100%
+    );
+    display: flex;
+    align-items: center;
+    padding: 0 5vw 0 5vw;
+}
+.mobile-content h3{
+    color: white;
+    font-weight: bold;
+}
+.mobile-img{
+    position: relative;
+    height: 80vh;
+    width: fit-content;
+    top: -5vh;
+}
+.google-play-img{
+    height: 50px;
+    width: fit-content;
+}
+@media screen and (max-width: 1000px) {
+    .jumbotron-content{
+        flex-direction: column-reverse;
+    }
+    .mobile-content{
+        flex-direction: column-reverse;
+        padding: 50px;
+    }
+    .mobile-img{
+        height: 50vh;
+        top: 4vh;
+    }
+}
+@media screen and (max-width: 500px){
+    .mobile-img{
+        height: 35vh;
+        top: 6vh;
+    }
+}
