@@ -17,11 +17,11 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install global packages
-        run: npm install npm -g
+      # - name: Install global packages
+      #   run: npm install npm -g
 
       - name: Install packages
-        run: npm install
+        run: npm install --force
 
       - name: Install Railway
         run:  npm i -g @railway/cli
