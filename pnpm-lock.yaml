@@ -7,9 +7,11 @@ specifiers:
   '@vitejs/plugin-react': ^2.2.0
   bootstrap: ^5.2.2
   places-autocomplete-react: ^1.0.10
+  prop-types: ^15.6.0
   react: ^18.2.0
   react-bootstrap: ^2.6.0
   react-dom: ^18.2.0
+  react-google-flight-datepicker: ^0.1.20
   react-phone-number-input: ^3.2.12
   react-router: ^6.4.3
   react-router-dom: ^6.4.3
@@ -18,10 +20,12 @@ specifiers:
 dependencies:
   '@popperjs/core': 2.11.6
   bootstrap: 5.2.2_@popperjs+core@2.11.6
-  places-autocomplete-react: 1.0.10_biqbaboplfbrettd7655fr4n2y
+  places-autocomplete-react: 1.0.10_v2m5e27vhdewzwhryxwfaorcca
+  prop-types: 15.8.1
   react: 18.2.0
   react-bootstrap: 2.6.0_2zx2umvpluuhvlq44va5bta2da
   react-dom: 18.2.0_react@18.2.0
+  react-google-flight-datepicker: 0.1.20_biqbaboplfbrettd7655fr4n2y
   react-phone-number-input: 3.2.12_biqbaboplfbrettd7655fr4n2y
   react-router: 6.4.3_react@18.2.0
   react-router-dom: 6.4.3_biqbaboplfbrettd7655fr4n2y
@@ -1532,6 +1536,10 @@ packages:
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
 
+  /dayjs/1.11.6:
+    resolution: {integrity: sha512-zZbY5giJAinCG+7AGaw0wIhNZ6J8AhWuSXKvuc1KAyMiRsvGQWqh4L+MomvhdAYjN+lqvVCMq1I41e3YHvXkyQ==}
+    dev: false
+
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
     engines: {node: '>=6.0'}
@@ -1867,6 +1875,10 @@ packages:
       sourcemap-codec: 1.4.8
     dev: true
 
+  /memoize-one/5.2.1:
+    resolution: {integrity: sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==}
+    dev: false
+
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
 
@@ -1890,7 +1902,7 @@ packages:
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
 
-  /places-autocomplete-react/1.0.10_biqbaboplfbrettd7655fr4n2y:
+  /places-autocomplete-react/1.0.10_v2m5e27vhdewzwhryxwfaorcca:
     resolution: {integrity: sha512-NwlTolYphGcOyFLjqCYjJdyamr0obDwdf4ESt28cMw3M+/ixNiFrU6cXdVdBYdhCu+9EegVOY1oRdCGPaajbXQ==}
     peerDependencies:
       prop-types: ^15.6.0
@@ -1901,6 +1913,7 @@ packages:
       '@babel/preset-env': 7.20.2_@babel+core@7.20.2
       '@babel/preset-react': 7.18.6_@babel+core@7.20.2
       '@babel/preset-stage-0': 7.8.3
+      prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     transitivePeerDependencies:
@@ -1971,6 +1984,21 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-google-flight-datepicker/0.1.20_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-pFt8EZc3w1Aka8p4gCoabwhfal+CdvSPukLuwOIthSflbYbDrs2aSMTQOa0GjR76vVSYdhNhsbtamE7Sdz7Oug==}
+    engines: {node: '>=8', npm: '>=5'}
+    peerDependencies:
+      react: ^16.8.4
+      react-dom: ^16.8.4
+    dependencies:
+      classnames: 2.3.2
+      dayjs: 1.11.6
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-virtualized-auto-sizer: 1.0.7_biqbaboplfbrettd7655fr4n2y
+      react-window: 1.8.8_biqbaboplfbrettd7655fr4n2y
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
@@ -2032,6 +2060,30 @@ packages:
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-virtualized-auto-sizer/1.0.7_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-Mxi6lwOmjwIjC1X4gABXMJcKHsOo0xWl3E3ugOgufB8GJU+MqrtY35aBuvCYv/razQ1Vbp7h1gWJjGjoNN5pmA==}
+    engines: {node: '>8.0.0'}
+    peerDependencies:
+      react: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0-rc
+      react-dom: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0-rc
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-window/1.8.8_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-D4IiBeRtGXziZ1n0XklnFGu7h9gU684zepqyKzgPNzrsrk7xOCxni+TCckjg2Nr/DiaEEGVVmnhYSlT2rB47dQ==}
+    engines: {node: '>8.0.0'}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.20.1
+      memoize-one: 5.2.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false

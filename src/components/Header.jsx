@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Navbar, Nav, Container, NavDropdown, Button, Offcanvas }from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/images/binair-logo.svg";
 import english_flag from "../assets/images/english-flag.svg";
 import indo_flag from "../assets/images/indo-flag.svg";
@@ -16,6 +17,7 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   })
+
   return (
        <>
        
@@ -23,7 +25,7 @@ const Header = () => {
         <Navbar key={expand} expand={expand} className={`${sticky ? "sticky" : ""}`}>
           <Container>
             <Navbar.Brand>
-            <Nav.Link href="/" > <img src={logo} alt="logo" /> </Nav.Link>
+              <Nav.Link href="/" > <img src={logo} alt="logo" /> </Nav.Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -34,15 +36,17 @@ const Header = () => {
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                  <Navbar.Brand>
-                    <Nav.Link href="/" > <img src={logo} alt="logo" /> </Nav.Link>
+                    <NavLink to="/">
+                        <img src={logo} alt="logo" />
+                    </NavLink>
                     </Navbar.Brand>
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="flex-grow-1 pe-3">
-                  <Nav.Link href="/flight" className="text-secondary">Penerbangan</Nav.Link>
-                  <Nav.Link href="/promo" className="text-secondary">Promo</Nav.Link>
-                  <Nav.Link href="/booking" className="text-secondary">Pemesanan</Nav.Link>
+                <Nav className="flex-grow-1 pe-3 ">
+                  <NavLink to="/flight" className="pb-3 text-secondary">Penerbangan</NavLink>
+                  <NavLink to="/promo" className="pb-3 text-secondary">Promo</NavLink>
+                  <NavLink to="/booking" className="pb-3 text-secondary">Pemesanan</NavLink>
                 </Nav>
                 <div className="">
                     <NavDropdown title="Language" className="nav-dropdown me-3 mt-2" >
@@ -59,7 +63,7 @@ const Header = () => {
                     <NavDropdown.Item>US</NavDropdown.Item>
                     <NavDropdown.Item>IDR</NavDropdown.Item>
                   </NavDropdown>
-                  <Button href="/auth" className="btn btn-light button-login">Login</Button> 
+                  <Button href="/auth" className="btn btn-light button-login" >Login</Button> 
                 </div>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

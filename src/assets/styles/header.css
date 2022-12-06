@@ -37,12 +37,28 @@ nav.sticky{
 }
 .nav-dropdown a{
     color: #4A4A4A;
+    margin-top:4px;
+}
+
+nav a{
+    color: #59595B;
+    padding: 12px;
+}
+nav a.active{
+    color: #13A2D7 !important;
+    font-weight: 600;
+}
+.tab{
+    color: #9A9A9D;
+}
+.tab:active{
+    color: red;
 }
 
 @media (min-width: 576px) and (max-width: 768px) {
     .nav-dropdown{
         display: block;
-        padding: 6px 0;
+        padding: 2px 0;
     }
     .btn-login{
         margin-top: 20px;
