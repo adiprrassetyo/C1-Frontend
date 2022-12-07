@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import {Container, Row, Col, Form, Button, Dropdown, DropdownButton} from "react-bootstrap";
 import "../../assets/styles/searchFlight.css";
+import "../../assets/styles/flightDatepicker.css";
 import switchbtn from "../../assets/images/switch-btn.svg";
 import { RangeDatePicker, SingleDatePicker } from 'react-google-flight-datepicker';
-import 'react-google-flight-datepicker/dist/main.css';
+//import 'react-google-flight-datepicker/dist/main.css';
 
 const SearchFlight = () => {
     const [visible1, setVisible1] = useState(true);
