@@ -40,11 +40,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 14px;
     padding: 0 4px;
     font-weight: 600;
+    color: #59595B;
 }
 
 #dropdown-traveler:active{
     background-color: #fff;
-    color: #000;
+    color: #59595B;
 }
 
 #dropdown-traveler::after{
@@ -114,11 +115,12 @@ button[disabled]{
     font-size: 14px;
     padding: 8px 4px;
     background-image: none;
+    color: #59595B;
 }
 
 .selected-date{
     font-weight: 600;
-    padding: 0px 4px;
+    color: #59595B;
 }
 
 .hidden-form{
@@ -126,7 +128,7 @@ button[disabled]{
 }
 #start-date-input-button{
     //padding: 0px 20px 0px 4px;
-    margin-right: 50px;
+    margin-right: 75px;
 }
 #end-date-input-button{
     //padding: 0px 100px 0px 4px;
@@ -165,7 +167,7 @@ button[disabled]{
     font-size: 14px;
 }
 #start-date-input-button{
-    margin-right: 7%;
+    margin-right: 21%;
 }
 }
 @media (min-width: 768px) and (max-width: 992px) {
@@ -176,7 +178,7 @@ button[disabled]{
     font-size: 14px;
 }
 #start-date-input-button{
-    margin-right: -23px;
+    margin-right: 0px;
 }
 .search-flight-btn{
     font-size: 14px;
@@ -205,7 +207,7 @@ button[disabled]{
 }
 .pulangpergi{
     position: absolute;
-    margin-top: -85px;
+    margin-top: -100px;
     margin-left: 255px;
 }
 .card-flights{
@@ -213,6 +215,9 @@ button[disabled]{
 }
 .search-flight-btn{
     width: 105%;
+}
+#start-date-input-button{
+    margin-right: 58px;
 }
 }
 
@@ -243,11 +248,11 @@ button[disabled]{
 }
 .pulangpergi{
     position: absolute;
-    margin-top: -85px;
+    margin-top: -100px;
     margin-left: 42%;
 }
-#end-date-input-button{
-    margin-left: 5%;
+#start-date-input-button{
+    margin-right: 22%;
 }
 .search-flight-btn{
     width: 105%;
