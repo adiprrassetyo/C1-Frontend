@@ -1,0 +1,25 @@
+.link-footer-title{
+    font-size: 18px;
+    color: #59595B;
+    font-weight: 500;
+}
+.footer{
+    margin-bottom: 60px;
+}
+.footer a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #59595B;
+    line-height: 2;
+}
+.footer a:hover{
+    text-decoration: underline;
+}
+.copyright{
+    margin: 36px 0px;
+}
+.copyright p{
+    font-size: 14px;
+    line-height: 1;
+    color: #9A9A9D;
+}
