@@ -1,0 +1,76 @@
+.navbar{
+    padding: 16px 0px;
+    transition: 0.3s;
+}
+.navbar-brand img{
+    margin-bottom: 8px;
+}
+nav.sticky{
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav, .row{
+    width: 100%;
+}
+.selected-link{
+    color: red;
+}
+.nav-dropdown{
+    display: inline-block;
+}
+.dropdown-toggle{
+    border: none !important;
+}
+.button-login{
+    background-color: #fff;
+    box-shadow: 0px 2px 8px 0 rgba(0,0,0,0.10);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #9A9A9D;
+}
+.button-login:hover{
+    background-color: #fff;
+}
+.nav-dropdown a{
+    color: #4A4A4A;
+    margin-top:4px;
+}
+
+nav a{
+    color: #59595B;
+    padding: 12px;
+}
+nav a.active{
+    color: #13A2D7 !important;
+    font-weight: 600;
+}
+.tab{
+    color: #9A9A9D;
+}
+.tab:active{
+    color: red;
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .nav-dropdown{
+        display: block;
+        padding: 2px 0;
+    }
+    .btn-login{
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .nav-dropdown{
+        display: block;
+        padding: 6px 0;
+    }
+    .btn-login{
+        margin-top: 20px;
+    }
+}
