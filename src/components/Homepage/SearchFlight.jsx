@@ -9,15 +9,17 @@ import {
   DropdownButton,
 } from "react-bootstrap";
 import "../../assets/styles/searchFlight.css";
+import "../../assets/styles/flightDatepicker.css";
 import switchbtn from "../../assets/images/switch-btn.svg";
-import {
-  RangeDatePicker,
-  SingleDatePicker,
-} from "react-google-flight-datepicker";
+
 import "react-google-flight-datepicker/dist/main.css";
 import { retriveTickets } from "../../redux/slices/ticketSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {
+  RangeDatePicker,
+  SingleDatePicker,
+} from "react-google-flight-datepicker";
 
 const SearchFlight = () => {
   const [visible1, setVisible1] = useState(true);
