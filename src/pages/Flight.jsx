@@ -19,6 +19,7 @@ import GooglePlayImg from "../assets/images/google-play.png";
 import SwitchCityIcon from "../assets/images/switch-city.svg";
 import mobile_mockup from "../assets/images/mobile-mockup.svg";
 import google_play from "../assets/images/google-play.svg";
+import { RangeDatePicker, SingleDatePicker } from 'react-google-flight-datepicker';
 
 const Flight = () => {
   const [isRoundTrip, setIsRoundTrip] = useState(false);
@@ -190,11 +191,21 @@ const Flight = () => {
                       <Form.Label>
                         <h4>Tanggal Pulang</h4>
                       </Form.Label>
-                      <Form.Control
+                      {/* <Form.Control
                         type="date"
                         className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
                         placeholder=""
-                      />
+                      /> */}
+                      <div>
+                        <RangeDatePicker
+                          startDate={new Date()}
+                          endDate={new Date()}
+                          minDate={new Date()}
+                          startDatePlaceholder=" "
+                          endDatePlaceholder=" "
+                          id="range-date-picker" 
+                          />
+                      </div>
                     </Form.Group>
                   </Container>
                 </Col>
@@ -205,11 +216,19 @@ const Flight = () => {
                   <Form.Label>
                     <h4>Tanggal Berangkat</h4>
                   </Form.Label>
-                  <Form.Control
+                  {/* <Form.Control
                     type="date"
                     className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
                     placeholder="pilih tanggal keberangkatan"
-                  />
+                  /> */}
+                  <div>
+                    <SingleDatePicker
+                    startDate={new Date()}
+                    minDate={new Date()}
+                    startDatePlaceholder=" "
+                    id="single-date-picker"
+                    />
+                  </div>
                 </Form.Group>
               </Container>
             )}
