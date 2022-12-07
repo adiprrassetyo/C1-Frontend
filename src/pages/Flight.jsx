@@ -1,24 +1,24 @@
 import React, { useState } from "react";
-import { Header, Footer } from "../components";
 import {
-  Container,
-  Row,
-  Col,
-  Form,
   Button,
+  Col,
+  Container,
+  Form,
   OverlayTrigger,
   Popover,
+  Row,
 } from "react-bootstrap";
-import "../assets/styles/flight.css";
-import ToIcon from "../assets/images/to-icon.svg";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import CustomerSupportImg from "../assets/images/customerSupport.svg";
-import SimplifyBookingImg from "../assets/images/simplifyBooking.svg";
-import TravelProduct from "../assets/images/travelProducts.svg";
-import MobileImg from "../assets/images/mobile-view.png";
-import GooglePlayImg from "../assets/images/google-play.png";
-import SwitchCityIcon from "../assets/images/switch-city.svg";
-import mobile_mockup from "../assets/images/mobile-mockup.svg";
 import google_play from "../assets/images/google-play.svg";
+import mobile_mockup from "../assets/images/mobile-mockup.svg";
+import SimplifyBookingImg from "../assets/images/simplifyBooking.svg";
+import SwitchCityIcon from "../assets/images/switch-city.svg";
+import TravelProduct from "../assets/images/travelProducts.svg";
+import "../assets/styles/flight.css";
+import { Footer, Header } from "../components";
+import { retriveTickets } from "../redux/slices/ticketSlice";
 
 const Flight = () => {
   const [isRoundTrip, setIsRoundTrip] = useState(false);
@@ -26,6 +26,10 @@ const Flight = () => {
   const [to, setTo] = useState("");
   const [sumAdult, setSumAdult] = useState(1);
   const [sumChild, setSumChild] = useState(0);
+  const [date, setDate] = useState("");
+  const dispatch = useDispatch();
+  const redirect = useNavigate();
+
   const switchForm = (e) => {
     e.preventDefault();
     setIsRoundTrip((prev) => !prev);
@@ -62,6 +66,18 @@ const Flight = () => {
     }
   };
 
+  console.info({ from, to, type: isRoundTrip ? "roundtrip" : "oneway" });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      retriveTickets({
+        params: { from, to, type: isRoundTrip ? "roundtrip" : "oneway" },
+        redirect,
+      })
+    );
+  };
+
   return (
     <Container fluid className="flight">
       <Header />
@@ -79,11 +95,11 @@ const Flight = () => {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio1"
-                  autocomplete="off"
+                  autoComplete="off"
                 ></input>
                 <label
                   class="btn btn-switch-form"
-                  for="btnradio1"
+                  htmlFor="btnradio1"
                   onClick={switchForm}
                 >
                   Sekali Jalan
@@ -93,10 +109,10 @@ const Flight = () => {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio2"
-                  autocomplete="off"
-                  checked
+                  autoComplete="off"
+                  defaultChecked
                 ></input>
-                <label class="btn btn-switch-form" for="btnradio2">
+                <label class="btn btn-switch-form" htmlFor="btnradio2">
                   Pulang Pergi
                 </label>
               </div>
@@ -111,10 +127,10 @@ const Flight = () => {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio1"
-                  autocomplete="off"
-                  checked
+                  autoComplete="off"
+                  defaultChecked
                 ></input>
-                <label class="btn btn-switch-form" for="btnradio1">
+                <label class="btn btn-switch-form" htmlFor="btnradio1">
                   Sekali Jalan
                 </label>
                 <input
@@ -122,11 +138,11 @@ const Flight = () => {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio2"
-                  autocomplete="off"
+                  autoComplete="off"
                 ></input>
                 <label
                   class="btn btn-switch-form"
-                  for="btnradio2"
+                  htmlFor="btnradio2"
                   onClick={switchForm}
                 >
                   Pulang Pergi

@@ -6,6 +6,7 @@ export const retriveTickets = createAsyncThunk(
   async ({ params, redirect }, { rejectWithValue }) => {
     try {
       const res = await ticket.retrive(params);
+      console.info(res)
       if (res.data.message == "success") {
         setTimeout(() => {
           redirect("/flight/search");
@@ -13,6 +14,7 @@ export const retriveTickets = createAsyncThunk(
       }
       return res.data;
     } catch (error) {
+      console.error(error)
       return rejectWithValue(error.response);
     }
   }
@@ -23,9 +25,25 @@ const ticketSlice = createSlice({
   initialState: {
     loading: false,
     status: "",
+    search: {},
     ticket: [],
   },
-  reduceers: {},
+  reduceers: {
+    clearState: (state, action) => {
+      return {
+        loading: false,
+        message: "",
+        user: {},
+        status: "",
+      };
+    },
+    setSearh: (state, action) => {
+      return {
+        ...state,
+        search: action.payload,
+      };
+    },
+  },
   extraReducers: {
     [retriveTickets.pending]: (state, action) => {
       return { ...state, loading: true };

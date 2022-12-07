@@ -34,18 +34,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
 }
-#dropdown-traveler{
-    margin: 0;
-    text-align: left;
-    font-size: 14px;
-    padding: 0 4px;
-    font-weight: 600;
-    color: #59595B;
+#dropdown-traveler {
+  margin: 0;
+  text-align: left;
+  font-size: 14px;
+  padding: 0 4px;
+  font-weight: 600;
+  color: #59595b;
 }
 
-#dropdown-traveler:active{
-    background-color: #fff;
-    color: #59595B;
+#dropdown-traveler:active {
+  background-color: #fff;
+  color: #59595b;
 }
 
 #dropdown-traveler::after {
@@ -110,26 +110,28 @@ button[disabled] {
 #kotaberangkat {
   width: 90%;
 }
-#kotaberangkat, #kotatujuan{
-    font-weight: 600;
-    font-size: 14px;
-    padding: 8px 4px;
-    background-image: none;
-    color: #59595B;
+#kotaberangkat,
+#kotatujuan {
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 4px;
+  background-image: none;
+  color: #59595b;
 }
 
-.selected-date{
-    font-weight: 600;
-    color: #59595B;
+.selected-date {
+  font-weight: 600;
+  color: #59595b;
 }
 
 .hidden-form {
   border-left: none;
 }
-#start-date-input-button{
-    //padding: 0px 20px 0px 4px;
-    margin-right: 75px;
+#start-date-input-button {
+  /* //padding: 0px 20px 0px 4px; */
+  margin-right: 75px;
 }
+
 #end-date-input-button {
   /* //padding: 0px 100px 0px 4px; */
 }
@@ -164,10 +166,10 @@ button[disabled] {
   }
   .search-flight-btn {
     font-size: 14px;
-}
-#start-date-input-button{
+  }
+  #start-date-input-button {
     margin-right: 21%;
-}
+  }
 }
 @media (min-width: 768px) and (max-width: 992px) {
   .btn-switch-city {
@@ -175,11 +177,11 @@ button[disabled] {
   }
   .search-flight-btn {
     font-size: 14px;
-}
-#start-date-input-button{
+  }
+  #start-date-input-button {
     margin-right: 0px;
-}
-.search-flight-btn{
+  }
+  .search-flight-btn {
     font-size: 14px;
   }
 }
@@ -214,10 +216,10 @@ button[disabled] {
   }
   .search-flight-btn {
     width: 105%;
-}
-#start-date-input-button{
+  }
+  #start-date-input-button {
     margin-right: 58px;
-}
+  }
 }
 
 @media (max-width: 575px) {
@@ -249,11 +251,11 @@ button[disabled] {
     position: absolute;
     margin-top: -100px;
     margin-left: 42%;
-}
-#start-date-input-button{
+  }
+  #start-date-input-button {
     margin-right: 22%;
-}
-.search-flight-btn{
+  }
+  .search-flight-btn {
     width: 105%;
   }
 }
