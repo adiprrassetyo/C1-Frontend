@@ -1,0 +1,259 @@
+.card-flights {
+  margin-top: 48px;
+  box-shadow: 0px 10px 30px 0 #e7e7e7;
+  padding: 32px 32px 0 32px;
+}
+
+.search-flight-btn {
+  background-color: #f37c20;
+  border: none;
+  margin-top: 12px;
+}
+.search-flight-btn:hover {
+  background-color: #f37c20;
+}
+.search-flight-btn:active,
+.search-flight-btn:focus {
+  background-color: #f37c20;
+}
+
+.form-outline {
+  /* //border: 1px solid #E7E7E7; */
+}
+.opsi-flight {
+  border-bottom: 1px solid #e7e7e7;
+  width: 100%;
+  padding: 0px 0px 16px 0px;
+  margin: 0px;
+}
+.form-style {
+  border: none;
+}
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+#dropdown-traveler{
+    margin: 0;
+    text-align: left;
+    font-size: 14px;
+    padding: 0 4px;
+    font-weight: 600;
+    color: #59595B;
+}
+
+#dropdown-traveler:active{
+    background-color: #fff;
+    color: #59595B;
+}
+
+#dropdown-traveler::after {
+  content: none;
+}
+
+.dropdown-menu.show {
+  padding: 0px;
+}
+.dropdown-item-traveler {
+  width: 250px;
+
+  border-bottom: 1px solid #e7e7e7;
+}
+.dropdown-item-traveler .row {
+  width: 250px;
+  margin: 0;
+  padding: 12px 20px;
+}
+.dropdown-item-traveler p {
+  margin-bottom: 0;
+  /* //line-height: 0.5; */
+}
+.dropdown-item-traveler .traveler-title {
+  font-size: 14px;
+  color: #4a4a4a;
+  font-weight: 700;
+}
+.dropdown-item-traveler .traveler-desc {
+  font-size: 12px;
+  color: #9a9a9d;
+  font-weight: 400;
+}
+.increment-btn {
+  padding: 0px 6px 1px 6px;
+  background-color: #fff;
+  color: #13a2d7;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #13a2d7;
+}
+
+.decrement-btn {
+  padding: 0px 8px 1px 8px;
+  background-color: #fff;
+  color: #ff3a44;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #ff3a44;
+  cursor: pointer;
+}
+button:disabled,
+button[disabled] {
+  color: #bfbfbf;
+  border: 2px solid #bfbfbf;
+}
+.form-label {
+  font-size: 14px;
+  color: #9a9a9d;
+  padding: 0px 4px;
+}
+#kotaberangkat {
+  width: 90%;
+}
+#kotaberangkat, #kotatujuan{
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 4px;
+    background-image: none;
+    color: #59595B;
+}
+
+.selected-date{
+    font-weight: 600;
+    color: #59595B;
+}
+
+.hidden-form {
+  border-left: none;
+}
+#start-date-input-button{
+    //padding: 0px 20px 0px 4px;
+    margin-right: 75px;
+}
+#end-date-input-button {
+  /* //padding: 0px 100px 0px 4px; */
+}
+#start-date-input-button,
+#end-date-input-button {
+  border: none;
+}
+.btn-switch-city {
+  margin-left: 156px;
+  margin-top: 36px;
+  width: 30px;
+  position: absolute;
+  background-color: #fff;
+  border: none;
+}
+.btn-switch-city:hover {
+  border-radius: 4px;
+  box-shadow: 0px 2px 10px 2px #e6e6e6;
+}
+.btn-switch-city:active {
+  background-color: #e8e8e8;
+  border-radius: 4px;
+  box-shadow: 0px 2px 10px 2px #e6e6e6;
+}
+.btn-switch-city img {
+  margin-left: -7px;
+  margin-bottom: 3px;
+}
+@media (min-width: 992px) and (max-width: 1030px) {
+  .btn-switch-city {
+    margin-left: 130px;
+  }
+  .search-flight-btn {
+    font-size: 14px;
+}
+#start-date-input-button{
+    margin-right: 21%;
+}
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .btn-switch-city {
+    margin-left: 90px;
+  }
+  .search-flight-btn {
+    font-size: 14px;
+}
+#start-date-input-button{
+    margin-right: 0px;
+}
+.search-flight-btn{
+    font-size: 14px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.9px) {
+  .btn-switch-city {
+    margin-left: 55%;
+    margin-top: 8%;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    box-shadow: 0px 1px 10px 1px #e6e6e6;
+  }
+  .btn-switch-city:hover {
+    border-radius: 12px;
+    box-shadow: 0px 2px 10px 2px #e6e6e6;
+  }
+  .btn-switch-city img {
+    width: 20px;
+    margin-left: -3px;
+    margin-bottom: 2px;
+  }
+  .selected-date {
+    margin-left: -10px;
+  }
+  .pulangpergi {
+    position: absolute;
+    margin-top: -100px;
+    margin-left: 255px;
+  }
+  .card-flights {
+    height: 510px;
+  }
+  .search-flight-btn {
+    width: 105%;
+}
+#start-date-input-button{
+    margin-right: 58px;
+}
+}
+
+@media (max-width: 575px) {
+  .card-flights {
+    width: 90%;
+    height: 520px;
+  }
+  .btn-switch-city {
+    margin-left: 55%;
+    margin-top: 15%;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    box-shadow: 0px 1px 10px 1px #e6e6e6;
+  }
+  .btn-switch-city:hover {
+    border-radius: 12px;
+    box-shadow: 0px 2px 10px 2px #e6e6e6;
+  }
+  .btn-switch-city img {
+    width: 16px;
+    margin-left: -3px;
+    margin-bottom: 2px;
+  }
+  .selected-date {
+    margin-left: -10px;
+  }
+  .pulangpergi {
+    position: absolute;
+    margin-top: -100px;
+    margin-left: 42%;
+}
+#start-date-input-button{
+    margin-right: 22%;
+}
+.search-flight-btn{
+    width: 105%;
+  }
+}

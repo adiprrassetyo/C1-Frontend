@@ -288,9 +288,9 @@ const Auth = () => {
                     </Row>
                   </Form.Group>
                   <Button
-                    variant="info"
+                    variant="primary"
                     type="submit"
-                    className="btn-login my-3 text-white"
+                    className="btn-login my-3"
                   >
                     {loading ? (
                       <Spinner animation="border" variant="info" />
@@ -360,9 +360,9 @@ const Auth = () => {
                     Lupa Password?
                   </h4>
                   <Button
-                    variant="info"
+                    variant="primary"
                     type="submit"
-                    className="btn-login my-3 d-flex justify-content-center align-items-center text-white"
+                    className="btn-login my-3 d-flex justify-content-center align-items-center"
                   >
                     {loading ? (
                       <Spinner animation="border" variant="info" />
