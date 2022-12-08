@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Row,
@@ -20,32 +20,28 @@ import {
   RangeDatePicker,
   SingleDatePicker,
 } from "react-google-flight-datepicker";
-import { useEffect } from "react";
+import moment from "moment";
 
 const SearchFlight = () => {
   const [visible1, setVisible1] = useState(true);
   const [visible2, setVisible2] = useState(false);
   const [countDewasa, setCountDewasa] = useState(0);
   const [countAnak, setCountAnak] = useState(0);
-  const [date, setDate] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+  console.info({ endDate, startDate });
 
   // const [countBaby, setCountBaby] = useState(0);
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [selected, setSelected] = useState("oneway");
   const dispatch = useDispatch();
-  const ticket = useSelector((state) => state.ticket);
+  const { loading, status, ticket } = useSelector((state) => state.ticket);
+  const redirect = useNavigate();
 
   useEffect(() => {
-    console.info(ticket);
+    console.info(ticket, status);
   }, [dispatch]);
-
-  // console.log(
-  //   { from, to, type: selected },
-  //   { countBaby, countAnak, countDewasa }
-  // );
-
-  console.log(date);
 
   const handleChange = (event) => {
     setSelected(event.target.value);
@@ -62,13 +58,24 @@ const SearchFlight = () => {
     setTo(e.target.value);
   };
 
-  const redirect = useNavigate();
+  const startEndDateChange = (startDt, endDt) => {
+    if (startDt) {
+      setStartDate(startDt);
+      endDt === null && setEndDate(endDt);
+    }
+    if (endDt) {
+      const momentEndDt = moment(endDt, "MM/DD/YYYY");
+      if (momentEndDt.isValid()) {
+        setEndDate(endDt);
+      }
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("submited");
     dispatch(
-      retriveTickets({ params: { from, to, type: selected }, redirect })
+      retriveTickets({ params: { from, to, type: selected, date: startDate }, redirect })
     );
   };
   return (
@@ -135,8 +142,8 @@ const SearchFlight = () => {
                   className="form-input form-style"
                   id="kotatujuan"
                   placeholder="Pilih Kota Tujuan"
-                  onChange={toOnChange}
                   value={to}
+                  onChange={fromOnChange}
                 />
               </Form.Group>
             </Col>
@@ -147,13 +154,13 @@ const SearchFlight = () => {
                 {visible1 && (
                   <div>
                     <SingleDatePicker
-                      startDate={new Date()}
-                      minDate={new Date()}
+                      startDate={startDate}
+                      // minDate={new Date()}
                       startDatePlaceholder=" "
                       id="single-date-picker"
                       dateFormat="D"
                       monthFormat="MMM YYYY"
-                      onChange={(startDate) => setDate(startDate)}
+                      onChange={(startDate) => startEndDateChange(startDate)}
                     />
                   </div>
                 )}
@@ -161,13 +168,15 @@ const SearchFlight = () => {
                 {visible2 && (
                   <div>
                     <RangeDatePicker
-                      startDate={new Date()}
-                      endDate={new Date()}
-                      minDate={new Date()}
+                      startDate={startDate}
+                      // endDate={new Date()}
+                      // minDate={new Date()}
                       startDatePlaceholder=" "
                       endDatePlaceholder=" "
                       id="range-date-picker"
-                      onChange={(startDate) => setDate(startDate)}
+                      onChange={(startDate, endDate) =>
+                        startEndDateChange(startDate, endDate)
+                      }
                     />
                   </div>
                 )}

@@ -6,15 +6,15 @@ export const retriveTickets = createAsyncThunk(
   async ({ params, redirect }, { rejectWithValue }) => {
     try {
       const res = await ticket.retrive(params);
-      console.info(res)
-      if (res.data.message == "success") {
+      console.info(res);
+      if (res.data.status == "success") {
         setTimeout(() => {
           redirect("/flight/search");
         }, 3000);
       }
       return res.data;
     } catch (error) {
-      console.error(error)
+      console.error(error);
       return rejectWithValue(error.response);
     }
   }
@@ -25,6 +25,7 @@ const ticketSlice = createSlice({
   initialState: {
     loading: false,
     status: "",
+    message: "",
     search: {},
     ticket: [],
   },
@@ -33,8 +34,9 @@ const ticketSlice = createSlice({
       return {
         loading: false,
         message: "",
-        user: {},
+        ticket: [],
         status: "",
+        search: {},
       };
     },
     setSearh: (state, action) => {
@@ -48,18 +50,21 @@ const ticketSlice = createSlice({
     [retriveTickets.pending]: (state, action) => {
       return { ...state, loading: true };
     },
-    [retriveTickets.fullfilled]: (state, action) => {
+    [retriveTickets.fulfilled]: (state, action) => {
       return {
+        ...state,
         loading: false,
+        message: action.payload.message,
         ticket: action.payload.data,
-        status: action.payload.message,
+        status: action.payload.status,
       };
     },
     [retriveTickets.rejected]: (state, action) => {
       return {
+        ...state,
         loading: false,
-        ticket: action.payload.data,
-        status: action.payload.message,
+        ticket: action.payload.data.data,
+        status: action.payload.data.status,
       };
     },
   },
