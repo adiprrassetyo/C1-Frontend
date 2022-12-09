@@ -174,49 +174,36 @@ const Flight = () => {
                 </Col>
               </Row>
             </Container>
-            {isRoundTrip ? (
-              <Row>
-                <Col>
-                  <Container className="border rounded p-2">
-                    <Form.Group className=" mb-1" controlId="formBasicEmail">
-                      <Form.Label>
-                        <h4>Tanggal Berangkat</h4>
-                      </Form.Label>
-                      <Form.Control
-                        type="date"
-                        className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
-                        placeholder=""
-                      />
-                    </Form.Group>
-                  </Container>
-                </Col>
-                <Col>
-                  <Container className="border rounded p-2">
-                    <Form.Group className=" mb-1" controlId="formBasicEmail">
-                      <Form.Label>
-                        <h4>Tanggal Pulang</h4>
-                      </Form.Label>
-                      <div>
-                        <RangeDatePicker
-                          startDate={new Date()}
-                          endDate={new Date()}
-                          minDate={new Date()}
-                          startDatePlaceholder=" "
-                          endDatePlaceholder=" "
-                          id="range-date-picker" 
-                          />
-                      </div>
-                    </Form.Group>
-                  </Container>
-                </Col>
-              </Row>
-            ) : (
-              <Container className="border rounded p-2">
-                <Form.Group className=" mb-1" controlId="formBasicEmail">
-                  <Form.Label>
-                    <h4>Tanggal Berangkat</h4>
-                  </Form.Label>
+            <Container className="border rounded p-2">
+              <Form.Group className=" mb-1">                
+                {isRoundTrip ? (
                   <div>
+                    <Row>
+                      <Col>
+                        <Form.Label >
+                          <h4>Tanggal Berangkat</h4>
+                        </Form.Label>
+                      </Col>
+                      <Col>
+                        <Form.Label>
+                          <h4>Tanggal Berangkat</h4>
+                        </Form.Label>
+                      </Col>
+                    </Row>
+                    <RangeDatePicker
+                      startDate={new Date()}
+                      endDate={new Date()}
+                      minDate={new Date()}
+                      startDatePlaceholder=" "
+                      endDatePlaceholder=" "
+                      id="range-date-picker" 
+                      />
+                  </div>
+                ) : (
+                  <div>
+                    <Form.Label>
+                      <h4>Tanggal Berangkat</h4>
+                    </Form.Label>
                     <SingleDatePicker
                     startDate={new Date()}
                     minDate={new Date()}
@@ -224,9 +211,9 @@ const Flight = () => {
                     id="single-date-picker"
                     />
                   </div>
-                </Form.Group>
-              </Container>
-            )}
+                )}
+              </Form.Group>              
+            </Container>
             <Container className="popover-container border rounded">
               <OverlayTrigger
                 trigger="click"
