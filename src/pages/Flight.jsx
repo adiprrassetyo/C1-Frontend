@@ -63,12 +63,17 @@ const Flight = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("submited");
+  };
+
   return (
     <Container fluid className="flight">
       <Header />
       <Container fluid className="jumbotronFlight d-flex align-items-center">
         <Row className="align-items-center jumbotron-content">
-          <Col className="flight-form ">
+          <Form className="flight-form col" onSubmit={handleSubmit}>
             {isRoundTrip ? (
               <div
                 className="btn-group switch-form"
@@ -191,11 +196,6 @@ const Flight = () => {
                       <Form.Label>
                         <h4>Tanggal Pulang</h4>
                       </Form.Label>
-                      {/* <Form.Control
-                        type="date"
-                        className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
-                        placeholder=""
-                      /> */}
                       <div>
                         <RangeDatePicker
                           startDate={new Date()}
@@ -216,11 +216,6 @@ const Flight = () => {
                   <Form.Label>
                     <h4>Tanggal Berangkat</h4>
                   </Form.Label>
-                  {/* <Form.Control
-                    type="date"
-                    className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
-                    placeholder="pilih tanggal keberangkatan"
-                  /> */}
                   <div>
                     <SingleDatePicker
                     startDate={new Date()}
@@ -316,7 +311,7 @@ const Flight = () => {
             <Button variant="primary" type="submit" className="btn-login my-3">
               Cari
             </Button>
-          </Col>
+          </Form>
           <Col>
             <h2 className="text-white">
               Temukan, Bandingkan, dan Pesan Penerbanganmu dengan mudah
