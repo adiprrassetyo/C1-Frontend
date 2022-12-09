@@ -14,6 +14,7 @@ const SearchFlight = () => {
     const [countBaby, setCountBaby] = useState(0);
     const [from, setFrom] = useState("");
     const [to, setTo] = useState("");
+    const [value, setValue] = useState("");
     const [selected, setSelected] = useState('sekalijalan');
 
     const handleChange = event => {
@@ -30,12 +31,15 @@ const SearchFlight = () => {
   const toOnChange = (e) => {
     setTo(e.target.value);
   };
+  const onDateChange = (startDate) => {
+  console.log(startDate);
+};
     return (
         <div>
             <Container className="card-flights">
           <Row className="opsi-flight">
             <Col md={2} sm={6} xs={6}>
-              <input type="radio" id="sekalijalanInput" name="contact" value="sekalijalan" onClick={ () => {setVisible1(true);  setVisible2(false)}}
+              <input type="radio" id="sekalijalanInput" name="contact" value="sekalijalan" onClick={ () => {setVisible1(true); setVisible2(false) }}
               checked={selected === 'sekalijalan'} onChange={handleChange}></input>
               <label htmlFor="sekalijalanInput">Sekali Jalan</label>
             </Col>
@@ -71,6 +75,7 @@ const SearchFlight = () => {
                     placeholder="Pilih Kota Tujuan"
                     onChange={toOnChange}
                     value={to}
+
                 />
               </Form.Group>
             </Col>
@@ -81,10 +86,12 @@ const SearchFlight = () => {
                 { visible1 && 
                   <div>
                   <SingleDatePicker
+                  
                   startDate={new Date()}
                   minDate={new Date()}
                   startDatePlaceholder=" "
                  id="single-date-picker"
+                 onChange={(startDate) => onDateChange(startDate)}
                   />
                 </div>
                 }
@@ -119,7 +126,7 @@ const SearchFlight = () => {
                   title={countDewasa+countAnak+countBaby + ` Traveler`}
                   id="dropdown-traveler" 
                 >
-          <div class="dropdown-item-traveler dewasa">
+          <div className="dropdown-item-traveler dewasa">
               <Row className="align-items-center">
                 <Col md={6} sm={6} className="p-0">
                   <p className="traveler-title">Dewasa</p>
@@ -136,7 +143,7 @@ const SearchFlight = () => {
                 </Col>
               </Row>
           </div>
-          <div class="dropdown-item-traveler anak">
+          <div className="dropdown-item-traveler anak">
               <Row className="align-items-center">
                 <Col md={6} sm={6} className="p-0">
                   <p className="traveler-title">Anak-Anak</p>
@@ -153,7 +160,7 @@ const SearchFlight = () => {
                 </Col>
               </Row>
           </div>
-            <div class="dropdown-item-traveler bayi">
+            <div className="dropdown-item-traveler bayi">
               <Row className="align-items-center">
                 <Col md={6} sm={6} className="p-0">
                   <p className="traveler-title">Bayi</p>
