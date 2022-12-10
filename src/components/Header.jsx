@@ -7,6 +7,7 @@ import {
   Button,
   Offcanvas,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/images/binair-logo.svg";
 import english_flag from "../assets/images/english-flag.svg";
@@ -34,10 +35,10 @@ const Header = () => {
         >
           <Container>
             <Navbar.Brand>
-              <Nav.Link href="/">
+              <Link to="/">
                 {" "}
                 <img src={logo} alt="logo" />{" "}
-              </Nav.Link>
+              </Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas

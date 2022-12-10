@@ -5,16 +5,16 @@ export const retriveTickets = createAsyncThunk(
   "ticket/retive",
   async ({ params, redirect }, { rejectWithValue }) => {
     try {
+      console.info({ params });
       const res = await ticket.retrive(params);
       console.info(res);
-      if (res.data.status == "success") {
-        setTimeout(() => {
-          redirect("/flight/search");
-        }, 3000);
-      }
+      // if (res.data.status == "success") {
+      //   setTimeout(() => {
+      //     redirect("/flight/search");
+      //   }, 3000);
+      // }
       return res.data;
     } catch (error) {
-      console.error(error);
       return rejectWithValue(error.response);
     }
   }
@@ -29,7 +29,7 @@ const ticketSlice = createSlice({
     search: {},
     ticket: [],
   },
-  reduceers: {
+  reducers: {
     clearState: (state, action) => {
       return {
         loading: false,
@@ -39,7 +39,7 @@ const ticketSlice = createSlice({
         search: {},
       };
     },
-    setSearh: (state, action) => {
+    setSearch: (state, action) => {
       return {
         ...state,
         search: action.payload,
@@ -60,6 +60,7 @@ const ticketSlice = createSlice({
       };
     },
     [retriveTickets.rejected]: (state, action) => {
+      console.info(action.payload);
       return {
         ...state,
         loading: false,
@@ -70,4 +71,5 @@ const ticketSlice = createSlice({
   },
 });
 
+export const { setSearch } = ticketSlice.actions;
 export default ticketSlice.reducer;
