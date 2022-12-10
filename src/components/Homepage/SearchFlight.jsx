@@ -24,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 import { retriveTickets, setSearch } from "../../redux/slices/ticketSlice";
 
 const SearchFlight = () => {
+
   const [visible1, setVisible1] = useState(true);
   const [visible2, setVisible2] = useState(false);
   const [countDewasa, setCountDewasa] = useState(0);
@@ -56,6 +57,7 @@ const SearchFlight = () => {
   //   toRef.current = "";
   //   fromRef.current = "";
   // };
+
 
   const startEndDateChange = (startDt, endDt) => {
     if (startDt) {
@@ -397,7 +399,7 @@ const SearchFlight = () => {
                     </Row>
                   </div> */}
                 </DropdownButton>
-              </Form.Group>
+              </Form.Group> 
             </Col>
             <Col md={2} className="form">
               <Button

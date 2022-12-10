@@ -68,26 +68,49 @@ const Header = () => {
                   </NavLink> */}
                 </Nav>
                 <div className="">
-                  {/* <NavDropdown
-                    title="Language"
-                    className="nav-dropdown me-3 mt-2"
-                  >
-                    <NavDropdown.Item>
-                      <img src={english_flag} width="20" alt="flag" />
-                      <span className="ml-2"> English</span>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <img src={indo_flag} width="20" alt="flag" />
-                      <span className="ml-2"> Indonesia</span>
-                    </NavDropdown.Item>
-                  </NavDropdown> */}
+                  
                   {/* <NavDropdown title="IDR" className="nav-dropdown me-3 mt-2">
                     <NavDropdown.Item>US</NavDropdown.Item>
                     <NavDropdown.Item>IDR</NavDropdown.Item>
                   </NavDropdown> */}
+                   <NavDropdown
+                    title={<span><i class="ri-user-3-line me-1 ri-1x"></i>Noviyana</span>}
+                    className="nav-dropdown me-3 mt-2"
+                  >
+                    <NavDropdown.Item>
+                      <i class="remix-icon ri-user-3-line"></i>
+                      <span className="ml-2 profile-item">Profil</span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <i class="remix-icon ri-key-2-line"></i>
+                      <span className="ml-2">Ubah Password</span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <i class="remix-icon ri-contacts-book-line"></i>
+                      <span className="ml-2">Daftar Kontak</span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <i class="remix-icon ri-list-check"></i>
+                      <span className="ml-2">Daftar Traveler</span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <i class="remix-icon ri-calendar-check-line"></i>
+                      <span className="ml-2">Daftar Pesanan</span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <i class="remix-icon ri-link"></i>
+                      <span className="ml-2">Akun Terhubung</span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <i class="remix-icon ri-logout-box-r-line"></i>
+                      <span className="ml-2">Keluar</span>
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  
                   <Button href="/auth" className="btn btn-light button-login">
                     Login
                   </Button>
+                 
                 </div>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

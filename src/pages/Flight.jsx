@@ -15,6 +15,7 @@ import google_play from "../assets/images/google-play.svg";
 import mobile_mockup from "../assets/images/mobile-mockup.svg";
 import SimplifyBookingImg from "../assets/images/simplifyBooking.svg";
 import SwitchCityIcon from "../assets/images/switch-city.svg";
+import { RangeDatePicker, SingleDatePicker } from 'react-google-flight-datepicker';
 import TravelProduct from "../assets/images/travelProducts.svg";
 import "../assets/styles/flight.css";
 import { Footer, Header } from "../components";
@@ -71,7 +72,6 @@ const Flight = () => {
     }
   };
 
-  // console.info({ from, to, type: isRoundTrip ? "roundtrip" : "oneway" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -88,7 +88,7 @@ const Flight = () => {
       <Header />
       <Container fluid className="jumbotronFlight d-flex align-items-center">
         <Row className="align-items-center jumbotron-content">
-          {/* <form onSubmit={handleSubmit}> */}
+          <Form className="flight-form col" onSubmit={handleSubmit}>
           <Col className="flight-form ">
             {isRoundTrip ? (
               <div
@@ -192,51 +192,46 @@ const Flight = () => {
                 </Col>
               </Row>
             </Container>
-            {isRoundTrip ? (
-              <Row>
-                <Col>
-                  <Container className="border rounded p-2">
-                    <Form.Group className=" mb-1" controlId="formBasicEmail">
-                      <Form.Label>
-                        <h4>Tanggal Berangkat</h4>
-                      </Form.Label>
-                      <Form.Control
-                        type="date"
-                        className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
-                        placeholder=""
+            <Container className="border rounded p-2">
+              <Form.Group className=" mb-1">                
+                {isRoundTrip ? (
+                  <div>
+                    <Row>
+                      <Col>
+                        <Form.Label >
+                          <h4>Tanggal Berangkat</h4>
+                        </Form.Label>
+                      </Col>
+                      <Col>
+                        <Form.Label>
+                          <h4>Tanggal Berangkat</h4>
+                        </Form.Label>
+                      </Col>
+                    </Row>
+                    <RangeDatePicker
+                      startDate={new Date()}
+                      endDate={new Date()}
+                      minDate={new Date()}
+                      startDatePlaceholder=" "
+                      endDatePlaceholder=" "
+                      id="range-date-picker" 
                       />
-                    </Form.Group>
-                  </Container>
-                </Col>
-                <Col>
-                  <Container className="border rounded p-2">
-                    <Form.Group className=" mb-1" controlId="formBasicEmail">
-                      <Form.Label>
-                        <h4>Tanggal Pulang</h4>
-                      </Form.Label>
-                      <Form.Control
-                        type="date"
-                        className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
-                        placeholder=""
-                      />
-                    </Form.Group>
-                  </Container>
-                </Col>
-              </Row>
-            ) : (
-              <Container className="border rounded p-2">
-                <Form.Group className=" mb-1" controlId="formBasicEmail">
-                  <Form.Label>
-                    <h4>Tanggal Berangkat</h4>
-                  </Form.Label>
-                  <Form.Control
-                    type="date"
-                    className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
-                    placeholder="pilih tanggal keberangkatan"
-                  />
-                </Form.Group>
-              </Container>
-            )}
+                  </div>
+                ) : (
+                  <div>
+                    <Form.Label>
+                      <h4>Tanggal Berangkat</h4>
+                    </Form.Label>
+                    <SingleDatePicker
+                    startDate={new Date()}
+                    minDate={new Date()}
+                    startDatePlaceholder=" "
+                    id="single-date-picker"
+                    />
+                  </div>
+                )}
+              </Form.Group>              
+            </Container>
             <Container className="popover-container border rounded">
               <OverlayTrigger
                 trigger="click"
@@ -321,8 +316,8 @@ const Flight = () => {
             <Button variant="primary" type="submit" className="btn-login my-3">
               Cari Penerbangan
             </Button>
+          </Form>
           </Col>
-          {/* </form> */}
           <Col>
             <h2 className="text-white">
               Temukan, Bandingkan, dan Pesan Penerbanganmu dengan mudah

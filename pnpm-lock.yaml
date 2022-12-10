@@ -21,6 +21,7 @@ specifiers:
   react-redux: ^8.0.5
   react-router: ^6.4.3
   react-router-dom: ^6.4.3
+  remixicon: ^2.5.0
   vite: ^3.2.3
 
 dependencies:
@@ -41,6 +42,7 @@ dependencies:
   react-redux: 8.0.5_cn3ejhfta5lq2dae4xucvtkwvu
   react-router: 6.4.3_react@18.2.0
   react-router-dom: 6.4.3_biqbaboplfbrettd7655fr4n2y
+  remixicon: 2.5.0
 
 devDependencies:
   '@types/react': 18.0.25
@@ -2335,6 +2337,10 @@ packages:
     hasBin: true
     dependencies:
       jsesc: 0.5.0
+    dev: false
+
+  /remixicon/2.5.0:
+    resolution: {integrity: sha512-q54ra2QutYDZpuSnFjmeagmEiN9IMo56/zz5dDNitzKD23oFRw77cWo4TsrAdmdkPiEn8mxlrTqxnkujDbEGww==}
     dev: false
 
   /reselect/4.1.7:

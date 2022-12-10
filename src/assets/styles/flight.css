@@ -8,13 +8,12 @@
   padding: 0;
 }
 .jumbotronFlight {
-  height: 60vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("../images/flight-image.png");
   background-size: cover;
 }
 .jumbotron-content {
-  padding: 30vh 10vw 30vh 10vw;
+  padding: 30px 70px 30px 70px;
   gap: 20px;
 }
 .flight-form {
