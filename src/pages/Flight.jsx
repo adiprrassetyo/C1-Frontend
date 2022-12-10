@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { Header, Footer } from "../components";
+import React, { useState, useEffect } from "react";
 import {
-  Container,
-  Row,
-  Col,
-  Form,
   Button,
+  Col,
+  Container,
+  Form,
   OverlayTrigger,
   Popover,
+  Row,
 } from "react-bootstrap";
-import "../assets/styles/flight.css";
-import ToIcon from "../assets/images/to-icon.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import CustomerSupportImg from "../assets/images/customerSupport.svg";
-import SimplifyBookingImg from "../assets/images/simplifyBooking.svg";
-import TravelProduct from "../assets/images/travelProducts.svg";
-import MobileImg from "../assets/images/mobile-view.png";
-import GooglePlayImg from "../assets/images/google-play.png";
-import SwitchCityIcon from "../assets/images/switch-city.svg";
-import mobile_mockup from "../assets/images/mobile-mockup.svg";
 import google_play from "../assets/images/google-play.svg";
+import mobile_mockup from "../assets/images/mobile-mockup.svg";
+import SimplifyBookingImg from "../assets/images/simplifyBooking.svg";
+import SwitchCityIcon from "../assets/images/switch-city.svg";
 import { RangeDatePicker, SingleDatePicker } from 'react-google-flight-datepicker';
+import TravelProduct from "../assets/images/travelProducts.svg";
+import "../assets/styles/flight.css";
+import { Footer, Header } from "../components";
+import { retriveTickets } from "../redux/slices/ticketSlice";
 
 const Flight = () => {
   const [isRoundTrip, setIsRoundTrip] = useState(false);
@@ -27,6 +27,15 @@ const Flight = () => {
   const [to, setTo] = useState("");
   const [sumAdult, setSumAdult] = useState(1);
   const [sumChild, setSumChild] = useState(0);
+  const [date, setDate] = useState("");
+  const dispatch = useDispatch();
+  const redirect = useNavigate();
+  const { loading, status, ticket } = useSelector((state) => state.ticket);
+
+  useEffect(() => {
+    console.info({ ticket, status });
+  }, [dispatch]);
+
   const switchForm = (e) => {
     e.preventDefault();
     setIsRoundTrip((prev) => !prev);
@@ -63,9 +72,15 @@ const Flight = () => {
     }
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("submited");
+    dispatch(
+      retriveTickets({
+        params: { from, to, type: isRoundTrip ? "roundtrip" : "oneway", date },
+        redirect,
+      })
+    );
   };
 
   return (
@@ -74,6 +89,7 @@ const Flight = () => {
       <Container fluid className="jumbotronFlight d-flex align-items-center">
         <Row className="align-items-center jumbotron-content">
           <Form className="flight-form col" onSubmit={handleSubmit}>
+          <Col className="flight-form ">
             {isRoundTrip ? (
               <div
                 className="btn-group switch-form"
@@ -85,11 +101,12 @@ const Flight = () => {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio1"
-                  autocomplete="off"
+                  autoComplete="off"
+                  checked
                 ></input>
                 <label
-                  class="btn btn-switch-form"
-                  for="btnradio1"
+                  className="btn btn-switch-form"
+                  htmlFor="btnradio1"
                   onClick={switchForm}
                 >
                   Sekali Jalan
@@ -99,10 +116,10 @@ const Flight = () => {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio2"
-                  autocomplete="off"
+                  autoComplete="off"
                   checked
                 ></input>
-                <label class="btn btn-switch-form" for="btnradio2">
+                <label className="btn btn-switch-form" htmlFor="btnradio2">
                   Pulang Pergi
                 </label>
               </div>
@@ -117,10 +134,10 @@ const Flight = () => {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio1"
-                  autocomplete="off"
-                  checked
+                  autoComplete="off"
+                  checked={isRoundTrip ? false : true}
                 ></input>
-                <label class="btn btn-switch-form" for="btnradio1">
+                <label className="btn btn-switch-form" htmlFor="btnradio1">
                   Sekali Jalan
                 </label>
                 <input
@@ -128,11 +145,12 @@ const Flight = () => {
                   className="btn-check"
                   name="btnradio"
                   id="btnradio2"
-                  autocomplete="off"
+                  autoComplete="off"
+                  checked={isRoundTrip ? true : false}
                 ></input>
                 <label
-                  class="btn btn-switch-form"
-                  for="btnradio2"
+                  className="btn btn-switch-form"
+                  htmlFor="btnradio2"
                   onClick={switchForm}
                 >
                   Pulang Pergi
@@ -296,9 +314,10 @@ const Flight = () => {
               </OverlayTrigger>
             </Container>
             <Button variant="primary" type="submit" className="btn-login my-3">
-              Cari
+              Cari Penerbangan
             </Button>
           </Form>
+          </Col>
           <Col>
             <h2 className="text-white">
               Temukan, Bandingkan, dan Pesan Penerbanganmu dengan mudah
