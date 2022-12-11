@@ -68,10 +68,17 @@ const authSlice = createSlice({
   reducers: {
     clearState: (state, action) => {
       return {
+        ...state,
         loading: false,
         message: "",
-        user: {},
         status: "",
+      };
+    },
+    logout: (state, action) => {
+      localStorage.removeItem("user");
+      return {
+        ...state,
+        user: {},
       };
     },
   },
@@ -110,9 +117,9 @@ const authSlice = createSlice({
     },
     [loginUser.rejected]: (state, action) => {
       return {
+        ...state,
         loading: false,
         message: action.payload?.data.message,
-        user: {},
         status: "error",
       };
     },
@@ -134,6 +141,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { clearState } = authSlice.actions;
+export const { clearState, logout } = authSlice.actions;
 
 export default authSlice.reducer;

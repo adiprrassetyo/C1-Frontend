@@ -24,10 +24,9 @@ import { useNavigate } from "react-router-dom";
 import { retriveTickets, setSearch } from "../../redux/slices/ticketSlice";
 
 const SearchFlight = () => {
-
   const [visible1, setVisible1] = useState(true);
   const [visible2, setVisible2] = useState(false);
-  const [countDewasa, setCountDewasa] = useState(0);
+  const [countDewasa, setCountDewasa] = useState(1);
   const [countAnak, setCountAnak] = useState(0);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -57,7 +56,6 @@ const SearchFlight = () => {
   //   toRef.current = "";
   //   fromRef.current = "";
   // };
-
 
   const startEndDateChange = (startDt, endDt) => {
     if (startDt) {
@@ -190,7 +188,7 @@ const SearchFlight = () => {
                   options={options}
                   placeholder="Pilih Kota Keberangkatan"
                   renderMenuItemChildren={(option) => (
-                    <div className="container w-fluid">
+                    <div className="sugest container w-fluid m-0 p-0">
                       <span
                         className="fw-bold fs-6"
                         style={{ fontSize: "1px" }}
@@ -242,13 +240,16 @@ const SearchFlight = () => {
                   options={options}
                   placeholder="Pilih Kota Tujuan"
                   renderMenuItemChildren={(option) => (
-                    <>
-                      <span className="fw-bold">
+                    <div className="sugest container w-fluid m-0 p-0">
+                      <span
+                        className="fw-bold fs-6 m-0 p-0"
+                        style={{ fontSize: "1px" }}
+                      >
                         {option.city} ({option.code})
                       </span>{" "}
                       <br />
                       <span className="text-secondary">{option.airport})</span>
-                    </>
+                    </div>
                   )}
                 />
               </Form.Group>
@@ -399,12 +400,12 @@ const SearchFlight = () => {
                     </Row>
                   </div> */}
                 </DropdownButton>
-              </Form.Group> 
+              </Form.Group>
             </Col>
             <Col md={2} className="form">
               <Button
                 type="submit"
-                className="search-flight-btn"
+                className="search-flight-btn p-2"
                 variant="secondary"
               >
                 Cari Penerbangan
