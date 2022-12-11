@@ -1,0 +1,214 @@
+.search {
+    background-color: #F5F5F5;
+    padding: 4em;
+}
+
+.search-content h2 {
+    font-size: 24px;
+}
+
+.flex-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+
+.search-header{
+    background-color: #FFFFFF;
+    color: #59595B;
+}
+
+.search-header h2{
+    color: #59595B;
+}
+
+.search-header p {
+    color: #59595B;
+    font-size: 14px;
+}
+
+.search-header p span{
+    color: #9A9A9D;
+}
+
+.btn-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+
+
+
+.filter p{
+    margin-top: 16px;
+    color: #59595B;
+    font-size: 14px;
+}
+
+.text-1 h2{
+    font-size: 24px;
+    color: #59595B;
+}
+
+.text-1 p{
+    font-size: 14px;
+    color: #59595B;
+}
+
+.form-range {
+    width: 200px;
+}
+.filter .dropdown .btn{
+    font-size: 12px;
+    background-color: #F7F7F7;
+    color: #9A9A9D;
+    border-radius: 5px;
+    width: auto;
+    padding: 1em;
+}
+
+.form-check-label {
+    font-size: 12px;
+    color: #9A9A9D;
+}
+
+.form-select {
+    font-size: 12px;
+    background-color: #F7F7F7;
+    color: #9A9A9D;
+    border-radius: 5px;
+    width: auto;
+}
+
+.btn-tanggal {
+    display:inline;
+    color: #9A9A9D;
+    font-size: 15px;
+}
+
+.flight-content .flight-header {
+    font-size: 15px;
+    color: #59595B;
+}
+
+.time-flight-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.flight-box-time.time-flight-flex .txt-langsung{
+    color: #9A9A9D;
+}
+
+.plus-one-day{
+    box-shadow: 0px 2px 3px rgba(10, 10, 10, 0.1), 0px 0px 0px 1px rgba(10, 10, 10, 0.1);
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    top: -5px;
+}
+
+.plus-one-day-detail {
+    box-shadow: 0px 2px 3px rgba(10, 10, 10, 0.1), 0px 0px 0px 1px rgba(10, 10, 10, 0.1);
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    color: black;
+    position: absolute;
+}
+
+.baggage.time-flight-flex img {
+    height: 18px;
+    padding-right: 10px;
+}
+
+.baggage.time-flight-flex {
+    padding-top: 15px;
+}
+
+.flight-box-price span{
+    color: #9A9A9D;
+}
+
+.btn-flight {
+    background-color: #13A2D7;
+    color: #FFFFFF;
+    font-size: 10px;
+}
+
+.facility-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;  
+}
+
+.timeline-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.flight-detail-airline-info  img {
+    height: 30px;
+}
+
+.flight-detail-airline-info  {
+    color: #59595B;
+}
+
+.flight-detail-airline-info span  {
+    color: #9A9A9D;
+}
+
+.slider-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.time-line img {
+    width: 50px;
+    height: 200px;
+    padding-top: 30px;
+
+}
+
+.timeline-info {
+    color: #9A9A9D;
+}
+
+.timeline-departure-time strong {
+    font-size: 25px;
+    color: #59595B;
+}
+
+.timeline-arrival-time strong {
+    font-size: 25px;
+    color: #59595B;
+}
+
+.facility-item img{
+    height: 20px;
+}
+
+.free-baggage {
+    border-radius: 2px;
+    color: #FFFFFF;
+    background-color: #13A2D7;
+}
+
+.payment-content {
+    background-color: #F5F5F5;
+    font-size: 18px;
+    color: #59595B;
+    border: none;
+}
