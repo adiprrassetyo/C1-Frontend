@@ -1,5 +1,5 @@
 .navbar{
-    padding: 16px 0px;
+    padding: 8px 0px;
     transition: 0.3s;
 }
 .navbar-brand img{
@@ -37,12 +37,50 @@ nav.sticky{
 }
 .nav-dropdown a{
     color: #4A4A4A;
+    margin-top:4px;
+}
+
+nav a{
+    color: #59595B;
+    padding: 12px;
+}
+nav a.active{
+    color: #13A2D7 !important;
+    font-weight: 600;
+}
+.tab{
+    color: #9A9A9D;
+}
+.tab:active{
+    color: red;
+}
+.dropdown-toggle{
+    display: flex;
+    align-items: center;
+}
+.dropdown-menu.show{
+    padding: 20px !important;
+}
+.dropdown-item{
+    padding: 8px 20px 8px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+.dropdown-item:hover{
+    background-color: #13A2D7;
+    color: #fff;
+}
+.remix-icon{
+    font-size: 18px;
+    margin-right: 10px;
 }
 
 @media (min-width: 576px) and (max-width: 768px) {
     .nav-dropdown{
         display: block;
-        padding: 6px 0;
+        padding: 2px 0;
     }
     .btn-login{
         margin-top: 20px;
