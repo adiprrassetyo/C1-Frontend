@@ -1,6 +1,9 @@
+
 .search {
-    background-color: #F5F5F5;
-    padding: 4em;
+    background-color: #F7F7F7;
+}
+.search-box {
+    background-color: #F7F7F7;
 }
 
 .search-content h2 {

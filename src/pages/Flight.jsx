@@ -15,7 +15,10 @@ import google_play from "../assets/images/google-play.svg";
 import mobile_mockup from "../assets/images/mobile-mockup.svg";
 import SimplifyBookingImg from "../assets/images/simplifyBooking.svg";
 import SwitchCityIcon from "../assets/images/switch-city.svg";
-import { RangeDatePicker, SingleDatePicker } from 'react-google-flight-datepicker';
+import {
+  RangeDatePicker,
+  SingleDatePicker,
+} from "react-google-flight-datepicker";
 import TravelProduct from "../assets/images/travelProducts.svg";
 import "../assets/styles/flight.css";
 import { Footer, Header } from "../components";
@@ -72,7 +75,6 @@ const Flight = () => {
     }
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -89,235 +91,242 @@ const Flight = () => {
       <Container fluid className="jumbotronFlight d-flex align-items-center">
         <Row className="align-items-center jumbotron-content">
           <Form className="flight-form col" onSubmit={handleSubmit}>
-          <Col className="flight-form ">
-            {isRoundTrip ? (
-              <div
-                className="btn-group switch-form"
-                role="group"
-                aria-label="Basic radio toggle button group"
-              >
-                <input
-                  type="radio"
-                  className="btn-check"
-                  name="btnradio"
-                  id="btnradio1"
-                  autoComplete="off"
-                  checked
-                ></input>
-                <label
-                  className="btn btn-switch-form"
-                  htmlFor="btnradio1"
-                  onClick={switchForm}
+            <Col className="flight-form ">
+              {isRoundTrip ? (
+                <div
+                  className="btn-group switch-form"
+                  role="group"
+                  aria-label="Basic radio toggle button group"
                 >
-                  Sekali Jalan
-                </label>
-                <input
-                  type="radio"
-                  className="btn-check"
-                  name="btnradio"
-                  id="btnradio2"
-                  autoComplete="off"
-                  checked
-                ></input>
-                <label className="btn btn-switch-form" htmlFor="btnradio2">
-                  Pulang Pergi
-                </label>
-              </div>
-            ) : (
-              <div
-                className="btn-group switch-form"
-                role="group"
-                aria-label="Basic radio toggle button group"
-              >
-                <input
-                  type="radio"
-                  className="btn-check"
-                  name="btnradio"
-                  id="btnradio1"
-                  autoComplete="off"
-                  checked={isRoundTrip ? false : true}
-                ></input>
-                <label className="btn btn-switch-form" htmlFor="btnradio1">
-                  Sekali Jalan
-                </label>
-                <input
-                  type="radio"
-                  className="btn-check"
-                  name="btnradio"
-                  id="btnradio2"
-                  autoComplete="off"
-                  checked={isRoundTrip ? true : false}
-                ></input>
-                <label
-                  className="btn btn-switch-form"
-                  htmlFor="btnradio2"
-                  onClick={switchForm}
+                  <input
+                    type="radio"
+                    className="btn-check"
+                    name="btnradio"
+                    id="btnradio1"
+                    autoComplete="off"
+                    checked
+                  ></input>
+                  <label
+                    className="btn btn-switch-form"
+                    htmlFor="btnradio1"
+                    onClick={switchForm}
+                  >
+                    Sekali Jalan
+                  </label>
+                  <input
+                    type="radio"
+                    className="btn-check"
+                    name="btnradio"
+                    id="btnradio2"
+                    autoComplete="off"
+                    checked
+                  ></input>
+                  <label className="btn btn-switch-form" htmlFor="btnradio2">
+                    Pulang Pergi
+                  </label>
+                </div>
+              ) : (
+                <div
+                  className="btn-group switch-form"
+                  role="group"
+                  aria-label="Basic radio toggle button group"
                 >
-                  Pulang Pergi
-                </label>
-              </div>
-            )}
-            <Container className="border rounded p-2">
-              <Row>
-                <Col className="col-10">
-                  <Form.Group className=" mb-1">
-                    <Form.Label>
-                      <h4>Dari</h4>
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
-                      placeholder="Pilih kota keberangkatan"
-                      onChange={fromOnChange}
-                      value={from}
-                    />
-                  </Form.Group>
-                  <Form.Group className=" mb-1">
-                    <Form.Label>
-                      <h4>Ke</h4>
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
-                      placeholder="Pilih kota tujuan"
-                      onChange={toOnChange}
-                      value={to}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col className="d-flex align-items-center">
-                  <button className="btn switch-city-btn" onClick={switchCity}>
-                    <img src={SwitchCityIcon} alt="Switch City" />
-                  </button>
-                </Col>
-              </Row>
-            </Container>
-            <Container className="border rounded p-2">
-              <Form.Group className=" mb-1">                
-                {isRoundTrip ? (
-                  <div>
-                    <Row>
-                      <Col>
-                        <Form.Label >
-                          <h4>Tanggal Berangkat</h4>
-                        </Form.Label>
-                      </Col>
-                      <Col>
-                        <Form.Label>
-                          <h4>Tanggal Berangkat</h4>
-                        </Form.Label>
-                      </Col>
-                    </Row>
-                    <RangeDatePicker
-                      startDate={new Date()}
-                      endDate={new Date()}
-                      minDate={new Date()}
-                      startDatePlaceholder=" "
-                      endDatePlaceholder=" "
-                      id="range-date-picker" 
+                  <input
+                    type="radio"
+                    className="btn-check"
+                    name="btnradio"
+                    id="btnradio1"
+                    autoComplete="off"
+                    checked={isRoundTrip ? false : true}
+                  ></input>
+                  <label className="btn btn-switch-form" htmlFor="btnradio1">
+                    Sekali Jalan
+                  </label>
+                  <input
+                    type="radio"
+                    className="btn-check"
+                    name="btnradio"
+                    id="btnradio2"
+                    autoComplete="off"
+                    checked={isRoundTrip ? true : false}
+                  ></input>
+                  <label
+                    className="btn btn-switch-form"
+                    htmlFor="btnradio2"
+                    onClick={switchForm}
+                  >
+                    Pulang Pergi
+                  </label>
+                </div>
+              )}
+              <Container className="border rounded p-2">
+                <Row>
+                  <Col className="col-10">
+                    <Form.Group className=" mb-1">
+                      <Form.Label>
+                        <h4>Dari</h4>
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
+                        placeholder="Pilih kota keberangkatan"
+                        onChange={fromOnChange}
+                        value={from}
                       />
-                  </div>
-                ) : (
-                  <div>
-                    <Form.Label>
-                      <h4>Tanggal Berangkat</h4>
-                    </Form.Label>
-                    <SingleDatePicker
-                    startDate={new Date()}
-                    minDate={new Date()}
-                    startDatePlaceholder=" "
-                    id="single-date-picker"
-                    />
-                  </div>
-                )}
-              </Form.Group>              
-            </Container>
-            <Container className="popover-container border rounded">
-              <OverlayTrigger
-                trigger="click"
-                key="top"
-                placement="top"
-                overlay={
-                  <Popover id={`popover-positioned-top`}>
-                    <Popover.Header as="h3">{`Traveler`}</Popover.Header>
-                    <Popover.Body>
-                      <Row className="mb-2">
-                        <Col>
-                          <h4>
-                            {" "}
-                            <strong>Dewasa</strong>
-                          </h4>
-                          <h4>Umur 12+</h4>
-                        </Col>
-                        <Col>
-                          <div className="set-traveler">
-                            <Button
-                              className={
-                                sumAdult > 1 ? "btn-active" : "btn-inactive"
-                              }
-                              onClick={sumAdult > 1 ? decreaseAdult : null}
-                            >
-                              -
-                            </Button>
-                            {sumAdult}
-                            <Button
-                              onClick={increaseAdult}
-                              className="btn-active"
-                            >
-                              +
-                            </Button>
-                          </div>
-                        </Col>
-                      </Row>
+                    </Form.Group>
+                    <Form.Group className=" mb-1">
+                      <Form.Label>
+                        <h4>Ke</h4>
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        className="form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0"
+                        placeholder="Pilih kota tujuan"
+                        onChange={toOnChange}
+                        value={to}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col className="d-flex align-items-center">
+                    <button
+                      className="btn switch-city-btn"
+                      onClick={switchCity}
+                    >
+                      <img src={SwitchCityIcon} alt="Switch City" />
+                    </button>
+                  </Col>
+                </Row>
+              </Container>
+              <Container className="border rounded p-2">
+                <Form.Group className=" mb-1">
+                  {isRoundTrip ? (
+                    <div>
                       <Row>
                         <Col>
-                          <h4>
-                            {" "}
-                            <strong>Anak-anak</strong>
-                          </h4>
-                          <h4>Umur &lt; 12</h4>
+                          <Form.Label>
+                            <h4>Tanggal Berangkat</h4>
+                          </Form.Label>
                         </Col>
                         <Col>
-                          <div className="set-traveler">
-                            <Button
-                              className={
-                                sumChild > 0 ? "btn-active" : "btn-inactive"
-                              }
-                              onClick={sumChild > 0 ? decreaseChild : null}
-                            >
-                              -
-                            </Button>
-                            {sumChild}
-                            <Button
-                              onClick={increaseChild}
-                              className="btn-active"
-                            >
-                              +
-                            </Button>
-                          </div>
+                          <Form.Label>
+                            <h4>Tanggal Berangkat</h4>
+                          </Form.Label>
                         </Col>
                       </Row>
-                    </Popover.Body>
-                  </Popover>
-                }
-              >
-                <Button className="popover-trigger">
-                  <h4>Traveler</h4>
-                  {sumChild < 1 ? (
-                    <>{sumAdult} Dewasa</>
+                      <RangeDatePicker
+                        startDate={new Date()}
+                        endDate={new Date()}
+                        minDate={new Date()}
+                        startDatePlaceholder=" "
+                        endDatePlaceholder=" "
+                        id="range-date-picker"
+                      />
+                    </div>
                   ) : (
-                    <>
-                      {sumAdult} Dewasa, {sumChild} Anak-anak
-                    </>
+                    <div>
+                      <Form.Label>
+                        <h4>Tanggal Berangkat</h4>
+                      </Form.Label>
+                      <SingleDatePicker
+                        startDate={new Date()}
+                        minDate={new Date()}
+                        startDatePlaceholder=" "
+                        id="single-date-picker"
+                      />
+                    </div>
                   )}
-                </Button>
-              </OverlayTrigger>
-            </Container>
-            <Button variant="primary" type="submit" className="btn-login my-3">
-              Cari Penerbangan
-            </Button>
+                </Form.Group>
+              </Container>
+              <Container className="popover-container border rounded">
+                <OverlayTrigger
+                  trigger="click"
+                  key="top"
+                  placement="top"
+                  overlay={
+                    <Popover id={`popover-positioned-top`}>
+                      <Popover.Header as="h3">{`Traveler`}</Popover.Header>
+                      <Popover.Body>
+                        <Row className="mb-2">
+                          <Col>
+                            <h4>
+                              {" "}
+                              <strong>Dewasa</strong>
+                            </h4>
+                            <h4>Umur 12+</h4>
+                          </Col>
+                          <Col>
+                            <div className="set-traveler">
+                              <Button
+                                className={
+                                  sumAdult > 1 ? "btn-active" : "btn-inactive"
+                                }
+                                onClick={sumAdult > 1 ? decreaseAdult : null}
+                              >
+                                -
+                              </Button>
+                              {sumAdult}
+                              <Button
+                                onClick={increaseAdult}
+                                className="btn-active"
+                              >
+                                +
+                              </Button>
+                            </div>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <h4>
+                              {" "}
+                              <strong>Anak-anak</strong>
+                            </h4>
+                            <h4>Umur &lt; 12</h4>
+                          </Col>
+                          <Col>
+                            <div className="set-traveler">
+                              <Button
+                                className={
+                                  sumChild > 0 ? "btn-active" : "btn-inactive"
+                                }
+                                onClick={sumChild > 0 ? decreaseChild : null}
+                              >
+                                -
+                              </Button>
+                              {sumChild}
+                              <Button
+                                onClick={increaseChild}
+                                className="btn-active"
+                              >
+                                +
+                              </Button>
+                            </div>
+                          </Col>
+                        </Row>
+                      </Popover.Body>
+                    </Popover>
+                  }
+                >
+                  <Button className="popover-trigger">
+                    <h4>Traveler</h4>
+                    {sumChild < 1 ? (
+                      <>{sumAdult} Dewasa</>
+                    ) : (
+                      <>
+                        {sumAdult} Dewasa, {sumChild} Anak-anak
+                      </>
+                    )}
+                  </Button>
+                </OverlayTrigger>
+              </Container>
+              <Button
+                variant="primary"
+                type="submit"
+                className="btn-login my-3"
+              >
+                Cari Penerbangan
+              </Button>
+            </Col>
           </Form>
-          </Col>
           <Col>
             <h2 className="text-white">
               Temukan, Bandingkan, dan Pesan Penerbanganmu dengan mudah
