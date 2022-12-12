@@ -1,0 +1,89 @@
+.account-box {
+    background-color: #F7F7F7;
+}
+
+.account-main {
+    background-color: #F7F7F7;
+}
+
+.left-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.left-panel .btn {
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
+    color: #9A9A9D;
+    text-align: left;
+    font-size: 18px;
+}
+
+.left-panel .btn .selected {
+    color: #FFFFFF;
+}
+
+.content-panel .card{
+    text-align: left;
+    align-items: flex-start;
+    display: block;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
+}
+
+.content-panel .card-header {
+    background-color: #FFFFFF;
+}
+
+.content-panel .card-header .profile-header{
+    color: #59595B;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.content-panel .card-header a{
+    color: #f0b75f!important;
+    cursor: pointer;
+}
+
+.content-panel .header-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.content-panel .content-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-item.is-full {
+    flex: none;
+    width: 100%;
+}
+
+.profile-item.is-half{
+    flex: none;
+    width: 50%;
+}
+
+.has-text-grey {
+    font-size: 14px;
+    color: #9A9A9D;
+}
+
+.normal {
+    font-size: 14px;
+    font-weight: 700;
+    color: #59595B;
+}
+
+.payment-content {
+    background-color: #F5F5F5;
+    font-size: 18px;
+    color: #59595B;
+    border: none;
+}
+
+
+
+
