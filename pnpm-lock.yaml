@@ -10,12 +10,15 @@ specifiers:
   bootstrap: ^5.2.2
   jsonwebtoken: ^8.5.1
   jwt-decode: ^3.1.2
+  jsonwebtoken: ^8.5.1
+  jwt-decode: ^3.1.2
   moment: ^2.29.4
   places-autocomplete-react: ^1.0.10
   prop-types: ^15.6.0
   react: ^18.2.0
   react-bootstrap: ^2.6.0
   react-bootstrap-icons: ^1.10.2
+  react-bootstrap-typeahead: ^6.0.0
   react-bootstrap-typeahead: ^6.0.0
   react-dom: ^18.2.0
   react-google-flight-datepicker: ^0.1.20
@@ -24,14 +27,15 @@ specifiers:
   react-router: ^6.4.3
   react-router-dom: ^6.4.3
   redux-persist: ^6.0.0
+  redux-persist: ^6.0.0
   remixicon: ^2.5.0
   vite: ^3.2.3
 
 dependencies:
   '@popperjs/core': 2.11.6
   '@reduxjs/toolkit': 1.9.1_k4ae6lp43ej6mezo3ztvx6pykq
-  axios: 1.2.1
-  bootstrap: 5.2.3_@popperjs+core@2.11.6
+  axios: 1.2.0
+  bootstrap: 5.2.2_@popperjs+core@2.11.6
   jsonwebtoken: 8.5.1
   jwt-decode: 3.1.2
   moment: 2.29.4
@@ -41,12 +45,13 @@ dependencies:
   react-bootstrap: 2.6.0_ib3m5ricvtkl2cll7qpr2f6lvq
   react-bootstrap-icons: 1.10.2_react@18.2.0
   react-bootstrap-typeahead: 6.0.0_biqbaboplfbrettd7655fr4n2y
+  react-bootstrap-typeahead: 6.0.0_biqbaboplfbrettd7655fr4n2y
   react-dom: 18.2.0_react@18.2.0
   react-google-flight-datepicker: 0.1.20_biqbaboplfbrettd7655fr4n2y
-  react-phone-number-input: 3.2.13_biqbaboplfbrettd7655fr4n2y
-  react-redux: 8.0.5_yqqa5ithnjtlkxisuaub7c4kpa
-  react-router: 6.4.4_react@18.2.0
-  react-router-dom: 6.4.4_biqbaboplfbrettd7655fr4n2y
+  react-phone-number-input: 3.2.12_biqbaboplfbrettd7655fr4n2y
+  react-redux: 8.0.5_cn3ejhfta5lq2dae4xucvtkwvu
+  react-router: 6.4.3_react@18.2.0
+  react-router-dom: 6.4.3_biqbaboplfbrettd7655fr4n2y
   redux-persist: 6.0.0_react@18.2.0
   remixicon: 2.5.0
 
@@ -1528,8 +1533,8 @@ packages:
     resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
     dev: false
 
-  /caniuse-lite/1.0.30001436:
-    resolution: {integrity: sha512-ZmWkKsnC2ifEPoWUvSAIGyOYwT+keAaaWPHiQ9DfMqS1t6tfuyFYoWR78TeZtznkEQ64+vGXH9cZrElwR2Mrxg==}
+  /caniuse-lite/1.0.30001434:
+    resolution: {integrity: sha512-aOBHrLmTQw//WFa2rcF1If9fa3ypkC1wzqqiKHgfdrXTWcU8C4gKVZT77eQAPWN1APys3+uQ0Df07rKauXGEYA==}
 
   /chalk/2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -2131,7 +2136,7 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@babel/runtime': 7.20.6
+      '@babel/runtime': 7.20.1
       '@popperjs/core': 2.11.6
       '@restart/hooks': 0.4.7_react@18.2.0
       classnames: 2.3.2
@@ -2147,7 +2152,7 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /react-bootstrap/2.6.0_ib3m5ricvtkl2cll7qpr2f6lvq:
+  /react-bootstrap/2.6.0_2zx2umvpluuhvlq44va5bta2da:
     resolution: {integrity: sha512-WnDgN6PR8WZKo2Og5J8EafFi4BsABjc96lNuMNfksrgiPDCw18/woWQCNhAeHFZQWTQ/PijkOrQ9ncTWwO//AA==}
     peerDependencies:
       '@types/react': '>=16.14.8'
@@ -2221,7 +2226,7 @@ packages:
       react: '>=16.3.0'
       react-dom: '>=16.3.0'
     dependencies:
-      '@babel/runtime': 7.20.6
+      '@babel/runtime': 7.20.1
       '@popperjs/core': 2.11.6
       '@restart/hooks': 0.4.7_react@18.2.0
       '@types/warning': 3.0.0
@@ -2233,8 +2238,8 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /react-phone-number-input/3.2.13_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-2hvWIZCCbG5zQTcZOuwP++ixOlns4vosn7EXLJc8y9LSNCDBAJHufP/CrKp3YrCoGcyzokzmDbU8FmqfPRg8SA==}
+  /react-phone-number-input/3.2.12_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-bqfg4iz4KWIkCGi7nV69CG90iX9EZ5wBXKoMnoyw7NDv/e2KH2uobDSLHXC4HydUgB+InjERxRdbdWTBbEff2w==}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
@@ -2262,7 +2267,7 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /react-redux/8.0.5_yqqa5ithnjtlkxisuaub7c4kpa:
+  /react-redux/8.0.5_cn3ejhfta5lq2dae4xucvtkwvu:
     resolution: {integrity: sha512-Q2f6fCKxPFpkXt1qNRZdEDLlScsDWyrgSj0mliK59qU6W5gvBiKkdMEG2lJzhd1rCctf0hb6EtePPLZ2e0m1uw==}
     peerDependencies:
       '@types/react': ^16.8 || ^17.0 || ^18.0
