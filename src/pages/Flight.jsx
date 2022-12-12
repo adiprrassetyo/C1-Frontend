@@ -8,10 +8,6 @@ import {
   Popover,
   Row,
 } from "react-bootstrap";
-import {
-  RangeDatePicker,
-  SingleDatePicker,
-} from "react-google-flight-datepicker";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CustomerSupportImg from "../assets/images/customerSupport.svg";
@@ -244,6 +240,7 @@ const Flight = () => {
                           value={from}
                           ref={fromRef}
                           inputProps={{
+                            required: true,
                             className: "form-input form-style p-0 ps-1",
                             style: {},
                           }}
@@ -312,6 +309,7 @@ const Flight = () => {
                             `${option.city} (${option.code})`
                           }
                           inputProps={{
+                            required: true,
                             className: "form-input form-style p-0 ps-1",
                             style: {},
                           }}

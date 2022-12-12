@@ -8,11 +8,11 @@ export const retriveTickets = createAsyncThunk(
       console.info({ params });
       const res = await ticket.retrive(params);
       console.info(res);
-      // if (res.data.status == "success") {
-      //   setTimeout(() => {
-      //     redirect("/flight/search");
-      //   }, 3000);
-      // }
+      if (res.data.status == "success") {
+        setTimeout(() => {
+          redirect("/flight/search");
+        }, 3000);
+      }
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);

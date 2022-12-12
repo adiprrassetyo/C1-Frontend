@@ -168,6 +168,7 @@ const SearchFlight = () => {
                   value={from}
                   ref={fromRef}
                   inputProps={{
+                    required: true,
                     className: "form-input form-style p-0 ps-1",
                     style: {},
                   }}
@@ -234,6 +235,7 @@ const SearchFlight = () => {
                   }}
                   labelKey={(option) => `${option.city} (${option.code})`}
                   inputProps={{
+                    required: true,
                     className: "form-input form-style p-0 ps-1",
                     style: {},
                   }}

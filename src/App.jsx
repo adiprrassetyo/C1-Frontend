@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
-import 'remixicon/fonts/remixicon.css'
+import "remixicon/fonts/remixicon.css";
 import "./assets/styles/main.css";
 import { Routes, Route } from "react-router-dom";
 import { Home, Flight, Auth, NotFound, Tickets } from "./pages";
@@ -11,9 +11,9 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/flight" element={<Flight />} />
+      <Route path="/flight" element={<Flight />}></Route>
+      <Route path="/flight/search" element={<Tickets />} />
       <Route path="/auth" element={<Auth />} />
-      <Route path="/tickets" element={<Tickets />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

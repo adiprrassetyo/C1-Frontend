@@ -25,8 +25,15 @@ import Entertainment from "../assets/images/entertainment.svg";
 import Slider from "../assets/images/slider.svg";
 
 import { Header, Footer } from "../components";
+import { useSelector } from "react-redux";
 
 const Tickets = () => {
+  const { loading, status, message, search, ticket } = useSelector(
+    (state) => state.ticket
+  );
+
+  console.log({ ticket, search });
+
   return (
     <div className="search-main">
       <Header />
@@ -40,7 +47,14 @@ const Tickets = () => {
               <strong>Pilih Penerbangan Keberangkatan</strong>
             </h3>
             <p>
-              JKTA - DPS <span>|</span> RAB, 23 NOV
+              {search.from.code} - {search.to.code} <span>|</span>{" "}
+              {search.startDate
+                ? search.startDate
+                : new Date().toLocaleDateString("id-ID", {
+                    weekday: "short",
+                    day: "numeric",
+                    month: "short",
+                  })}
             </p>
           </Col>
           <Col xs={2}>
@@ -55,10 +69,20 @@ const Tickets = () => {
               <Row>
                 <Col xs={9}>
                   <h2>
-                    <strong>Penerbangan keberangkatan ke Bali Denpasar</strong>
+                    <strong>
+                      Penerbangan keberangkatan ke {search.to.city}
+                    </strong>
                   </h2>
                   <p>
-                    Rab, 23 Nov 2022 <span>|</span> 1 Traveler
+                    {search.startDate
+                      ? search.startDate
+                      : new Date().toLocaleDateString("id-ID", {
+                          weekday: "short",
+                          day: "numeric",
+                          month: "short",
+                        })}
+                    <span> | </span>
+                    {search.countAnak + search.countDewasa} Traveller
                   </p>
                 </Col>
                 {/* <Col xs={3} className="btn-flex">
@@ -159,8 +183,364 @@ const Tickets = () => {
             </Card.Body>
           </Card>
 
+          {/* {ticket.map((item) => {
+            const timeDifferenceInMs = Math.abs(
+              new Date(`January 1, 1970 ${item.departure_time}`).getTime() -
+                new Date(`January 1, 1970 ${item.arrival_time}`).getTime()
+            );
+            const hours = Math.floor(timeDifferenceInMs / 3600000);
+            const minutes = Math.floor((timeDifferenceInMs % 3600000) / 60000);
+            <Accordion className="flight-content pb-2">
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>
+                  <Row className="flight-header">
+                    <Col className="ms-4">
+                      <div className="flight-box-airline flight-flex">
+                        <img src={Lion} />
+                        <p className="mt-2">Lion Air</p>
+                      </div>
+                    </Col>
+                    <Col className="me-5">
+                      <div className="flight-box-time time-flight-flex">
+                        <div>
+                          <h3>
+                            <strong>{item.departure_time}</strong>
+                          </h3>
+                          <p>CGK</p>
+                        </div>
+                        <span className="has-text-grey-dark">
+                          <img src={Arrow} alt="" />
+                        </span>
+                        <div>
+                          <h3>
+                            <strong>{item.arrival_time}</strong>
+                          </h3>
+                          <p>DPS</p>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col className="me-5">
+                      <div className="flight-box-time time-flight-flex">
+                        <div>
+                          <h3>
+                            <strong>{`${hours}h${minutes}m`}</strong>
+                          </h3>
+                          <p className="txt-langsung">Langsung</p>
+                        </div>
+                        <div className="baggage time-flight-flex">
+                          <img src={Baggage} alt="baggage" />
+                          <h4>20kg</h4>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col className="flight-box-price pt-3">
+                      <h3>
+                        <strong>US$47.49</strong>
+                        <span> /Org</span>
+                      </h3>
+                    </Col>
+                    <Col className="pt-2">
+                      <Button
+                        variant="light"
+                        type="submit"
+                        className="btn-flight my-2"
+                      >
+                        Pilih Penerbangan
+                      </Button>
+                    </Col>
+                  </Row>
+                </Accordion.Header>
+                <Accordion.Body className="flight-detail-content p-4">
+                  <Row>
+                    <Col xs={2} className="pt-3 ms-4">
+                      <div className="flight-detail-airline-info flight-flex">
+                        <img src={Lion} />
+                        <h4 className="mt-4">Lion Air</h4>
+                        <h4>
+                          <span>QG666</span>
+                        </h4>
+                      </div>
+                    </Col>
+                    <Col xs={7}>
+                      <Row>
+                        <Col xs={1} className="time-line p-0">
+                          <img src={Slider} alt="" />
+                        </Col>
+                        <Col xs={11} className="timeline-info pt-3">
+                          <div className="timeline-departure timeline-flex">
+                            <div className="timeline-datetime me-5">
+                              <h2 className="timeline-departure-time">
+                                <strong>06:00</strong>
+                              </h2>
+                              <p className="timeline-departure-date">
+                                11 Dec 2022
+                              </p>
+                            </div>
+                            <div className="timeline-cityairport">
+                              <p className="timeline-departure-city mb-0">
+                                Jakarta (CGK)
+                              </p>
+                              <p className="timeline-departure-airport mb-0">
+                                Soekarno Hatta International Airport
+                              </p>
+                              <p className="timeline-departure-terminal">
+                                Terminal 2E
+                              </p>
+                            </div>
+                          </div>
+                          <div className="timeline-duration-wrapper mt-4 mb-4">
+                            <p className="timeline-duration">
+                              <div className="icon-flex">
+                                <img src={Clock} alt="" />
+                                1h 50m
+                              </div>
+                            </p>
+                          </div>
+                          <div className="timeline-arrival timeline-flex">
+                            <div className="timeline-datetime me-5">
+                              <h2 className="timeline-arrival-time">
+                                <strong>07:50</strong>
+                              </h2>
+                              <p className="timeline-arrival-date">
+                                11 Dec 2022
+                              </p>
+                            </div>
+                            <div className="timeline-cityairport">
+                              <p className="timeline-arrival-city mb-0">
+                                Bali Denpasar (DPS)
+                              </p>
+                              <p className="timeline-arrival-airport mb-0">
+                                Ngurah Rai International Airport
+                              </p>
+                              <p className="timeline-arrival-terminal">
+                                Terminal 2E
+                              </p>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Col>
+                    <Col className="ms-4">
+                      <div className="flight-facility pt-3">
+                        <div className="facility-item facility-flex mb-2">
+                          <img src={Refund} alt="" />
+                          <p className="ms-2 mb-0">Refundable</p>
+                        </div>
+                        <div className="facility-item facility-flex mb-2">
+                          <img src={Reschedule} alt="" />
+                          <p className="ms-2 mb-0">Reschedule</p>
+                        </div>
+                        <div className="facility-item facility-flex mb-2">
+                          <img src={Cabin} alt="" />
+                          <p className="ms-2 mb-0">Cabin Baggage 7kg</p>
+                        </div>
+                        <div className="facility-item facility-flex mb-2">
+                          <img src={Baggage} alt="" />
+                          <p className="ms-3 mb-0">Baggage 20kg</p>
+                        </div>
+                        <div className="facility-item facility-flex mb-2">
+                          <img src={Entertainment} alt="" />
+                          <p className="ms-2 mb-0">Entertainment</p>
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>;
+          })} */}
+
+          {ticket.map((item) => {
+            const timeDifferenceInMs = Math.abs(
+              new Date(`January 1, 1970 ${item.departure_time}`).getTime() -
+                new Date(`January 1, 1970 ${item.arrival_time}`).getTime()
+            );
+            const hours = Math.floor(timeDifferenceInMs / 3600000);
+            const minutes = Math.floor((timeDifferenceInMs % 3600000) / 60000);
+            let date = new Date(item.date);
+            let formattedDate = date.toLocaleDateString("en-US", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            });
+            return (
+              <Accordion className="flight-content pb-2">
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header>
+                    <Row className="flight-header">
+                      <Col className="ms-4">
+                        <div className="flight-box-airline flight-flex">
+                          <img src={Lion} />
+                          <p className="mt-2">BinAir</p>
+                        </div>
+                      </Col>
+                      <Col className="me-5">
+                        <div className="flight-box-time time-flight-flex">
+                          <div>
+                            <h3>
+                              <strong>{item.departure_time}</strong>
+                            </h3>
+                            <p>CGK</p>
+                          </div>
+                          <span className="has-text-grey-dark">
+                            <img src={Arrow} alt="" />
+                          </span>
+                          <div>
+                            <h3>
+                              <strong>{item.arrival_time}</strong>
+                            </h3>
+                            <p>DPS</p>
+                          </div>
+                        </div>
+                      </Col>
+                      <Col className="me-5">
+                        <div className="flight-box-time time-flight-flex">
+                          <div>
+                            <h3>
+                              <center>
+                                <strong>{`${hours}h ${
+                                  minutes > 0 ? `${minutes}m` : ""
+                                }`}</strong>
+                              </center>
+                            </h3>
+                            <p className="txt-langsung">Langsung</p>
+                          </div>
+                          <div className="baggage time-flight-flex">
+                            <img src={Baggage} alt="baggage" />
+                            <h4>20kg</h4>
+                          </div>
+                        </div>
+                      </Col>
+                      <Col className="flight-box-price pt-3">
+                        <h3>
+                          <strong>
+                            {item.adult_price.toLocaleString("id-ID", {
+                              style: "currency",
+                              currency: "IDR",
+                              minimumFractionDigits: 0,
+                            })}
+                          </strong>
+                          <span>/Org</span>
+                        </h3>
+                      </Col>
+                      <Col className="pt-2">
+                        <Button
+                          variant="light"
+                          type="submit"
+                          className="btn-flight my-2"
+                        >
+                          Pilih Penerbangan
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Accordion.Header>
+                  <Accordion.Body className="flight-detail-content p-4">
+                    <Row>
+                      <Col xs={2} className="pt-3 ms-4">
+                        <div className="flight-detail-airline-info flight-flex">
+                          <img src={Lion} />
+                          <h4 className="mt-4">BinAir</h4>
+                          <h4>
+                            <span>QG666</span>
+                          </h4>
+                        </div>
+                      </Col>
+                      <Col xs={7}>
+                        <Row>
+                          <Col xs={1} className="time-line p-0">
+                            <img src={Slider} alt="" />
+                          </Col>
+                          <Col xs={11} className="timeline-info pt-3">
+                            <div className="timeline-departure timeline-flex">
+                              <div className="timeline-datetime me-5">
+                                <h2 className="timeline-departure-time">
+                                  <strong>{item.departure_time}</strong>
+                                </h2>
+                                <p className="timeline-departure-date">
+                                  {formattedDate}
+                                </p>
+                              </div>
+                              <div className="timeline-cityairport">
+                                <p className="timeline-departure-city mb-0">
+                                  {item.from}&nbsp;
+                                  {`(${search.from.code})`}
+                                </p>
+                                <p className="timeline-departure-airport mb-0">
+                                  {item.airport_from}
+                                </p>
+                                <p className="timeline-departure-terminal">
+                                  Terminal 2E
+                                </p>
+                              </div>
+                            </div>
+                            <div className="timeline-duration-wrapper mt-4 mb-4">
+                              <p className="timeline-duration">
+                                <div className="icon-flex">
+                                  <img src={Clock} alt="" className="me-1" />
+                                  {`${hours}h ${
+                                    minutes > 0 ? `${minutes}m` : ""
+                                  }`}
+                                </div>
+                              </p>
+                            </div>
+                            <div className="timeline-arrival timeline-flex">
+                              <div className="timeline-datetime me-5">
+                                <h2 className="timeline-arrival-time">
+                                  <strong>{item.arrival_time}</strong>
+                                </h2>
+                                <p className="timeline-arrival-date">
+                                  {formattedDate}
+                                </p>
+                              </div>
+                              <div className="timeline-cityairport">
+                                <p className="timeline-arrival-city mb-0">
+                                  {item.to}&nbsp;
+                                  {`(${search.to.code})`}
+                                </p>
+                                <p className="timeline-arrival-airport mb-0">
+                                  {item.airport_to}
+                                </p>
+                                <p className="timeline-arrival-terminal">
+                                  Terminal 2E
+                                </p>
+                              </div>
+                            </div>
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col className="ms-4">
+                        <div className="flight-facility pt-3">
+                          <div className="facility-item facility-flex mb-2">
+                            <img src={Refund} alt="" />
+                            <p className="ms-2 mb-0">Refundable</p>
+                          </div>
+                          <div className="facility-item facility-flex mb-2">
+                            <img src={Reschedule} alt="" />
+                            <p className="ms-2 mb-0">Reschedule</p>
+                          </div>
+                          <div className="facility-item facility-flex mb-2">
+                            <img src={Cabin} alt="" />
+                            <p className="ms-2 mb-0">Cabin Baggage 7kg</p>
+                          </div>
+                          <div className="facility-item facility-flex mb-2">
+                            <img src={Baggage} alt="" />
+                            <p className="ms-3 mb-0">Baggage 20kg</p>
+                          </div>
+                          <div className="facility-item facility-flex mb-2">
+                            <img src={Entertainment} alt="" />
+                            <p className="ms-2 mb-0">Entertainment</p>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+            );
+          })}
+
           {/* 1 */}
-          <Accordion className="flight-content pb-2">
+          {/* <Accordion className="flight-content pb-2">
             <Accordion.Item eventKey="0">
               <Accordion.Header>
                 <Row className="flight-header">
@@ -315,10 +695,10 @@ const Tickets = () => {
                 </Row>
               </Accordion.Body>
             </Accordion.Item>
-          </Accordion>
+          </Accordion> */}
 
           {/* 2 */}
-          <Accordion className="flight-content pb-2">
+          {/* <Accordion className="flight-content pb-2">
             <Accordion.Item eventKey="1">
               <Accordion.Header>
                 <Row className="flight-header">
@@ -473,10 +853,10 @@ const Tickets = () => {
                 </Row>
               </Accordion.Body>
             </Accordion.Item>
-          </Accordion>
+          </Accordion> */}
 
           {/* 3 */}
-          <Accordion className="flight-content pb-2">
+          {/* <Accordion className="flight-content pb-2">
             <Accordion.Item eventKey="2">
               <Accordion.Header>
                 <Row className="flight-header">
@@ -631,10 +1011,10 @@ const Tickets = () => {
                 </Row>
               </Accordion.Body>
             </Accordion.Item>
-          </Accordion>
+          </Accordion> */}
 
           {/* 4 */}
-          <Accordion className="flight-content pb-2">
+          {/* <Accordion className="flight-content pb-2">
             <Accordion.Item eventKey="3">
               <Accordion.Header>
                 <Row className="flight-header">
@@ -789,10 +1169,10 @@ const Tickets = () => {
                 </Row>
               </Accordion.Body>
             </Accordion.Item>
-          </Accordion>
+          </Accordion> */}
 
           {/* 5 */}
-          <Accordion className="flight-content pb-2">
+          {/* <Accordion className="flight-content pb-2">
             <Accordion.Item eventKey="4">
               <div className="free-baggage" as="h5" style={{ width: "13rem" }}>
                 <li className="p-1">Gratis 20 Kg Bagasi</li>
@@ -954,10 +1334,10 @@ const Tickets = () => {
                 </Row>
               </Accordion.Body>
             </Accordion.Item>
-          </Accordion>
+          </Accordion> */}
 
           {/* 6  */}
-          <Accordion className="flight-content pb-2">
+          {/* <Accordion className="flight-content pb-2">
             <Accordion.Item eventKey="5">
               <Accordion.Header>
                 <Row className="flight-header">
@@ -1112,7 +1492,7 @@ const Tickets = () => {
                 </Row>
               </Accordion.Body>
             </Accordion.Item>
-          </Accordion>
+          </Accordion> */}
 
           <Card className="payment-content m-4 mt-5" style={{ width: "18rem" }}>
             {/* <Card.Body>
