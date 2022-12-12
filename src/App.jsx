@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import 'remixicon/fonts/remixicon.css'
 import "./assets/styles/main.css";
 import { Routes, Route } from "react-router-dom";
-import { Home, Flight, Auth, NotFound, Tickets } from "./pages";
+import { Home, Flight, Auth, NotFound, Tickets, Promo } from "./pages";
 import Protected from "./utils/Protected";
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
       <Route path="/flight" element={<Flight />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/tickets" element={<Tickets />} />
+      <Route path="/promo" element={<Promo />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
