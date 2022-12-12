@@ -1,40 +1,41 @@
-import React, { useState, useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import {
-  Container,
-  Row,
-  Col,
-  Form,
   Button,
-  Dropdown,
+  Col,
+  Container,
   DropdownButton,
+  Form,
+  Row,
 } from "react-bootstrap";
-import "../../assets/styles/searchFlight.css";
+import { Typeahead } from "react-bootstrap-typeahead";
+import "react-bootstrap-typeahead/css/Typeahead.css";
 import "../../assets/styles/flightDatepicker.css";
-import switchbtn from "../../assets/images/switch-btn.svg";
+import "../../assets/styles/searchFlight.css";
 
 // import "react-google-flight-datepicker/dist/main.css";
-import { retriveTickets } from "../../redux/slices/ticketSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import moment from "moment";
 import {
   RangeDatePicker,
   SingleDatePicker,
 } from "react-google-flight-datepicker";
-import moment from "moment";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { retriveTickets, setSearch } from "../../redux/slices/ticketSlice";
 
 const SearchFlight = () => {
-
   const [visible1, setVisible1] = useState(true);
   const [visible2, setVisible2] = useState(false);
-  const [countDewasa, setCountDewasa] = useState(0);
+  const [countDewasa, setCountDewasa] = useState(1);
   const [countAnak, setCountAnak] = useState(0);
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  console.info({ endDate, startDate });
+  const toRef = useRef();
+  const fromRef = useRef();
 
   // const [countBaby, setCountBaby] = useState(0);
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
+  const [from, setFrom] = useState([{ code: null, city: null, airport: null }]);
+  const [to, setTo] = useState([{ code: null, city: null, airport: null }]);
   const [selected, setSelected] = useState("oneway");
   const dispatch = useDispatch();
   const { loading, status, ticket } = useSelector((state) => state.ticket);
@@ -47,18 +48,14 @@ const SearchFlight = () => {
   const handleChange = (event) => {
     setSelected(event.target.value);
   };
-  const switchCity = (e) => {
-    e.preventDefault();
-    setFrom(to);
-    setTo(from);
-  };
-  const fromOnChange = (e) => {
-    setFrom(e.target.value);
-  };
-  const toOnChange = (e) => {
-    setTo(e.target.value);
-  };
 
+  // const switchCity = (e) => {
+  //   e.preventDefault();
+  //   setFrom(to);
+  //   setTo(from);
+  //   toRef.current = "";
+  //   fromRef.current = "";
+  // };
 
   const startEndDateChange = (startDt, endDt) => {
     if (startDt) {
@@ -75,11 +72,46 @@ const SearchFlight = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("submited");
     dispatch(
-      retriveTickets({ params: { from, to, type: selected, date: startDate }, redirect })
+      setSearch({
+        from: from[0],
+        to: to[0],
+        type: selected,
+        startDate: startDate,
+        endDate: endDate,
+        willFly: true,
+        countDewasa,
+        countAnak,
+      })
+    );
+    dispatch(
+      retriveTickets({
+        params: {
+          from: from[0],
+          to: to[0],
+          type: selected,
+          date: startDate,
+          willFly: true,
+        },
+        redirect,
+      })
     );
   };
+
+  //auto complete
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    const getOptions = async () => {
+      const res = await axios.get(
+        "https://binair-backend-production.up.railway.app/api/v1/search"
+      );
+      setOptions(res.data.data);
+    };
+
+    getOptions();
+  }, []);
+
   return (
     <div>
       <Container className="card-flights">
@@ -123,44 +155,119 @@ const SearchFlight = () => {
             <Col md={2} className="mb-0">
               <Form.Group className="mb-3">
                 <Form.Label htmlFor="kotaberangkat">Dari</Form.Label>
-                <Form.Control
+                {/* <Form.Control
                   type="text"
                   className="form-input form-style"
                   id="kotaberangkat"
                   placeholder="Pilih Kota Keberangkatan"
                   onChange={fromOnChange}
                   value={from}
+                /> */}
+                <Typeahead
+                  id="kotaberangkat"
+                  value={from}
+                  ref={fromRef}
+                  inputProps={{
+                    className: "form-input form-style p-0 ps-1",
+                    style: {},
+                  }}
+                  size={"sm"}
+                  labelKey={(option) => `${option.city} (${option.code})`}
+                  onInputChange={(selected) => {
+                    setFrom([
+                      {
+                        code: "",
+                        city: selected,
+                        airport: "",
+                      },
+                    ]);
+                  }}
+                  onChange={(selectedOpt) => {
+                    setFrom(selectedOpt);
+                  }}
+                  options={options}
+                  placeholder="Pilih Kota Keberangkatan"
+                  renderMenuItemChildren={(option) => (
+                    <div className="sugest container w-fluid m-0 p-0">
+                      <span
+                        className="fw-bold fs-6"
+                        style={{ fontSize: "1px" }}
+                      >
+                        {option.city} ({option.code})
+                      </span>{" "}
+                      <br />
+                      <span className="text-secondary">{option.airport})</span>
+                    </div>
+                  )}
                 />
               </Form.Group>
             </Col>
-            <button className="btn-switch-city" onClick={switchCity}>
+            {/* <button className="btn-switch-city" onClick={switchCity}>
               <img src={switchbtn} alt="Switch City Button" />
-            </button>
+            </button> */}
             <Col md={2} className="form">
               <Form.Group className="mb-3">
                 <Form.Label htmlFor="kotatujuan">Ke</Form.Label>
-                <Form.Control
+                {/* <Form.Control
                   type="text"
                   className="form-input form-style"
                   id="kotatujuan"
                   placeholder="Pilih Kota Tujuan"
                   value={to}
                   onChange={fromOnChange}
+                /> */}
+                <Typeahead
+                  id="labelkey-example"
+                  value={to}
+                  className="form-input form-style fs-5"
+                  size={"sm"}
+                  ref={toRef}
+                  onChange={(selectedOpt) => {
+                    setTo(selectedOpt);
+                  }}
+                  onInputChange={(selected) => {
+                    setTo({
+                      code: "",
+                      city: selected,
+                      airport: "",
+                    });
+                  }}
+                  labelKey={(option) => `${option.city} (${option.code})`}
+                  inputProps={{
+                    className: "form-input form-style p-0 ps-1",
+                    style: {},
+                  }}
+                  options={options}
+                  placeholder="Pilih Kota Tujuan"
+                  renderMenuItemChildren={(option) => (
+                    <div className="sugest container w-fluid m-0 p-0">
+                      <span
+                        className="fw-bold fs-6 m-0 p-0"
+                        style={{ fontSize: "1px" }}
+                      >
+                        {option.city} ({option.code})
+                      </span>{" "}
+                      <br />
+                      <span className="text-secondary">{option.airport})</span>
+                    </div>
+                  )}
                 />
               </Form.Group>
             </Col>
             <Col md={2} className="form">
               <Form.Group className="mb-3">
-                <Form.Label htmlFor="sekalijalan">Tanggal Berangkat</Form.Label>
+                <Form.Label htmlFor="sekalijalan">
+                  Tanggal Penerbangan
+                </Form.Label>
 
                 {visible1 && (
                   <div>
                     <SingleDatePicker
                       startDate={startDate}
-                      // minDate={new Date()}
-                      startDatePlaceholder=" "
+                      minDate={new Date()}
+                      startDatePlaceholder="Tanggal Keberangkatan"
                       id="single-date-picker"
-                      dateFormat="D"
+                      // dateFormat="D"
                       monthFormat="MMM YYYY"
                       onChange={(startDate) => startEndDateChange(startDate)}
                     />
@@ -171,10 +278,11 @@ const SearchFlight = () => {
                   <div>
                     <RangeDatePicker
                       startDate={startDate}
+                      endDate={endDate}
                       // endDate={new Date()}
                       // minDate={new Date()}
-                      startDatePlaceholder=" "
-                      endDatePlaceholder=" "
+                      startDatePlaceholder="Tanggal Keberangkatan"
+                      endDatePlaceholder="Tanggal Kepulangan"
                       id="range-date-picker"
                       onChange={(startDate, endDate) =>
                         startEndDateChange(startDate, endDate)
@@ -186,11 +294,11 @@ const SearchFlight = () => {
             </Col>
 
             <Col md={2} className="form hidden-form">
-              {visible2 && (
+              {/* {visible2 && (
                 <Form.Label htmlFor="pulangpergi" className="pulangpergi">
                   Tanggal Pergi
                 </Form.Label>
-              )}
+              )} */}
             </Col>
 
             <Col md={2} className="form">
@@ -208,6 +316,7 @@ const SearchFlight = () => {
                       </Col>
                       <Col md={2} sm={2} className="p-1">
                         <button
+                          type="button"
                           className="decrement-btn"
                           onClick={() => setCountDewasa(countDewasa - 1)}
                           disabled={countDewasa === 0}
@@ -220,6 +329,7 @@ const SearchFlight = () => {
                       </Col>
                       <Col md={2} sm={2} className="p-1">
                         <button
+                          type="button"
                           className="increment-btn fw-bold"
                           onClick={() => setCountDewasa(countDewasa + 1)}
                           disabled={countDewasa + countAnak >= 6}
@@ -237,6 +347,7 @@ const SearchFlight = () => {
                       </Col>
                       <Col md={2} sm={2} className="p-1">
                         <button
+                          type="button"
                           className="decrement-btn"
                           onClick={() => setCountAnak(countAnak - 1)}
                           disabled={countAnak === 0}
@@ -249,6 +360,7 @@ const SearchFlight = () => {
                       </Col>
                       <Col md={2} sm={2} className="p-1">
                         <button
+                          type="button"
                           className="increment-btn fw-bold"
                           onClick={() => setCountAnak(countAnak + 1)}
                           disabled={countDewasa + countAnak >= 6}
@@ -288,12 +400,12 @@ const SearchFlight = () => {
                     </Row>
                   </div> */}
                 </DropdownButton>
-              </Form.Group> 
+              </Form.Group>
             </Col>
             <Col md={2} className="form">
               <Button
                 type="submit"
-                className="search-flight-btn"
+                className="search-flight-btn p-2"
                 variant="secondary"
               >
                 Cari Penerbangan

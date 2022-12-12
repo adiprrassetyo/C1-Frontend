@@ -1,7 +1,8 @@
 import React from "react";
 import { Header, Footer } from "../components";
-import { Container, Row, Col, Form, Button, Carousel, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, Carousel, Card } from "react-bootstrap";
 import promo_banner from "../assets/images/promo-banner.webp";
+import payment_img from "../assets/images/payment-img.webp"
 import "../assets/styles/promo.css";
 
 const Promo = () => {
@@ -56,7 +57,7 @@ const Promo = () => {
                         <p className="periode-promo-desc">4 Februari 2022 - 31 Desember 2024</p>
                       </Col>
                     </Row>
-                  <Button variant="light" className="detail-button">Detail Lebih Lanjut</Button>
+                  <Button href="/promo/view/1" variant="light" className="detail-button">Detail Lebih Lanjut</Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -80,7 +81,7 @@ const Promo = () => {
                         <p className="periode-promo-desc">4 Februari 2022 - 31 Desember 2024</p>
                       </Col>
                     </Row>
-                  <Button variant="light" className="detail-button">Detail Lebih Lanjut</Button>
+                  <Button href="/promo/view/1" variant="light" className="detail-button">Detail Lebih Lanjut</Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -95,16 +96,16 @@ const Promo = () => {
                   </Card.Title>
                   
                     <Row className="periode-promo-container">
-                      <Col sm={6} xs={6} md={6} className="periode-promo-left">
+                      <Col md={6} sm={6} xs={6} className="periode-promo-left">
                         <p className="periode-promo-title">Periode Promo</p>
                         <p className="periode-promo-desc">1 Feb - 31 Desember 2022</p>
                       </Col>
-                      <Col sm={6} xs={6} md={6} >
+                      <Col md={6} sm={6} xs={6}>
                         <p className="periode-promo-title">Periode Perjalanan</p>
                         <p className="periode-promo-desc">4 Februari 2022 - 31 Desember 2024</p>
                       </Col>
                     </Row>
-                  <Button variant="light" className="detail-button">Detail Lebih Lanjut</Button>
+                  <Button href="/promo/view/1" variant="light" className="detail-button" >Detail Lebih Lanjut</Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -113,7 +114,8 @@ const Promo = () => {
       </section>
       <section className="jenis-pembayaran-section">
         <Container>
-          <h3>Jenis Pembayaran</h3>
+          <h3 class="jenis-pembayaran-title">Jenis Pembayaran:</h3>
+          <img className="payment_img" src={payment_img} alt="Metode Pembayaran"/>
         </Container>
       </section>
       <Footer />

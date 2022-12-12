@@ -82,19 +82,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .increment-btn {
   padding: 0px 6px 1px 6px;
   background-color: #fff;
-  color: #13a2d7;
+  color: #ea741a;
   font-size: 16px;
   border-radius: 8px;
-  border: 2px solid #13a2d7;
+  border: 2px solid #ea741a;
 }
 
 .decrement-btn {
   padding: 0px 8px 1px 8px;
   background-color: #fff;
-  color: #ff3a44;
+  color: #ea741a;
   font-size: 16px;
   border-radius: 8px;
-  border: 2px solid #ff3a44;
+  border: 2px solid #ea741a;
   cursor: pointer;
 }
 button:disabled,
@@ -159,6 +159,11 @@ button[disabled] {
 .btn-switch-city img {
   margin-left: -7px;
   margin-bottom: 3px;
+}
+
+.sugest {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @media (min-width: 992px) and (max-width: 1030px) {
   .btn-switch-city {

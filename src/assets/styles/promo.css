@@ -71,3 +71,11 @@
 .jenis-pembayaran-section{
     margin-top: 64px;
 }
+.jenis-pembayaran-title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #59595B;
+}
+.payment_img{
+    margin-bottom: 80px;
+}
