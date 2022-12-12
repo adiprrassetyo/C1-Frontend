@@ -67,8 +67,10 @@ const Auth = () => {
     e.preventDefault();
     if (isSignUp) {
       dispatch(registerUser({ formData: { ...formData, phone }, redirect }));
+      dispatch(clearState());
     } else {
       dispatch(loginUser({ formData, redirect }));
+      dispatch(clearState());
     }
     setFormData(initialState);
   };
