@@ -7,13 +7,13 @@
 .flight {
   padding: 0;
 }
-.jumbotron {
-  height: 60vh;
-  background-image: url("../images/flight-image.png");
+.jumbotronFlight {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../images/flight-image.png");
   background-size: cover;
 }
 .jumbotron-content {
-  padding: 30vh 10vw 30vh 10vw;
+  padding: 30px 70px 30px 70px;
   gap: 20px;
 }
 .flight-form {
@@ -199,6 +199,27 @@
   height: 50px;
   width: fit-content;
 }
+
+.mobile-mockup {
+  position: absolute;
+  margin-top: 80px;
+  margin-left: 75px;
+}
+.mobile-section-content {
+  margin-top: 180px;
+  height: 320px;
+  background-color: #13a2d7;
+  margin-bottom: 80px;
+}
+.text-mobile-section {
+  margin-top: 100px;
+}
+.text-mobile-section p {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 500;
+}
+
 @media screen and (max-width: 1000px) {
   .jumbotron-content {
     flex-direction: column-reverse;

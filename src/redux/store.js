@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReduces from "./slices/authSlice";
+import authReducer from "./slices/authSlice";
+import ticketReducer from "./slices/ticketSlice";
 
 export default configureStore({
   reducer: {
-    auth: authReduces,
+    auth: authReducer,
+    ticket: ticketReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddleware) =>
