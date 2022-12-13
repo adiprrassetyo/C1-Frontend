@@ -16,27 +16,11 @@ import indo_flag from "../assets/images/indo-flag.svg";
 import "../assets/styles/header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/slices/authSlice";
-import jwtDecode from "jwt-decode";
 
 const Header = () => {
   const [sticky, setSticky] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  // const [dataUser, setDataUser] = useState();
-
-  // console.log({ dataUser });
-  // useEffect(() => {
-  //   setDataUser(user);
-
-  // }, [user]);
-
-  console.info(user);
-  // const user = jwt.verify(
-  //   token,
-  //   "jsfgfjguwrg8783wgbjs849h2fu3cnsvh8wyr8fhwfvi2g225"
-  // );
-
-  // console.info(user);
 
   useEffect(() => {
     const handleScroll = () => {
