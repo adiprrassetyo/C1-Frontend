@@ -2,19 +2,17 @@ import * as ticket from "../services/ticketServices";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const retriveTickets = createAsyncThunk(
-  "ticket/retive",
+  "ticket/retrive",
   async ({ params, redirect }, { rejectWithValue }) => {
     try {
-      console.info({ params });
       const res = await ticket.retrive(params);
-      console.info(res);
-      if (res.data.status == "success") {
-        setTimeout(() => {
-          redirect("/flight/search");
-        }, 3000);
-      }
+      redirect("/flight/search");
       return res.data;
     } catch (error) {
+      if (error.response) {
+        console.log(error.response);
+      }
+      redirect("/flight/search");
       return rejectWithValue(error.response);
     }
   }
@@ -60,7 +58,7 @@ const ticketSlice = createSlice({
       };
     },
     [retriveTickets.rejected]: (state, action) => {
-      console.info(action.payload);
+      console.log(action.payload.data);
       return {
         ...state,
         loading: false,

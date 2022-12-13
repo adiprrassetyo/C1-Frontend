@@ -21,21 +21,6 @@ const Header = () => {
   const [sticky, setSticky] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  // const [dataUser, setDataUser] = useState();
-
-  // console.log({ dataUser });
-  // useEffect(() => {
-  //   setDataUser(user);
-
-  // }, [user]);
-
-  console.info(user);
-  // const user = jwt.verify(
-  //   token,
-  //   "jsfgfjguwrg8783wgbjs849h2fu3cnsvh8wyr8fhwfvi2g225"
-  // );
-
-  // console.info(user);
 
   useEffect(() => {
     const handleScroll = () => {

@@ -49,14 +49,6 @@ const SearchFlight = () => {
     setSelected(event.target.value);
   };
 
-  // const switchCity = (e) => {
-  //   e.preventDefault();
-  //   setFrom(to);
-  //   setTo(from);
-  //   toRef.current = "";
-  //   fromRef.current = "";
-  // };
-
   const startEndDateChange = (startDt, endDt) => {
     if (startDt) {
       setStartDate(startDt);
