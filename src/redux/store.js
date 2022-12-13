@@ -29,6 +29,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store); // Mempersist state ke dalam penyimpanan lokal
-
-
-

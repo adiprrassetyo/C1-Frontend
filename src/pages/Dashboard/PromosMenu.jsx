@@ -1,5 +1,5 @@
 import { Squash as Hamburger } from "hamburger-react";
-import { default as React, default as React } from "react";
+import { default as React } from "react";
 import { Button, Container } from "react-bootstrap";
 import {
   Plus
