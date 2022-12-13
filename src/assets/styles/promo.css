@@ -78,4 +78,29 @@
 }
 .payment_img{
     margin-bottom: 80px;
+    width: 65%;
+}
+
+@media (min-width: 576px) and (max-width: 767.9px) {
+    .carousel-item img{
+        height: 320px;
+    }
+    .periode-promo-left{
+        border: none;
+    }
+    .payment_img{
+        width: 80%;
+    }
+}
+
+@media (max-width: 575px) {
+    .carousel-item img{
+        height: 280px;
+    }
+    .periode-promo-left{
+        border: none;
+    }
+    .payment_img{
+        width: 80%;
+    }
 }

@@ -2,10 +2,6 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // Penyimpanan lokal
 
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // Penyimpanan lokal
-
 import authReducer from "./slices/authSlice";
 import ticketReducer from "./slices/ticketSlice";
 
