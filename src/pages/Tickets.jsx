@@ -385,7 +385,7 @@ const Tickets = () => {
                   Maaf, tidak ada penerbangan yang sesuai dengan kriteria anda
                 </strong>
               </h3>
-              <Button className="btn-switch" variant="info text-white">
+              <Button className="btn-switch mt-3" variant="info-outlined">
                 Ubah Pencarian
               </Button>
             </Container>
