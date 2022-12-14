@@ -8,8 +8,8 @@ specifiers:
   '@vitejs/plugin-react': ^2.2.0
   axios: ^1.2.0
   bootstrap: ^5.2.2
-  moment: ^2.29.4
   hamburger-react: ^2.5.0
+  moment: ^2.29.4
   places-autocomplete-react: ^1.0.10
   prop-types: ^15.6.0
   react: ^18.2.0
@@ -26,10 +26,12 @@ specifiers:
   remixicon: ^2.5.0
   vite: ^3.2.3
 
+dependencies:
   '@popperjs/core': 2.11.6
   '@reduxjs/toolkit': 1.9.1_k4ae6lp43ej6mezo3ztvx6pykq
   axios: 1.2.0
   bootstrap: 5.2.2_@popperjs+core@2.11.6
+  hamburger-react: 2.5.0_react@18.2.0
   moment: 2.29.4
   places-autocomplete-react: 1.0.10_v2m5e27vhdewzwhryxwfaorcca
   prop-types: 15.8.1
@@ -37,7 +39,6 @@ specifiers:
   react-bootstrap: 2.6.0_2zx2umvpluuhvlq44va5bta2da
   react-bootstrap-icons: 1.10.2_react@18.2.0
   react-bootstrap-typeahead: 6.0.0_biqbaboplfbrettd7655fr4n2y
-  hamburger-react: 2.5.0_react@18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-google-flight-datepicker: 0.1.20_biqbaboplfbrettd7655fr4n2y
   react-phone-number-input: 3.2.12_biqbaboplfbrettd7655fr4n2y
@@ -2036,10 +2037,10 @@ packages:
       react-is: 16.13.1
     dev: false
 
-
   /proxy-from-env/1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: false
+
   /react-bootstrap-icons/1.10.2_react@18.2.0:
     resolution: {integrity: sha512-PC72g6uARdSxZH+ViBbul3FRWKuIhiJajahwt1h0daPBDw789KqpA+x3hrJpSUyQMF0PQ9LfWxu1a0O67bqPeg==}
     peerDependencies:
@@ -2048,7 +2049,6 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
-
 
   /react-bootstrap-typeahead/6.0.0_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-0eTYwG8sYoY/jGO5Qxx1QMQyiVJlrSgo6xO77xxF93PqVLERgZEdbNMk+y/UX7/HTPcWN4tcCUqAEwVe1DVxog==}
@@ -2071,6 +2071,7 @@ packages:
       scroll-into-view-if-needed: 2.2.31
       warning: 4.0.3
     dev: false
+
   /react-bootstrap/2.6.0_2zx2umvpluuhvlq44va5bta2da:
     resolution: {integrity: sha512-WnDgN6PR8WZKo2Og5J8EafFi4BsABjc96lNuMNfksrgiPDCw18/woWQCNhAeHFZQWTQ/PijkOrQ9ncTWwO//AA==}
     peerDependencies:
