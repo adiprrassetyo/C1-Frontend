@@ -66,6 +66,10 @@
     width: 50%;
 }
 
+.card-body {
+    background-color: #FFFFFF;
+}
+
 .has-text-grey {
     font-size: 14px;
     color: #9A9A9D;
@@ -77,11 +81,10 @@
     color: #59595B;
 }
 
-.payment-content {
-    background-color: #F5F5F5;
+.payment-content .card-body {
+    background-color: #F7F7F7;
     font-size: 18px;
     color: #59595B;
-    border: none;
 }
 
 
