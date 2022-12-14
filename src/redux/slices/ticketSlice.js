@@ -6,7 +6,7 @@ export const retriveTickets = createAsyncThunk(
   async ({ params, redirect }, { rejectWithValue }) => {
     try {
       const res = await ticket.retrive(params);
-      redirect("/flight/search");
+      redirect && redirect("/flight/search");
       return res.data;
     } catch (error) {
       if (error.response) {

@@ -1,6 +1,6 @@
 import { Squash as Hamburger } from "hamburger-react";
 import React from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Spinner } from "react-bootstrap";
 import {
   ArrowRight,
   EyeFill,
@@ -10,8 +10,33 @@ import {
   ArrowDownUp,
 } from "react-bootstrap-icons";
 import { useOutletContext } from "react-router-dom";
+import Arrow from "../../assets/images/Vector.svg";
+import { useSelector, useDispatch } from "react-redux";
+import { retriveTickets } from "../../redux/slices/ticketSlice";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const TicketsMenu = () => {
+  const { loading, status, message, ticket } = useSelector(
+    (state) => state.ticket
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      retriveTickets({
+        params: {
+          from: "",
+          to: "",
+          type: "",
+          date: "",
+          willFly: false,
+        },
+      })
+    );
+  }, []);
+
   const [isToggled, setIsToggled] = useOutletContext();
   return (
     <div id="page-content-wrapper">
@@ -77,78 +102,102 @@ const TicketsMenu = () => {
           </ul>
         </div>
       </nav>
-      <div className="container-fluid px-4 m-2">
-        <div className="row my-2 p-4 bg-white rounded shadow-sm">
-          <div className="col">
-            <Button
-              variant="success"
-              className="d-flex align-items-center justify-content-center m-0"
-            >
-              <div
-                className="d-flex gap-2 align-items-center m-0 p-0"
-                style={{ fontSize: 12 }}
-              >
-                <Plus size="20" />{" "}
-                <p className="m-0 p-0 d-flex align-items-center justify-content-center">
-                  ADD NEW
-                </p>
-              </div>
-            </Button>
-            <table className="table bg-white table-hover text-secondary mt-4">
-              <thead>
-                <tr>
-                  <th scope="col">Tickets</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Stock</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div
-                      className=" rounded w-50"
-                    >
-                      <div className="d-flex flex-column justify-content-center align-items-start">
-                        <div>
-                          <span className="text-black fw-bold">Jakarta</span>{" "}
-                          (Bandara Soekarno Hatta)
+
+      {loading ? (
+        <div className="container-fluid px-4 m-2 d-flex justify-content-center align-item-center">
+          <Spinner animation="border" variant="info" />
+        </div>
+      ) : (
+        <div className="container-fluid px-4 m-2">
+          <div className="row my-2 p-4 bg-white rounded shadow-sm">
+            <div className="col">
+              <Link to="add-tickets" style={{width: "fit"}}>
+                <Button
+                  variant="success"
+                  className="d-flex align-items-center justify-content-center m-0"
+                >
+                  <div
+                    className="d-flex gap-2 align-items-center m-0 p-0"
+                    style={{ fontSize: 12 }}
+                  >
+                    <Plus size="20" />{" "}
+                    <p className="m-0 p-0 d-flex align-items-center justify-content-center">
+                      ADD NEW
+                    </p>
+                  </div>
+                </Button>
+              </Link>
+              <table className="table bg-white table-hover text-secondary mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Tickets</th>
+                    <th scope="col">Flight Date</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ticket.map((item, i) => (
+                    <tr key={item.id}>
+                      <td>{i + 1}</td>
+                      <td>
+                        <div className=" rounded">
+                          <div className="d-flex flex-column justify-content-center align-items-start">
+                            <div className="d-flex">
+                              <div style={{ maxWidth: "200px" }}>
+                                <h3>
+                                  <strong>{item.from}</strong>
+                                </h3>
+                                <p>{item.airport_from}</p>
+                              </div>
+                              <span className="mx-4">
+                                <img src={Arrow} alt="" />
+                              </span>
+                              <div style={{ maxWidth: "200px" }}>
+                                <h3>
+                                  <strong>{item.to}</strong>
+                                </h3>
+                                <p>
+                                  {item.airport_to} <br />{" "}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <center><ArrowDownUp /></center>
-                        <div>
-                          <span className="text-black fw-bold">Surabaya</span>{" "}
-                          (Bandara Juanda)
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>One Way</td>
-                  <td>25</td>
-                  <td>
-                    <span className="badge text-bg-success">Available</span>
-                  </td>
-                  <td>
-                    <Button
-                      data-bs-toggle="collapse"
-                      data-bs-target="#r1"
-                      variant="warning"
-                    >
-                      <EyeFill />
-                    </Button>
-                    <Button variant="primary" className="mx-1">
-                      <PencilFill />
-                    </Button>
-                    <Button variant="danger">
-                      <TrashFill />
-                    </Button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                      </td>
+                      <td>{item.date}</td>
+                      <td>{item.type}</td>
+                      <td>{item.curr_stock}</td>
+                      <td>
+                        {item.available ? (
+                          <span className="badge text-bg-success">
+                            Available
+                          </span>
+                        ) : (
+                          <span className="badge text-bg-danger">
+                            Unailable
+                          </span>
+                        )}
+                      </td>
+                      <td>
+                        <Button variant="primary" className="mx-1">
+                          <PencilFill />
+                        </Button>
+                        <Button variant="danger">
+                          <TrashFill />
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

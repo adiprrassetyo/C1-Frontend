@@ -9,13 +9,15 @@ import {
   Home,
   Flight,
   Auth,
-  NotFound, Tickets,
+  NotFound,
+  Tickets,
   DashboardLayout,
   MainMenu,
   PromosMenu,
   TicketsMenu,
   TransactionsMenu,
   UsersMenu,
+  AddTickets,
 } from "./pages";
 
 const App = () => {
@@ -30,6 +32,7 @@ const App = () => {
         <Route path="" element={<MainMenu />} />
         <Route path="promos" element={<PromosMenu />} />
         <Route path="tickets" element={<TicketsMenu />} />
+        <Route path="tickets/add-tickets" element={<AddTickets />} />
         <Route path="transactions" element={<TransactionsMenu />} />
         <Route path="users" element={<UsersMenu />} />
       </Route>
