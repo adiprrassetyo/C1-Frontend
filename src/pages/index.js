@@ -10,6 +10,8 @@ import PromosMenu from "./Dashboard/PromosMenu";
 import TicketsMenu from "./Dashboard/TicketsMenu";
 import TransactionsMenu from "./Dashboard/TransactionsMenu";
 import UsersMenu from "./Dashboard/UsersMenu";
+import Promo from "./Promo";
+import DetailPromo from "./DetailPromo";
 
 export {
   Flight,
@@ -21,5 +23,7 @@ export {
   PromosMenu,
   TicketsMenu,
   TransactionsMenu,
+  Promo,
+  DetailPromo,
   UsersMenu,
 };

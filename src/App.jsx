@@ -16,6 +16,8 @@ import {
   TicketsMenu,
   TransactionsMenu,
   UsersMenu,
+  Promo,
+  DetailPromo
 } from "./pages";
 
 const App = () => {
@@ -25,6 +27,8 @@ const App = () => {
       <Route path="/flight" element={<Flight />}></Route>
       <Route path="/flight/search" element={<Tickets />} />
       <Route path="/auth" element={<Auth />} />
+      <Route path="/promo" element={<Promo />} />
+      <Route path="/promo/view/1" element={<DetailPromo />} />
       <Route path="*" element={<NotFound />} />
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route path="" element={<MainMenu />} />
