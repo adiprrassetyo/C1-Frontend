@@ -77,17 +77,17 @@ const Header = () => {
                     <NavDropdown.Item>US</NavDropdown.Item>
                     <NavDropdown.Item>IDR</NavDropdown.Item>
                   </NavDropdown> */}
-
-                  <Button
-                    href="/auth"
-                    className={
-                      user
-                        ? "btn btn-light button-login d-none"
-                        : "btn btn-light button-login"
-                    }
-                  >
-                    Login
-                  </Button>
+                  <Link to="/#/auth">
+                    <Button
+                      className={
+                        user
+                          ? "btn btn-light button-login d-none"
+                          : "btn btn-light button-login"
+                      }
+                    >
+                      Login
+                    </Button>
+                  </Link>
 
                   <NavDropdown
                     title={
