@@ -20,8 +20,8 @@ jobs:
       - name: Install packages
         run: npm install --force
 
-      # - name: Build App
-      #   run: npm run build
+      - name: install http-server
+        run: npm i -g http-server
 
       - name: Install Railway
         run:  npm i -g @railway/cli
