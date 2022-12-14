@@ -11,8 +11,8 @@ import {
     Accordion,
     Form,
   } from "react-bootstrap";
-  import "../assets/styles/profile.css";
-  import Payment from "../assets/images/payment-logo.svg";
+import "../assets/styles/profile.css";
+import Payment from "../assets/images/payment-logo.svg";
 
 const Profile = () => {
   return (
@@ -72,7 +72,7 @@ const Profile = () => {
                                 <div className="content-flex">
                                     <div className="profile-item is-full p-2">
                                         <p className="mb-0 has-text-grey">Nama</p>
-                                        <p className="mb-0 mt-1 normal">Ms Noviyana</p>
+                                        <p className="mb-0 mt-1 normal">Mr Damas, Muhammad</p>
                                     </div>
                                     <div className="profile-item is-half p-2">
                                         <p className="mb-0 has-text-grey">No Telepon</p>
