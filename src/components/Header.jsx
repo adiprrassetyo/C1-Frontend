@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 // import { jwt } from "jsonwebtoken";
 import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { NavLink, redirect } from "react-router-dom";
 import logo from "../assets/images/binair-logo.svg";
 import english_flag from "../assets/images/english-flag.svg";
 import indo_flag from "../assets/images/indo-flag.svg";
@@ -77,17 +77,18 @@ const Header = () => {
                     <NavDropdown.Item>US</NavDropdown.Item>
                     <NavDropdown.Item>IDR</NavDropdown.Item>
                   </NavDropdown> */}
-                  <Link to="/#/auth">
-                    <Button
-                      className={
-                        user
-                          ? "btn btn-light button-login d-none"
-                          : "btn btn-light button-login"
-                      }
-                    >
-                      Login
-                    </Button>
-                  </Link>
+                  <Button
+                    onClick={() => {
+                      redirect("#/login");
+                    }}
+                    className={
+                      user
+                        ? "btn btn-light button-login d-none"
+                        : "btn btn-light button-login"
+                    }
+                  >
+                    Login
+                  </Button>
 
                   <NavDropdown
                     title={
