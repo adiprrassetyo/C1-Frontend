@@ -23,8 +23,8 @@ import {
 
 const App = () => {
   return (
-    <Routes>
-      <HashRouter>
+    <HashRouter>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/flight" element={<Flight />}></Route>
         <Route path="/flight/search" element={<Tickets />} />
@@ -39,8 +39,8 @@ const App = () => {
           <Route path="transactions" element={<TransactionsMenu />} />
           <Route path="users" element={<UsersMenu />} />
         </Route>
-      </HashRouter>
-    </Routes>
+      </Routes>
+    </HashRouter>
   );
 };
 
