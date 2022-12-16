@@ -33,8 +33,6 @@ const Tickets = () => {
     (state) => state.ticket
   );
 
-  console.log({ ticket, search });
-
   return (
     <div className="search-main">
       <Header />
