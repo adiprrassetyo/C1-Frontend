@@ -8,7 +8,7 @@ export const retrive = ({ from, to, type, date, willFly }) => {
       airport_from: from.airport,
       airport_to: to.airport,
       type,
-      date,
+      date_start: date,
       willFly,
     },
   });
