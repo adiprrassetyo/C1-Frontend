@@ -18,6 +18,17 @@ export const retriveTickets = createAsyncThunk(
   }
 );
 
+export const createTickets = createAsyncThunk(
+  "tickets/create",
+  async (forData, { rejectWithValue }) => {
+    try {
+      const res = await ticket.create(forData);
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
 const ticketSlice = createSlice({
   name: "ticket",
   initialState: {
@@ -64,6 +75,31 @@ const ticketSlice = createSlice({
         loading: false,
         ticket: action.payload.data.data,
         status: action.payload.data.status,
+      };
+    },
+    [createTickets.pending]: (state, action) => {
+      return {
+        ...state,
+        status: action.payload.status,
+        message: action.payload.message,
+        loading: true,
+      };
+    },
+    [createTickets.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        status: action.payload.status,
+        ticket: [...state.ticket, action.payload.data],
+      };
+    },
+    [createTickets.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        status: action.payload.data.status,
+        message: action.payload.data.message,
       };
     },
   },

@@ -10,6 +10,7 @@ import TicketsMenu from "./Dashboard/TicketsMenu";
 import TransactionsMenu from "./Dashboard/TransactionsMenu";
 import UsersMenu from "./Dashboard/UsersMenu";
 import AddTickets from "./Dashboard/AddTickets";
+import EditTickets from "./Dashboard/EditTickets";
 
 export {
   Flight,
@@ -24,4 +25,5 @@ export {
   TransactionsMenu,
   UsersMenu,
   AddTickets,
+  EditTickets,
 };

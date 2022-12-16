@@ -18,6 +18,7 @@ import {
   TransactionsMenu,
   UsersMenu,
   AddTickets,
+  EditTickets,
 } from "./pages";
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="promos" element={<PromosMenu />} />
         <Route path="tickets" element={<TicketsMenu />} />
         <Route path="tickets/add-tickets" element={<AddTickets />} />
+        <Route path="tickets/edit-tickets/:id" element={<EditTickets />} />
         <Route path="transactions" element={<TransactionsMenu />} />
         <Route path="users" element={<UsersMenu />} />
       </Route>

@@ -111,7 +111,7 @@ const TicketsMenu = () => {
         <div className="container-fluid px-4 m-2">
           <div className="row my-2 p-4 bg-white rounded shadow-sm">
             <div className="col">
-              <Link to="add-tickets" style={{width: "fit"}}>
+              <Link to="add-tickets" style={{ width: "fit" }}>
                 <Button
                   variant="success"
                   className="d-flex align-items-center justify-content-center m-0"
@@ -183,9 +183,11 @@ const TicketsMenu = () => {
                         )}
                       </td>
                       <td>
-                        <Button variant="primary" className="mx-1">
-                          <PencilFill />
-                        </Button>
+                        <Link to={`edit-tickets/${item.id}`}>
+                          <Button variant="primary" className="mx-1">
+                            <PencilFill />
+                          </Button>
+                        </Link>
                         <Button variant="danger">
                           <TrashFill />
                         </Button>

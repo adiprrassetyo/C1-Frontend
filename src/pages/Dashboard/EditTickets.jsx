@@ -7,7 +7,7 @@ import TimePicker from "react-bootstrap-time-picker";
 import { Typeahead } from "react-bootstrap-typeahead";
 import axios from "axios";
 
-const TicketsMenu = () => {
+const EditTickets = () => {
   const [isToggled, setIsToggled] = useOutletContext();
   const [from, setFrom] = useState([{ code: null, city: null, airport: null }]);
   const [to, setTo] = useState([{ code: null, city: null, airport: null }]);
@@ -23,34 +23,6 @@ const TicketsMenu = () => {
 
     getOptions();
   }, []);
-
-  const [formData, setFormData] = useState({
-    departureTime: "",
-    arrivalTime: "",
-    date: "",
-    adultPrice: 0,
-    childPrice: 0,
-    type: "oneway",
-    stock: 0,
-  });
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = event.target; //event target destructuring
-
-    setFormData((prevFormData) => {
-      //set State Value
-      return {
-        ...prevFormData, //take prev state to new object
-        [name]: type === "checkbox" ? checked : value, // if type is checkbox the value will be checked (bolean value) else the value willl be value of input
-      };
-    });
-  };
-
-  function handleSubmit(event) {
-    event.preventDefault(); //remove default behavior that re render all of the page
-    // submitToApi(formData)
-    console.log({ ...formData, from: from[0], to: to[0] });
-  }
 
   return (
     <div id="page-content-wrapper">
@@ -119,7 +91,7 @@ const TicketsMenu = () => {
 
       <div className="container-fluid px-4 m-2">
         <div className="row my-2 p-4 bg-white rounded shadow-sm">
-          <Form className="" onSubmit={handleSubmit} style={{ width: "40%" }}>
+          <Form className="" style={{ width: "40%" }}>
             <Row>
               <Form.Group className="mb-3">
                 <Form.Label>From</Form.Label>
@@ -273,4 +245,4 @@ const TicketsMenu = () => {
   );
 };
 
-export default TicketsMenu;
+export default EditTickets;
