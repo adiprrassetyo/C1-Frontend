@@ -1,0 +1,125 @@
+.search {
+    background-color: #F5F5F5;
+    padding: 6em;
+}
+
+.search-content h2 {
+    font-size: 24px;
+}
+
+.flex-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+
+.search-header{
+    background-color: #FFFFFF;
+    color: #59595B;
+}
+
+.search-header h2{
+    color: #59595B;
+}
+
+.search-header p {
+    color: #59595B;
+    font-size: 14px;
+}
+
+.search-header p span{
+    color: #9A9A9D;
+}
+
+.filter p{
+    margin-top: 16px;
+    color: #59595B;
+    font-size: 14px;
+}
+
+.text-1 h2{
+    font-size: 24px;
+    color: #59595B;
+}
+
+.text-1 p{
+    font-size: 14px;
+    color: #59595B;
+}
+
+.filter .dropdown .btn{
+    font-size: 12px;
+    background-color: #F7F7F7;
+    color: #9A9A9D;
+    border-radius: 5px;
+    width: auto;
+    padding: 1em;
+}
+
+.btn-tanggal {
+    display:inline;
+    color: #9A9A9D;
+    font-size: 15px;
+}
+
+.flight-content {
+    background-color: #FFFFFF;
+    font-size: 15px;
+    color: #59595B;
+}
+
+.flight-content .airline-logo {
+    height: 50px;
+}
+
+.flight-content h3 {
+    font-size: 17px;
+}
+
+.flight-content .txt-langsung p{
+    color: #9A9A9D;
+}
+
+.flight-content .baggage h4 {
+    margin-left: 12px;
+    display: inline;
+}
+
+.flight-content .baggage img {
+    height: 30px;
+}
+
+.btn-flight {
+    background-color: #13A2D7;
+    color: #FFFFFF;
+    font-size: 10px;
+}
+
+.flight-content .flight-header {
+    background-color: #13A2D7;
+    color: #FFFFFF;
+}
+
+.flight-content .txt-langsung.gratis-bagasi h3 {
+    font-size: 16px;
+}
+
+.flight-content span {
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid #59595B;
+    box-shadow: 0px 2px 3px rgba(10, 10, 10, 0.1);
+}
+
+.payment-content {
+    background-color: #F5F5F5;
+    font-size: 18px;
+    color: #59595B;
+    border: none;
+}
