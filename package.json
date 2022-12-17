@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "npx http-server ./dist",
+    "start": "npx http-server ./dist --cors",
     "build": "vite build",
     "preview": "vite preview"
   },

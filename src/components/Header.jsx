@@ -77,17 +77,17 @@ const Header = () => {
                     <NavDropdown.Item>US</NavDropdown.Item>
                     <NavDropdown.Item>IDR</NavDropdown.Item>
                   </NavDropdown> */}
-
-                  <Button
-                    href="/auth"
-                    className={
-                      user
-                        ? "btn btn-light button-login d-none"
-                        : "btn btn-light button-login"
-                    }
-                  >
-                    Login
-                  </Button>
+                  <NavLink to="/auth" className="m-0 p-0">
+                    <Button
+                      className={
+                        user
+                          ? "btn btn-light button-login d-none"
+                          : "btn btn-light button-login"
+                      }
+                    >
+                      Login
+                    </Button>
+                  </NavLink>
 
                   <NavDropdown
                     title={
@@ -142,5 +142,6 @@ const Header = () => {
     </>
   );
 };
+
 
 export default Header;
