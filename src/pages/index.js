@@ -12,6 +12,7 @@ import TransactionsMenu from "./Dashboard/TransactionsMenu";
 import UsersMenu from "./Dashboard/UsersMenu";
 import Promo from "./Promo";
 import DetailPromo from "./DetailPromo";
+import Booking from "./Booking";
 
 export {
   Flight,
@@ -26,4 +27,5 @@ export {
   Promo,
   DetailPromo,
   UsersMenu,
+  Booking
 };

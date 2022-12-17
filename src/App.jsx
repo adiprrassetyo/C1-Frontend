@@ -19,6 +19,7 @@ import {
   UsersMenu,
   Promo,
   DetailPromo,
+  Booking
 } from "./pages";
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/flight" element={<Flight />}></Route>
           <Route path="/flight/search" element={<Tickets />} />
+          <Route path="/flight/booking" element={<Booking />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/promo" element={<Promo />} />
           <Route path="/promo/view/:promoId" element={<DetailPromo />} />
