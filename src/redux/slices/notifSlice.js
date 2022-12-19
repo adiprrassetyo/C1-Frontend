@@ -32,7 +32,7 @@ export const readAllNotif = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await notif.readAll();
-      console.info(res)
+      console.info(res);
       return res.data;
     } catch (error) {
       console.info(error);
@@ -49,7 +49,17 @@ const notifSlice = createSlice({
     message: "",
     notif: [],
   },
-  reducers: {},
+  reducers: {
+    read: (state, action) => {
+      return {
+        ...state,
+        notif: state.notif.map((n) =>
+          n.id === action.payload[0] ? { ...n, isRead: true } : n
+        ),
+        status: action.payload.status,
+      };
+    },
+  },
   extraReducers: {
     [retriveNotif.pending]: (state, action) => {
       return { ...state, loading: true };
@@ -75,7 +85,7 @@ const notifSlice = createSlice({
       return { ...state, loading: true };
     },
     [readOneNotif.fulfilled]: (state, action) => {
-      console.info(action.payload);
+      console.info({ payload: state.notif });
       return {
         ...state,
         loading: false,
@@ -117,5 +127,7 @@ const notifSlice = createSlice({
     },
   },
 });
+
+export const { read } = notifSlice.actions;
 
 export default notifSlice.reducer;

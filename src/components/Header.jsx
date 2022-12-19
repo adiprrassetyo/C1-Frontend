@@ -32,15 +32,13 @@ import {
   retriveNotif,
   readOneNotif,
   readAllNotif,
+  read,
 } from "../redux/slices/notifSlice";
 
 const Header = () => {
   const [sticky, setSticky] = useState(false);
   const { user } = useSelector((state) => state.auth);
 
-  const [notifData, setNotifData] = useState([]);
-
-  const { notif, loading } = useSelector((state) => state.notif);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -68,13 +66,14 @@ const Header = () => {
   });
 
   //NOTIFICATION
+  const { notif, loading } = useSelector((state) => state.notif);
+  const [notifData, setNotifData] = useState(notif);
+
   useEffect(() => {
     if (user) {
       dispatch(retriveNotif());
-      setNotifData(notif);
     }
-  }, [dispatch, notif, user]);
-
+  }, [dispatch]);
   return (
     <>
       {["md"].map((expand) => (
@@ -150,6 +149,7 @@ const Header = () => {
                                       className="readAll-btn"
                                       onClick={() => {
                                         dispatch(readAllNotif());
+                                        setNotifData(notif);
                                       }}
                                       style={{
                                         border: 0,
@@ -213,25 +213,29 @@ const Header = () => {
                                     key={msg.id}
                                     onClick={() => {
                                       dispatch(readOneNotif([msg.id]));
+                                      dispatch(read([msg.id]));
+                                      setNotifData(notif);
                                     }}
                                   >
-                                    <div>
+                                    <div className="w-75">
                                       <h6 className="mb-1">{msg.message}</h6>
                                       {notifTime()}
                                     </div>
-                                    {msg.isRead ? (
-                                      <CircleFill
-                                        size={25}
-                                        className="ms-3 "
-                                        style={{ color: "grey" }}
-                                      />
-                                    ) : (
-                                      <CircleFill
-                                        size={25}
-                                        className="ms-3"
-                                        style={{ color: "#13A2D7" }}
-                                      />
-                                    )}
+                                    <div className="w-25 d-flex justify-content-center">
+                                      {msg.isRead ? (
+                                        <CircleFill
+                                          size={20}
+                                          className="ms-3 "
+                                          style={{ color: "grey", alignText: "center" }}
+                                        />
+                                      ) : (
+                                        <CircleFill
+                                          size={25}
+                                          className="ms-3"
+                                          style={{ color: "#13A2D7" }}
+                                        />
+                                      )}
+                                    </div>
                                   </div>
                                 );
                               })
@@ -244,12 +248,12 @@ const Header = () => {
                         <Bell size="18" />
                         {/* {notifData?.filter((msg) => msg.isRead === false)
                           .length < 0 && ( */}
-                          <div className="counter">
-                            {
-                              notifData?.filter((msg) => msg.isRead === false)
-                                .length
-                            }
-                          </div>
+                        <div className="counter">
+                          {
+                            notifData?.filter((msg) => msg.isRead === false)
+                              .length
+                          }
+                        </div>
                         {/* )} */}
                       </div>
                     </OverlayTrigger>
