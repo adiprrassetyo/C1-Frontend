@@ -15,8 +15,8 @@
     "axios": "^1.2.0",
     "bootstrap": "^5.2.2",
     "copy-to-clipboard": "^3.3.3",
-    "moment": "^2.29.4",
     "hamburger-react": "^2.5.0",
+    "moment": "^2.29.4",
     "places-autocomplete-react": "^1.0.10",
     "prop-types": "^15.6.0",
     "react": "^18.2.0",
@@ -31,7 +31,8 @@
     "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",
     "redux-persist": "^6.0.0",
-    "remixicon": "^2.5.0"
+    "remixicon": "^2.5.0",
+    "socket.io-client": "^4.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",
