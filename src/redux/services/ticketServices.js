@@ -9,7 +9,7 @@ export const retrive = ({ from, to, type, date, willFly }) => {
       airport_to: to.airport,
       type,
       date_start: date,
-      willFly,
+      willFly: false,
     },
   });
 };

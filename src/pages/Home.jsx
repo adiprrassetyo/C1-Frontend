@@ -97,7 +97,7 @@ const Home = () => {
                   alt="feature-5"
                   className="feature-img"
                 ></img>
-                <p className="feature-title">Banyak Pilihan Destinasi</p>
+                <p className="feature-title">Ahlinya Travel Agent</p>
                 <p className="feature-desc">
                   Bersama dengan mitra terpercaya kami, memenuhi kebutuhan
                   traveler yang jumlah nya tak terhitung sejak 2011
@@ -109,7 +109,7 @@ const Home = () => {
                   alt="feature-6"
                   className="feature-img"
                 ></img>
-                <p className="feature-title">Banyak Pilihan Destinasi</p>
+                <p className="feature-title">Layanan Pelanggan Yang Ramah</p>
                 <p className="feature-desc">
                   Layanan pelanggan kami tersedia 24/7 memberikan bantuan
                   terbaik dalam bahasa lokal Anda

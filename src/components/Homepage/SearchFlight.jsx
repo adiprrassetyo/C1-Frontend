@@ -71,7 +71,7 @@ const SearchFlight = () => {
         type: selected,
         startDate: startDate,
         endDate: endDate,
-        willFly: true,
+        // willFly: false,
         countDewasa,
         countAnak,
       })
