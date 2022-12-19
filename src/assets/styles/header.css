@@ -78,6 +78,54 @@ nav a.active {
   margin-right: 10px;
 }
 
+.icon {
+  cursor: pointer;
+  position: relative;
+}
+
+.counter {
+  width: 15px;
+  height: 15px;
+  background-color: #13a2d7;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.notif-msg {
+  padding: 5px 15px;
+  cursor: pointer;
+}
+.notif-msg:hover {
+  background-color: #f0f2f5;
+}
+
+.dots-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.dots-btn:hover {
+  background: #f0f2f5;
+  border-radius: 50%;
+}
+
+.readAll-btn {
+  background: white;
+}
+.readAll-btn:hover {
+  background: #f0f2f5;
+}
+
 @media (min-width: 576px) and (max-width: 768px) {
   .nav-dropdown {
     display: block;
