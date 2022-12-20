@@ -45,17 +45,19 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
-export const logoutUser = createAsyncThunk("user/logout", async (navigate) => {
-  try {
-    const res = await auth.logout();
-    if (res.data.status == "success") {
-      navigate("/");
+
+export const resetPass = createAsyncThunk(
+  "user/reset",
+  async (email, { rejectWithValue }) => {
+    try {
+      const res = await auth.reset(email);
+      console.info(res);
+      return res;
+    } catch (error) {
+      return rejectWithValue(error.response);
     }
-    return res.data;
-  } catch (error) {
-    return rejectWithValue(error.response);
   }
-});
+);
 
 const authSlice = createSlice({
   name: "auth",
@@ -111,6 +113,7 @@ const authSlice = createSlice({
       return { ...state, loading: true, message: "Processing your action..." };
     },
     [loginUser.fulfilled]: (state, action) => {
+      console.info({ payMessageLogin: action.payload });
       return {
         loading: false,
         message: action.payload?.message,
@@ -126,20 +129,26 @@ const authSlice = createSlice({
         status: "error",
       };
     },
-    //logout
-    [logoutUser.pending]: (state, action) => {
-      return { ...state, loading: true };
+    //reset pass
+    [resetPass.pending]: (state, action) => {
+      return { ...state, loading: true, message: "Processing your action..." };
     },
-    [logoutUser.fulfilled]: (state, action) => {
-      localStorage.removeItem("user");
+    [resetPass.fulfilled]: (state, action) => {
+      console.info({ payMessage: action.payload });
       return {
+        ...state,
         loading: false,
-        message: action.payload.message,
-        user: {},
+        message: action.payload?.data.message,
+        status: action.payload.data.status,
       };
     },
-    [logoutUser.rejected]: (state, action) => {
-      return { ...state, loading: false };
+    [resetPass.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload?.data.message,
+        status: "error",
+      };
     },
   },
 });

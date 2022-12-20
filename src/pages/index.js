@@ -1,4 +1,3 @@
-
 import NotFound from "./NotFound";
 import Tickets from "./Tickets";
 import Flight from "./Flight";
@@ -12,10 +11,12 @@ import TransactionsMenu from "./Dashboard/TransactionsMenu";
 import UsersMenu from "./Dashboard/UsersMenu";
 import Promo from "./Promo";
 import DetailPromo from "./DetailPromo";
+import Reset from "./Reset";
 
 export {
   Flight,
-  NotFound, Tickets,
+  NotFound,
+  Tickets,
   Home,
   Auth,
   DashboardLayout,
@@ -26,4 +27,5 @@ export {
   Promo,
   DetailPromo,
   UsersMenu,
+  Reset,
 };
