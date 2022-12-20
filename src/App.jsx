@@ -22,6 +22,7 @@ import {
   UsersMenu,
   Promo,
   DetailPromo,
+  Reset
 } from "./pages";
 
 const App = () => {
@@ -67,6 +68,7 @@ const App = () => {
           <Route path="/flight" element={<Flight />}></Route>
           <Route path="/flight/search" element={<Tickets />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/reset" element={<Reset />} />
           <Route path="/promo" element={<Promo />} />
           <Route path="/promo/view/:promoId" element={<DetailPromo />} />
           <Route path="*" element={<NotFound />} />
