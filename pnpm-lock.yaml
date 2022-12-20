@@ -10,6 +10,7 @@ specifiers:
   bootstrap: ^5.2.2
   copy-to-clipboard: ^3.3.3
   hamburger-react: ^2.5.0
+  jwt-decode: ^3.1.2
   moment: ^2.29.4
   places-autocomplete-react: ^1.0.10
   prop-types: ^15.6.0
@@ -36,6 +37,7 @@ dependencies:
   bootstrap: 5.2.3_@popperjs+core@2.11.6
   copy-to-clipboard: 3.3.3
   hamburger-react: 2.5.0_react@18.2.0
+  jwt-decode: 3.1.2
   moment: 2.29.4
   places-autocomplete-react: 1.0.10_v2m5e27vhdewzwhryxwfaorcca
   prop-types: 15.8.1
@@ -1969,6 +1971,10 @@ packages:
     resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
     engines: {node: '>=6'}
     hasBin: true
+
+  /jwt-decode/3.1.2:
+    resolution: {integrity: sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==}
+    dev: false
 
   /libphonenumber-js/1.10.14:
     resolution: {integrity: sha512-McGS7GV/WjJ2KjfOGhJU1oJn29RYeo7Q+RpANRbUNMQ9gj5XArpbjurSuyYPTejFwbaUojstQ4XyWCrAzGOUXw==}

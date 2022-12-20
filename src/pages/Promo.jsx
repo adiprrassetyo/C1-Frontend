@@ -13,7 +13,6 @@ const Promo = () => {
     (state) => state.promo
   );
 
-  console.log({ promos });
   const dispatch = useDispatch();
   useEffect(() => {
     console.info("dispatch");
@@ -25,12 +24,12 @@ const Promo = () => {
       <Header />
       <section className="carousel-banner">
         <Carousel>
-          {promos.map((promo) => (
+          {promos.map((promo, i) => (
             <Carousel.Item key={promo.id}>
               <img
                 className="d-block"
                 src={promo.promo_image}
-                alt="First slide"
+                alt={`${i}-slide`}
               />
             </Carousel.Item>
           ))}

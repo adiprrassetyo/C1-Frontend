@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "remixicon/fonts/remixicon.css";
 import "./assets/styles/main.css";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter, useLocation } from "react-router-dom";
 import Protected from "./utils/Protected";
+import jwtDecode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { logout } from "./redux/slices/authSlice";
 import {
   Home,
   Flight,
@@ -22,6 +25,40 @@ import {
 } from "./pages";
 
 const App = () => {
+  const dispatch = useDispatch();
+  //fungsi gae get token
+  const token = JSON.parse(localStorage.getItem("user"))
+    ? JSON.parse(localStorage.getItem("user")).token
+    : null;
+  const isTokenExpired = (token) => {
+    // Mendekode token menggunakan jwtDecode
+    const decoded = jwtDecode(token);
+
+    // Mengambil waktu saat ini
+    const currentTime = Date.now().valueOf() / 1000;
+
+    // Jika waktu saat ini lebih besar dari waktu kedaluwarsa token,
+    // maka token sudah kedaluwarsa
+    if (currentTime > decoded.exp) {
+      return true;
+    }
+
+    return false;
+  };
+
+  //fungsi gae cek token exp
+
+  useEffect(() => {
+    if (token) {
+      const isExp = isTokenExpired(token);
+      if (isExp) {
+        dispatch(logout());
+      }
+    }
+  }, []);
+
+  //fungsi gae logout lk token exp
+
   return (
     <>
       <HashRouter>
