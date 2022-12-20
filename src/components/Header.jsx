@@ -226,11 +226,14 @@ const Header = () => {
                                         <CircleFill
                                           size={20}
                                           className="ms-3 "
-                                          style={{ color: "grey", alignText: "center" }}
+                                          style={{
+                                            color: "grey",
+                                            alignText: "center",
+                                          }}
                                         />
                                       ) : (
                                         <CircleFill
-                                          size={25}
+                                          size={20}
                                           className="ms-3"
                                           style={{ color: "#13A2D7" }}
                                         />
