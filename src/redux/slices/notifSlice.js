@@ -50,15 +50,15 @@ const notifSlice = createSlice({
     notif: [],
   },
   reducers: {
-    read: (state, action) => {
-      return {
-        ...state,
-        notif: state.notif.map((n) =>
-          n.id === action.payload[0] ? { ...n, isRead: true } : n
-        ),
-        status: action.payload.status,
-      };
-    },
+    // read: (state, action) => {
+    //   return {
+    //     ...state,
+    //     notif: state.notif.map((n) =>
+    //       n.id === action.payload[0] ? { ...n, isRead: true } : n
+    //     ),
+    //     status: action.payload.status,
+    //   };
+    // },
   },
   extraReducers: {
     [retriveNotif.pending]: (state, action) => {
@@ -85,13 +85,12 @@ const notifSlice = createSlice({
       return { ...state, loading: true };
     },
     [readOneNotif.fulfilled]: (state, action) => {
-      console.info({ payload: state.notif });
       return {
         ...state,
         loading: false,
         message: action.payload.msg,
         notif: state.notif.map((n) =>
-          n.id === action.payload.data[0].id ? { ...n, isRead: true } : n
+          n.id == action.payload.data[0].id ? { ...n, isRead: true } : n
         ),
         status: action.payload.status,
       };

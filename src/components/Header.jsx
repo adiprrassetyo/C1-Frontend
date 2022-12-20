@@ -32,7 +32,7 @@ import {
   retriveNotif,
   readOneNotif,
   readAllNotif,
-  read,
+  // read,
 } from "../redux/slices/notifSlice";
 
 const Header = () => {
@@ -213,7 +213,7 @@ const Header = () => {
                                     key={msg.id}
                                     onClick={() => {
                                       dispatch(readOneNotif([msg.id]));
-                                      dispatch(read([msg.id]));
+                                      // dispatch(read([msg.id]));
                                       setNotifData(notif);
                                     }}
                                   >

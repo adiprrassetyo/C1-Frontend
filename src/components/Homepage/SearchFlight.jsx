@@ -41,10 +41,6 @@ const SearchFlight = () => {
   const { loading, status, ticket } = useSelector((state) => state.ticket);
   const redirect = useNavigate();
 
-  useEffect(() => {
-    console.info(ticket, status);
-  }, [dispatch]);
-
   const handleChange = (event) => {
     setSelected(event.target.value);
   };
