@@ -49,6 +49,28 @@
   color: black;
   text-align: start;
 }
+.feature {
+  margin-top: 42px;
+}
+.feature-section {
+  margin-top: 100px;
+}
+.feature-col {
+  margin-bottom: 32px;
+}
+.feature-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #59595b;
+  margin-bottom: 12px;
+}
+.feature-desc {
+  font-size: 14px;
+  color: #9a9a9d;
+}
+.feature-img {
+  margin-bottom: 24px;
+}
 .popover-trigger:active {
   width: 100%;
   background-color: var(--second-color);

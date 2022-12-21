@@ -1,217 +1,236 @@
-
 .search {
-    background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 .search-box {
-    background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 
 .search-content h2 {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .flex-filter {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: right;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
 }
 
-.search-header{
-    background-color: #FFFFFF;
-    color: #59595B;
+.binair-icon {
+  width: 150px;
 }
 
-.search-header h2{
-    color: #59595B;
+.search-header {
+  background-color: #ffffff;
+  color: #59595b;
+}
+
+.search-header h2 {
+  color: #59595b;
 }
 
 .search-header p {
-    color: #59595B;
-    font-size: 14px;
+  color: #59595b;
+  font-size: 14px;
 }
 
-.search-header p span{
-    color: #9A9A9D;
+.search-header p span {
+  color: #9a9a9d;
 }
 
 .btn-flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: end;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
 }
 
-
-
-.filter p{
-    margin-top: 16px;
-    color: #59595B;
-    font-size: 14px;
+.filter p {
+  margin-top: 16px;
+  color: #59595b;
+  font-size: 14px;
 }
 
-.text-1 h2{
-    font-size: 24px;
-    color: #59595B;
+.text-1 h2 {
+  font-size: 24px;
+  color: #59595b;
 }
 
-.text-1 p{
-    font-size: 14px;
-    color: #59595B;
+.text-1 p {
+  font-size: 14px;
+  color: #59595b;
 }
 
 .form-range {
-    width: 200px;
+  width: 200px;
 }
-.filter .dropdown .btn{
-    font-size: 12px;
-    background-color: #F7F7F7;
-    color: #9A9A9D;
-    border-radius: 5px;
-    width: auto;
-    padding: 1em;
+.filter .dropdown .btn {
+  font-size: 12px;
+  background-color: #f7f7f7;
+  color: #9a9a9d;
+  border-radius: 5px;
+  width: auto;
+  padding: 1em;
 }
 
 .form-check-label {
-    font-size: 12px;
-    color: #9A9A9D;
+  font-size: 12px;
+  color: #9a9a9d;
 }
 
 .form-select {
-    font-size: 12px;
-    background-color: #F7F7F7;
-    color: #9A9A9D;
-    border-radius: 5px;
-    width: auto;
+  font-size: 12px;
+  background-color: #f7f7f7;
+  color: #9a9a9d;
+  border-radius: 5px;
+  width: auto;
 }
 
 .btn-tanggal {
-    display:inline;
-    color: #9A9A9D;
-    font-size: 15px;
+  display: inline;
+  color: #9a9a9d;
+  font-size: 15px;
 }
 
 .flight-content .flight-header {
-    font-size: 15px;
-    color: #59595B;
+  font-size: 15px;
+  color: #59595b;
 }
 
 .time-flight-flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-
-.flight-box-time.time-flight-flex .txt-langsung{
-    color: #9A9A9D;
+.flight-box-time.time-flight-flex .txt-langsung {
+  color: #9a9a9d;
 }
 
-.plus-one-day{
-    box-shadow: 0px 2px 3px rgba(10, 10, 10, 0.1), 0px 0px 0px 1px rgba(10, 10, 10, 0.1);
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 700;
-    position: absolute;
-    top: -5px;
+.plus-one-day {
+  box-shadow: 0px 2px 3px rgba(10, 10, 10, 0.1),
+    0px 0px 0px 1px rgba(10, 10, 10, 0.1);
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  position: absolute;
+  top: -5px;
 }
 
 .plus-one-day-detail {
-    box-shadow: 0px 2px 3px rgba(10, 10, 10, 0.1), 0px 0px 0px 1px rgba(10, 10, 10, 0.1);
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 700;
-    color: black;
-    position: absolute;
+  box-shadow: 0px 2px 3px rgba(10, 10, 10, 0.1),
+    0px 0px 0px 1px rgba(10, 10, 10, 0.1);
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: black;
+  position: absolute;
 }
 
 .baggage.time-flight-flex img {
-    height: 18px;
-    padding-right: 10px;
+  height: 18px;
+  padding-right: 10px;
 }
 
 .baggage.time-flight-flex {
-    padding-top: 15px;
+  padding-top: 15px;
 }
 
-.flight-box-price span{
-    color: #9A9A9D;
+.flight-box-price span {
+  color: #9a9a9d;
 }
 
 .btn-flight {
-    background-color: #13A2D7;
-    color: #FFFFFF;
-    font-size: 10px;
+  background-color: #f37c20;
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.btn-flight:hover {
+  color: white;
+  background-color: #ce681a;
+}
+
+.btn-switch {
+  border: 1px solid #f37c20;
+  padding: 15px;
+  color: black;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.btn-switch:hover {
+  color: white;
+  background-color: #ce681a;
 }
 
 .facility-flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .timeline-flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 
-.flight-detail-airline-info  img {
-    height: 30px;
+.flight-detail-airline-info img {
+  height: 30px;
 }
 
-.flight-detail-airline-info  {
-    color: #59595B;
+.flight-detail-airline-info {
+  color: #59595b;
 }
 
-.flight-detail-airline-info span  {
-    color: #9A9A9D;
+.flight-detail-airline-info span {
+  color: #9a9a9d;
 }
 
 .slider-flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .time-line img {
-    width: 50px;
-    height: 200px;
-    padding-top: 30px;
-
+  width: 50px;
+  height: 200px;
+  padding-top: 30px;
 }
 
 .timeline-info {
-    color: #9A9A9D;
+  color: #9a9a9d;
 }
 
 .timeline-departure-time strong {
-    font-size: 25px;
-    color: #59595B;
+  font-size: 25px;
+  color: #59595b;
 }
 
 .timeline-arrival-time strong {
-    font-size: 25px;
-    color: #59595B;
+  font-size: 25px;
+  color: #59595b;
 }
 
-.facility-item img{
-    height: 20px;
+.facility-item img {
+  height: 20px;
 }
 
 .free-baggage {
-    border-radius: 2px;
-    color: #FFFFFF;
-    background-color: #13A2D7;
+  border-radius: 2px;
+  color: #ffffff;
+  background-color: #13a2d7;
 }
 
 .payment-content {
-    background-color: #F5F5F5;
-    font-size: 18px;
-    color: #59595B;
-    border: none;
+  background-color: #f5f5f5;
+  font-size: 18px;
+  color: #59595b;
+  border: none;
 }

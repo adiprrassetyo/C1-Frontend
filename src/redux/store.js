@@ -4,6 +4,8 @@ import storage from "redux-persist/lib/storage"; // Penyimpanan lokal
 
 import authReducer from "./slices/authSlice";
 import ticketReducer from "./slices/ticketSlice";
+import promoReducer from "./slices/promoSlice";
+import notifReducer from "./slices/notifSlice";
 
 // Konfigurasi untuk redux-persist
 const persistConfig = {
@@ -15,6 +17,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authReducer,
   ticket: ticketReducer,
+  promo: promoReducer,
+  notif: notifReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer); // Reducer yang telah dipersist

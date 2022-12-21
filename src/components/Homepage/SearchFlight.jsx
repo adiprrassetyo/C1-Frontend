@@ -41,21 +41,9 @@ const SearchFlight = () => {
   const { loading, status, ticket } = useSelector((state) => state.ticket);
   const redirect = useNavigate();
 
-  useEffect(() => {
-    console.info(ticket, status);
-  }, [dispatch]);
-
   const handleChange = (event) => {
     setSelected(event.target.value);
   };
-
-  // const switchCity = (e) => {
-  //   e.preventDefault();
-  //   setFrom(to);
-  //   setTo(from);
-  //   toRef.current = "";
-  //   fromRef.current = "";
-  // };
 
   const startEndDateChange = (startDt, endDt) => {
     if (startDt) {
@@ -79,7 +67,7 @@ const SearchFlight = () => {
         type: selected,
         startDate: startDate,
         endDate: endDate,
-        willFly: true,
+        // willFly: false,
         countDewasa,
         countAnak,
       })
@@ -168,6 +156,7 @@ const SearchFlight = () => {
                   value={from}
                   ref={fromRef}
                   inputProps={{
+                    required: true,
                     className: "form-input form-style p-0 ps-1",
                     style: {},
                   }}
@@ -234,6 +223,7 @@ const SearchFlight = () => {
                   }}
                   labelKey={(option) => `${option.city} (${option.code})`}
                   inputProps={{
+                    required: true,
                     className: "form-input form-style p-0 ps-1",
                     style: {},
                   }}
