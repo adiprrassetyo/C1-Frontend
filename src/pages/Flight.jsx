@@ -127,6 +127,7 @@ const Flight = () => {
           to: to[0],
           type: isRoundTrip ? "roundtrip" : "oneway",
           date: startDate,
+          endDate,
           willFly: true,
         },
         redirect,
