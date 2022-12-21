@@ -19,10 +19,6 @@ import google_play from "../assets/images/google-play.svg";
 import mobile_mockup from "../assets/images/mobile-mockup.svg";
 import SimplifyBookingImg from "../assets/images/simplifyBooking.svg";
 import SwitchCityIcon from "../assets/images/switch-city.svg";
-import {
-  RangeDatePicker,
-  SingleDatePicker,
-} from "react-google-flight-datepicker";
 import TravelProduct from "../assets/images/travelProducts.svg";
 import "../assets/styles/flight.css";
 import { Footer, Header } from "../components";
