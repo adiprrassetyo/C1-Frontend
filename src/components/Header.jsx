@@ -115,11 +115,11 @@ const Header = () => {
                     className={user ? `nav-dropdown` : `nav-dropdown d-none`}
                     // noCarret
                   >
-                    <NavDropdown.Item>
+                    <NavDropdown.Item href="account/profile">
                       <i className="remix-icon ri-user-3-line"></i>
                       <span className="ml-2 profile-item">Profil</span>
                     </NavDropdown.Item>
-                    <NavDropdown.Item>
+                    <NavDropdown.Item href="account/password">
                       <i className="remix-icon ri-key-2-line"></i>
                       <span className="ml-2">Ubah Password</span>
                     </NavDropdown.Item>
@@ -127,11 +127,11 @@ const Header = () => {
                       <i className="remix-icon ri-contacts-book-line"></i>
                       <span className="ml-2">Daftar Kontak</span>
                     </NavDropdown.Item>
-                    <NavDropdown.Item>
+                    <NavDropdown.Item href="account/passnger">
                       <i className="remix-icon ri-list-check"></i>
                       <span className="ml-2">Daftar Traveler</span>
                     </NavDropdown.Item>
-                    <NavDropdown.Item>
+                    <NavDropdown.Item href="account/order">
                       <i className="remix-icon ri-calendar-check-line"></i>
                       <span className="ml-2">Daftar Pesanan</span>
                     </NavDropdown.Item>
