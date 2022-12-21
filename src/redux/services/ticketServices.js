@@ -1,6 +1,6 @@
 import api from "./api";
 
-export const retrive = ({ from, to, type, date, willFly }) => {
+export const retrive = ({ from, to, type, date, dateEnd, willFly, page }) => {
   return api.get("/tickets", {
     params: {
       from: from.city,
@@ -9,7 +9,9 @@ export const retrive = ({ from, to, type, date, willFly }) => {
       airport_to: to.airport,
       type,
       date_start: date,
-      willFly: false,
+      date_end: dateEnd,
+      willFly,
+      page,
     },
   });
 };
