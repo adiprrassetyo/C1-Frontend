@@ -33,10 +33,6 @@ import PasswordStrengthBar from 'react-password-strength-bar';
                                         <span>Ubah Password</span>
                                     </div>
                                 </Button>
-                                <Button href="contact" className="mb-3" variant="light" size="lg">
-                                    <i class="remix-icon ri-contacts-book-line"></i>
-                                    <span>Daftar Kontak</span>
-                                </Button>
                                 <Button href="passenger" className="mb-3" variant="light" size="lg">
                                     <i class="remix-icon ri-list-check"></i>
                                     <span>Daftar Traveler</span>
@@ -45,11 +41,12 @@ import PasswordStrengthBar from 'react-password-strength-bar';
                                     <i class="remix-icon ri-calendar-check-line"></i>
                                     <span>Daftar Pesanan</span>
                                 </Button>
-                                <Button href="bind" className="mb-3" variant="light" size="lg">
-                                    <i class="remix-icon ri-link"></i>
-                                    <span>Akun Terhubung</span>
-                                </Button>
-                                <Button className="mb-3" variant="light" size="lg">
+                                <Button className="mb-3" variant="light" size="lg"
+                                    onClick={() => {
+                                        // setDataUser({});
+                                        dispatch(logout());
+                                    }}
+                                >
                                     <i class="remix-icon ri-logout-box-r-line"></i>
                                     <span>Keluar</span>
                                 </Button>
@@ -104,12 +101,6 @@ import PasswordStrengthBar from 'react-password-strength-bar';
                                                     Simpan
                                                 </Button>{' '}
                                             </div>
-                                            
-                                            
-                                            
-                                            
-                                            
-
                                         </div>
                                     </Card.Body>
                                 </Card>
