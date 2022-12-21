@@ -14,6 +14,7 @@ import {
 import "../assets/styles/profile.css";
 import Payment from "../assets/images/payment-logo.svg";
 
+
 const Profile = () => {
   return (
     <div>
@@ -33,10 +34,6 @@ const Profile = () => {
                             <i class="remix-icon ri-key-2-line"></i>
                             <span>Ubah Password</span>
                         </Button>
-                        <Button href="contact" className="mb-3" variant="light" size="lg">
-                            <i class="remix-icon ri-contacts-book-line"></i>
-                            <span>Daftar Kontak</span>
-                        </Button>
                         <Button href="passenger" className="mb-3" variant="light" size="lg">
                             <i class="remix-icon ri-list-check"></i>
                             <span>Daftar Traveler</span>
@@ -45,11 +42,12 @@ const Profile = () => {
                             <i class="remix-icon ri-calendar-check-line"></i>
                             <span>Daftar Pesanan</span>
                         </Button>
-                        <Button href="bind" className="mb-3" variant="light" size="lg">
-                            <i class="remix-icon ri-link"></i>
-                            <span>Akun Terhubung</span>
-                        </Button>
-                        <Button className="mb-3" variant="light" size="lg">
+                        <Button className="mb-3" variant="light" size="lg"
+                            onClick={() => {
+                                // setDataUser({});
+                                dispatch(logout());
+                            }}
+                        >
                             <i class="remix-icon ri-logout-box-r-line"></i>
                             <span>Keluar</span>
                         </Button>
@@ -58,7 +56,6 @@ const Profile = () => {
                         <Card
                             bg="light"
                             key="Light"
-                            text="dark"
                             className="mb-2"
                             >
                             <Card.Header className="header-flex">
