@@ -25,6 +25,7 @@
     "react-bootstrap-typeahead": "^6.0.0",
     "react-dom": "^18.2.0",
     "react-google-flight-datepicker": "^0.1.20",
+    "react-password-strength-bar": "^0.4.1",
     "react-phone-number-input": "^3.2.12",
     "react-redux": "^8.0.5",
     "react-router": "^6.4.3",
