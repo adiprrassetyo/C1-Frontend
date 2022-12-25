@@ -25,23 +25,27 @@ import Nodata from "../assets/images/no-data.svg";
                     <Container fluid="xl" className="account-main p-3">
                         <Row>
                             <Col xs={3} className="left-panel left-flex">
-                                <Button href="profile"className="mb-3" variant="light" size="lg">
+                                <Button href="/#/account/profile"className="mb-3" variant="light" size="lg">
                                     <i class="remix-icon ri-user-3-line"></i>
                                     <span>Profil</span>
                                 </Button>
-                                <Button href="password" className="mb-3" variant="light" size="lg">
+                                <Button href="/#/account/password" className="mb-3" variant="light" size="lg">
                                     <i class="remix-icon ri-key-2-line"></i>
                                     <span>Ubah Password</span>
                                 </Button>
-                                <Button href="passenger" className="mb-3" variant="light" size="lg">
+                                <Button href="/#/account/passenger" className="mb-3" variant="light" size="lg">
                                     <i class="remix-icon ri-list-check"></i>
                                     <span>Daftar Traveler</span>
                                 </Button>
-                                <Button href="order" className="mb-3" variant="info" size="lg">
+                                <Button className="mb-3" variant="info" size="lg">
                                     <div className="selected">
                                         <i class="remix-icon ri-calendar-check-line"></i>
                                         <span>Daftar Pesanan</span>
                                     </div>
+                                </Button>
+                                <Button href="/#/account/whislist" className="mb-3" variant="light" size="lg">
+                                    <i class="remix-icon ri-shopping-basket-2-line"></i>
+                                    <span>Wishlist</span>
                                 </Button>
                                 <Button className="mb-3" variant="light" size="lg"
                                     onClick={() => {
