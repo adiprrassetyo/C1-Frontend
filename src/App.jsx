@@ -26,7 +26,8 @@ import {
   Profile,
   Password,
   Passenger,
-  Order
+  Order,
+  Whislist
 } from "./pages";
 
 const App = () => {
@@ -76,17 +77,18 @@ const App = () => {
           <Route path="/promo" element={<Promo />} />
           <Route path="/promo/view/:promoId" element={<DetailPromo />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/dashboard" element={<DashboardLayout />}>
-          <Route path="" element={<MainMenu />} />
-          <Route path="promos" element={<PromosMenu />} />
-          <Route path="tickets" element={<TicketsMenu />} />
-          <Route path="transactions" element={<TransactionsMenu />} />
-          <Route path="users" element={<UsersMenu />} />
+          <Route path="/dashboard" element={<DashboardLayout />}> 
+            <Route path="" element={<MainMenu />} />
+            <Route path="promos" element={<PromosMenu />} />
+            <Route path="tickets" element={<TicketsMenu />} />
+            <Route path="transactions" element={<TransactionsMenu />} />
+            <Route path="users" element={<UsersMenu />} />
+          </Route>
           <Route path="/account/profile" element={<Profile />} />
           <Route path="/account/password" element={<Password />} />
           <Route path="/account/passenger" element={<Passenger />} />
           <Route path="/account/order" element={<Order />} />
-          </Route>
+          <Route path="/account/whislist" element={<Whislist />} />
         </Routes>
       </HashRouter>
     </>
