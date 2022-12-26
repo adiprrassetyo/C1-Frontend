@@ -33,8 +33,6 @@ const Tickets = () => {
     (state) => state.ticket
   );
 
-  console.log({ ticket, search });
-
   return (
     <div className="search-main">
       <Header />
@@ -59,7 +57,9 @@ const Tickets = () => {
             </p>
           </Col>
           <Col xs={2}>
-            <Button className="btn-switch" variant="outline-info">Ubah Pencarian</Button>{" "}
+            <Button className="btn-switch" variant="outline-info">
+              Ubah Pencarian
+            </Button>{" "}
           </Col>
         </Row>
       </Container>
@@ -203,7 +203,7 @@ const Tickets = () => {
                 year: "numeric",
               });
               return (
-                <Accordion className="flight-content pb-2">
+                <Accordion className="flight-content pb-2" key={item.id}>
                   <Accordion.Item eventKey="0">
                     <Accordion.Header>
                       <Row className="flight-header mt-4">
@@ -313,14 +313,14 @@ const Tickets = () => {
                                 </div>
                               </div>
                               <div className="timeline-duration-wrapper mt-4 mb-4">
-                                <p className="timeline-duration">
+                                <div className="timeline-duration">
                                   <div className="icon-flex">
                                     <img src={Clock} alt="" className="me-1" />
                                     {`${hours}h ${
                                       minutes > 0 ? `${minutes}m` : ""
                                     }`}
                                   </div>
-                                </p>
+                                </div>
                               </div>
                               <div className="timeline-arrival timeline-flex">
                                 <div className="timeline-datetime me-5">
