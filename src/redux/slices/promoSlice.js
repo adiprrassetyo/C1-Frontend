@@ -3,9 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const retrivePromos = createAsyncThunk(
   "promos/retrive",
-  async (_, { rejectWithValue }) => {
+  async (page, { rejectWithValue }) => {
     try {
-      const res = await promo.retrive();
+      const res = await promo.retrive(page);
       console.log(res);
       return res.data;
     } catch (error) {
@@ -35,6 +35,8 @@ const promoSlice = createSlice({
     promoById: {},
     message: "",
     promos: [],
+    totalPages: 0,
+    currentPage: 0,
   },
   reducers: {},
   extraReducers: {
@@ -46,8 +48,10 @@ const promoSlice = createSlice({
         ...state,
         loading: false,
         message: action.payload.message,
-        promos: action.payload.data,
+        promos: action.payload.data.promos,
         status: action.payload.status,
+        totalPages: action.payload.data.totalPages,
+        currentPage: action.payload.data.currentPage,
       };
     },
     [retrivePromos.rejected]: (state, action) => {
@@ -62,7 +66,7 @@ const promoSlice = createSlice({
       return { ...state, loading: true };
     },
     [retrivePromo.fulfilled]: (state, action) => {
-      console.log({payload : action.payload});
+      console.log({ payload: action.payload });
       return {
         ...state,
         loading: false,
@@ -72,8 +76,8 @@ const promoSlice = createSlice({
       };
     },
     [retrivePromo.rejected]: (state, action) => {
-      console.log({payload : action.payload});
-      
+      console.log({ payload: action.payload });
+
       return {
         ...state,
         loading: false,
