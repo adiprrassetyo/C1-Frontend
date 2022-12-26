@@ -8,7 +8,6 @@ export const retriveTickets = createAsyncThunk(
     try {
       const res = await ticket.retrive(params);
       redirect && redirect("/flight/search");
-
       return res.data;
     } catch (error) {
       console.info({ error });
@@ -40,6 +39,9 @@ const ticketSlice = createSlice({
     message: "",
     search: {},
     ticket: [],
+    totalPages: 0,
+    currentPage: 1,
+    totalItems: 0,
   },
   reducers: {
     clearState: (state, action) => {

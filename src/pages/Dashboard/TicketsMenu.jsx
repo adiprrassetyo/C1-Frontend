@@ -1,27 +1,36 @@
 import { Squash as Hamburger } from "hamburger-react";
-import React from "react";
-import { Button, Container, Spinner } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Button, Container, Pagination, Spinner } from "react-bootstrap";
 import {
-  ArrowRight,
-  EyeFill,
-  PencilFill,
+  ArrowDownUp, ArrowRight, PencilFill,
   Plus,
-  TrashFill,
-  ArrowDownUp,
+  TrashFill
 } from "react-bootstrap-icons";
-import { useOutletContext } from "react-router-dom";
-import Arrow from "../../assets/images/Vector.svg";
-import { useSelector, useDispatch } from "react-redux";
+import Loader from "react-loader-advanced";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useOutletContext } from "react-router-dom";
 import { retriveTickets } from "../../redux/slices/ticketSlice";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 const TicketsMenu = () => {
-  const { loading, status, message, ticket } = useSelector(
-    (state) => state.ticket
-  );
+  const { loading, status, message, ticket, totalPages, currentPage } =
+    useSelector((state) => state.ticket);
 
   const dispatch = useDispatch();
+
+  const handlePageChange = (page) => {
+    dispatch(
+      retriveTickets({
+        params: {
+          from: "",
+          to: "",
+          type: "",
+          date: "",
+          willFly: false,
+          page,
+        },
+      })
+    );
+  };
 
   useEffect(() => {
     dispatch(
@@ -32,6 +41,7 @@ const TicketsMenu = () => {
           type: "",
           date: "",
           willFly: false,
+          page: 0,
         },
       })
     );
@@ -39,75 +49,79 @@ const TicketsMenu = () => {
 
   const [isToggled, setIsToggled] = useOutletContext();
   return (
-    <div id="page-content-wrapper">
-      <nav className="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-        <div className="d-flex align-items-center">
-          <Container className="bg-white rounded me-2 p-0">
-            <Hamburger
-              size={22}
-              toggled={isToggled}
-              toggle={() => {
-                setIsToggled(!isToggled);
-              }}
-              style={{ margin: 0 }}
-            />
-          </Container>
-          <h2 className="fs-4 m-0 text-white">Tickets</h2>
-        </div>
+    <Loader
+      show={loading}
+      message={
+        <>
+          <Spinner animation="border" variant="info" size="xl"/>
+        </>
+      }
+      className={"w-100"}
+    >
+      <div id="page-content-wrapper">
+        <nav className="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+          <div className="d-flex align-items-center">
+            <Container className="bg-white rounded me-2 p-0">
+              <Hamburger
+                size={22}
+                toggled={isToggled}
+                toggle={() => {
+                  setIsToggled(!isToggled);
+                }}
+                style={{ margin: 0 }}
+              />
+            </Container>
+            <h2 className="fs-4 m-0 text-white">Tickets</h2>
+          </div>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle second-text fw-bold"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i className="fas fa-user me-2" />
-                John Doe
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Profile
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Settings
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Logout
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle second-text fw-bold"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i className="fas fa-user me-2" />
+                  John Doe
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-      {loading ? (
-        <div className="container-fluid px-4 m-2 d-flex justify-content-center align-item-center">
-          <Spinner animation="border" variant="info" />
-        </div>
-      ) : (
         <div className="container-fluid px-4 m-2">
           <div className="row my-2 p-4 bg-white rounded shadow-sm">
             <div className="col">
@@ -127,10 +141,10 @@ const TicketsMenu = () => {
                   </div>
                 </Button>
               </Link>
+
               <table className="table bg-white table-hover text-secondary mt-4">
                 <thead>
                   <tr>
-                    <th scope="col">No</th>
                     <th scope="col">Tickets</th>
                     <th scope="col">Flight Date</th>
                     <th scope="col">Type</th>
@@ -142,7 +156,6 @@ const TicketsMenu = () => {
                 <tbody>
                   {ticket.map((item, i) => (
                     <tr key={item.id}>
-                      <td>{i + 1}</td>
                       <td>
                         <div className=" rounded">
                           <div className="d-flex flex-column justify-content-center align-items-start">
@@ -154,7 +167,11 @@ const TicketsMenu = () => {
                                 <p>{item.airport_from}</p>
                               </div>
                               <span className="mx-4">
-                                <img src={Arrow} alt="" />
+                                {item.type === "oneway" ? (
+                                  <ArrowRight />
+                                ) : (
+                                  <ArrowDownUp className="rotate" />
+                                )}
                               </span>
                               <div style={{ maxWidth: "200px" }}>
                                 <h3>
@@ -168,7 +185,18 @@ const TicketsMenu = () => {
                           </div>
                         </div>
                       </td>
-                      <td>{item.date}</td>
+                      <td>
+                        {new Date(item.date_start).toLocaleDateString("en-US", {
+                          day: "numeric",
+                          month: "short",
+                        }) +
+                          " - " +
+                          new Date(item.date_end).toLocaleDateString("en-US", {
+                            day: "numeric",
+                            month: "short",
+                            year: "numeric",
+                          })}
+                      </td>
                       <td>{item.type}</td>
                       <td>{item.curr_stock}</td>
                       <td>
@@ -196,11 +224,34 @@ const TicketsMenu = () => {
                   ))}
                 </tbody>
               </table>
+              <div className="d-flex mx-auto align-items-center justify-content-center">
+                <Pagination>
+                  <Pagination.First onClick={() => handlePageChange(0)} />
+                  <Pagination.Prev
+                    onClick={() => handlePageChange(currentPage  <= 1 ?  currentPage : currentPage - 1)}
+                  />
+                  {Array.from(Array(totalPages).keys()).map((page) => (
+                    <Pagination.Item
+                      key={page}
+                      active={page === currentPage}
+                      onClick={() => handlePageChange(page)}
+                    >
+                      {page + 1}
+                    </Pagination.Item>
+                  ))}
+                  <Pagination.Next
+                    onClick={() => handlePageChange(currentPage  <= totalPages ?  currentPage : currentPage + 1)}
+                  />
+                  <Pagination.Last
+                    onClick={() => handlePageChange(totalPages - 1)}
+                  />
+                </Pagination>
+              </div>
             </div>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+    </Loader>
   );
 };
 

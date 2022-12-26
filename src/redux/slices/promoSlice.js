@@ -6,7 +6,18 @@ export const retrivePromos = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await promo.retrive();
-      console.log(res);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
+export const retrivePromosAdmin = createAsyncThunk(
+  "promosAdmin/retriveAdminy",
+  async (page, { rejectWithValue }) => {
+    try {
+      const res = await promo.retriveAdmin(page);
+      console.log({resAdmin : res});
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -35,6 +46,8 @@ const promoSlice = createSlice({
     promoById: {},
     message: "",
     promos: [],
+    totalPages: 0,
+    currentPage: 0,
   },
   reducers: {},
   extraReducers: {
@@ -42,6 +55,7 @@ const promoSlice = createSlice({
       return { ...state, loading: true };
     },
     [retrivePromos.fulfilled]: (state, action) => {
+      console.info(action.payload);
       return {
         ...state,
         loading: false,
@@ -58,11 +72,33 @@ const promoSlice = createSlice({
         status: action.payload.data.status,
       };
     },
+    [retrivePromosAdmin.pending]: (state, action) => {
+      return { ...state, loading: true };
+    },
+    [retrivePromosAdmin.fulfilled]: (state, action) => {
+      console.info(action.payload)
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        promos: action.payload.data.promos,
+        status: action.payload.status,
+        totalPages: action.payload.data.totalPages,
+        currentPage: action.payload.data.currentPage,
+      };
+    },
+    [retrivePromosAdmin.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        promos: action.payload.data.data.promos,
+        status: action.payload.data.status,
+      };
+    },
     [retrivePromo.pending]: (state, action) => {
       return { ...state, loading: true };
     },
     [retrivePromo.fulfilled]: (state, action) => {
-      console.log({payload : action.payload});
       return {
         ...state,
         loading: false,
@@ -72,8 +108,8 @@ const promoSlice = createSlice({
       };
     },
     [retrivePromo.rejected]: (state, action) => {
-      console.log({payload : action.payload});
-      
+      console.log({ payload: action.payload });
+
       return {
         ...state,
         loading: false,

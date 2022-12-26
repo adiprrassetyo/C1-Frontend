@@ -12,6 +12,7 @@ export const retrive = ({ from, to, type, date, dateEnd, willFly, page }) => {
       date_end: dateEnd,
       willFly,
       page,
+      size: 6,
     },
   });
 };

@@ -6,6 +6,7 @@ import authReducer from "./slices/authSlice";
 import ticketReducer from "./slices/ticketSlice";
 import promoReducer from "./slices/promoSlice";
 import notifReducer from "./slices/notifSlice";
+import userReducer from "./slices/userSlice";
 
 // Konfigurasi untuk redux-persist
 const persistConfig = {
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   ticket: ticketReducer,
   promo: promoReducer,
   notif: notifReducer,
+  user: userReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer); // Reducer yang telah dipersist
