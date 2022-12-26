@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "npx http-server ./dist",
+    "start": "npx http-server ./dist --cors",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -14,8 +14,8 @@
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.0",
     "bootstrap": "^5.2.2",
+    "copy-to-clipboard": "^3.3.3",
     "hamburger-react": "^2.5.0",
-    "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",
     "places-autocomplete-react": "^1.0.10",
@@ -27,6 +27,7 @@
     "react-bootstrap-icons": "^1.10.2",
     "react-bootstrap-time-picker": "^2.0.1",
     "react-bootstrap-typeahead": "^6.0.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "react-google-flight-datepicker": "^0.1.20",
     "react-phone-number-input": "^3.2.12",
@@ -34,7 +35,8 @@
     "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",
     "redux-persist": "^6.0.0",
-    "remixicon": "^2.5.0"
+    "remixicon": "^2.5.0",
+    "socket.io-client": "^4.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",

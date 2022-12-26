@@ -11,10 +11,14 @@ import TransactionsMenu from "./Dashboard/TransactionsMenu";
 import UsersMenu from "./Dashboard/UsersMenu";
 import AddTickets from "./Dashboard/AddTickets";
 import EditTickets from "./Dashboard/EditTickets";
+import Promo from "./Promo";
+import DetailPromo from "./DetailPromo";
+import Reset from "./Reset";
 
 export {
   Flight,
   NotFound,
+ 
   Tickets,
   Home,
   Auth,
@@ -23,7 +27,10 @@ export {
   PromosMenu,
   TicketsMenu,
   TransactionsMenu,
+  Promo,
+  DetailPromo,
   UsersMenu,
   AddTickets,
   EditTickets,
+  Reset
 };
