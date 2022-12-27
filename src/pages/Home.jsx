@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Header, Footer } from "../components";
 import { Container, Row, Col, Form, Button, Carousel } from "react-bootstrap";
 import SearchFlight from "../components/Homepage/SearchFlight";
@@ -12,9 +12,23 @@ import feature6 from "../assets/images/feature6.svg";
 import promo_img from "../assets/images/promo-img.webp";
 import mobile_mockup from "../assets/images/mobile-mockup.svg";
 import google_play from "../assets/images/google-play.svg";
+import { useSelector, useDispatch } from "react-redux";
+import { retrivePromos } from "./../redux/slices/promoSlice";
+
 import "../assets/styles/homepage.css";
 
 const Home = () => {
+  const { loading, status, message, promos } = useSelector(
+    (state) => state.promo
+  );
+
+  console.log(promos);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.info("dispatch");
+    dispatch(retrivePromos(0));
+  }, [dispatch]);
+
   return (
     <div>
       <Header />
@@ -97,7 +111,7 @@ const Home = () => {
                   alt="feature-5"
                   className="feature-img"
                 ></img>
-                <p className="feature-title">Banyak Pilihan Destinasi</p>
+                <p className="feature-title">Ahlinya Travel Agent</p>
                 <p className="feature-desc">
                   Bersama dengan mitra terpercaya kami, memenuhi kebutuhan
                   traveler yang jumlah nya tak terhitung sejak 2011
@@ -109,7 +123,7 @@ const Home = () => {
                   alt="feature-6"
                   className="feature-img"
                 ></img>
-                <p className="feature-title">Banyak Pilihan Destinasi</p>
+                <p className="feature-title">Layanan Pelanggan Yang Ramah</p>
                 <p className="feature-desc">
                   Layanan pelanggan kami tersedia 24/7 memberikan bantuan
                   terbaik dalam bahasa lokal Anda
@@ -136,30 +150,16 @@ const Home = () => {
             </Col>
             <Col md={7} className="promo-section-right">
               <Carousel>
-                <Carousel.Item interval={1000}>
-                  <img
-                    className="d-block w-100"
-                    src={promo_img}
-                    width="500"
-                    alt="First slide"
-                  />
-                </Carousel.Item>
-                <Carousel.Item interval={500}>
-                  <img
-                    className="d-block w-100"
-                    src={promo_img}
-                    width="500"
-                    alt="Second slide"
-                  />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="d-block w-100"
-                    src={promo_img}
-                    width="500"
-                    alt="Third slide"
-                  />
-                </Carousel.Item>
+                {promos?.map((promo, i) => (
+                  <Carousel.Item key={promo.id} interval={1000}>
+                    <img
+                      className="d-block w-100"
+                      src={promo.promo_image}
+                      width="500"
+                      alt={`${i}-slide`}
+                    />
+                  </Carousel.Item>
+                ))}
               </Carousel>
             </Col>
           </Row>

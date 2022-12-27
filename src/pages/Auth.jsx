@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { registerUser, loginUser, clearState } from "../redux/slices/authSlice";
 import { Eye, EyeSlash } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 const Auth = () => {
   const { loading, message, user, status } = useSelector((state) => state.auth);
 
@@ -67,10 +68,10 @@ const Auth = () => {
     e.preventDefault();
     if (isSignUp) {
       dispatch(registerUser({ formData: { ...formData, phone }, redirect }));
-      dispatch(clearState());
+      // dispatch(clearState());
     } else {
       dispatch(loginUser({ formData, redirect }));
-      dispatch(clearState());
+      // dispatch(clearState());
     }
     setFormData(initialState);
   };
@@ -142,7 +143,7 @@ const Auth = () => {
                   <Row>
                     <Col>
                       <Form.Group className=" mb-3">
-                        <Form.Label>
+                        <Form.Label className="p-0">
                           <h4>Nama Depan</h4>
                         </Form.Label>
                         <Form.Control
@@ -158,7 +159,7 @@ const Auth = () => {
                     </Col>
                     <Col>
                       <Form.Group className=" mb-3">
-                        <Form.Label>
+                        <Form.Label className="p-0">
                           <h4>Nama Belakang</h4>
                         </Form.Label>
                         <Form.Control
@@ -176,7 +177,7 @@ const Auth = () => {
                   <Row>
                     <Col>
                       <Form.Group className=" mb-3">
-                        <Form.Label>
+                        <Form.Label className="p-0">
                           <h4>Nomor Ponsel</h4>
                         </Form.Label>
                         <PhoneInput
@@ -191,7 +192,7 @@ const Auth = () => {
                     </Col>
                     <Col>
                       <Form.Group className=" mb-3">
-                        <Form.Label>
+                        <Form.Label className="p-0">
                           <h4>Jenis Kelamin</h4>
                         </Form.Label>
                         <br />
@@ -209,7 +210,7 @@ const Auth = () => {
                     </Col>
                   </Row>
                   <Form.Group className=" mb-3" controlId="formBasicEmail">
-                    <Form.Label>
+                    <Form.Label className="p-0">
                       <h4>Email</h4>
                     </Form.Label>
                     <Form.Control
@@ -227,7 +228,7 @@ const Auth = () => {
                     className="form mb-3"
                     controlId="formBasicPassword"
                   >
-                    <Form.Label>
+                    <Form.Label className="p-0">
                       <h4>Password</h4>
                     </Form.Label>
                     <Row>
@@ -260,7 +261,7 @@ const Auth = () => {
                     className="form mb-3"
                     controlId="formBasicPassword"
                   >
-                    <Form.Label>
+                    <Form.Label className="p-0">
                       <h4>Konfirmasi Password</h4>
                     </Form.Label>
                     <Row>
@@ -311,7 +312,7 @@ const Auth = () => {
               ) : (
                 <>
                   <Form.Group className=" mb-3" controlId="formBasicEmail">
-                    <Form.Label>
+                    <Form.Label className="p-0">
                       <h4>Email</h4>
                     </Form.Label>
                     <Form.Control
@@ -329,7 +330,7 @@ const Auth = () => {
                     className="form mb-3"
                     controlId="formBasicPassword"
                   >
-                    <Form.Label>
+                    <Form.Label className="p-0">
                       <h4>Password</h4>
                     </Form.Label>
                     <Row>
@@ -358,9 +359,12 @@ const Auth = () => {
                       </Col>
                     </Row>
                   </Form.Group>
-                  <h4 className="text-end mt-4" style={{ color: "#F37C20" }}>
-                    Lupa Password?
-                  </h4>
+                  <Link to="/reset" className="btn-switchForm ms-1 fw-normal ">
+                    <h4 className="text-end mt-4" style={{ color: "#F37C20" }}>
+                      Lupa Password?
+                    </h4>
+                  </Link>
+
                   <Button
                     variant="primary"
                     type="submit"

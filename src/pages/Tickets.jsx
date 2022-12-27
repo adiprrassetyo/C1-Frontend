@@ -57,13 +57,15 @@ const Tickets = () => {
             </p>
           </Col>
           <Col xs={2}>
-            <Button className="btn-switch" variant="outline-info">Ubah Pencarian</Button>{" "}
+            <Button className="btn-switch" variant="outline-info">
+              Ubah Pencarian
+            </Button>{" "}
           </Col>
         </Row>
       </Container>
       <Container fluid className="search-box pt-3">
         <Container fluid="xl" className="search">
-          <Card className="search-content my-5">
+          {/* <Card className="search-content my-5">
             <Card.Header className="search-header">
               <Row>
                 <Col>
@@ -86,7 +88,7 @@ const Tickets = () => {
                     {search?.countAnak + search?.countDewasa} Traveller
                   </p>
                 </Col>
-                {/* <Col xs={3} className="btn-flex">
+                <Col xs={3} className="btn-flex">
                   <Button
                     variant="light"
                     type="submit"
@@ -94,11 +96,11 @@ const Tickets = () => {
                   >
                     Ubah tanggal
                   </Button>
-                </Col> */}
+                </Col>
               </Row>
             </Card.Header>
             <Card.Body className="search-body">
-              {/* <Row className="filter flex-filter">
+              <Row className="filter flex-filter">
                 <Col className="ms-1 p-3" md={1}>
                   <h3>Filter :</h3>
                 </Col>
@@ -180,9 +182,9 @@ const Tickets = () => {
                     <option value="3">Waktu Kedatangan</option>
                   </Form.Select>
                 </Col>
-              </Row> */}
+              </Row>
             </Card.Body>
-          </Card>
+          </Card> */}
 
           {ticket.length > 0 ? (
             ticket.map((item) => {
@@ -200,8 +202,10 @@ const Tickets = () => {
                 month: "short",
                 year: "numeric",
               });
+
+              
               return (
-                <Accordion className="flight-content pb-2">
+                <Accordion className="flight-content pb-2" key={item.id}>
                   <Accordion.Item eventKey="0">
                     <Accordion.Header>
                       <Row className="flight-header mt-4">
@@ -311,14 +315,14 @@ const Tickets = () => {
                                 </div>
                               </div>
                               <div className="timeline-duration-wrapper mt-4 mb-4">
-                                <p className="timeline-duration">
+                                <div className="timeline-duration">
                                   <div className="icon-flex">
                                     <img src={Clock} alt="" className="me-1" />
                                     {`${hours}h ${
                                       minutes > 0 ? `${minutes}m` : ""
                                     }`}
                                   </div>
-                                </p>
+                                </div>
                               </div>
                               <div className="timeline-arrival timeline-flex">
                                 <div className="timeline-datetime me-5">

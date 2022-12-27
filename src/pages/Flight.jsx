@@ -1,4 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
+import feature1 from "../assets/images/feature1.svg";
+import feature2 from "../assets/images/feature2.svg";
+import feature3 from "../assets/images/feature3.svg";
+import feature4 from "../assets/images/feature4.svg";
+import feature5 from "../assets/images/feature5.svg";
+import feature6 from "../assets/images/feature6.svg";
 import {
   Button,
   Col,
@@ -94,14 +100,13 @@ const Flight = () => {
     }
   };
 
-
   console.log({
     params: {
       from: from[0],
       to: to[0],
       type: isRoundTrip ? "roundtrip" : "oneway",
       date: startDate,
-      willFly: true,
+      // willFly: true,
       sumChild,
       sumAdult,
     },
@@ -126,6 +131,7 @@ const Flight = () => {
           to: to[0],
           type: isRoundTrip ? "roundtrip" : "oneway",
           date: startDate,
+          endDate,
           willFly: true,
         },
         redirect,
@@ -485,7 +491,7 @@ const Flight = () => {
           </Row>
         </Container>
       </Container>
-      <Container fluid="md" className="service">
+      {/* <Container fluid="md" className="service">
         <h3 className="section-title">Mengapa Binair?</h3>
         <div className="card-group">
           <div className="card">
@@ -524,7 +530,53 @@ const Flight = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </Container> */}
+      <section className="feature-section">
+        <Container className="text-center">
+          <h3 className="section-title">Mengapa Binair?</h3>
+          <div className="feature ">
+            <Row>
+              <Col md={4} className="feature-col">
+                <img
+                  src={feature1}
+                  alt="feature-1"
+                  className="feature-img"
+                ></img>
+                <p className="feature-title">
+                  Mempermudah Pengalaman Booking Anda
+                </p>
+                <p className="feature-desc">
+                  Rasakan fleksibilitas dan kemudahan selama proses pemesanan
+                </p>
+              </Col>
+              <Col md={4} className="feature-col">
+                <img
+                  src={feature3}
+                  alt="feature-3"
+                  className="feature-img"
+                ></img>
+                <p className="feature-title">Banyak Pilihan Destinasi</p>
+                <p className="feature-desc">
+                  Nikmati momen yang mengesankan dengan jutaan penerbangan dan
+                  akomodasi yang menguntungkan
+                </p>
+              </Col>
+              <Col md={4}>
+                <img
+                  src={feature6}
+                  alt="feature-6"
+                  className="feature-img"
+                ></img>
+                <p className="feature-title">Banyak Pilihan Destinasi</p>
+                <p className="feature-desc">
+                  Layanan pelanggan kami tersedia 24/7 memberikan bantuan
+                  terbaik dalam bahasa lokal Anda
+                </p>
+              </Col>
+            </Row>
+          </div>
+        </Container>
+      </section>
       <section className="mobileapp-section">
         <Container>
           <Row className="align-items-center">
