@@ -25,7 +25,7 @@ const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     console.info("dispatch");
-    dispatch(retrivePromos());
+    dispatch(retrivePromos(0));
   }, [dispatch]);
   
   return (

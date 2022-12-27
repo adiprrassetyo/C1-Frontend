@@ -3,9 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const retrivePromos = createAsyncThunk(
   "promos/retrive",
-  async (_, { rejectWithValue }) => {
+  async (page, { rejectWithValue }) => {
     try {
-      const res = await promo.retrive();
+      const res = await promo.retrive(page);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -13,11 +13,11 @@ export const retrivePromos = createAsyncThunk(
   }
 );
 export const retrivePromosAdmin = createAsyncThunk(
-  "promosAdmin/retriveAdminy",
+  "promosAdmin/retriveAdmin",
   async (page, { rejectWithValue }) => {
     try {
       const res = await promo.retriveAdmin(page);
-      console.log({resAdmin : res});
+      console.log({ resAdmin: res });
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -55,13 +55,14 @@ const promoSlice = createSlice({
       return { ...state, loading: true };
     },
     [retrivePromos.fulfilled]: (state, action) => {
-      console.info(action.payload);
       return {
         ...state,
         loading: false,
         message: action.payload.message,
-        promos: action.payload.data,
+        promos: action.payload.data.promos,
         status: action.payload.status,
+        totalPages: action.payload.data.totalPages,
+        currentPage: action.payload.data.currentPage,
       };
     },
     [retrivePromos.rejected]: (state, action) => {
@@ -76,7 +77,7 @@ const promoSlice = createSlice({
       return { ...state, loading: true };
     },
     [retrivePromosAdmin.fulfilled]: (state, action) => {
-      console.info(action.payload)
+      console.info(action.payload);
       return {
         ...state,
         loading: false,

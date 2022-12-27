@@ -18,7 +18,6 @@ import Reset from "./Reset";
 export {
   Flight,
   NotFound,
- 
   Tickets,
   Home,
   Auth,

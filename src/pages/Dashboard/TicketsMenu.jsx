@@ -2,9 +2,11 @@ import { Squash as Hamburger } from "hamburger-react";
 import React, { useEffect } from "react";
 import { Button, Container, Pagination, Spinner } from "react-bootstrap";
 import {
-  ArrowDownUp, ArrowRight, PencilFill,
+  ArrowDownUp,
+  ArrowRight,
+  PencilFill,
   Plus,
-  TrashFill
+  TrashFill,
 } from "react-bootstrap-icons";
 import Loader from "react-loader-advanced";
 import { useDispatch, useSelector } from "react-redux";
@@ -53,7 +55,7 @@ const TicketsMenu = () => {
       show={loading}
       message={
         <>
-          <Spinner animation="border" variant="info" size="xl"/>
+          <Spinner animation="border" variant="info" size="xl" />
         </>
       }
       className={"w-100"}
@@ -225,27 +227,39 @@ const TicketsMenu = () => {
                 </tbody>
               </table>
               <div className="d-flex mx-auto align-items-center justify-content-center">
-                <Pagination>
-                  <Pagination.First onClick={() => handlePageChange(0)} />
-                  <Pagination.Prev
-                    onClick={() => handlePageChange(currentPage  <= 1 ?  currentPage : currentPage - 1)}
-                  />
-                  {Array.from(Array(totalPages).keys()).map((page) => (
-                    <Pagination.Item
-                      key={page}
-                      active={page === currentPage}
-                      onClick={() => handlePageChange(page)}
-                    >
-                      {page + 1}
-                    </Pagination.Item>
-                  ))}
-                  <Pagination.Next
-                    onClick={() => handlePageChange(currentPage  <= totalPages ?  currentPage : currentPage + 1)}
-                  />
-                  <Pagination.Last
-                    onClick={() => handlePageChange(totalPages - 1)}
-                  />
-                </Pagination>
+                {totalPages > 1 ? (
+                  <Pagination>
+                    <Pagination.First onClick={() => handlePageChange(0)} />
+                    <Pagination.Prev
+                      onClick={() =>
+                        handlePageChange(
+                          currentPage < 1 ? currentPage : currentPage - 1
+                        )
+                      }
+                    />
+                    {Array.from(Array(totalPages).keys()).map((page) => (
+                      <Pagination.Item
+                        key={page}
+                        active={page === currentPage}
+                        onClick={() => handlePageChange(page)}
+                      >
+                        {page + 1}
+                      </Pagination.Item>
+                    ))}
+                    <Pagination.Next
+                      onClick={() =>
+                        handlePageChange(
+                          currentPage > totalPages - 1
+                            ? currentPage
+                            : currentPage + 1
+                        )
+                      }
+                    />
+                    <Pagination.Last
+                      onClick={() => handlePageChange(totalPages - 1)}
+                    />
+                  </Pagination>
+                ) : null}
               </div>
             </div>
           </div>

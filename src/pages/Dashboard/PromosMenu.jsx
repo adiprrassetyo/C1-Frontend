@@ -1,6 +1,5 @@
 import { Squash as Hamburger } from "hamburger-react";
-import { default as React } from "react";
-import { Button, Container, Image, Spinner } from "react-bootstrap";
+import { Button, Container, Image, Spinner, Pagination } from "react-bootstrap";
 import { PencilFill, Plus, TrashFill } from "react-bootstrap-icons";
 import { Link, useOutletContext } from "react-router-dom";
 import { useEffect } from "react";
@@ -25,6 +24,21 @@ const PromosMenu = () => {
 
   const dispatch = useDispatch();
   console.info({ promos });
+
+  const handlePageChange = (page) => {
+    dispatch(
+      retriveTickets({
+        params: {
+          from: "",
+          to: "",
+          type: "",
+          date: "",
+          willFly: false,
+          page,
+        },
+      })
+    );
+  };
 
   useEffect(() => {
     dispatch(retrivePromos());
@@ -172,6 +186,41 @@ const PromosMenu = () => {
                   ))}
                 </tbody>
               </table>
+              <div className="d-flex mx-auto align-items-center justify-content-center">
+                {totalPages > 1 ? (
+                  <Pagination>
+                    <Pagination.First onClick={() => handlePageChange(0)} />
+                    <Pagination.Prev
+                      onClick={() =>
+                        handlePageChange(
+                          currentPage < 1 ? currentPage : currentPage - 1
+                        )
+                      }
+                    />
+                    {Array.from(Array(totalPages).keys()).map((page) => (
+                      <Pagination.Item
+                        key={page}
+                        active={page === currentPage}
+                        onClick={() => handlePageChange(page)}
+                      >
+                        {page + 1}
+                      </Pagination.Item>
+                    ))}
+                    <Pagination.Next
+                      onClick={() =>
+                        handlePageChange(
+                          currentPage > totalPages - 1
+                            ? currentPage
+                            : currentPage + 1
+                        )
+                      }
+                    />
+                    <Pagination.Last
+                      onClick={() => handlePageChange(totalPages - 1)}
+                    />
+                  </Pagination>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>

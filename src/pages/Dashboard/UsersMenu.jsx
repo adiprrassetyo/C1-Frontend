@@ -1,6 +1,6 @@
 import { Squash as Hamburger } from "hamburger-react";
 import { useEffect } from "react";
-import { Button, Container, Image, Spinner } from "react-bootstrap";
+import { Button, Container, Image, Spinner, Pagination } from "react-bootstrap";
 import { PencilFill, PersonFillAdd, TrashFill } from "react-bootstrap-icons";
 import { useOutletContext } from "react-router-dom";
 import Logo from "../../assets/images/binair-blue-logo.svg";
@@ -14,11 +14,15 @@ const UsersMenu = () => {
     useSelector((state) => state.user);
 
   const dispatch = useDispatch();
-  console.info(users);
+  console.info(totalPages <= 1 );
 
   useEffect(() => {
     dispatch(retriveUsers(0));
   }, []);
+
+  const handlePageChange = (page) => {
+    dispatch(retriveUsers(page));
+  };
 
   const [isToggled, setIsToggled] = useOutletContext();
   return (
@@ -121,14 +125,14 @@ const UsersMenu = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((user) => (
+                  {users?.map((user) => (
                     <tr key={user.id}>
                       <td>
                         <div className="d-flex ">
                           <div
                             className={"d-flex users-photo border rounded me-2"}
                           >
-                            <Image fluid src={user.profile_image} />
+                            <Image width={60} fluid src={user.profile_image} />
                           </div>
                           <div className="users-description d-flex flex-column ">
                             <strong className="text-black">
@@ -154,6 +158,41 @@ const UsersMenu = () => {
                   ))}
                 </tbody>
               </table>
+              <div className="d-flex mx-auto align-items-center justify-content-center">
+                {totalPages > 1 ? (
+                  <Pagination>
+                    <Pagination.First onClick={() => handlePageChange(0)} />
+                    <Pagination.Prev
+                      onClick={() =>
+                        handlePageChange(
+                          currentPage < 1 ? currentPage : currentPage - 1
+                        )
+                      }
+                    />
+                    {Array.from(Array(totalPages).keys()).map((page) => (
+                      <Pagination.Item
+                        key={page}
+                        active={page === currentPage}
+                        onClick={() => handlePageChange(page)}
+                      >
+                        {page + 1}
+                      </Pagination.Item>
+                    ))}
+                    <Pagination.Next
+                      onClick={() =>
+                        handlePageChange(
+                          currentPage > totalPages - 1
+                            ? currentPage
+                            : currentPage + 1
+                        )
+                      }
+                    />
+                    <Pagination.Last
+                      onClick={() => handlePageChange(totalPages - 1)}
+                    />
+                  </Pagination>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
