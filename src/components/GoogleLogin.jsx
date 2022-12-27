@@ -31,7 +31,10 @@ const GLogin = ({isSignIn}) => {
     .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.idToken;
-        dispatch(googleLoginUser( { formData: {token: token}, redirect } ));
+        const firstName = result._tokenResponse.firstName;
+        const lastName = result._tokenResponse.lastName;
+        const photoUrl = result._tokenResponse.photoUrl;
+        dispatch(googleLoginUser( { formData: {token: token, first_name: firstName, last_name: lastName, profile_picture: photoUrl}, redirect } ));
     }).catch((error) => {
         console.log( error);
     });
