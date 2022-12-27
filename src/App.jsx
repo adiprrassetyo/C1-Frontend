@@ -22,6 +22,7 @@ import {
   UsersMenu,
   Promo,
   DetailPromo,
+  Reset,
   Booking,
   ConfirmBooking,
   PaymentBooking,
