@@ -1,0 +1,559 @@
+.payment-section{
+    margin-bottom: 50px;
+    background-color: #F5F5F5;
+}
+.booking-countdown{
+    padding: 30px 0 40px 0;
+    background-color: #13A2D7;
+}
+.booking-countdown p{
+    color: #fff;
+    font-size: 14px;
+    margin-bottom:0;
+}
+.countdown{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.payment-section .container{
+    margin-top: -20px;
+}
+.payment-section .container .row{
+    margin: 0 auto;
+}
+.currency{
+    background-color: pink;
+    padding: 20px;
+    border-radius: 12px;
+}
+.payment-method{
+    border-radius: 12px;
+    box-shadow: 1px 1px 5px 0 #e7e7e7;
+    /*margin-top: 32px;*/
+    background-color: #fff;
+}
+.payment-method-header{
+    padding: 20px;
+}
+.payment-method-header h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: #59595B;
+}
+.payment-method-item{
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+}
+.payment-method-item p{
+    padding: 0;
+    font-size: 14px;
+    color: #9A9A9D;
+}
+.payment-method-item .col-md-3{
+    padding-left: 0;
+    margin-bottom: 16px;
+}
+.payment-method-item .col-md-3:nth-child(5){
+    padding: 0; 
+}
+.payment-method-item .col-md-3 a img{  
+    padding: 12px;
+    height: 70px;
+    width: 100%;
+    box-shadow: 1px 1px 10px 0 #e7e7e7;
+    border-radius: 8px;
+}
+.payment-method-item .col-md-3 .btn-payment{
+    box-shadow: 1px 1px 10px 0 #e7e7e7;
+    border-radius: 8px;
+    background-color: #fff;
+    border: none;
+}
+.payment-method-item .col-md-3 .btn-payment:hover{
+    box-shadow: 1px 5px 15px 0 #e7e7e7;
+}
+.payment-method-item .col-md-3 .btn-payment img{  
+    height: 50px;
+    width: 100%;
+}
+.payment-status{
+    box-shadow: 1px 1px 5px 0 #e7e7e7;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #fff;
+}
+.payment-status .row{
+    margin: 0 auto;
+}
+.payment-status .row .col-md-6, .payment-status .row .col-md-6{
+    padding: 0;
+}
+.payment-status .row .col-md-6 h3{
+    font-size: 18px;
+} 
+.payment-status .row .col-md-6 p{
+    font-size: 14px;
+    font-weight: 600;
+}
+.badge-payment{
+    padding: 14px 20px;
+    font-size: 14px;
+    border: 1px solid #F2964C;
+    background-color: #FFECDC !important;
+    color: #F2964C;
+}
+.flight-detail-section{
+    margin-top: 32px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px 0 #e7e7e7;
+}
+.flight-detail-section p{
+    font-size: 14px;
+}
+.departure-flight{
+    margin: 0 auto;
+}
+.departure-flight h3{
+    font-size: 14px;
+    font-weight: 700;
+    color: #59595B;
+}
+.departure-flight p{
+    font-size: 14px;
+    color: #9A9A9D;
+    margin-bottom: 0;
+}
+.departure-flight .col-md-4, .departure-flight .col-md-8{
+    padding: 0;
+    margin-bottom: 20px;
+    
+}
+.departure-flight .col-md-3{
+    padding: 0;
+}
+.baggage-badge{
+    background-color: #13A2D7 !important;
+    font-size: 9px;
+    padding: 8px 10px;
+}
+.flight-type{
+    margin: 0 auto;
+}
+.flight-type .col-md-4, .flight-type .col-md-8{
+    padding: 0;
+    margin-bottom: 8px;
+    
+}
+.flight-type h3{
+    font-size: 14px;
+    font-weight: 700;
+    color: #59595B;
+}
+.flight-type p{
+    font-size: 12px;
+    color: #9A9A9D;
+    margin-bottom: 0;
+}
+.logo-flight{
+    width: 60px;
+}
+.flight-timeline{
+    margin-top: 22px;
+}
+.flight-timeline p{
+    font-size: 12px;
+    color: #9A9A9D;
+}
+.flight-timeline h3{
+    font-size: 14px;
+    color: #59595B;
+    font-weight: 700;
+}
+.timeline-object{
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+.timeline-object.not-complete::after{
+    content: '';
+    display: block;
+    position: absolute;
+
+    width: 2px;
+    height: 108px;
+    background-color: #DEDEDE;
+    left: 5px;
+    top: 35px !important;
+    transform: translateX(-50%);
+}
+
+.timeline-status{
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background-color: #C4C4C4;
+    margin-left: 0px;
+    margin-top: -50px !important;
+}
+.timeline-object.not-complete .timeline-status{
+    background: #fff;
+    border: 2px solid #C4C4C4;
+}
+.timeline-content{
+    margin: 0 auto;
+}
+.timeline-content .col-md-5, .timeline-content .col-md-7{
+    padding: 0;
+}
+.timeline-content .col-md-5 p, .timeline-content .col-md-7 p{
+    margin-bottom: 8px;
+}
+.timeline-content .col-md-5 p, .timeline-content .col-md-5 h3{
+    margin-left: 8px;
+}
+.duration{
+    margin-left: 20px;
+}
+
+.flight-facility ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.flight-facility ul li p{
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+.flight-facility ul li .information{
+    font-size: 12px;
+    color: #73B465;
+}
+.price-section{
+    margin-top: 32px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 1px 1px 5px 0 #e7e7e7;
+}
+.price-header{
+    padding: 20px 20px 16px 20px;
+}
+.price-header h3{
+    font-size: 18px;
+    margin: 0;
+}
+.price-content .accordion-item{
+    border: none;
+}
+.price-content .row{
+    margin: 0 auto;
+}
+
+.price-content .accordion-button{
+    padding: 8px 20px;
+    border-radius: 0 !important;
+    border: none !important;
+}
+.accordion-timeline{
+    padding: 0;
+}
+.accordion-timeline h3{
+    margin: 8px 0;
+}
+.accordion-button:not(.collapsed)::after{
+    background-image: url("../images/arrow-down-s-line.svg");
+    margin-top: -5px !important;
+}
+.accordion-button::after{
+    background-image: url("../images/arrow-down-s-line.svg");
+    margin-top: -5px !important;
+}
+.price-total{
+    padding: 12px 20px 0 20px;
+    margin: 0;
+    border-top: 1px solid #BFBFBF;
+}
+.price-total .row{
+    margin: 0 auto;
+}
+.price-total .row .col-md-7, .price-total .row .col-md-5{
+    padding: 0;
+    margin-bottom: 6px;
+}
+.price-total h3{
+    font-size: 18px;
+}
+.voucher-section{
+    background-color: #fff;
+    box-shadow: 1px 1px 5px 0 #e7e7e7;
+    margin-top: 32px;
+    border-radius: 12px;
+}
+.voucher-header{
+    padding: 20px;
+}
+.voucher-header h3{
+    font-size: 18px;
+    font-weight: 700;
+    color: #59595B;
+    margin: 0;
+}
+.voucher-content{
+    padding: 0 20px 0px 20px;
+}
+.voucher-content .row{
+    margin: 0 auto;
+}
+.voucher-content .row .col-md-8{
+    padding: 0 20px 0 0;
+    margin: 0;
+}
+.voucher-content .row .col-md-4{
+    padding: 0;
+}
+.traveler-section{
+    background-color: #fff;
+    box-shadow: 1px 1px 5px 0 #e7e7e7;
+    margin-top: 32px;
+    border-radius: 12px;
+}
+.traveler-header{
+    padding: 20px;
+}
+.traveler-header .row, .traveler-content .row{
+    margin: 0 auto;
+}
+.traveler-header .row .col-md-12, .traveler-content .row .col-md-9, .traveler-content .row .col-md-3{
+    padding: 0;
+}
+.traveler-header .row .col-md-12 h3{
+    font-size: 18px;
+    font-weight: 700;
+    color: #59595B;
+    margin: 0;
+}
+.traveler-header .row .col-md-3 p{
+    font-size: 14px;
+    color: #F37C20;
+    margin: 0;
+}
+.traveler-content{
+    padding: 0 20px 6px 20px;
+}
+.traveler-content .row .col-md-9 ol{
+    padding-left: 16px;
+}
+.traveler-content .row .col-md-9 li{
+    font-size: 14px;
+    font-weight: 700;
+    color: #59595B;
+}
+.traveler-content .row .col-md-3 p{ 
+    font-size: 12px;
+    color: #9A9A9D;
+}
+.contact-section{
+    background-color: #fff;
+    box-shadow: 1px 1px 5px 0 #e7e7e7;
+    margin-top: 32px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+}
+.contact-header{
+    padding: 20px;
+}
+.contact-header h3{
+    font-size: 18px;
+    font-weight: 700;
+    color: #59595B;
+    margin: 0;
+}
+.contact-content{
+    padding: 0 20px 6px 20px;
+}
+.contact-content p{
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: #9A9A9D;
+}
+.contact-name{
+    font-size: 14px;
+    color: #59595B;
+    margin-bottom: 6px;
+}
+.verification-btn{
+    background-color: #13A2D7;
+    border: none;
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 0;
+}
+.verification-btn:hover, .verification-btn:active{
+    background-color: #0993C7 !important;
+    border: none;
+}
+.virtual-account-type{
+    border-bottom: 1.5px solid #DEDEDE;
+}
+.virtual-account-type .row .col-md-12{
+    padding: 0 20px;
+}
+.virtual-account-type .row .col-md-12 img{
+    width: 110px;
+    padding-bottom: 20px;
+}
+.virtual-account-type .row .col-md-12 p{
+    font-size: 14px;
+    font-weight: 700;
+    color: #59595B;
+}
+.total-payment{
+    padding: 20px 20px 12px 20px;
+    border-bottom: 1.5px solid #DEDEDE;
+}
+.total-payment .row .col-md-9, .total-payment .row .col-md-3, .total-payment .row .col-md-12{
+    padding: 0;
+}
+.total-payment .row p{
+    font-size: 14px;
+    color: #59595B;
+    margin-bottom: 4px;
+}
+.total-payment .row .total{
+    font-weight: 700;
+}
+.total-payment .row h3{
+    font-size: 18px;
+    color: #13A2D7;
+    font-weight: 700;
+}
+.payment-instruction{
+    padding: 20px 20px 4px 20px;
+    border-bottom: 1.5px solid #DEDEDE;
+}
+.payment-instruction .row .col-md-12{
+    padding: 0;
+}
+.payment-instruction .row .col-md-12 h4{
+    font-size: 14px;
+    color: #59595B;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.instruction-list{
+    padding-left: 14px;
+}
+.instruction-list li, .instruction-list li p{
+    font-size: 14px;
+    color: #59595B;
+    margin-bottom: 4px;
+}
+.agreement-payment{
+    padding: 20px;
+}
+.agreement-payment .row .col-md-12{
+    padding: 0;
+}
+.agreement-payment .row .col-md-12 p{
+    font-size: 14px;
+    color: #59595B;
+    margin-bottom: 4px;
+    display: flex;
+    vertical-align: middle;
+}
+.agreement-payment .row .col-md-12 a{
+    font-size: 14px;
+    color: #13A2D7;
+}
+.agreement-payment .row .col-md-12 a:hover{
+    text-decoration: underline;
+}
+.button-payment-section{
+    margin-top: 20px;
+}
+.button-payment-section .row .col-md-10, .button-payment-section .row .col-md-2{
+    padding: 0;
+}
+.payment-method-btn{
+    padding: 0;
+    background-color: none !important;
+}
+.payment-method-btn:active{
+    background-color: none !important;
+}
+.ri-arrow-left-s-line, span{
+    display: inline-block;
+    vertical-align: middle;
+}
+.payment-method-btn p{
+    margin: 0;
+    color: #bfbfbf;
+    font-size: 16px;
+    font-weight: 700;
+}
+.payment-btn{
+    background-color: #13A2D7;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 40px;
+    font-weight: 700;
+}
+.payment-btn:hover, .payment-btn:active{
+    background-color: #0993C7 !important;
+    border: none;
+}
+.line-divider .col-md-12 hr{
+    border-top: 1.5px dotted;
+}
+
+@media (min-width: 768px) and (max-width: 991.9px) {
+    .left-payment-section{
+        width:100%;
+    }
+    .right-payment-section{
+        width:100%;
+    }
+    .right-payment-section{
+        margin-top: 32px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.9px) {
+     .right-payment-section{
+        margin-top: 32px;
+    }
+    .payment-method-item .col-md-3:nth-child(4){
+        padding: 0; 
+    }
+    .payment-method-item .col-md-3:nth-child(5){
+        padding-right: 12px; 
+    }
+}
+
+@media (min-width: 419px) and (max-width: 575.9px) {
+    .right-payment-section{
+        margin-top: 32px;
+    }
+    .payment-method-item .col-md-3:nth-child(4){
+        padding: 0; 
+    }
+    .payment-method-item .col-md-3:nth-child(5){
+        padding-right: 12px; 
+    }
+}
+@media(max-width: 418.9px){
+    .right-payment-section{
+        margin-top: 32px;
+    }
+    .payment-method-item .col-md-3:nth-child(4){
+        padding: 0; 
+    }
+    .payment-method-item .col-md-3:nth-child(5){
+        padding-right: 12px; 
+    }
+}

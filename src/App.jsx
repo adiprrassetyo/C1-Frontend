@@ -19,7 +19,11 @@ import {
   UsersMenu,
   Promo,
   DetailPromo,
-  Booking
+  Booking,
+  ConfirmBooking,
+  PaymentBooking,
+  PaymentConfirmation,
+  TermofService
 } from "./pages";
 
 const App = () => {
@@ -31,6 +35,10 @@ const App = () => {
           <Route path="/flight" element={<Flight />}></Route>
           <Route path="/flight/search" element={<Tickets />} />
           <Route path="/flight/booking" element={<Booking />} />
+          <Route path="/flight/confirm" element={<ConfirmBooking />} />
+          <Route path="/payment" element={<PaymentBooking />} />
+          <Route path="/payment/confirmation" element={<PaymentConfirmation />} />
+          <Route path="/terms/condition" element={<TermofService />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/promo" element={<Promo />} />
           <Route path="/promo/view/:promoId" element={<DetailPromo />} />

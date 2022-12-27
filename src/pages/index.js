@@ -13,6 +13,10 @@ import UsersMenu from "./Dashboard/UsersMenu";
 import Promo from "./Promo";
 import DetailPromo from "./DetailPromo";
 import Booking from "./Booking";
+import ConfirmBooking from "./ConfirmBooking";
+import PaymentBooking from "./PaymentBooking";
+import PaymentConfirmation from "./PaymentConfirmation";
+import TermofService from "./TermofService";
 
 export {
   Flight,
@@ -27,5 +31,9 @@ export {
   Promo,
   DetailPromo,
   UsersMenu,
-  Booking
+  Booking,
+  ConfirmBooking,
+  PaymentBooking,
+  PaymentConfirmation,
+  TermofService
 };
