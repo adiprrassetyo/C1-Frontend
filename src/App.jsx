@@ -27,6 +27,7 @@ import {
   ConfirmBooking,
   PaymentBooking,
   PaymentConfirmation,
+  PaymentDone,
   TermofService
 } from "./pages";
 
@@ -74,6 +75,7 @@ const App = () => {
           <Route path="/flight/search" element={<Tickets />} />
           <Route path="/flight/booking" element={<Booking />} />
           <Route path="/flight/confirm" element={<ConfirmBooking />} />
+          <Route path="/flight/done" element={<PaymentDone />} />
           <Route path="/payment" element={<PaymentBooking />} />
           <Route path="/payment/confirmation" element={<PaymentConfirmation />} />
           <Route path="/terms/condition" element={<TermofService />} />
