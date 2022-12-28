@@ -34,6 +34,120 @@
     /*margin-top: 32px;*/
     background-color: #fff;
 }
+.payment-method-confirm{
+    padding: 20px 20px 0px 20px;
+}
+.payment-method-confirm .row .col-md-12{
+    padding: 0;
+}
+.payment-method-confirm .row p{
+    font-size: 14px;
+    color: #59595B;
+    margin-bottom: 4px;
+}
+.payment-method-confirm .row h4{
+    font-size: 14px;
+    color: #59595B;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.payment-method-confirm .row .col-md-12 img{
+    width: 112px;
+    padding: 16px 0;
+}
+.total-payment-confirm .accordion-item{
+    border: none;
+}
+.total-payment-confirm .accordion-header .row .col-md-4{
+    padding: 0;
+}
+.total-payment-confirm .accordion-header .row .col-md-4 p{
+    font-size: 14px;
+    color: #59595B;
+    margin-bottom: 4px;
+}
+.total-payment-confirm .accordion-header .row .col-md-4 h3{
+    font-size: 18px;
+    font-weight: 700;
+    color: #59595B;
+    margin-bottom: 4px;
+}
+.btn-copy-price{
+    color: #13A2D7;
+}
+.btn-copy-price:hover, .btn-copy-price:focus, .btn-copy-price:active{
+    background-color: transparent !important;
+    color: #13A2D7;
+    border: none !important;
+}
+.popover{
+    z-index: 10;
+}
+.popover-header{
+    background-color: #13A2D7;
+    color: #fff;
+}
+.accordion-body .row .col-md-9, .accordion-body .row .col-md-3{
+    padding: 0;
+}
+.accordion-body .row p{
+    font-size: 14px;
+    color: #59595B;
+    margin-bottom: 8px;
+}
+.payment-instruction-section{
+    margin-top: 32px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px 0 #e7e7e7;
+}
+.payment-instruction-section .payment-type{
+    padding: 20px 20px 0 20px;
+}
+.payment-instruction-section .payment-type .col-md-12{
+    padding: 0;
+}
+.payment-instruction-section .payment-type .col-md-12 p{
+    font-size: 14px;
+    color: #59595B;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+.payment-instruction-section .payment-type .col-md-12 img{
+    width: 112px;
+}
+.qr-code-img{
+    width: 200px !important;
+}
+.payment-instruction-section .payment-codes{
+    padding: 20px 20px 0 20px;
+}
+.payment-codes .col-md-3, .payment-codes .col-md-1, .payment-codes .col-md-8{
+    padding: 0;
+}
+.payment-codes .col-md-3 p, .payment-codes .col-md-1 p, .payment-codes .col-md-8 p{
+    font-size: 14px;
+    color: #59595B;
+    margin-bottom: 4px;
+}
+.alert{
+    z-index: 500;
+    position: fixed;
+    left: 43%;
+    width: 200px;
+    top: 130px;
+}
+.instruction{
+    padding: 4px 20px 12px 20px;
+}
+.instruction .col-md-12{
+    padding: 0;
+}
+.note-payment{
+    font-size: 12px;
+    color: #59595B;
+    padding-top: 12px;
+}
 .payment-method-header{
     padding: 20px;
 }
@@ -70,12 +184,13 @@
     border-radius: 8px;
     background-color: #fff;
     border: none;
+    width: 100%;
+    height: 100px;
 }
 .payment-method-item .col-md-3 .btn-payment:hover{
     box-shadow: 1px 5px 15px 0 #e7e7e7;
 }
 .payment-method-item .col-md-3 .btn-payment img{  
-    height: 50px;
     width: 100%;
 }
 .payment-status{
@@ -475,7 +590,7 @@
 .button-payment-section{
     margin-top: 20px;
 }
-.button-payment-section .row .col-md-10, .button-payment-section .row .col-md-2{
+.button-payment-section .row .col-md-7, .button-payment-section .row .col-md-5{
     padding: 0;
 }
 .payment-method-btn{
@@ -533,6 +648,11 @@
     .payment-method-item .col-md-3:nth-child(5){
         padding-right: 12px; 
     }
+    .alert{
+        left: 40%;
+        width: 200px;
+        top: 130px;
+    }
 }
 
 @media (min-width: 419px) and (max-width: 575.9px) {
@@ -545,6 +665,23 @@
     .payment-method-item .col-md-3:nth-child(5){
         padding-right: 12px; 
     }
+    .alert{
+        left: 35%;
+        width: 200px;
+        top: 130px;
+    }
+    .payment-btn{
+        margin-top:8px;
+    }
+    .payment-status .row .col-12{
+        width: 50%;
+    }
+    .popover{
+        width: 48%;
+    }
+    .popover-body{
+        font-size: 12px;
+    }
 }
 @media(max-width: 418.9px){
     .right-payment-section{
@@ -555,5 +692,22 @@
     }
     .payment-method-item .col-md-3:nth-child(5){
         padding-right: 12px; 
+    }
+    .alert{
+        left: 27%;
+        width: 200px;
+        top: 130px;
+    }
+    .payment-btn{
+        margin-top:8px;
+    }
+    .badge-payment{
+        width: 100%;
+    }
+    .popover{
+        width: 48%;
+    }
+    .popover-body{
+        font-size: 12px;
     }
 }

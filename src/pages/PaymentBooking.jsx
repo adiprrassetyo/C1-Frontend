@@ -1,35 +1,68 @@
 import React, {useState} from "react";
 import { Footer, HeaderBooking } from "../components";
 import "../assets/styles/paymentBooking.css";
-import { Container, Row, Col, Badge, Accordion, Button, Form } from "react-bootstrap";
+import { Container, Row, Col, Badge, Accordion, Button, Form, Alert, OverlayTrigger,Popover  } from "react-bootstrap";
 import bca_va from "../assets/images/bca.webp";
 import mandiri from "../assets/images/mandiri.webp";
 import bni from "../assets/images/BNI.webp";
 import cimb from "../assets/images/CIMB.webp";
 import permata from "../assets/images/Permata.webp";
-import qris from "../assets/images/qris.webp";
-import credit_card from "../assets/images/credit-card.webp";
-import klikbca from "../assets/images/klikbca.webp";
-import bcaklikpay from "../assets/images/bcaklikpay.webp";
-import atome from "../assets/images/atome.webp";
-import tmrw from "../assets/images/tmrw.webp";
+import gopay from "../assets/images/Gopay.png";
+import ovo from "../assets/images/Ovo.png";
+import dana from "../assets/images/Dana.png";
+import linkaja from "../assets/images/LinkAja.png";
+import shopeepay from "../assets/images/ShopeePay.png";
+import qrcode from "../assets/images/QrCode.png";
+
 import logo from "../assets/images/binair-logo.svg";
 import Countdown from 'react-countdown';
 import { Link } from "react-router-dom";
+import copy from "copy-to-clipboard";  
 
 const PaymentBooking = () => {
-    const [payment, setPayment] = useState(false);
+    const [bank, setBank] = useState(false);
+    const [ewallet, setEwallet] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState(true);
-    const [bank, setBank] = useState('');
-
-    const handleChange = (event) => {
-        setBank(event.target.value);
-    };
+    const [payment, setPayment] = useState('');
 
     const handleClick = (event) => {
-        console.log(event);
-        setBank(event);
+        setPayment(event);
     };
+
+    let [copyText, setCopyText] = useState('');
+    let [copyRekening, setCopyRekening] = useState('');
+
+    copyText = "189.000";
+    copyRekening = "8217631623";
+
+    const handleCopyText = (e) => {
+       setCopyText(e.target.value);
+    } 
+
+    const handleCopyRekening = (e) => {
+        setCopyRekening(e.target.value);
+    }
+
+    const [showAlert, setShowAlert] = useState('');
+
+    const copyToClipboard = () => {
+        copy(copyText);
+    };
+
+    const copyToClipboardRekening = () => {
+        copy(copyRekening);
+    };
+    
+    const popover = (
+    <Popover id="popover-basic">
+        <Popover.Header as="h3">PENTING!</Popover.Header>
+        <Popover.Body>
+            Silahkan bayar tiket sesuai dengan total harga sebelum waktu habis. 
+            Pastikan juga untuk menyimpan bukti transfer dan konfirmasi pembayaran.
+        </Popover.Body>
+    </Popover>
+    );
+
     return (
         <div>
         <HeaderBooking />
@@ -38,6 +71,11 @@ const PaymentBooking = () => {
                 <p>Selesaikan booking anda dalam <Countdown className="countdown" daysInHours="true" date={Date.now() + 86400000} /></p>
             </div>
             <Container>
+                {showAlert && (
+                        <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
+                            <p className="text-center">Berhasil disalin!</p>
+                        </Alert>
+                )}
                 <Row> 
                     <Col md={8} className="left-payment-section">
                         {paymentMethod && (
@@ -47,10 +85,10 @@ const PaymentBooking = () => {
                             </div>
                             <div className="payment-method-body">
                                 <Row className="payment-method-item virtual-account">
-                                    <p>Virtual Account</p>
+                                    <p>Bank Transfer</p>
                                         <Col md={3} sm={4} xs={4}>
                                             <div>
-                                                <Button className="btn-payment" onClick={e => { handleClick(e.currentTarget.value); setPayment(true); setPaymentMethod(false);}}
+                                                <Button className="btn-payment" onClick={e => { handleClick(e.currentTarget.value); setBank(true); setPaymentMethod(false);}}
                                                 value="BCA">
                                                 <img src={bca_va} alt="BCA" />
                                                 </Button>
@@ -58,79 +96,52 @@ const PaymentBooking = () => {
                                             
                                         </Col>
                                         <Col md={3} sm={4} xs={4}>
-                                            <Button className="btn-payment" value="Mandiri" onClick={e => { handleClick(e.currentTarget.value); setPayment(true); setPaymentMethod(false)} }
+                                            <Button className="btn-payment" value="Mandiri" onClick={e => { handleClick(e.currentTarget.value); setBank(true); setPaymentMethod(false)} }
                                                 >
                                                 <img src={mandiri} alt="Mandiri" />
                                             </Button>
                                         </Col>
                                         <Col md={3} sm={4} xs={4}>
-                                            <Button className="btn-payment" value="BNI" onClick={e => { handleClick(e.currentTarget.value); setPayment(true); setPaymentMethod(false)} }>
+                                            <Button className="btn-payment" value="BNI" onClick={e => { handleClick(e.currentTarget.value); setBank(true); setPaymentMethod(false)} }>
                                                 <img src={bni} alt="BNI" />
                                             </Button>
                                         </Col>
                                         <Col md={3} sm={4} xs={4}>
-                                            <Button className="btn-payment" value="CIMB" onClick={e => { handleClick(e.currentTarget.value); setPayment(true); setPaymentMethod(false)} }>
+                                            <Button className="btn-payment" value="CIMB" onClick={e => { handleClick(e.currentTarget.value); setBank(true); setPaymentMethod(false)} }>
                                                 <img src={cimb} alt="CIMB" />
                                             </Button>
                                         </Col>
                                         <Col md={3} sm={4} xs={4}>
-                                            <Button className="btn-payment" value="Permata" onClick={e => { handleClick(e.currentTarget.value); setPayment(true); setPaymentMethod(false)} }>
+                                            <Button className="btn-payment" value="Permata" onClick={e => { handleClick(e.currentTarget.value); setBank(true); setPaymentMethod(false)} }>
                                                 <img src={permata} alt="Permata" />
                                             </Button>
                                         </Col>
                                 </Row>
                                 <Row className="payment-method-item instant-payment">
-                                    <p>Pembayaran Instan</p>
+                                    <p>E-Wallet</p>
                                         <Col md={3} sm={4} xs={4}>
-                                            <Button className="btn-payment" value="QRIS" onClick={e => { handleClick(e.currentTarget.value); setPayment(true); setPaymentMethod(false)} }>
-                                                <img src={qris} alt="qris" />
-                                            </Button>
-                                        </Col>
-                                </Row>
-                                <Row className="payment-method-item credit-card">
-                                    <p>Kartu Kredit</p>
-                                        <Col md={3} sm={4} xs={4}>
-                                            <Button className="btn-payment">
-                                                <img src={credit_card} alt="credit card" />
-                                            </Button>
-                                        </Col>
-                                </Row>
-                                <Row className="payment-method-item debit-card">
-                                    <p>Kartu Debit</p>
-                                        <Col md={3} sm={4} xs={4}>
-                                            <Button className="btn-payment">
-                                                <img src={credit_card} alt="credit card" />
-                                            </Button>
-                                        </Col>
-                                </Row>
-                                <Row className="payment-method-item internet-banking">
-                                    <p>Internet Banking</p>
-                                        <Col md={3} sm={4} xs={4}>
-                                            <Button className="btn-payment">
-                                                <img src={klikbca} alt="Klik BCA" />
+                                            <Button className="btn-payment" value="Gopay" onClick={e => { handleClick(e.currentTarget.value); setEwallet(true); setPaymentMethod(false)} }>
+                                                <img src={gopay} alt="Gopay" />
                                             </Button>
                                         </Col>
                                         <Col md={3} sm={4} xs={4}>
-                                            <Button className="btn-payment">
-                                                <img src={bcaklikpay} alt="BCA Klik Pay" />
-                                            </Button>
-                                        </Col>
-                                        <Col md={3} sm={3} xs={3}>
-                                            <Button className="btn-payment">
-                                                <img src={cimb} alt="CIMB Niaga" />
-                                            </Button>
-                                        </Col>
-                                </Row>
-                                <Row className="payment-method-item pay-later">
-                                    <p>Pay Later</p>
-                                        <Col md={3} sm={4} xs={4}>
-                                            <Button className="btn-payment" value="Atome" onClick={e => { handleClick(e.currentTarget.value); setPayment(true); setPaymentMethod(false)} }>
-                                                <img src={atome} alt="Atome" />
+                                            <Button className="btn-payment" value="Ovo" onClick={e => { handleClick(e.currentTarget.value); setEwallet(true); setPaymentMethod(false)} }>
+                                                <img src={ovo} alt="Ovo" />
                                             </Button>
                                         </Col>
                                         <Col md={3} sm={4} xs={4}>
-                                            <Button className="btn-payment" value="TMRW" onClick={e => { handleClick(e.currentTarget.value); setPayment(true); setPaymentMethod(false)} }>
-                                                <img src={tmrw} alt="TMRW" />
+                                            <Button className="btn-payment" value="Dana" onClick={e => { handleClick(e.currentTarget.value); setEwallet(true); setPaymentMethod(false)} }>
+                                                <img src={dana} alt="Dana" />
+                                            </Button>
+                                        </Col>
+                                        <Col md={3} sm={4} xs={4}>
+                                            <Button className="btn-payment" value="LinkAja" onClick={e => { handleClick(e.currentTarget.value); setEwallet(true); setPaymentMethod(false)} }>
+                                                <img src={linkaja} alt="Link Aja" />
+                                            </Button>
+                                        </Col>
+                                        <Col md={3} sm={4} xs={4}>
+                                            <Button className="btn-payment" value="ShopeePay" onClick={e => { handleClick(e.currentTarget.value); setEwallet(true); setPaymentMethod(false)} }>
+                                                <img src={shopeepay} alt="Shopee Pay" />
                                             </Button>
                                         </Col>
                                 </Row>
@@ -138,98 +149,247 @@ const PaymentBooking = () => {
                         </div>
                     )}
 
-                    {payment && (
+                    {bank && (
                         <div>
                             <div className="payment-method">
-                            <div className="payment-method-header">
-                                <h3>Virtual Account</h3>
-                            </div>
-                            <div className="payment-method-body">
-                                <div className="virtual-account-type">
+                                <div className="payment-method-confirm">
                                     <Row>
                                         <Col md={12} sm={12} xs={12}>
-                                            <img src={`/src/assets/images/${bank}.webp`} alt={bank} />
-                                            <p>{bank} Virtual Account</p>
+                                            <p>Metode pembayaran yang dipilih Anda saat ini:</p>
+                                            <h4>Bank Transfer - {payment}</h4>
                                         </Col>
                                     </Row>
                                 </div>
-                                <div className="total-payment">
-                                    <Row>
-                                        <Col md={9} sm={9} xs={7}>
-                                            <p>Harga</p>
-                                            <p>Biaya Proses</p>
-                                        </Col>
-                                        <Col md={3} sm={3} xs={5}>
-                                            <p className="d-flex flex-row-reverse">Rp 1.000.000</p>
-                                            <p className="d-flex flex-row-reverse">Rp 0</p>
-                                        </Col>
-                                    </Row>
-                                    <Row className="line-divider">
-                                        <Col md={12} sm={12} xs={12}>
-                                            <hr></hr>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col md={9} sm={9} xs={7}>
-                                            <p className="total">Total Harga</p>
-                                        </Col>
-                                        <Col md={3} sm={3} xs={5}>
-                                            <h3 className="d-flex flex-row-reverse">Rp 1.000.000</h3>
-                                        </Col>
-                                    </Row>
+                                <div className="total-payment-confirm">
+                                    <Accordion defaultActiveKey={['0']} alwaysOpen>
+                                        <Accordion.Item eventKey="0">
+                                            <Accordion.Header>
+                                                <Row>
+                                                    <Col md={4} sm={6} xs={6}>
+                                                        <p>Total Harga</p>
+                                                        <OverlayTrigger placement="right" overlay={popover} show="true">
+                                                            <h3><span>Rp. {copyText} </span><Button className="btn-copy-price" variant="btn-link" 
+                                                            onClick={() => {copyToClipboard(); setShowAlert(true);}} onChange={handleCopyText}><i className="ri-file-copy-line ri-lg"></i></Button></h3>
+                                                        </OverlayTrigger>
+                                                        
+                                                    </Col>
+                                                </Row>
+                                            </Accordion.Header>
+                                            <Accordion.Body>
+                                                <Row>
+                                                    <Col md={9} sm={9} xs={9} >
+                                                        <p>Harga</p>
+                                                    </Col>
+                                                    <Col md={3} sm={3} xs={3}>
+                                                        <p className="d-flex flex-row-reverse">Rp. 849.000</p>
+                                                    </Col>
+                                                </Row>
+                                                 <Row>
+                                                    <Col md={9} sm={9} xs={9} >
+                                                        <p>Biaya Proses</p>
+                                                    </Col>
+                                                    <Col md={3} sm={3} xs={3}>
+                                                        <p className="d-flex flex-row-reverse">Rp 80.130</p>
+                                                    </Col>
+                                                </Row>
+                                                <Row>
+                                                    <Col md={9} sm={9} xs={9} >
+                                                        <p className="fw-bold">Jumlah</p>
+                                                    </Col>
+                                                    <Col md={3} sm={3} xs={3}>
+                                                        <p className="d-flex flex-row-reverse fw-bold">Rp 1.682.716</p>
+                                                    </Col>
+                                                </Row>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                        </Accordion>                              
                                 </div>
-                                <div className="payment-instruction">
-                                    <Row>
-                                        <Col md={12} sm={12} xs={12}>
+                        </div>
+                        <div className="payment-instruction-section">
+                            <Row className="payment-type">
+                                <Col md={12} sm={12} xs={12}>
+                                    <p>{payment} Bank Transfer</p>
+                                    <img src={`/src/assets/images/${payment}.webp`} alt={payment} />
+                                </Col>
+                            </Row>
+                            <Row className="payment-codes">
+                                <Col md={3} sm={3} xs={3}>
+                                    <p>Bank</p>
+                                    <p>Nomor Rekening</p>
+                                </Col>
+                                <Col md={1} sm={1} xs={1}>
+                                    <p>:</p>
+                                    <p>:</p>
+                                </Col>
+                                <Col md={8} sm={8} xs={8}>
+                                    <p className="fw-bold">{payment}</p>
+                                    <p className="fw-bold"><span>{copyRekening}</span><Button className="btn-copy-price" variant="btn-link" 
+                                        onClick={() => {copyToClipboardRekening(); setShowAlert(true);}} onChange={handleCopyRekening}><i className="ri-file-copy-line ri-lg"></i></Button></p>
+                                </Col>  
+                            </Row>
+                            <Row className="line-divider">
+                                <Col md={12} sm={12} xs={12}>
+                                    <hr></hr>
+                                </Col>
+                            </Row>
+                            <Row className="instruction">
+                                <Col md={12} sm={12} xs={12}>
                                             <h4>Petunjuk Pembayaran:</h4>
                                             <ol className="instruction-list">
                                                 <li>
-                                                    <p>Klik bayar.</p>
+                                                    <p>Salin nomor rekening yang ada</p>
                                                 </li>
                                                 <li>
-                                                    <p>Salin kode pembayaran.</p>
+                                                    <p>Buka aplikasi {payment} Mobile/Internet Banking</p>
                                                 </li>
                                                 <li>
-                                                    <p>Buka aplikasi {bank} Mobile</p>
+                                                    <p>Pilih menu transfer</p>
                                                 </li>
                                                 <li>
-                                                    <p>Masukkan ke akun rekening {bank} anda.</p>
+                                                    <p>Pilih Bank {payment} dan masukkan kode bank terkait</p>
                                                 </li>
                                                 <li>
-                                                    <p>Klik transfer dan pilih {bank} Virtual Account.</p>
+                                                    <p>Tempel nomor rekening</p>
                                                 </li>
                                                 <li>
-                                                    <p>Tempel kode pembayaran.</p>
+                                                    <p>Periksa informasi yang tertera di layar. Pastikan nama rekening tujuan 
+                                                        adalah BinAir</p>
                                                 </li>
                                                 <li>
-                                                    <p>Silahkan periksa kembali nominalnya dan lakukan pembayaran.</p>
+                                                    <p>Masukkan nominal transfer sesuai total pembayaran yang tertera diatas</p>
                                                 </li>
                                                 <li>
-                                                    <p>Silahkan periksa kembali nominalnya dan lakukan pembayaran.</p>
+                                                    <p>Simpan bukti pembayaran jika pembayaran berhasil</p>
                                                 </li>
                                                 <li>
-                                                    <p>Simpan bukti pembayaran jika pembayaran berhasil.</p>
+                                                    <p>Klik tombol bayar dibawah</p>
+                                                </li>
+                                                <li>
+                                                    <p>Konfirmasi pembayaran dan upload bukti bayar ke website BinAir</p>
                                                 </li>
                                             </ol>
                                         </Col>
-                                    </Row>
-                                </div>
-                                <div className="agreement-payment">
-                                    <Row>
-                                        <Col md={12} sm={12} xs={12}>
-                                            <p>Dengan mengklik tombol tersebut, Anda telah setuju untuk &nbsp;<span><Link to={`/terms/condition`}><a href="#"> Syarat & Kondisi </a></Link></span>&nbsp; dari BinAir</p>
-                                        </Col> 
-                                    </Row>
-                                </div>
-                            </div>
+                            </Row>
                         </div>
                         <div className="button-payment-section">
                             <Row className="align-items-center">
-                                <Col md={10} sm={8} xs={7}>
-                                    <Button onClick={() => { setPayment(false); setPaymentMethod(true);}}
+                                <Col md={7} sm={8} xs={7}>
+                                    <Button onClick={() => { setBank(false); setPaymentMethod(true);}}
                                     value="paymentMethod" className="payment-method-btn" variant="link"><p><i className="ri-arrow-left-s-line ri-xl"></i><span>Pilih Metode Lain</span></p></Button>
                                 </Col>
-                                <Col md={2} sm={4} xs={5} className="d-flex flex-row-reverse">
+                                <Col md={5} sm={4} xs={5} className="d-flex flex-row-reverse">
+                                    <Link to={`/payment/confirmation`}>
+                                        <Button className="payment-btn">Bayar</Button>
+                                    </Link>
+                                    
+                                </Col>
+                            </Row>
+                        </div>
+                        </div>
+                    )}
+
+                    {ewallet && (
+                        <div>
+                            <div className="payment-method">
+                                <div className="payment-method-confirm">
+                                    <Row>
+                                        <Col md={12} sm={12} xs={12}>
+                                            <p>Metode pembayaran yang dipilih Anda saat ini:</p>
+                                            <h4>E-Wallet - {payment}</h4>
+                                            <img src={`/src/assets/images/${payment}.png`} alt={payment} />
+                                        </Col>
+                                    </Row>
+                                </div>
+                                <div className="total-payment-confirm">
+                                    <Accordion defaultActiveKey={['0']} alwaysOpen>
+                                        <Accordion.Item eventKey="0">
+                                            <Accordion.Header>
+                                                <Row>
+                                                    <Col md={4} sm={6} xs={6}>
+                                                        <p>Total Harga</p>
+                                                        <OverlayTrigger placement="right" overlay={popover} show="true">
+                                                            <h3><span>Rp. {copyText} </span><Button className="btn-copy-price" variant="btn-link" 
+                                                            onClick={() => {copyToClipboard(); setShowAlert(true);}} onChange={handleCopyText}><i className="ri-file-copy-line ri-lg"></i></Button></h3>
+                                                        </OverlayTrigger>
+                                                        
+                                                    </Col>
+                                                </Row>
+                                            </Accordion.Header>
+                                            <Accordion.Body>
+                                                <Row>
+                                                    <Col md={9} sm={9} xs={9} >
+                                                        <p>Harga</p>
+                                                    </Col>
+                                                    <Col md={3} sm={3} xs={3}>
+                                                        <p className="d-flex flex-row-reverse">Rp. 849.000</p>
+                                                    </Col>
+                                                </Row>
+                                                 <Row>
+                                                    <Col md={9} sm={9} xs={9} >
+                                                        <p>Biaya Proses</p>
+                                                    </Col>
+                                                    <Col md={3} sm={3} xs={3}>
+                                                        <p className="d-flex flex-row-reverse">Rp 80.130</p>
+                                                    </Col>
+                                                </Row>
+                                                <Row>
+                                                    <Col md={9} sm={9} xs={9} >
+                                                        <p className="fw-bold">Jumlah</p>
+                                                    </Col>
+                                                    <Col md={3} sm={3} xs={3}>
+                                                        <p className="d-flex flex-row-reverse fw-bold">Rp 1.682.716</p>
+                                                    </Col>
+                                                </Row>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                        </Accordion>                              
+                                </div>
+                        </div>
+                        <div className="payment-instruction-section">
+                            <Row className="payment-type">
+                                <Col md={12} sm={12} xs={12}>
+                                    <p>Kode QR:</p>
+                                    <img src={qrcode} alt="QR Code" className="qr-code-img"/>
+                                </Col>
+                            </Row>
+                            <Row className="line-divider">
+                                <Col md={12} sm={12} xs={12}>
+                                    <hr></hr>
+                                </Col>
+                            </Row>
+                            <Row className="instruction">
+                                <Col md={12} sm={12} xs={12}>
+                                            <h4>Petunjuk Pembayaran:</h4>
+                                            <ol className="instruction-list">
+                                                <li>
+                                                    <p>Buka aplikasi E-Wallet {payment} di Smartphone anda</p>
+                                                </li>
+                                                <li>
+                                                    <p>Pilih menu untuk transfer/pembayaran</p>
+                                                </li>
+                                                <li>
+                                                    <p>Scan kode QR yang ada di atas</p>
+                                                </li>
+                                                <li>
+                                                    <p>Pastikan nominal transfer sesuai dengan total pembayaran</p>
+                                                </li>
+                                                <li>
+                                                    <p>Simpan bukti pembayaran jika pembayaran berhasil</p>
+                                                </li>
+                                                <li>
+                                                    <p>Konfirmasi pembayaran dan upload bukti bayar ke website BinAir</p>
+                                                </li>
+                                            </ol>
+                                        </Col>
+                            </Row>
+                        </div>
+                        <div className="button-payment-section">
+                            <Row className="align-items-center">
+                                <Col md={7} sm={8} xs={7}>
+                                    <Button onClick={() => { setEwallet(false); setPaymentMethod(true);}}
+                                    value="paymentMethod" className="payment-method-btn" variant="link"><p><i className="ri-arrow-left-s-line ri-xl"></i><span>Pilih Metode Lain</span></p></Button>
+                                </Col>
+                                <Col md={5} sm={4} xs={5} className="d-flex flex-row-reverse">
                                     <Link to={`/payment/confirmation`}>
                                         <Button className="payment-btn">Bayar</Button>
                                     </Link>

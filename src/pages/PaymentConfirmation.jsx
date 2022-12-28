@@ -1,180 +1,131 @@
 import React, {useState} from "react";
-import { Footer, HeaderBooking } from "../components";
-import copy from "copy-to-clipboard";  
+import { Footer, HeaderBooking } from "../components"; 
 import "../assets/styles/paymentConfirmation.css";
-import { Container, Row, Col, Badge, Accordion, Button, Form, Alert, OverlayTrigger,Popover } from "react-bootstrap";
+import { Container, Row, Col, Badge, Accordion, Button, Form} from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import bca_va from "../assets/images/bca.webp";
 import logo from "../assets/images/binair-logo.svg";
 import Countdown from 'react-countdown';
 
 const PaymentConfirmation = () => {
-    let [copyText, setCopyText] = useState('');
-    let [copyRekening, setCopyRekening] = useState('');
+    const [visible, setVisible] = useState('banktransfer');
+    const [errorMsg, setErrorMsg] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [selectedFile, setSelectedFile] = useState();
 
-    copyText = "189.000";
-    copyRekening = "397360000004138264";
+    const handleChange = (event) => {
+        const getDocument = event.target.value;
+        console.log(getDocument);
+        setVisible(getDocument);
+    };
 
-    const handleCopyText = (e) => {
-       setCopyText(e.target.value);
-    } 
-
-    const handleCopyRekening = (e) => {
-        setCopyRekening(e.target.value);
+    const handleImage = (e) => {
+        if(e.target.files.length > 0){
+            console.log(e.target.files);
+            setSelectedFile(URL.createObjectURL(e.target.files[0]));
+        }
     }
 
-    const [showAlert, setShowAlert] = useState('');
+    const handleform = (e) => {
+        if (!selectedFile) {
+            setErrorMsg("Please choose a file");
+            setIsSuccess(false)
+        }
+        
+        setErrorMsg("")
+        setIsSuccess(true) 
+    }
 
-    const copyToClipboard = () => {
-        copy(copyText);
-        //alert(`You have copied "${copyText}"`);
-    };
-
-    const copyToClipboardRekening = () => {
-        copy(copyRekening);
-    };
-    const popover = (
-    <Popover id="popover-basic">
-        <Popover.Header as="h3">PENTING!</Popover.Header>
-        <Popover.Body>
-            Silahkan bayar di konter kasir sesuai dengan total harga sebelum waktu habis. 
-            Sistem kami akan melakukan pengecekan dan memperbarui status pembayaran anda secara otomatis.
-        </Popover.Body>
-    </Popover>
-    );
     return (
         <div>
         <HeaderBooking />
         <section className="payment-section">
             <div className="booking-countdown text-center">
-                <p>Selesaikan booking anda dalam <Countdown className="countdown" daysInHours="true" date={Date.now() + 5400000} /></p>
+                <p>Konfirmasi pembayaran anda dalam <Countdown className="countdown" daysInHours="true" date={Date.now() + 5400000} /></p>
             </div>
             <Container>
-                {showAlert && (
-                        <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
-                            <p className="text-center">Berhasil disalin!</p>
-                        </Alert>
-                )}
                 <Row> 
                     <Col md={8} className="left-payment-section">
-                            <div className="payment-method">
-                                <div className="payment-method-confirm">
-                                    <Row>
-                                        <Col md={12} sm={12} xs={12}>
-                                            <p>Metode pembayaran yang dipilih Anda saat ini:</p>
-                                            <h4>Virtual Account - BCA Virtual Account</h4>
-                                        </Col>
-                                    </Row>
+                            <div className="payment-confirmation">
+                                <div className="payment-method-header">
+                                    <h3>Konfirmasi Pembayaran</h3>
                                 </div>
-                                <div className="total-payment-confirm">
-                                    <Accordion defaultActiveKey={['0']} alwaysOpen>
-                                        <Accordion.Item eventKey="0">
-                                            <Accordion.Header>
-                                                <Row>
-                                                    <Col md={4} sm={6} xs={6}>
-                                                        <p>Total Harga</p>
-                                                        <OverlayTrigger placement="right" overlay={popover} show="true">
-                                                            <h3><span>Rp. {copyText} </span><Button className="btn-copy-price" variant="btn-link" 
-                                                            onClick={() => {copyToClipboard(); setShowAlert(true);}} onChange={handleCopyText}><i className="ri-file-copy-line ri-lg"></i></Button></h3>
-                                                        </OverlayTrigger>
-                                                        
-                                                    </Col>
-                                                </Row>
-                                            </Accordion.Header>
-                                            <Accordion.Body>
-                                                <Row>
-                                                    <Col md={9} sm={9} xs={9} >
-                                                        <p>Harga</p>
-                                                    </Col>
-                                                    <Col md={3} sm={3} xs={3}>
-                                                        <p className="d-flex flex-row-reverse">Rp. 849.000</p>
-                                                    </Col>
-                                                </Row>
-                                                 <Row>
-                                                    <Col md={9} sm={9} xs={9} >
-                                                        <p>Biaya Proses</p>
-                                                    </Col>
-                                                    <Col md={3} sm={3} xs={3}>
-                                                        <p className="d-flex flex-row-reverse">Rp 80.130</p>
-                                                    </Col>
-                                                </Row>
-                                                <Row>
-                                                    <Col md={9} sm={9} xs={9} >
-                                                        <p className="fw-bold">Jumlah</p>
-                                                    </Col>
-                                                    <Col md={3} sm={3} xs={3}>
-                                                        <p className="d-flex flex-row-reverse fw-bold">Rp 1.682.716</p>
-                                                    </Col>
-                                                </Row>
-                                            </Accordion.Body>
-                                        </Accordion.Item>
-                                        </Accordion>                              
+                                <div className="payment-method-body">
+                                    <Row className="input-payment-section">
+                                    <Col md={8}>
+                                        <Form.Group className="mb-4 border border-top-0 border-start-0 border-end-0 rounded-0 p-0">
+                                        <Form.Label>
+                                        <h4>Pilih Metode Pembayaran <span className="required"> *</span></h4>
+                                        </Form.Label>
+                                        <br />
+                                        <select
+                                        name="payment-method"
+                                        className="dropdown-toggle"
+                                        onChange={(e)=>(handleChange(e))}
+                                        required
+                                        >
+                                        <option value="banktransfer">Bank Transfer</option>
+                                        <option value="e-wallet">E-Wallet</option>
+                                        </select>
+                                    </Form.Group>
+                                    </Col>
+                                    {visible ==='banktransfer' && (
+                                        <Col md={8}>
+                                            <Form.Group className="mb-4 border border-top-0 border-start-0 border-end-0 rounded-0 p-0">
+                                                <Form.Label>
+                                                    <h4>Pilih Bank <span className="required"> *</span></h4>
+                                                </Form.Label>
+                                            <br />
+                                                <select
+                                                    name="bank"
+                                                    className="dropdown-toggle"
+                                                    required
+                                                >
+                                                    <option value="BCA">BCA</option>
+                                                    <option value="Mandiri">Mandiri</option>
+                                                    <option value="BNI">BNI</option>
+                                                    <option value="CIMB">CIMB Niaga</option>
+                                                    <option value="Permata">Permata Bank</option>
+                                                    </select>
+                                                </Form.Group>
+                                                </Col>
+                                        )}
+
+                                       {visible==='e-wallet' && (
+                                                <Col md={8}>
+                                                    <Form.Group className="mb-4 border border-top-0 border-start-0 border-end-0 rounded-0 p-0">
+                                                    <Form.Label>
+                                                        <h4>Pilih E-Wallet <span className="required"> *</span></h4>
+                                                    </Form.Label>
+                                                        <br />
+                                                        <select
+                                                        name="e-wallet"
+                                                        className="dropdown-toggle"
+                                                        required
+                                                        >
+                                                        <option value="Gopay">Gopay</option>
+                                                        <option value="Ovo">Ovo</option>
+                                                        <option value="Dana">Dana</option>
+                                                        <option value="LinkAja">Link Aja</option>
+                                                        <option value="ShopeePay">Shopee Pay</option>
+                                                        </select>
+                                                    </Form.Group>
+                                                </Col>
+                                            
+                                        )}
+                                </Row>
+                                <Row className="payment-upload-section">
+                                    <Col md={8}>
+                                        <h3>Upload bukti pembayaran <span className="required"> *</span></h3>
+                                        <input type="file" name="file" onChange={handleImage} onClick={handleform} className="file-upload" 
+                                            accept="image/png, image/gif, image/jpeg" required/>
+                                        <img src={selectedFile} className="confirm-image"/>
+                                    </Col>
+                                    <p className="error-message">{errorMsg}</p>
+                                </Row>
                                 </div>
                         </div>
-                        <div className="payment-instruction-section">
-                            <Row className="payment-type">
-                                <Col md={12} sm={12} xs={12}>
-                                    <p>BCA Virtual Account</p>
-                                    <img src={bca_va} alt="bca_va" />
-                                </Col>
-                            </Row>
-                            <Row className="payment-codes">
-                                <Col md={3} sm={3} xs={3}>
-                                    <p>Bank</p>
-                                    <p>Kode Pembayaran</p>
-                                </Col>
-                                <Col md={1} sm={1} xs={1}>
-                                    <p>:</p>
-                                    <p>:</p>
-                                </Col>
-                                <Col md={8} sm={8} xs={8}>
-                                    <p className="fw-bold">BCA Virtual Account</p>
-                                    <p className="fw-bold"><span>{copyRekening}</span><Button className="btn-copy-price" variant="btn-link" 
-                                        onClick={() => {copyToClipboardRekening(); setShowAlert(true);}} onChange={handleCopyRekening}><i className="ri-file-copy-line ri-lg"></i></Button></p>
-                                </Col>  
-                            </Row>
-                            <Row className="line-divider">
-                                <Col md={12} sm={12} xs={12}>
-                                    <hr></hr>
-                                </Col>
-                            </Row>
-                            <Row className="instruction">
-                                <Col md={12} sm={12} xs={12}>
-                                            <h4>Petunjuk Pembayaran:</h4>
-                                            <ol className="instruction-list">
-                                                <li>
-                                                    <p>Klik bayar.</p>
-                                                </li>
-                                                <li>
-                                                    <p>Salin kode pembayaran.</p>
-                                                </li>
-                                                <li>
-                                                    <p>Buka aplikasi BCA Mobile</p>
-                                                </li>
-                                                <li>
-                                                    <p>Masukkan ke akun rekening BCA anda.</p>
-                                                </li>
-                                                <li>
-                                                    <p>Klik transfer dan pilih BCA Virtual Account.</p>
-                                                </li>
-                                                <li>
-                                                    <p>Tempel kode pembayaran.</p>
-                                                </li>
-                                                <li>
-                                                    <p>Silahkan periksa kembali nominalnya dan lakukan pembayaran.</p>
-                                                </li>
-                                                <li>
-                                                    <p>Silahkan periksa kembali nominalnya dan lakukan pembayaran.</p>
-                                                </li>
-                                                <li>
-                                                    <p>Simpan bukti pembayaran jika pembayaran berhasil.</p>
-                                                </li>
-                                            </ol>
-                                        </Col>
-                            </Row>
-                        </div>
-                        <p className="note-payment">Setelah selesai melakukan pembayaran, silakan klik tombol di bawah dan kami akan mengirim e-ticket ke email address anda.</p>
+                        <p className="note-payment">Setelah selesai mengupload bukti bayar, silakan klik tombol di bawah untuk konfirmasi pembayaran.</p>
                         <div className="button-payment-section">
                             <Row className="align-items-center">
                                 <Col md={7} sm={8} xs={12}>
@@ -185,7 +136,15 @@ const PaymentConfirmation = () => {
                                     
                                 </Col>
                                 <Col md={5} sm={4} xs={12} className="d-flex flex-row-reverse">
-                                    <Button className="payment-btn">Cek Status Pembayaran</Button>
+                                {
+                                    isSuccess
+                                    ? 
+                                        <Link to={`/payment`}>
+                                            <Button className="payment-btn" onClick={handleform}>Konfirmasi Pembayaran</Button>
+                                        </Link> 
+                                    : 
+                                        <Button className="payment-btn disabled" onClick={handleform}>Konfirmasi Pembayaran</Button>
+                                }
                                 </Col>
                             </Row>
                         </div>
