@@ -16,6 +16,7 @@ import Booking from "./Booking";
 import ConfirmBooking from "./ConfirmBooking";
 import PaymentBooking from "./PaymentBooking";
 import PaymentConfirmation from "./PaymentConfirmation";
+import PaymentDone from "./PaymentDone";
 import TermofService from "./TermofService";
 
 export {
@@ -37,5 +38,6 @@ export {
   ConfirmBooking,
   PaymentBooking,
   PaymentConfirmation,
+  PaymentDone,
   TermofService
 };
