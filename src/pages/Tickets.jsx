@@ -394,7 +394,7 @@ const Tickets = () => {
           )}
 
           {/* 1 */}
-          {/* <Accordion className="flight-content pb-2">
+          <Accordion className="flight-content pb-2">
             <Accordion.Item eventKey="0">
               <Accordion.Header>
                 <Row className="flight-header">
@@ -549,7 +549,7 @@ const Tickets = () => {
                 </Row>
               </Accordion.Body>
             </Accordion.Item>
-          </Accordion> */}
+          </Accordion>
 
           {/* 2 */}
           {/* <Accordion className="flight-content pb-2">

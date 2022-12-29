@@ -25,6 +25,10 @@
   border-radius: 100%;
 }
 
+.rotate {
+  transform: rotate(-90deg);
+}
+
 #wrapper {
   overflow-x: hidden;
   background: linear-gradient(
