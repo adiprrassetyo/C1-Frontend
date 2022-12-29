@@ -116,7 +116,7 @@ const Header = () => {
                     Pemesanan
                   </NavLink> */}
                 </Nav>
-                <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center h-auto w-100 justify-content-end">
                   {/* <NavDropdown title="IDR" className="nav-dropdown me-3 mt-2">
                     <NavDropdown.Item>US</NavDropdown.Item>
                     <NavDropdown.Item>IDR</NavDropdown.Item>
@@ -261,7 +261,6 @@ const Header = () => {
                       </div>
                     </OverlayTrigger>
                   )}
-
                   <NavLink to="/auth" className="m-0 p-0">
                     <Button
                       className={

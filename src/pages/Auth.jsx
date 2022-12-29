@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { registerUser, loginUser, clearState } from "../redux/slices/authSlice";
 import { Eye, EyeSlash } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { GLogin} from "../components";
+import { GLogin } from "../components";
 
 const Auth = () => {
   const { loading, message, user, status } = useSelector((state) => state.auth);
@@ -377,6 +377,7 @@ const Auth = () => {
                       "Login"
                     )}
                   </Button>
+                  <GLogin isSignIn={true} />
                 </>
               )}
               <center>
@@ -394,7 +395,6 @@ const Auth = () => {
                     </button>
                   </b>
                 </h4>
-                <GLogin isSignIn={true}/>
               </center>
             </Form>
           </Row>
