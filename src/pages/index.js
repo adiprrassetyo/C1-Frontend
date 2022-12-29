@@ -19,6 +19,12 @@ import EditTickets from "./Dashboard/EditTickets";
 import Promo from "./Promo";
 import DetailPromo from "./DetailPromo";
 import Reset from "./Reset";
+import Booking from "./Booking";
+import ConfirmBooking from "./ConfirmBooking";
+import PaymentBooking from "./PaymentBooking";
+import PaymentConfirmation from "./PaymentConfirmation";
+import PaymentDone from "./PaymentDone";
+import TermofService from "./TermofService";
 import AddPromos from "./Dashboard/AddPromos";
 import EditPromos from "./Dashboard/EditPromos";
 import AddUsers from "./Dashboard/AddUsers";
@@ -41,6 +47,12 @@ export {
   AddTickets,
   EditTickets,
   Reset,
+  Booking,
+  ConfirmBooking,
+  PaymentBooking,
+  PaymentConfirmation,
+  PaymentDone,
+  TermofService,
   Profile,
   Password,
   Passenger,

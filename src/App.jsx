@@ -25,6 +25,12 @@ import {
   Promo,
   DetailPromo,
   Reset,
+  Booking,
+  ConfirmBooking,
+  PaymentBooking,
+  PaymentConfirmation,
+  PaymentDone,
+  TermofService,
   Profile,
   Password,
   Passenger,
@@ -78,6 +84,12 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/flight" element={<Flight />}></Route>
           <Route path="/flight/search" element={<Tickets />} />
+          <Route path="/flight/booking" element={<Booking />} />
+          <Route path="/flight/confirm" element={<ConfirmBooking />} />
+          <Route path="/flight/done" element={<PaymentDone />} />
+          <Route path="/payment" element={<PaymentBooking />} />
+          <Route path="/payment/confirmation" element={<PaymentConfirmation />} />
+          <Route path="/terms/condition" element={<TermofService />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/reset" element={<Reset />} />
           <Route path="/promo" element={<Promo />} />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Navbar,
   Nav,
@@ -14,11 +14,12 @@ import moment from "moment";
 
 // import { jwt } from "jsonwebtoken";
 import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+
 import logo from "../assets/images/binair-logo.svg";
 import english_flag from "../assets/images/english-flag.svg";
 import indo_flag from "../assets/images/indo-flag.svg";
-import "../assets/styles/header.css";
+import "../assets/styles/headerBooking.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/slices/authSlice";
 import {
@@ -35,13 +36,13 @@ import {
   // read,
 } from "../redux/slices/notifSlice";
 
-const Header = () => {
-  const [sticky, setSticky] = useState(false);
-  const { user } = useSelector((state) => state.auth);
+const HeaderBooking = () => {
+    const [sticky, setSticky] = useState(false);
+    const { user } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+    let location = useLocation();
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
+    useEffect(() => {
     if (user) {
       const socket = io("wss://binair-backend-production.up.railway.app");
 
@@ -57,25 +58,26 @@ const Header = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setSticky(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
+    useEffect(() => {
+        const handleScroll = () => {
+        setSticky(window.scrollY > 50);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    });
 
-  //NOTIFICATION
-  const { notif, loading } = useSelector((state) => state.notif);
-  const [notifData, setNotifData] = useState(notif);
+    //NOTIFICATION
+    const { notif, loading } = useSelector((state) => state.notif);
+    const [notifData, setNotifData] = useState(notif);
 
-  useEffect(() => {
+    useEffect(() => {
     if (user) {
       dispatch(retriveNotif());
     }
-  }, [dispatch]);
-  return (
-    <>
+    }, [dispatch]);
+
+    return (
+        <>
       {["md"].map((expand) => (
         <Navbar
           key={expand}
@@ -89,6 +91,16 @@ const Header = () => {
                 <img src={logo} alt="logo" />{" "}
               </Link>
             </Navbar.Brand>
+            <Nav className="flex-grow-1 pe-3 ">
+                    <ul className="bar-timeline">
+                        <li className="active">Pesanan</li>
+                        <li className={
+                          location.pathname === "/payment" ? "active" :
+                          location.pathname === "/payment/confirmation" ? "active" :
+                          ""}>Pembayaran</li>
+                        <li>Selesai</li>
+                    </ul>
+                </Nav>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -104,23 +116,9 @@ const Header = () => {
                   </Navbar.Brand>
                 </Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="flex-grow-1 pe-3 ">
-                  <NavLink to="/flight" className="pb-3 text-secondary">
-                    Penerbangan
-                  </NavLink>
-                  <NavLink to="/promo" className="pb-3 text-secondary">
-                    Promo
-                  </NavLink>
-                  {/* <NavLink to="/booking" className="pb-3 text-secondary">
-                    Pemesanan
-                  </NavLink> */}
-                </Nav>
-                <div className="d-flex align-items-center">
-                  {/* <NavDropdown title="IDR" className="nav-dropdown me-3 mt-2">
-                    <NavDropdown.Item>US</NavDropdown.Item>
-                    <NavDropdown.Item>IDR</NavDropdown.Item>
-                  </NavDropdown> */}
+              <Offcanvas.Body className="justify-content-end">
+                
+                <div className="d-flex justify-content-center align-items-center">
                   {user && (
                     <OverlayTrigger
                       trigger="click"
@@ -257,7 +255,7 @@ const Header = () => {
                               .length
                           }
                         </div>
-
+                        {/* )} */}
                       </div>
                     </OverlayTrigger>
                   )}
@@ -273,35 +271,40 @@ const Header = () => {
                       Login
                     </Button>
                   </NavLink>
+
                   <NavDropdown
                     title={
-                      <span className="d-flex align-items-center">
+                      <span className="d-flex justify-content-center align-items-center">
                         <i className="ri-user-3-line me-1 ri-1x"></i>
-                        <div>{user?.firstname}</div>
+                        {user?.firstname}
                       </span>
                     }
                     className={user ? `nav-dropdown` : `nav-dropdown d-none`}
                     // noCarret
                   >
-                    <NavDropdown.Item href="/#/account/profile">
+                    <NavDropdown.Item>
                       <i className="remix-icon ri-user-3-line"></i>
                       <span className="ml-2 profile-item">Profil</span>
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="/#/account/password">
+                    <NavDropdown.Item>
                       <i className="remix-icon ri-key-2-line"></i>
                       <span className="ml-2">Ubah Password</span>
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="/#/account/passenger">
+                    <NavDropdown.Item>
+                      <i className="remix-icon ri-contacts-book-line"></i>
+                      <span className="ml-2">Daftar Kontak</span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
                       <i className="remix-icon ri-list-check"></i>
                       <span className="ml-2">Daftar Traveler</span>
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="/#/account/order">
+                    <NavDropdown.Item>
                       <i className="remix-icon ri-calendar-check-line"></i>
                       <span className="ml-2">Daftar Pesanan</span>
                     </NavDropdown.Item>
                     <NavDropdown.Item>
-                      <i className="remix-icon ri-shopping-basket-2-line"></i>
-                      <span className="ml-2">Wishlist</span>
+                      <i className="remix-icon ri-link"></i>
+                      <span className="ml-2">Akun Terhubung</span>
                     </NavDropdown.Item>
                     <NavDropdown.Item
                       onClick={() => {
@@ -320,8 +323,7 @@ const Header = () => {
         </Navbar>
       ))}
     </>
-  );
-};
+    );
+}
 
-
-export default Header;
+export default HeaderBooking;
