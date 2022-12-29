@@ -68,33 +68,6 @@ export const googleLoginUser = createAsyncThunk(
   }
 );
 
-export const googleLoginUser = createAsyncThunk(
-  "user/googleLogin",
-  async ({ formData, redirect }, { rejectWithValue }) => {
-    try {
-      const res = await auth.googleLogin(formData);
-
-      if (res.data.status == "success") {
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ token: res.data.data.accessToken })
-        );
-
-        setTimeout(() => {
-          if (res.data.data.role === "admin") {
-            redirect("/dashboard");
-          }
-          redirect("/");
-        }, 3000);
-      }
-
-      return res.data;
-    } catch (error) {
-      return rejectWithValue(error.response);
-    }
-  }
-);
-
 export const resetPass = createAsyncThunk(
   "user/reset",
   async (email, { rejectWithValue }) => {

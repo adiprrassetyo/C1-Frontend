@@ -377,7 +377,7 @@ const Auth = () => {
                       "Login"
                     )}
                   </Button>
-                  <GLogin isSignIn={true} />
+                  <GLogin isSignIn={true} loading={loading} />
                 </>
               )}
               <center>
@@ -395,7 +395,6 @@ const Auth = () => {
                     </button>
                   </b>
                 </h4>
-                <GLogin isSignIn={true}/>
               </center>
             </Form>
           </Row>

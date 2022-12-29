@@ -72,7 +72,7 @@ const PaymentBooking = () => {
             </div>
             <Container>
                 {showAlert && (
-                        <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
+                        <Alert className="alert-payment" variant="success" onClose={() => setShowAlert(false)} dismissible>
                             <p className="text-center">Berhasil disalin!</p>
                         </Alert>
                 )}
