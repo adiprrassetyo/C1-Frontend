@@ -6,12 +6,6 @@ export const registerUser = createAsyncThunk(
   async ({ formData, redirect }, { rejectWithValue }) => {
     try {
       const res = await auth.register(formData);
-
-      if (res.data.status == "success") {
-        setTimeout(() => {
-          redirect("/auth");
-        }, 3000);
-      }
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -24,19 +18,20 @@ export const loginUser = createAsyncThunk(
   async ({ formData, redirect }, { rejectWithValue }) => {
     try {
       const res = await auth.login(formData);
-
       if (res.data.status == "success") {
         localStorage.setItem(
           "user",
           JSON.stringify({ token: res.data.data.accessToken })
         );
 
+        console.info({ admin: res.data.data.role === "admin" });
         setTimeout(() => {
           if (res.data.data.role === "admin") {
             redirect("/dashboard");
+          } else {
+            redirect("/");
           }
-          redirect("/");
-        }, 3000);
+        }, 2000);
       }
 
       return res.data;

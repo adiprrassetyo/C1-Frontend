@@ -20,9 +20,26 @@ import {
   TicketsMenu,
   TransactionsMenu,
   UsersMenu,
+  AddTickets,
+  EditTickets,
   Promo,
   DetailPromo,
-  Reset
+  Reset,
+  Booking,
+  ConfirmBooking,
+  PaymentBooking,
+  PaymentConfirmation,
+  PaymentDone,
+  TermofService,
+  Profile,
+  Password,
+  Passenger,
+  Order,
+  Whislist,
+  AddPromos,
+  EditPromos,
+  AddUsers,
+  EditUsers,
 } from "./pages";
 
 const App = () => {
@@ -67,18 +84,42 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/flight" element={<Flight />}></Route>
           <Route path="/flight/search" element={<Tickets />} />
+          <Route path="/flight/booking" element={<Booking />} />
+          <Route path="/flight/confirm" element={<ConfirmBooking />} />
+          <Route path="/flight/done" element={<PaymentDone />} />
+          <Route path="/payment" element={<PaymentBooking />} />
+          <Route path="/payment/confirmation" element={<PaymentConfirmation />} />
+          <Route path="/terms/condition" element={<TermofService />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/reset" element={<Reset />} />
           <Route path="/promo" element={<Promo />} />
           <Route path="/promo/view/:promoId" element={<DetailPromo />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route
+            path="/dashboard"
+            element={
+              <Protected>
+                <DashboardLayout />
+              </Protected>
+            }
+          >
             <Route path="" element={<MainMenu />} />
             <Route path="promos" element={<PromosMenu />} />
+            <Route path="promos/add" element={<AddPromos />} />
+            <Route path="promos/edit/:promoId" element={<EditPromos />} />
             <Route path="tickets" element={<TicketsMenu />} />
+            <Route path="tickets/add" element={<AddTickets />} />
+            <Route path="tickets/edit/:ticketId" element={<EditTickets />} />
             <Route path="transactions" element={<TransactionsMenu />} />
             <Route path="users" element={<UsersMenu />} />
+            <Route path="users/add" element={<AddUsers />} />
+            <Route path="users/edit/:userId" element={<EditUsers />} />
           </Route>
+          <Route path="/account/profile" element={<Profile />} />
+          <Route path="/account/password" element={<Password />} />
+          <Route path="/account/passenger" element={<Passenger />} />
+          <Route path="/account/order" element={<Order />} />
+          <Route path="/account/whislist" element={<Whislist />} />
         </Routes>
       </HashRouter>
     </>
