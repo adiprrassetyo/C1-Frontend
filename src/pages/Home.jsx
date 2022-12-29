@@ -21,12 +21,13 @@ const Home = () => {
   const { loading, status, message, promos } = useSelector(
     (state) => state.promo
   );
+
   const dispatch = useDispatch();
   useEffect(() => {
     console.info("dispatch");
-    dispatch(retrivePromos());
+    dispatch(retrivePromos(0));
   }, [dispatch]);
-
+  
   return (
     <div>
       <Header />
@@ -148,7 +149,7 @@ const Home = () => {
             </Col>
             <Col md={7} className="promo-section-right">
               <Carousel>
-                {promos.map((promo, i) => (
+                {promos?.map((promo, i) => (
                   <Carousel.Item key={promo.id} interval={1000}>
                     <img
                       className="d-block w-100"

@@ -65,7 +65,7 @@ const Tickets = () => {
       </Container>
       <Container fluid className="search-box pt-3">
         <Container fluid="xl" className="search">
-          <Card className="search-content my-5">
+          {/* <Card className="search-content my-5">
             <Card.Header className="search-header">
               <Row>
                 <Col>
@@ -88,7 +88,7 @@ const Tickets = () => {
                     {search?.countAnak + search?.countDewasa} Traveller
                   </p>
                 </Col>
-                {/* <Col xs={3} className="btn-flex">
+                <Col xs={3} className="btn-flex">
                   <Button
                     variant="light"
                     type="submit"
@@ -96,11 +96,11 @@ const Tickets = () => {
                   >
                     Ubah tanggal
                   </Button>
-                </Col> */}
+                </Col>
               </Row>
             </Card.Header>
             <Card.Body className="search-body">
-              {/* <Row className="filter flex-filter">
+              <Row className="filter flex-filter">
                 <Col className="ms-1 p-3" md={1}>
                   <h3>Filter :</h3>
                 </Col>
@@ -182,9 +182,9 @@ const Tickets = () => {
                     <option value="3">Waktu Kedatangan</option>
                   </Form.Select>
                 </Col>
-              </Row> */}
+              </Row>
             </Card.Body>
-          </Card>
+          </Card> */}
 
           {ticket.length > 0 ? (
             ticket.map((item) => {
@@ -202,6 +202,8 @@ const Tickets = () => {
                 month: "short",
                 year: "numeric",
               });
+
+              
               return (
                 <Accordion className="flight-content pb-2" key={item.id}>
                   <Accordion.Item eventKey="0">
@@ -392,7 +394,7 @@ const Tickets = () => {
           )}
 
           {/* 1 */}
-          {/* <Accordion className="flight-content pb-2">
+          <Accordion className="flight-content pb-2">
             <Accordion.Item eventKey="0">
               <Accordion.Header>
                 <Row className="flight-header">
@@ -547,7 +549,7 @@ const Tickets = () => {
                 </Row>
               </Accordion.Body>
             </Accordion.Item>
-          </Accordion> */}
+          </Accordion>
 
           {/* 2 */}
           {/* <Accordion className="flight-content pb-2">

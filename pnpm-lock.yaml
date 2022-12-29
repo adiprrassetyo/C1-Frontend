@@ -16,15 +16,21 @@ specifiers:
   prop-types: ^15.6.0
   react: ^18.2.0
   react-bootstrap: ^2.6.0
+  react-bootstrap-date-picker: ^5.1.0
+  react-bootstrap-date-picker-mixxt: ^5.1.1
   react-bootstrap-icons: ^1.10.2
+  react-bootstrap-time-picker: ^2.0.1
   react-bootstrap-typeahead: ^6.0.0
+  react-content-loader: ^6.2.0
   react-copy-to-clipboard: ^5.1.0
   react-dom: ^18.2.0
   react-google-flight-datepicker: ^0.1.20
+  react-loader-advanced: ^1.7.1
   react-phone-number-input: ^3.2.12
   react-redux: ^8.0.5
   react-router: ^6.4.3
   react-router-dom: ^6.4.3
+  react-toastify: ^9.1.1
   redux-persist: ^6.0.0
   remixicon: ^2.5.0
   socket.io-client: ^4.5.4
@@ -43,15 +49,21 @@ dependencies:
   prop-types: 15.8.1
   react: 18.2.0
   react-bootstrap: 2.6.0_ib3m5ricvtkl2cll7qpr2f6lvq
+  react-bootstrap-date-picker: 5.1.0_667pbntrmsfoyvdm52qqoogjla
+  react-bootstrap-date-picker-mixxt: 5.1.1_667pbntrmsfoyvdm52qqoogjla
   react-bootstrap-icons: 1.10.2_react@18.2.0
+  react-bootstrap-time-picker: 2.0.1_nc2qq3ymgsdbvnhmrecr22d5my
   react-bootstrap-typeahead: 6.0.0_biqbaboplfbrettd7655fr4n2y
+  react-content-loader: 6.2.0_react@18.2.0
   react-copy-to-clipboard: 5.1.0_react@18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-google-flight-datepicker: 0.1.20_biqbaboplfbrettd7655fr4n2y
+  react-loader-advanced: 1.7.1_biqbaboplfbrettd7655fr4n2y
   react-phone-number-input: 3.2.13_biqbaboplfbrettd7655fr4n2y
   react-redux: 8.0.5_yqqa5ithnjtlkxisuaub7c4kpa
   react-router: 6.4.4_react@18.2.0
   react-router-dom: 6.4.4_biqbaboplfbrettd7655fr4n2y
+  react-toastify: 9.1.1_biqbaboplfbrettd7655fr4n2y
   redux-persist: 6.0.0_react@18.2.0
   remixicon: 2.5.0
   socket.io-client: 4.5.4
@@ -1516,6 +1528,13 @@ packages:
       - supports-color
     dev: false
 
+  /babel-runtime/6.26.0:
+    resolution: {integrity: sha512-ITKNuq2wKlW1fJg9sSW52eepoYgZBggvOAHC0u/CYu/qxQ9EVzThCgR69BnSXLHjy2f7SY5zaQ4yt7H9ZVxY2g==}
+    dependencies:
+      core-js: 2.6.12
+      regenerator-runtime: 0.11.1
+    dev: false
+
   /bootstrap/5.2.3_@popperjs+core@2.11.6:
     resolution: {integrity: sha512-cEKPM+fwb3cT8NzQZYEu4HilJ3anCrWqh3CHAok1p9jXqMPsPTBhU25fBckEJHJ/p+tTxTFTsFQGM+gaHpi3QQ==}
     peerDependencies:
@@ -1537,6 +1556,10 @@ packages:
   /caniuse-lite/1.0.30001436:
     resolution: {integrity: sha512-ZmWkKsnC2ifEPoWUvSAIGyOYwT+keAaaWPHiQ9DfMqS1t6tfuyFYoWR78TeZtznkEQ64+vGXH9cZrElwR2Mrxg==}
 
+  /chain-function/1.0.1:
+    resolution: {integrity: sha512-SxltgMwL9uCko5/ZCLiyG2B7R9fY4pDZUw7hJ4MhirdjBLosoDqkWABi3XMucddHdLiFJMb7PD2MZifZriuMTg==}
+    dev: false
+
   /chalk/2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
     engines: {node: '>=4'}
@@ -1547,6 +1570,11 @@ packages:
 
   /classnames/2.3.2:
     resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
+    dev: false
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
     dev: false
 
   /color-convert/1.9.3:
@@ -1583,6 +1611,12 @@ packages:
       browserslist: 4.21.4
     dev: false
 
+  /core-js/2.6.12:
+    resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
+    deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+    requiresBuild: true
+    dev: false
+
   /country-flag-icons/1.5.5:
     resolution: {integrity: sha512-k4WXZ/WvWOSiYXRG1n8EYHNr1m/IX0GffKqAidaet5DrJsDOmJ8Q/8JvvONhZNnKYg24s4lvsm+9og1HcuIU/g==}
     dev: false
@@ -1613,6 +1647,12 @@ packages:
   /dequal/2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
     engines: {node: '>=6'}
+    dev: false
+
+  /dom-helpers/3.4.0:
+    resolution: {integrity: sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA==}
+    dependencies:
+      '@babel/runtime': 7.20.6
     dev: false
 
   /dom-helpers/5.2.1:
@@ -2090,6 +2130,26 @@ packages:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: false
 
+  /react-bootstrap-date-picker-mixxt/5.1.1_667pbntrmsfoyvdm52qqoogjla:
+    resolution: {integrity: sha512-HYiCCNs622kIBPesN5feNdYy6+6PFI0+/tyitHYsaLUlcdPc/fE3JyWE9Wnwq5e+17IlyPanO/sPmqolbo0YcA==}
+    peerDependencies:
+      react: '>=0.14.0'
+      react-bootstrap: ^0.31.0
+    dependencies:
+      react: 18.2.0
+      react-bootstrap: 2.6.0_ib3m5ricvtkl2cll7qpr2f6lvq
+    dev: false
+
+  /react-bootstrap-date-picker/5.1.0_667pbntrmsfoyvdm52qqoogjla:
+    resolution: {integrity: sha512-qxg1kSZGgRSiyAlsyH79GhKkrgA7kwL+Me6UgaIW6DXRSckaTeRO359hsRebXUrrL+QzJlO2fHKnHVrSYctUIg==}
+    peerDependencies:
+      react: '>=0.14.0'
+      react-bootstrap: ^0.31.0
+    dependencies:
+      react: 18.2.0
+      react-bootstrap: 2.6.0_ib3m5ricvtkl2cll7qpr2f6lvq
+    dev: false
+
   /react-bootstrap-icons/1.10.2_react@18.2.0:
     resolution: {integrity: sha512-PC72g6uARdSxZH+ViBbul3FRWKuIhiJajahwt1h0daPBDw789KqpA+x3hrJpSUyQMF0PQ9LfWxu1a0O67bqPeg==}
     peerDependencies:
@@ -2097,6 +2157,20 @@ packages:
     dependencies:
       prop-types: 15.8.1
       react: 18.2.0
+    dev: false
+
+  /react-bootstrap-time-picker/2.0.1_nc2qq3ymgsdbvnhmrecr22d5my:
+    resolution: {integrity: sha512-hbZyoLWav9P6UPTQPQRoC7rQT5UYb0a4Cs/8Wiszs1Rda/cH3Ar1B2uM78GKJjXMK0VYGR9XKyza2BCnLJ+ZSA==}
+    peerDependencies:
+      react: '*'
+      react-bootstrap: '>=1.0.0-alpha'
+      react-dom: '*'
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-bootstrap: 2.6.0_ib3m5ricvtkl2cll7qpr2f6lvq
+      react-dom: 18.2.0_react@18.2.0
+      time-number: 1.1.0
     dev: false
 
   /react-bootstrap-typeahead/6.0.0_biqbaboplfbrettd7655fr4n2y:
@@ -2148,6 +2222,15 @@ packages:
       warning: 4.0.3
     dev: false
 
+  /react-content-loader/6.2.0_react@18.2.0:
+    resolution: {integrity: sha512-r1dI6S+uHNLW68qraLE2njJYOuy6976PpCExuCZUcABWbfnF3FMcmuESRI8L4Bj45wnZ7n8g71hkPLzbma7/Cw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16.0.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-copy-to-clipboard/5.1.0_react@18.2.0:
     resolution: {integrity: sha512-k61RsNgAayIJNoy9yDsYzDe/yAZAzEbEgcz3DZMhF686LEyukcE1hzurxe85JandPUG+yTfGVFzuEw3xt8WP/A==}
     peerDependencies:
@@ -2197,6 +2280,20 @@ packages:
 
   /react-lifecycles-compat/3.0.4:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
+    dev: false
+
+  /react-loader-advanced/1.7.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-+k4x7KFUo6zTs0Tq2VJ03IdUqXa1xzS04Yu1B2Jv93bdFqbr6ULKVpYQtShfTyCm0G4/BWsOlcWoBtwQuloOTw==}
+    peerDependencies:
+      react: ^0.13.0 || ^0.14.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      babel-runtime: 6.26.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-transition-group: 1.2.1_biqbaboplfbrettd7655fr4n2y
+      wolfy87-eventemitter: 5.2.9
+    transitivePeerDependencies:
+      - react-dom
     dev: false
 
   /react-overlays/5.2.1_biqbaboplfbrettd7655fr4n2y:
@@ -2307,6 +2404,32 @@ packages:
       react: 18.2.0
     dev: false
 
+  /react-toastify/9.1.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-pkFCla1z3ve045qvjEmn2xOJOy4ZciwRXm1oMPULVkELi5aJdHCN/FHnuqXq8IwGDLB7PPk2/J6uP9D8ejuiRw==}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      clsx: 1.2.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-transition-group/1.2.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-CWaL3laCmgAFdxdKbhhps+c0HRGF4c+hdM4H23+FI1QBNUyx/AMeIJGWorehPNSaKnQNOAxL7PQmqMu78CDj3Q==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0
+      react-dom: ^15.0.0 || ^16.0.0
+    dependencies:
+      chain-function: 1.0.1
+      dom-helpers: 3.4.0
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      warning: 3.0.0
+    dev: false
+
   /react-transition-group/4.4.5_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
     peerDependencies:
@@ -2387,6 +2510,10 @@ packages:
 
   /regenerate/1.4.2:
     resolution: {integrity: sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==}
+    dev: false
+
+  /regenerator-runtime/0.11.1:
+    resolution: {integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==}
     dev: false
 
   /regenerator-runtime/0.13.11:
@@ -2506,6 +2633,10 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  /time-number/1.1.0:
+    resolution: {integrity: sha512-vEVrQgdzeXEtXVWVMm7DaI+SV1pqHaelcKsCQiV+fJgDAnSCmdBqHAt4KA/KPUNVNr3VxY+jOJ2vc+a32ZkNGg==}
+    dev: false
+
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
@@ -2600,10 +2731,20 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /warning/3.0.0:
+    resolution: {integrity: sha512-jMBt6pUrKn5I+OGgtQ4YZLdhIeJmObddh6CsibPxyQ5yPZm1XExSyzC1LCNX7BzhxWgiHmizBWJTHJIjMjTQYQ==}
+    dependencies:
+      loose-envify: 1.4.0
+    dev: false
+
   /warning/4.0.3:
     resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /wolfy87-eventemitter/5.2.9:
+    resolution: {integrity: sha512-P+6vtWyuDw+MB01X7UeF8TaHBvbCovf4HPEMF/SV7BdDc1SMTiBy13SRD71lQh4ExFTG1d/WNzDGDCyOKSMblw==}
     dev: false
 
   /ws/8.2.3:
