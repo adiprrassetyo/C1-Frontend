@@ -18,6 +18,8 @@ import { useNavigate } from "react-router-dom";
 import { registerUser, loginUser, clearState } from "../redux/slices/authSlice";
 import { Eye, EyeSlash } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { GLogin} from "../components";
+
 const Auth = () => {
   const { loading, message, user, status } = useSelector((state) => state.auth);
 
@@ -31,7 +33,7 @@ const Auth = () => {
   const initialState = {
     firstname: "",
     lastname: "",
-    gender: "Laki-laki",
+    gender: "Laki-Laki",
     email: "",
     password: "",
     confirmPassword: "",
@@ -203,11 +205,7 @@ const Auth = () => {
                           className="dropdown-toggle"
                         >
                           <option value="Laki-laki">Laki - Laki</option>
-                          <option
-                            value="Perempuan"
-                          >
-                            Perempuan
-                          </option>
+                          <option value="Perempuan">Perempuan</option>
                         </select>
                       </Form.Group>
                     </Col>
@@ -396,6 +394,7 @@ const Auth = () => {
                     </button>
                   </b>
                 </h4>
+                <GLogin isSignIn={true}/>
               </center>
             </Form>
           </Row>

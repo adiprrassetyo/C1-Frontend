@@ -41,6 +41,33 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+export const googleLoginUser = createAsyncThunk(
+  "user/googleLogin",
+  async ({ formData, redirect }, { rejectWithValue }) => {
+    try {
+      const res = await auth.googleLogin(formData);
+
+      if (res.data.status == "success") {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ token: res.data.data.accessToken })
+        );
+
+        setTimeout(() => {
+          if (res.data.data.role === "admin") {
+            redirect("/dashboard");
+          }
+          redirect("/");
+        }, 3000);
+      }
+
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
 export const resetPass = createAsyncThunk(
   "user/reset",
   async (email, { rejectWithValue }) => {
@@ -117,6 +144,27 @@ const authSlice = createSlice({
       };
     },
     [loginUser.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload?.data.message,
+        status: "error",
+      };
+    },
+    //google login
+    [googleLoginUser.pending]: (state, action) => {
+      return { ...state, loading: true, message: "Processing your action..." };
+    },
+    [googleLoginUser.fulfilled]: (state, action) => {
+      console.info({ payMessageLogin: action.payload });
+      return {
+        loading: false,
+        message: action.payload?.message,
+        user: action.payload?.data,
+        status: action.payload?.status,
+      };
+    },
+    [googleLoginUser.rejected]: (state, action) => {
       return {
         ...state,
         loading: false,
