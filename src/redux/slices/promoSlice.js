@@ -6,7 +6,6 @@ export const retrivePromos = createAsyncThunk(
   async (page, { rejectWithValue }) => {
     try {
       const res = await promo.retrive(page);
-      console.info(res);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -18,7 +17,6 @@ export const retrivePromosAdmin = createAsyncThunk(
   async (page, { rejectWithValue }) => {
     try {
       const res = await promo.retriveAdmin(page);
-      console.log({ resAdmin: res });
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
