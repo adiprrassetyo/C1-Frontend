@@ -22,13 +22,12 @@ const Home = () => {
     (state) => state.promo
   );
 
-  console.log(promos);
   const dispatch = useDispatch();
   useEffect(() => {
     console.info("dispatch");
     dispatch(retrivePromos(0));
   }, [dispatch]);
-
+  
   return (
     <div>
       <Header />
