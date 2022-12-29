@@ -3,6 +3,11 @@ import Tickets from "./Tickets";
 import Flight from "./Flight";
 import Home from "./Home";
 import Auth from "./Auth";
+import Profile from "./Profile";
+import Password from "./Password";
+import Passenger from "./Passenger";
+import Order from "./Order";
+import Whislist from "./Whislist";
 import DashboardLayout from "./Dashboard/DashboardLayout";
 import MainMenu from "./Dashboard/MainMenu";
 import PromosMenu from "./Dashboard/PromosMenu";
@@ -36,6 +41,11 @@ export {
   AddTickets,
   EditTickets,
   Reset,
+  Profile,
+  Password,
+  Passenger,
+  Order,
+  Whislist,
   AddPromos,
   EditPromos,
   AddUsers,
