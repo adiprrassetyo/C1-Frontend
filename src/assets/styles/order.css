@@ -1,0 +1,32 @@
+.status-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-filter .btn {
+    width: 100%;
+    color: #9a9a9d;
+    background-color: #f7f7f7;
+    font-weight: 700;
+    border: 1px solid rgba(154,154,157,.35);
+    border-radius: 25px;
+    max-width: 180px;
+    text-align: center;
+}
+
+.img-box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    color: #59595B;
+    
+}
+
+.img-box .txt {
+    color: #9a9a9d;
+}
+
+

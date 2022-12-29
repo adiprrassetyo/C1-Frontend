@@ -31,6 +31,11 @@ import {
   PaymentConfirmation,
   PaymentDone,
   TermofService,
+  Profile,
+  Password,
+  Passenger,
+  Order,
+  Whislist,
   AddPromos,
   EditPromos,
   AddUsers,
@@ -110,6 +115,11 @@ const App = () => {
             <Route path="users/add" element={<AddUsers />} />
             <Route path="users/edit/:userId" element={<EditUsers />} />
           </Route>
+          <Route path="/account/profile" element={<Profile />} />
+          <Route path="/account/password" element={<Password />} />
+          <Route path="/account/passenger" element={<Passenger />} />
+          <Route path="/account/order" element={<Order />} />
+          <Route path="/account/whislist" element={<Whislist />} />
         </Routes>
       </HashRouter>
     </>
