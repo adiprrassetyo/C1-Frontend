@@ -31,7 +31,7 @@ const Auth = () => {
   const initialState = {
     firstname: "",
     lastname: "",
-    gender: "khusus",
+    gender: "Laki-laki",
     email: "",
     password: "",
     confirmPassword: "",
@@ -202,9 +202,12 @@ const Auth = () => {
                           onChange={handleChange}
                           className="dropdown-toggle"
                         >
-                          <option value="male">Laki - Laki</option>
-                          <option value="female">Perempuan</option>
-                          <option value="other">Khusus</option>
+                          <option value="Laki-laki">Laki - Laki</option>
+                          <option
+                            value="Perempuan"
+                          >
+                            Perempuan
+                          </option>
                         </select>
                       </Form.Group>
                     </Col>

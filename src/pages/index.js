@@ -14,6 +14,10 @@ import EditTickets from "./Dashboard/EditTickets";
 import Promo from "./Promo";
 import DetailPromo from "./DetailPromo";
 import Reset from "./Reset";
+import AddPromos from "./Dashboard/AddPromos";
+import EditPromos from "./Dashboard/EditPromos";
+import AddUsers from "./Dashboard/AddUsers";
+import EditUsers from "./Dashboard/EditUsers";
 
 export {
   Flight,
@@ -31,5 +35,9 @@ export {
   UsersMenu,
   AddTickets,
   EditTickets,
-  Reset
+  Reset,
+  AddPromos,
+  EditPromos,
+  AddUsers,
+  EditUsers,
 };

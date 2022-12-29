@@ -20,11 +20,56 @@ export const retriveTickets = createAsyncThunk(
   }
 );
 
-export const createTickets = createAsyncThunk(
-  "tickets/create",
-  async (forData, { rejectWithValue }) => {
+export const retriveTicket = createAsyncThunk(
+  "ticket/retriveById",
+  async (id, { rejectWithValue }) => {
     try {
-      const res = await ticket.create(forData);
+      const res = await ticket.retriveById(id);
+      console.info(res);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
+export const createTickets = createAsyncThunk(
+  "ticket/create",
+  async ({ formData, redirect }, { rejectWithValue }) => {
+    console.info({ formData });
+    try {
+      const res = await ticket.create(formData);
+      console.info(res);
+      redirect("/dashboard/tickets");
+      return res.data;
+    } catch (error) {
+      console.info(error);
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
+export const updateTickets = createAsyncThunk(
+  "ticket/update",
+  async ({ formData, id, redirect }, { rejectWithValue }) => {
+    console.info({ formData });
+    try {
+      const res = await ticket.update(formData, id);
+      redirect("/dashboard/tickets");
+      return res.data;
+    } catch (error) {
+      console.info(error);
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
+export const removeTickets = createAsyncThunk(
+  "ticket/remove",
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await ticket.remove(id);
+      return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
     }
@@ -39,6 +84,7 @@ const ticketSlice = createSlice({
     message: "",
     search: {},
     ticket: [],
+    ticketById: {},
     totalPages: 0,
     currentPage: 1,
     totalItems: 0,
@@ -54,12 +100,20 @@ const ticketSlice = createSlice({
         totalPages: 0,
         currentPage: 0,
         totalItems: 0,
+        ticketById: {},
       };
     },
     setSearch: (state, action) => {
       return {
         ...state,
         search: action.payload,
+      };
+    },
+    deleteTikcet: (state, action) => {
+      return {
+        ...state,
+        ticket: state.ticket.filter((t) => t.id != action.payload),
+        message: "ticket deleted",
       };
     },
   },
@@ -88,15 +142,57 @@ const ticketSlice = createSlice({
         status: action.payload.data.status,
       };
     },
+    [retriveTicket.pending]: (state, action) => {
+      return { ...state, loading: true };
+    },
+    [retriveTicket.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        ticketById: action.payload.data,
+        status: action.payload.status,
+      };
+    },
+    [retriveTicket.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        ticketById: action.payload.data.data,
+        status: action.payload.data.status,
+      };
+    },
+    [updateTickets.pending]: (state, action) => {
+      return {
+        ...state,
+        loading: true,
+      };
+    },
+    [updateTickets.fulfilled]: (state, action) => {
+      console.info(action.payload);
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        status: action.payload.status,
+      };
+    },
+    [updateTickets.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        status: action.payload.data.status,
+        message: action.payload.data.message,
+      };
+    },
     [createTickets.pending]: (state, action) => {
       return {
         ...state,
-        status: action.payload.status,
-        message: action.payload.message,
         loading: true,
       };
     },
     [createTickets.fulfilled]: (state, action) => {
+      console.info(action.payload);
       return {
         ...state,
         loading: false,
@@ -105,7 +201,30 @@ const ticketSlice = createSlice({
         ticket: [...state.ticket, action.payload.data],
       };
     },
-    [createTickets.fulfilled]: (state, action) => {
+    [createTickets.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        status: action.payload.data.status,
+        message: action.payload.data.message,
+      };
+    },
+    [removeTickets.pending]: (state, action) => {
+      return {
+        ...state,
+        loading: true,
+      };
+    },
+    [removeTickets.fulfilled]: (state, action) => {
+      console.info({ rmPLD: action.payload });
+      return {
+        ...state,
+        loading: false,
+        status: action.payload.status,
+      };
+    },
+    [removeTickets.rejected]: (state, action) => {
+      console.info(action.payload);
       return {
         ...state,
         loading: false,
@@ -116,5 +235,5 @@ const ticketSlice = createSlice({
   },
 });
 
-export const { setSearch } = ticketSlice.actions;
+export const { setSearch, deleteTikcet } = ticketSlice.actions;
 export default ticketSlice.reducer;

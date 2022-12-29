@@ -1,18 +1,74 @@
 import { Squash as Hamburger } from "hamburger-react";
 import React, { useState, useEffect } from "react";
-import { Button, Container, Form, Row, Col } from "react-bootstrap";
-import { useOutletContext } from "react-router-dom";
-import { SingleDatePicker } from "react-google-flight-datepicker";
+import { Button, Container, Form, Row, Col, Spinner } from "react-bootstrap";
+import { useOutletContext, useParams } from "react-router-dom";
+import {
+  SingleDatePicker,
+  RangeDatePicker,
+} from "react-google-flight-datepicker";
 import TimePicker from "react-bootstrap-time-picker";
 import { Typeahead } from "react-bootstrap-typeahead";
 import axios from "axios";
+import moment from "moment/moment";
+import { useDispatch, useSelector } from "react-redux";
+import { retriveTicket, updateTickets } from "../../redux/slices/ticketSlice";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import Loader from "react-loader-advanced";
+import Nav from "./Nav";
 
-const EditTickets = () => {
+const EditTicket = () => {
+  const { loading, ticketById } = useSelector((state) => state.ticket);
   const [isToggled, setIsToggled] = useOutletContext();
-  const [from, setFrom] = useState([{ code: null, city: null, airport: null }]);
-  const [to, setTo] = useState([{ code: null, city: null, airport: null }]);
+  const [from, setFrom] = useState([
+    { code: "", city: ticketById.from, airport: ticketById.airport_from },
+  ]);
+  const [to, setTo] = useState([
+    { code: "", city: ticketById.to, airport: ticketById.airport_to },
+  ]);
   const [options, setOptions] = useState([]);
+  const [type, setType] = useState(ticketById.type);
+  const [departure_time, setDeparture_time] = useState(
+    ticketById.departure_time
+  );
+  const [isAvailable, setIsAvailable] = useState(ticketById.available);
+  const [arrival_time, setArrival_time] = useState(ticketById.arrival_time);
+  const dispatch = useDispatch();
+  const { ticketId } = useParams();
 
+  useEffect(() => {
+    dispatch(retriveTicket(ticketId));
+  }, [ticketId, dispatch]);
+
+  useEffect(() => {
+    setFormData({
+      date_start: ticketById.date_start,
+      date_end: ticketById.date_end ? ticketById.date_end : null,
+      adult_price: ticketById.adult_price,
+      child_price: ticketById.child_price,
+      init_stock: ticketById.init_stock,
+    });
+    setType(ticketById.type);
+    setDeparture_time(ticketById.departure_time);
+    setIsAvailable(ticketById.available);
+    setArrival_time(ticketById.arrival_time);
+    setFrom([
+      { code: "", city: ticketById.from, airport: ticketById.airport_from },
+    ]);
+    setTo([{ code: "", city: ticketById.to, airport: ticketById.airport_to }]);
+  }, [ticketById]);
+
+  const [formData, setFormData] = useState({
+    date_start: ticketById.date_start,
+    date_end: ticketById.date_end ? ticketById.date_end : null,
+    adult_price: ticketById.adult_price,
+    child_price: ticketById.child_price,
+    init_stock: ticketById.init_stock,
+  });
+
+  const redirect = useNavigate();
+
+  console.info({ departure_time, arrival_time });
   useEffect(() => {
     const getOptions = async () => {
       const res = await axios.get(
@@ -24,225 +80,321 @@ const EditTickets = () => {
     getOptions();
   }, []);
 
+  const handleType = (e) => {
+    setType(e.target.value);
+  };
+
+  const startEndDateChange = (startDt, endDt) => {
+    if (startDt) {
+      setFormData((prev) => ({
+        ...prev,
+        date_start: moment(startDt).format("MM-DD-YYYY"),
+      }));
+      endDt === null && setFormData((prev) => ({ ...prev, date_end: endDt }));
+    }
+    if (endDt) {
+      const momentEndDt = moment(endDt, "MM/DD/YYYY");
+      if (momentEndDt.isValid()) {
+        setFormData((prev) => ({
+          ...prev,
+          date_end: moment(endDt).format("MM-DD-YYYY"),
+        }));
+      }
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = event.target; //event target destructuring
+
+    setFormData((prevFormData) => {
+      //set State Value
+      return {
+        ...prevFormData, //take prev state to new object
+        [name]: type === "checkbox" ? checked : value, // if type is checkbox the value will be checked (bolean value) else the value willl be value of input
+      };
+    });
+  };
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    dispatch(
+      updateTickets({
+        formData: {
+          ...formData,
+          adult_price: parseInt(formData.adult_price),
+          child_price: parseInt(formData.child_price),
+          type,
+          from: from[0]?.city,
+          to: to[0]?.city,
+          airport_from: from[0].airport,
+          airport_to: to[0].airport,
+          init_stock: parseInt(formData.init_stock),
+          curr_stock: parseInt(formData.init_stock),
+          available: isAvailable,
+          departure_time,
+          arrival_time,
+        },
+        id: ticketId,
+        redirect,
+      })
+    );
+
+    toast.success("Ticket Successfully Updated!");
+  }
+
   return (
-    <div id="page-content-wrapper">
-      <nav className="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-        <div className="d-flex align-items-center">
-          <Container className="bg-white rounded me-2 p-0">
-            <Hamburger
-              size={22}
-              toggled={isToggled}
-              toggle={() => {
-                setIsToggled(!isToggled);
-              }}
-              style={{ margin: 0 }}
-            />
-          </Container>
-          <h2 className="fs-4 m-0 text-white">Add</h2>
-        </div>
+    <Loader
+      show={loading}
+      message={
+        <>
+          <Spinner animation="border" variant="info" size="xl" />
+        </>
+      }
+      className={"w-100"}
+    >
+      <div id="page-content-wrapper">
+        <Nav isToggled={isToggled} setIsToggled={setIsToggled} title={"Edit"} />
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle second-text fw-bold"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i className="fas fa-user me-2" />
-                John Doe
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Profile
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Settings
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Logout
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <div className="container-fluid px-4 m-2">
-        <div className="row my-2 p-4 bg-white rounded shadow-sm">
-          <Form className="" style={{ width: "40%" }}>
-            <Row>
-              <Form.Group className="mb-3">
-                <Form.Label>From</Form.Label>
-                <Typeahead
-                  id="kotaberangkat"
-                  value={from}
-                  inputProps={{
-                    required: true,
-                    className: "form-input form-style p-0 ps-1",
-                    style: {},
-                  }}
-                  size={"sm"}
-                  labelKey={(option) => `${option.city} (${option.code})`}
-                  onInputChange={(selected) => {
-                    setFrom([
-                      {
+        <div className="container-fluid px-4 m-2">
+          <div className="row my-2 p-4 bg-white rounded shadow-sm">
+            <Form className="" onSubmit={handleSubmit} style={{ width: "40%" }}>
+              <Row>
+                <Form.Group className="mb-3">
+                  <Form.Label>From</Form.Label>
+                  <Typeahead
+                    id="kotaberangkat"
+                    value={from}
+                    inputProps={{
+                      required: false,
+                      className: "form-input form-style p-0 ps-1",
+                      style: {},
+                    }}
+                    size={"sm"}
+                    labelKey={(option) => `${option.city} (${option.code})`}
+                    onInputChange={(selected) => {
+                      setFrom([
+                        {
+                          code: "",
+                          city: selected,
+                          airport: "",
+                        },
+                      ]);
+                    }}
+                    onChange={(selectedOpt) => {
+                      setFrom(selectedOpt);
+                    }}
+                    options={options}
+                    placeholder="Pilih Kota Keberangkatan"
+                    renderMenuItemChildren={(option) => (
+                      <div className="sugest container w-fluid m-0 p-0">
+                        <span
+                          className="fw-bold fs-6"
+                          style={{ fontSize: "1px" }}
+                        >
+                          {option.city} ({option.code})
+                        </span>{" "}
+                        <br />
+                        <span className="text-secondary">
+                          {option.airport})
+                        </span>
+                      </div>
+                    )}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>To</Form.Label>
+                  <Typeahead
+                    id="labelkey-example"
+                    value={to}
+                    className="form-input form-style fs-5"
+                    size={"sm"}
+                    onChange={(selectedOpt) => {
+                      setTo(selectedOpt);
+                    }}
+                    onInputChange={(selected) => {
+                      setTo({
                         code: "",
                         city: selected,
                         airport: "",
-                      },
-                    ]);
-                  }}
-                  onChange={(selectedOpt) => {
-                    setFrom(selectedOpt);
-                  }}
-                  options={options}
-                  placeholder="Pilih Kota Keberangkatan"
-                  renderMenuItemChildren={(option) => (
-                    <div className="sugest container w-fluid m-0 p-0">
-                      <span
-                        className="fw-bold fs-6"
-                        style={{ fontSize: "1px" }}
-                      >
-                        {option.city} ({option.code})
-                      </span>{" "}
-                      <br />
-                      <span className="text-secondary">{option.airport})</span>
-                    </div>
-                  )}
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>To</Form.Label>
-                <Typeahead
-                  id="labelkey-example"
-                  value={to}
-                  className="form-input form-style fs-5"
-                  size={"sm"}
-                  onChange={(selectedOpt) => {
-                    setTo(selectedOpt);
-                  }}
-                  onInputChange={(selected) => {
-                    setTo({
-                      code: "",
-                      city: selected,
-                      airport: "",
-                    });
-                  }}
-                  labelKey={(option) => `${option.city} (${option.code})`}
-                  inputProps={{
-                    required: true,
-                    className: "form-input form-style p-0 ps-1",
-                    style: {},
-                  }}
-                  options={options}
-                  placeholder="Pilih Kota Tujuan"
-                  renderMenuItemChildren={(option) => (
-                    <div className="sugest container w-fluid m-0 p-0">
-                      <span
-                        className="fw-bold fs-6 m-0 p-0"
-                        style={{ fontSize: "1px" }}
-                      >
-                        {option.city} ({option.code})
-                      </span>{" "}
-                      <br />
-                      <span className="text-secondary">{option.airport})</span>
-                    </div>
-                  )}
-                />
-              </Form.Group>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Arrival Time</Form.Label>
-                  <TimePicker start="10:00" end="21:00" step={30} />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Departure Time</Form.Label>
-                  <TimePicker start="10:00" end="21:00" step={30} />
-                </Form.Group>
-              </Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Date</Form.Label>
-                <SingleDatePicker
-                  startDate={new Date()}
-                  minDate={new Date()}
-                  startDatePlaceholder="Tanggal Keberangkatan"
-                  id="single-date-picker"
-                  monthFormat="MMM YYYY"
-                  onChange={(startDate) => startEndDateChange(startDate)}
-                />
-              </Form.Group>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Adult Price</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Masukan harga tiket dewasa"
+                      });
+                    }}
+                    labelKey={(option) => `${option.city} (${option.code})`}
+                    inputProps={{
+                      required: false,
+                      className: "form-input form-style p-0 ps-1",
+                      style: {},
+                    }}
+                    options={options}
+                    placeholder="Pilih Kota Tujuan"
+                    renderMenuItemChildren={(option) => (
+                      <div className="sugest container w-fluid m-0 p-0">
+                        <span
+                          className="fw-bold fs-6 m-0 p-0"
+                          style={{ fontSize: "1px" }}
+                        >
+                          {option.city} ({option.code})
+                        </span>{" "}
+                        <br />
+                        <span className="text-secondary">
+                          {option.airport})
+                        </span>
+                      </div>
+                    )}
                   />
                 </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Child Price</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Masukan harga tiket anak - anak"
-                  />
-                </Form.Group>
-              </Col>
-              <Row>
-                <Col className="me-3">
+                <Col>
                   <Form.Group className="mb-3">
-                    <Form.Label>Type</Form.Label>
-                    <Form.Control as="select" defaultValue="Option 2">
-                      <option value="rountrip">Roundtrip</option>
-                      <option value="oneway">Oneway</option>
+                    <Form.Label>Departure Time</Form.Label>
+                    <Form.Control
+                      as="select"
+                      defaultValue={departure_time}
+                      onChange={(e) => setDeparture_time(e.target.value)}
+                    >
+                      {Array(48)
+                        .fill()
+                        .map((_, i) => {
+                          let hour = Math.floor(i / 2);
+                          let minute = i % 2 === 0 ? "00" : "30";
+                          let time = `${hour
+                            .toString()
+                            .padStart(2, "0")}:${minute
+                            .toString()
+                            .padStart(2, "0")}`;
+
+                          return (
+                            <option key={i} value={time}>
+                              {time}
+                            </option>
+                          );
+                        })}
                     </Form.Control>
                   </Form.Group>
                 </Col>
-
                 <Col>
                   <Form.Group className="mb-3">
-                    <Form.Label>Stock</Form.Label>
+                    <Form.Label>Arrival Time</Form.Label>
                     <Form.Control
-                      type="text"
-                      placeholder="Masukan jumlah stok"
-                    />
+                      as="select"
+                      defaultValue={arrival_time}
+                      onChange={(e) => setArrival_time(e.target.value)}
+                    >
+                      {Array(48)
+                        .fill()
+                        .map((_, i) => {
+                          let hour = Math.floor(i / 2);
+                          let minute = i % 2 === 0 ? "00" : "30";
+                          let time = `${hour
+                            .toString()
+                            .padStart(2, "0")}:${minute
+                            .toString()
+                            .padStart(2, "0")}`;
+
+                          return <option value={time}>{time}</option>;
+                        })}
+                    </Form.Control>
                   </Form.Group>
                 </Col>
+                <Row>
+                  <Col className="me-3">
+                    <Form.Group className="mb-3">
+                      <Form.Label>Type</Form.Label>
+                      <Form.Control
+                        as="select"
+                        defaultValue={type}
+                        onChange={handleType}
+                      >
+                        <option value="rountrip">Roundtrip</option>
+                        <option value="oneway">Oneway</option>
+                      </Form.Control>
+                    </Form.Group>
+                  </Col>
+
+                  <Col>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Stock</Form.Label>
+                      <Form.Control
+                        type="number"
+                        value={formData.init_stock}
+                        onChange={handleChange}
+                        name="init_stock"
+                        placeholder="Masukan jumlah stok"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Form.Group className="mb-3">
+                  <Form.Label>Date</Form.Label>
+                  {type === "oneway" ? (
+                    <SingleDatePicker
+                      startDate={formData.date_start}
+                      minDate={new Date()}
+                      startDatePlaceholder={formData.date_start}
+                      id="single-date-picker"
+                      monthFormat="MMM YYYY"
+                      onChange={(startDate) => startEndDateChange(startDate)}
+                    />
+                  ) : (
+                    <RangeDatePicker
+                      startDate={formData.date_start}
+                      endDate={formData.date_end}
+                      // endDate={new Date()}
+                      minDate={new Date()}
+                      startDatePlaceholder={`${formData.date_start}`}
+                      endDatePlaceholder={`${formData.date_end}`}
+                      id="range-date-picker"
+                      onChange={(startDate, endDate) =>
+                        startEndDateChange(startDate, endDate)
+                      }
+                    />
+                  )}
+                </Form.Group>
+                <Row>
+                  <Col>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Adult Price</Form.Label>
+                      <Form.Control
+                        type="number"
+                        value={formData.adult_price}
+                        onChange={handleChange}
+                        placeholder="Masukan harga tiket dewasa"
+                        name="adult_price"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Child Price</Form.Label>
+                      <Form.Control
+                        type="number"
+                        value={formData.child_price}
+                        onChange={handleChange}
+                        name="child_price"
+                        placeholder="Masukan harga tiket anak - anak"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                  <Form.Check
+                    type="checkbox"
+                    label="Available ?"
+                    checked={isAvailable}
+                    onChange={(e) => {
+                      setIsAvailable(event.target.checked);
+                    }}
+                  />
+                </Form.Group>
+
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
               </Row>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Row>
-          </Form>
+            </Form>
+          </div>
         </div>
       </div>
-    </div>
+    </Loader>
   );
 };
 
-export default EditTickets;
+export default EditTicket;

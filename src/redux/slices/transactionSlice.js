@@ -14,6 +14,19 @@ export const retriveTransAdmin = createAsyncThunk(
   }
 );
 
+export const removeTrans = createAsyncThunk(
+  "transAdmin/remove",
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await trans.remove(id);
+      console.log({ trans: res });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
 const transSlice = createSlice({
   name: "transaction",
   initialState: {
@@ -24,14 +37,22 @@ const transSlice = createSlice({
     transactions: [],
     totalPages: 0,
     currentPage: 0,
+    totalItems: 0,
   },
-  reducers: {},
+  reducers: {
+    deleteTrans: (state, action) => {
+      return {
+        ...state,
+        transactions: state.transactions.filter((t) => t.id != action.payload),
+        message: "transaction deleted",
+      };
+    },
+  },
   extraReducers: {
     [retriveTransAdmin.pending]: (state, action) => {
       return { ...state, loading: true };
     },
     [retriveTransAdmin.fulfilled]: (state, action) => {
-      console.info(action.payload);
       return {
         ...state,
         loading: false,
@@ -39,6 +60,7 @@ const transSlice = createSlice({
         transactions: action.payload.data.transactions,
         status: action.payload.status,
         totalPages: action.payload.data.totalPages,
+        totalItems: action.payload.data.totalItems,
         currentPage: action.payload.data.currentPage,
       };
     },
@@ -50,7 +72,28 @@ const transSlice = createSlice({
         status: action.payload.data.status,
       };
     },
+    [removeTrans.pending]: (state, action) => {
+      return { ...state, loading: true };
+    },
+    [removeTrans.fulfilled]: (state, action) => {
+      console.info(action.payload);
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        status: action.payload.status,
+      };
+    },
+    [removeTrans.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        status: action.payload.data.status,
+      };
+    },
   },
 });
 
+export const { deleteTrans } = transSlice.actions;
 export default transSlice.reducer;

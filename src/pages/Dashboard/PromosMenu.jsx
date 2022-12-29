@@ -1,15 +1,26 @@
 import { Squash as Hamburger } from "hamburger-react";
-import { Button, Container, Image, Spinner, Pagination } from "react-bootstrap";
+import {
+  Button,
+  Container,
+  Image,
+  Spinner,
+  Pagination,
+  Modal,
+} from "react-bootstrap";
 import { PencilFill, Plus, TrashFill } from "react-bootstrap-icons";
 import { Link, useOutletContext } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   retrivePromosAdmin,
   retrivePromos,
+  removePromo,
+  deletePromo,
 } from "../../redux/slices/promoSlice";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import Loader from "react-loader-advanced";
+import { ToastContainer, toast } from "react-toastify";
+import Nav from "./Nav";
 
 const PromosMenu = () => {
   const {
@@ -22,26 +33,25 @@ const PromosMenu = () => {
     currentPage,
   } = useSelector((state) => state.promo);
 
+  const [msg, setMsg] = useState(message);
+  const [show, setShow] = useState(false);
+  const [id, setId] = useState("");
+  const handleDelete = () => {
+    dispatch(removePromo(id));
+    dispatch(deletePromo(id));
+    toast.success("Promo Successfully Deleted!");
+    setShow((prev) => !prev);
+  };
+
   const dispatch = useDispatch();
-  console.info({ promos });
 
   const handlePageChange = (page) => {
-    dispatch(
-      retriveTickets({
-        params: {
-          from: "",
-          to: "",
-          type: "",
-          date: "",
-          willFly: false,
-          page,
-        },
-      })
-    );
+    console.info({ page });
+    dispatch(retrivePromos(page));
   };
 
   useEffect(() => {
-    dispatch(retrivePromos());
+    dispatch(retrivePromos(0));
   }, []);
 
   const [isToggled, setIsToggled] = useOutletContext();
@@ -55,93 +65,71 @@ const PromosMenu = () => {
       }
       className={"w-100"}
     >
+      <Modal show={show} onHide={() => setShow((prev) => !prev)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Woohoo, are u sure you want to delete this promo item ?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShow((prev) => !prev)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleDelete}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <div id="page-content-wrapper">
-        <nav className="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-          <div className="d-flex align-items-center">
-            <Container className="bg-white rounded me-2 p-0">
-              <Hamburger
-                size={22}
-                toggled={isToggled}
-                toggle={() => {
-                  setIsToggled(!isToggled);
-                }}
-                style={{ margin: 0 }}
-              />
-            </Container>
-            <h2 className="fs-4 m-0 text-white">Promos</h2>
-          </div>
-
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle second-text fw-bold"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i className="fas fa-user me-2" />
-                  John Doe
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Profile
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Logout
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        <Nav
+          isToggled={isToggled}
+          setIsToggled={setIsToggled}
+          title={"Promos"}
+        />
         <div className="container-fluid px-4 m-2">
-          <div className="row my-2 p-4 bg-white rounded shadow-sm">
+          <div
+            className="row my-2 p-4 bg-white rounded shadow-sm"
+            style={{ minHeight: "80vh" }}
+          >
             <div className="col">
-              <Button
-                variant="success"
-                className="d-flex align-items-center justify-content-center m-0"
-              >
-                <div
-                  className="d-flex gap-2 align-items-center m-0 p-0"
-                  style={{ fontSize: 12 }}
+              <Link to="add" style={{ width: "fit" }}>
+                <Button
+                  variant="success"
+                  className="d-flex align-items-center justify-content-center m-0"
                 >
-                  <Plus size="20" />{" "}
-                  <p className="m-0 p-0 d-flex align-items-center justify-content-center">
-                    ADD NEW
-                  </p>
-                </div>
-              </Button>
+                  <div
+                    className="d-flex gap-2 align-items-center m-0 p-0"
+                    style={{ fontSize: 12 }}
+                  >
+                    <Plus size="20" />{" "}
+                    <p className="m-0 p-0 d-flex align-items-center justify-content-center">
+                      ADD NEW
+                    </p>
+                  </div>
+                </Button>
+              </Link>
 
               <table className="table bg-white table-hover text-secondary mt-4">
                 <thead>
                   <tr>
                     <th scope="col">Display</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Discount</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Promo Code</th>
                     <th scope="col">Due Date</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -154,6 +142,7 @@ const PromosMenu = () => {
                           src={promo.promo_image}
                           alt="Alt text"
                           width={300}
+                          style={{ height: 100 }}
                           className="img-fluid rounded"
                         />
                       </td>
@@ -162,6 +151,7 @@ const PromosMenu = () => {
                         <br />
                         {promo.desc}
                       </td>
+                      <td>{promo.discount}%</td>
                       <td>
                         {moment().isBefore(
                           moment(promo.expire).format("DD MMM YYYY")
@@ -171,14 +161,21 @@ const PromosMenu = () => {
                           <span className="badge text-bg-danger">Expired</span>
                         )}
                       </td>
+                      <td>{promo.promo_code}</td>
                       <td>{moment(promo.expire).format("DD MMM YYYY")}</td>
                       <td>
-                        <Link to={`edit-tickets/}`}>
+                        <Link to={`edit/${promo.id}`}>
                           <Button variant="primary" className="mx-1">
                             <PencilFill />
                           </Button>
                         </Link>
-                        <Button variant="danger">
+                        <Button
+                          variant="danger"
+                          onClick={() => {
+                            setId(promo.id);
+                            setShow((prev) => !prev);
+                          }}
+                        >
                           <TrashFill />
                         </Button>
                       </td>
