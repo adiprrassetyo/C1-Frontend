@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Row,
@@ -26,16 +26,41 @@ import Entertainment from "../assets/images/entertainment.svg";
 import Slider from "../assets/images/slider.svg";
 
 import { Header, Footer } from "../components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import SearchFlight from "./../components/Homepage/SearchFlight";
+import { BookmarkHeart } from "react-bootstrap-icons";
+import { BookmarkHeartFill } from "react-bootstrap-icons";
+import { createWishlist, deleteWishlist } from "../redux/slices/wishlistSlice";
+import { retriveTickets } from "./../redux/slices/ticketSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 const Tickets = () => {
+  const { user, loading: loadingUser } = useSelector((state) => state.auth);
+  const { message: wishMessage, wishlists } = useSelector(
+    (state) => state.wishlist
+  );
   const { loading, status, message, search, ticket } = useSelector(
     (state) => state.ticket
   );
+  const dispatch = useDispatch();
+  const [showSearch, setShowSearch] = useState(false);
+  console.info({ wishlists });
 
   return (
     <div className="search-main">
       <Header />
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Container className="search-header">
         <Row>
           <Col className="mt-3 ms-5" sm="auto">
@@ -57,137 +82,26 @@ const Tickets = () => {
             </p>
           </Col>
           <Col xs={2}>
-            <Button className="btn-switch" variant="outline-info">
+            <Button
+              className="btn-switch"
+              variant="outline-info"
+              onClick={() => setShowSearch((prev) => !prev)}
+            >
               Ubah Pencarian
             </Button>{" "}
           </Col>
         </Row>
+        {showSearch ? (
+          <div className="mb-5">
+            <SearchFlight />
+          </div>
+        ) : null}
       </Container>
       <Container fluid className="search-box pt-3">
         <Container fluid="xl" className="search">
-          {/* <Card className="search-content my-5">
-            <Card.Header className="search-header">
-              <Row>
-                <Col>
-                  <h2>
-                    <strong>
-                      {search?.to.city
-                        ? `Penerbangan keberangkatan ke ${search?.to.city}`
-                        : ``}
-                    </strong>
-                  </h2>
-                  <p>
-                    {search?.startDate
-                      ? search.startDate
-                      : new Date().toLocaleDateString("id-ID", {
-                          weekday: "short",
-                          day: "numeric",
-                          month: "short",
-                        })}
-                    <span> | </span>
-                    {search?.countAnak + search?.countDewasa} Traveller
-                  </p>
-                </Col>
-                <Col xs={3} className="btn-flex">
-                  <Button
-                    variant="light"
-                    type="submit"
-                    className="btn-tanggal my-3 p-3"
-                  >
-                    Ubah tanggal
-                  </Button>
-                </Col>
-              </Row>
-            </Card.Header>
-            <Card.Body className="search-body">
-              <Row className="filter flex-filter">
-                <Col className="ms-1 p-3" md={1}>
-                  <h3>Filter :</h3>
-                </Col>
-                <Col className="m-1" md={1}>
-                  <DropdownButton
-                    id="dropdown-basic-button"
-                    title="Harga"
-                    autoClose="outside"
-                  >
-                    <Dropdown.ItemText>
-                      <h3>Harga</h3>
-                    </Dropdown.ItemText>
-                    <Dropdown.ItemText>
-                      <Form.Range />
-                    </Dropdown.ItemText>
-                  </DropdownButton>
-                </Col>
-                <Col className="m-1 me-4" md={1}>
-                  <DropdownButton
-                    id="dropdown-basic-button"
-                    title="Pemberhentian"
-                    autoClose="outside"
-                  >
-                    <Dropdown.ItemText>
-                      <h3>Pemberhentian</h3>
-                    </Dropdown.ItemText>
-                    <Dropdown.ItemText>
-                      <Form.Check aria-label="option 1" label="Langsung" />
-                      <Form.Check aria-label="option 2" label="Transit" />
-                    </Dropdown.ItemText>
-                  </DropdownButton>
-                </Col>
-                <Col className="m-1 ms-2" md={1}>
-                  <DropdownButton
-                    id="dropdown-basic-button"
-                    title="Maskapai"
-                    autoClose="outside"
-                  >
-                    <Dropdown.ItemText>
-                      <h3>Maskapai</h3>
-                    </Dropdown.ItemText>
-                    <Dropdown.ItemText>
-                      <Form.Check aria-label="option 1" label="Lion Air" />
-                      <Form.Check aria-label="option 2" label="Air Asia" />
-                    </Dropdown.ItemText>
-                  </DropdownButton>
-                </Col>
-                <Col className="m-1 ms-2" md={1}>
-                  <DropdownButton
-                    id="dropdown-basic-button"
-                    title="Keberangkatan"
-                    autoClose="outside"
-                  >
-                    <Dropdown.ItemText>
-                      <h3>Keberangkatan</h3>
-                    </Dropdown.ItemText>
-                    <Dropdown.ItemText>
-                      <Form.Check
-                        aria-label="option 1"
-                        label="Penerbangan Pagi"
-                      />
-                      <Form.Check
-                        aria-label="option 2"
-                        label="Penerbangan Siang"
-                      />
-                      <Form.Check
-                        aria-label="option 3"
-                        label="Penerbangan Malam"
-                      />
-                    </Dropdown.ItemText>
-                  </DropdownButton>
-                </Col>
-                <Col className="m-1 flex" md={5}>
-                  <p className="me-2">Urutkan Hasil :</p>
-                  <Form.Select aria-label="Default select example">
-                    <option>Harga Terendah</option>
-                    <option value="1">Harga Tertinggi</option>
-                    <option value="2">Waktu Keberangkatan</option>
-                    <option value="3">Waktu Kedatangan</option>
-                  </Form.Select>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card> */}
-
-          {ticket.length > 0 ? (
+          {ticket.length > 0 && !loading ? (
             ticket.map((item) => {
+              let wished = wishlists?.find((w) => w.id === item.id);
               const timeDifferenceInMs = Math.abs(
                 new Date(`January 1, 1970 ${item.departure_time}`).getTime() -
                   new Date(`January 1, 1970 ${item.arrival_time}`).getTime()
@@ -196,17 +110,66 @@ const Tickets = () => {
               const minutes = Math.floor(
                 (timeDifferenceInMs % 3600000) / 60000
               );
-              let date = new Date(item.date);
+              let date = new Date(item.date_start);
               let formattedDate = date.toLocaleDateString("en-US", {
                 day: "numeric",
                 month: "short",
                 year: "numeric",
               });
 
-              
               return (
                 <Accordion className="flight-content pb-2" key={item.id}>
                   <Accordion.Item eventKey="0">
+                    {user && (
+                      <div
+                        className="free-baggage rounded-bottom-end"
+                        as="h5"
+                        style={{ width: "fit-content", padding: "0.7rem" }}
+                      >
+                        <Button
+                          className="bg-transparent border-0"
+                          onClick={() => {
+                            if (!wished) {
+                              dispatch(
+                                createWishlist({
+                                  adult_price: item.adult_price,
+                                  airport_from: item.airport_from,
+                                  airport_to: item.airport_to,
+                                  arrival_time: item.arrival_time,
+                                  available: item.available,
+                                  child_price: item.child_price,
+                                  createdAt: item.createdAt,
+                                  curr_stock: item.curr_stock,
+                                  date_end: item.date_end,
+                                  date_start: item.date_start,
+                                  departure_time: item.departure_time,
+                                  from: item.from,
+                                  id: item.id,
+                                  init_stock: item.init_stock,
+                                  to: item.to,
+                                  type: item.type,
+                                  updatedAt: item.updatedAt,
+                                })
+                              );
+                              toast.success(
+                                "Berhasil menambahkan item wishlist!"
+                              );
+                            } else {
+                              dispatch(deleteWishlist(item.id));
+                              toast.success(
+                                "Berhasil menghapus item wishlist!"
+                              );
+                            }
+                          }}
+                        >
+                          {!wished ? (
+                            <BookmarkHeart size={20} />
+                          ) : (
+                            <BookmarkHeartFill size={20} />
+                          )}
+                        </Button>
+                      </div>
+                    )}
                     <Accordion.Header>
                       <Row className="flight-header mt-4">
                         <Col className="ms-4">
@@ -221,7 +184,7 @@ const Tickets = () => {
                               <h3>
                                 <strong>{item.departure_time}</strong>
                               </h3>
-                              <p>CGK</p>
+                              <p>{`${search?.from.code}`}</p>
                             </div>
                             <span className="has-text-grey-dark">
                               <img src={Arrow} alt="" />
@@ -230,7 +193,7 @@ const Tickets = () => {
                               <h3>
                                 <strong>{item.arrival_time}</strong>
                               </h3>
-                              <p>DPS</p>
+                              <p>{`${search?.to.code}`}</p>
                             </div>
                           </div>
                         </Col>
@@ -387,643 +350,21 @@ const Tickets = () => {
                   Maaf, tidak ada penerbangan yang sesuai dengan kriteria anda
                 </strong>
               </h3>
-              <Button className="btn-switch mt-3" variant="info-outlined">
+              <Button
+                className="btn-switch mt-3"
+                variant="secondary-outlined"
+                onClick={() => setShowSearch((prev) => !prev)}
+              >
                 Ubah Pencarian
               </Button>
             </Container>
           )}
 
-          {/* 1 */}
-          <Accordion className="flight-content pb-2">
-            <Accordion.Item eventKey="0">
-              <Accordion.Header>
-                <Row className="flight-header">
-                  <Col className="ms-4">
-                    <div className="flight-box-airline flight-flex">
-                      <img src={Lion} />
-                      <p className="mt-2">Lion Air</p>
-                    </div>
-                  </Col>
-                  <Col className="me-5">
-                    <div className="flight-box-time time-flight-flex">
-                      <div>
-                        <h3>
-                          <strong>06:00</strong>
-                        </h3>
-                        <p>CGK</p>
-                      </div>
-                      <span className="has-text-grey-dark">
-                        <img src={Arrow} alt="" />
-                      </span>
-                      <div>
-                        <h3>
-                          <strong>07:50</strong>
-                        </h3>
-                        <p>DPS</p>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col className="me-5">
-                    <div className="flight-box-time time-flight-flex">
-                      <div>
-                        <h3>
-                          <strong>1h 50m</strong>
-                        </h3>
-                        <p className="txt-langsung">Langsung</p>
-                      </div>
-                      <div className="baggage time-flight-flex">
-                        <img src={Baggage} alt="baggage" />
-                        <h4>20kg</h4>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col className="flight-box-price pt-3">
-                    <h3>
-                      <strong>US$47.49</strong>
-                      <span> /Org</span>
-                    </h3>
-                  </Col>
-                  <Col className="pt-2">
-                    <Button
-                      variant="light"
-                      type="submit"
-                      className="btn-flight my-2"
-                    >
-                      Pilih Penerbangan
-                    </Button>
-                  </Col>
-                </Row>
-              </Accordion.Header>
-              <Accordion.Body className="flight-detail-content p-4">
-                <Row>
-                  <Col xs={2} className="pt-3 ms-4">
-                    <div className="flight-detail-airline-info flight-flex">
-                      <img src={Lion} />
-                      <h4 className="mt-4">Lion Air</h4>
-                      <h4>
-                        <span>QG666</span>
-                      </h4>
-                    </div>
-                  </Col>
-                  <Col xs={7}>
-                    <Row>
-                      <Col xs={1} className="time-line p-0">
-                        <img src={Slider} alt="" />
-                      </Col>
-                      <Col xs={11} className="timeline-info pt-3">
-                        <div className="timeline-departure timeline-flex">
-                          <div className="timeline-datetime me-5">
-                            <h2 className="timeline-departure-time">
-                              <strong>06:00</strong>
-                            </h2>
-                            <p className="timeline-departure-date">
-                              11 Dec 2022
-                            </p>
-                          </div>
-                          <div className="timeline-cityairport">
-                            <p className="timeline-departure-city mb-0">
-                              Jakarta (CGK)
-                            </p>
-                            <p className="timeline-departure-airport mb-0">
-                              Soekarno Hatta International Airport
-                            </p>
-                            <p className="timeline-departure-terminal">
-                              Terminal 2E
-                            </p>
-                          </div>
-                        </div>
-                        <div className="timeline-duration-wrapper mt-4 mb-4">
-                          <p className="timeline-duration">
-                            <div className="icon-flex">
-                              <img src={Clock} alt="" />
-                              1h 50m
-                            </div>
-                          </p>
-                        </div>
-                        <div className="timeline-arrival timeline-flex">
-                          <div className="timeline-datetime me-5">
-                            <h2 className="timeline-arrival-time">
-                              <strong>07:50</strong>
-                            </h2>
-                            <p className="timeline-arrival-date">11 Dec 2022</p>
-                          </div>
-                          <div className="timeline-cityairport">
-                            <p className="timeline-arrival-city mb-0">
-                              Bali Denpasar (DPS)
-                            </p>
-                            <p className="timeline-arrival-airport mb-0">
-                              Ngurah Rai International Airport
-                            </p>
-                            <p className="timeline-arrival-terminal">
-                              Terminal 2E
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Col>
-                  <Col className="ms-4">
-                    <div className="flight-facility pt-3">
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Refund} alt="" />
-                        <p className="ms-2 mb-0">Refundable</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Reschedule} alt="" />
-                        <p className="ms-2 mb-0">Reschedule</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Cabin} alt="" />
-                        <p className="ms-2 mb-0">Cabin Baggage 7kg</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Baggage} alt="" />
-                        <p className="ms-3 mb-0">Baggage 20kg</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Entertainment} alt="" />
-                        <p className="ms-2 mb-0">Entertainment</p>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion>
-
           {/* 2 */}
-          {/* <Accordion className="flight-content pb-2">
-            <Accordion.Item eventKey="1">
-              <Accordion.Header>
-                <Row className="flight-header">
-                  <Col className="ms-4">
-                    <div className="flight-box-airline flight-flex">
-                      <img src={Lion} />
-                      <p className="mt-2">Lion Air</p>
-                    </div>
-                  </Col>
-                  <Col className="me-5">
-                    <div className="flight-box-time time-flight-flex">
-                      <div>
-                        <h3>
-                          <strong>17:00</strong>
-                        </h3>
-                        <p>CGK</p>
-                      </div>
-                      <span className="has-text-grey-dark">
-                        <img src={Arrow} alt="" />
-                      </span>
-                      <div>
-                        <h3>
-                          <strong>18:50</strong>
-                        </h3>
-                        <p>DPS</p>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col className="me-5">
-                    <div className="flight-box-time time-flight-flex">
-                      <div>
-                        <h3>
-                          <strong>1h 50m</strong>
-                        </h3>
-                        <p className="txt-langsung">Langsung</p>
-                      </div>
-                      <div className="baggage time-flight-flex">
-                        <img src={Baggage} alt="baggage" />
-                        <h4>20kg</h4>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col className="flight-box-price pt-3">
-                    <h3>
-                      <strong>US$47.49</strong>
-                      <span> /Org</span>
-                    </h3>
-                  </Col>
-                  <Col className="pt-2">
-                    <Button
-                      variant="light"
-                      type="submit"
-                      className="btn-flight my-2"
-                    >
-                      Pilih Penerbangan
-                    </Button>
-                  </Col>
-                </Row>
-              </Accordion.Header>
-              <Accordion.Body className="flight-detail-content p-4">
-                <Row>
-                  <Col xs={2} className="pt-3 ms-4">
-                    <div className="flight-detail-airline-info flight-flex">
-                      <img src={Lion} />
-                      <h4 className="mt-4">Lion Air</h4>
-                      <h4>
-                        <span>QG675</span>
-                      </h4>
-                    </div>
-                  </Col>
-                  <Col xs={7}>
-                    <Row>
-                      <Col xs={1} className="time-line p-0">
-                        <img src={Slider} alt="" />
-                      </Col>
-                      <Col xs={11} className="timeline-info pt-3">
-                        <div className="timeline-departure timeline-flex">
-                          <div className="timeline-datetime me-5">
-                            <h2 className="timeline-departure-time">
-                              <strong>17:00</strong>
-                            </h2>
-                            <p className="timeline-departure-date">
-                              12 Dec 2022
-                            </p>
-                          </div>
-                          <div className="timeline-cityairport">
-                            <p className="timeline-departure-city mb-0">
-                              Jakarta (CGK)
-                            </p>
-                            <p className="timeline-departure-airport mb-0">
-                              Soekarno Hatta International Airport
-                            </p>
-                            <p className="timeline-departure-terminal">
-                              Terminal 2E
-                            </p>
-                          </div>
-                        </div>
-                        <div className="timeline-duration-wrapper mt-4 mb-4">
-                          <p className="timeline-duration">
-                            <div className="icon-flex">
-                              <img src={Clock} alt="" />
-                              1h 50m
-                            </div>
-                          </p>
-                        </div>
-                        <div className="timeline-arrival timeline-flex">
-                          <div className="timeline-datetime me-5">
-                            <h2 className="timeline-arrival-time">
-                              <strong>18:50</strong>
-                            </h2>
-                            <p className="timeline-arrival-date">12 Dec 2022</p>
-                          </div>
-                          <div className="timeline-cityairport">
-                            <p className="timeline-arrival-city mb-0">
-                              Bali Denpasar (DPS)
-                            </p>
-                            <p className="timeline-arrival-airport mb-0">
-                              Ngurah Rai International Airport
-                            </p>
-                            <p className="timeline-arrival-terminal">
-                              Terminal 2E
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Col>
-                  <Col className="ms-4">
-                    <div className="flight-facility pt-3">
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Refund} alt="" />
-                        <p className="ms-2 mb-0">Refundable</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Reschedule} alt="" />
-                        <p className="ms-2 mb-0">Reschedule</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Cabin} alt="" />
-                        <p className="ms-2 mb-0">Cabin Baggage 7kg</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Baggage} alt="" />
-                        <p className="ms-3 mb-0">Baggage 20kg</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Entertainment} alt="" />
-                        <p className="ms-2 mb-0">Entertainment</p>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion> */}
 
           {/* 3 */}
-          {/* <Accordion className="flight-content pb-2">
-            <Accordion.Item eventKey="2">
-              <Accordion.Header>
-                <Row className="flight-header">
-                  <Col className="ms-4">
-                    <div className="flight-box-airline flight-flex">
-                      <img src={Lion} />
-                      <p className="mt-2">Lion Air</p>
-                    </div>
-                  </Col>
-                  <Col className="me-5">
-                    <div className="flight-box-time time-flight-flex">
-                      <div>
-                        <h3>
-                          <strong>06:00</strong>
-                        </h3>
-                        <p>CGK</p>
-                      </div>
-                      <span className="has-text-grey-dark">
-                        <img src={Arrow} alt="" />
-                      </span>
-                      <div>
-                        <h3>
-                          <strong>07:50</strong>
-                        </h3>
-                        <p>DPS</p>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col className="me-5">
-                    <div className="flight-box-time time-flight-flex">
-                      <div>
-                        <h3>
-                          <strong>1h 50m</strong>
-                        </h3>
-                        <p className="txt-langsung">Langsung</p>
-                      </div>
-                      <div className="baggage time-flight-flex">
-                        <img src={Baggage} alt="baggage" />
-                        <h4>20kg</h4>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col className="flight-box-price pt-3">
-                    <h3>
-                      <strong>US$47.49</strong>
-                      <span> /Org</span>
-                    </h3>
-                  </Col>
-                  <Col className="pt-2">
-                    <Button
-                      variant="light"
-                      type="submit"
-                      className="btn-flight my-2"
-                    >
-                      Pilih Penerbangan
-                    </Button>
-                  </Col>
-                </Row>
-              </Accordion.Header>
-              <Accordion.Body className="flight-detail-content p-4">
-                <Row>
-                  <Col xs={2} className="pt-3 ms-4">
-                    <div className="flight-detail-airline-info flight-flex">
-                      <img src={Lion} />
-                      <h4 className="mt-4">Lion Air</h4>
-                      <h4>
-                        <span>QG670</span>
-                      </h4>
-                    </div>
-                  </Col>
-                  <Col xs={7}>
-                    <Row>
-                      <Col xs={1} className="time-line p-0">
-                        <img src={Slider} alt="" />
-                      </Col>
-                      <Col xs={11} className="timeline-info pt-3">
-                        <div className="timeline-departure timeline-flex">
-                          <div className="timeline-datetime me-5">
-                            <h2 className="timeline-departure-time">
-                              <strong>06:00</strong>
-                            </h2>
-                            <p className="timeline-departure-date">
-                              10 Dec 2022
-                            </p>
-                          </div>
-                          <div className="timeline-cityairport">
-                            <p className="timeline-departure-city mb-0">
-                              Jakarta (CGK)
-                            </p>
-                            <p className="timeline-departure-airport mb-0">
-                              Soekarno Hatta International Airport
-                            </p>
-                            <p className="timeline-departure-terminal">
-                              Terminal 2E
-                            </p>
-                          </div>
-                        </div>
-                        <div className="timeline-duration-wrapper mt-4 mb-4">
-                          <p className="timeline-duration">
-                            <div className="icon-flex">
-                              <img src={Clock} alt="" />
-                              1h 50m
-                            </div>
-                          </p>
-                        </div>
-                        <div className="timeline-arrival timeline-flex">
-                          <div className="timeline-datetime me-5">
-                            <h2 className="timeline-arrival-time">
-                              <strong>07:50</strong>
-                            </h2>
-                            <p className="timeline-arrival-date">10 Dec 2022</p>
-                          </div>
-                          <div className="timeline-cityairport">
-                            <p className="timeline-arrival-city mb-0">
-                              Bali Denpasar (DPS)
-                            </p>
-                            <p className="timeline-arrival-airport mb-0">
-                              Ngurah Rai International Airport
-                            </p>
-                            <p className="timeline-arrival-terminal">
-                              Terminal 2E
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Col>
-                  <Col className="ms-4">
-                    <div className="flight-facility pt-3">
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Refund} alt="" />
-                        <p className="ms-2 mb-0">Refundable</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Reschedule} alt="" />
-                        <p className="ms-2 mb-0">Reschedule</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Cabin} alt="" />
-                        <p className="ms-2 mb-0">Cabin Baggage 7kg</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Baggage} alt="" />
-                        <p className="ms-3 mb-0">Baggage 20kg</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Entertainment} alt="" />
-                        <p className="ms-2 mb-0">Entertainment</p>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion> */}
 
           {/* 4 */}
-          {/* <Accordion className="flight-content pb-2">
-            <Accordion.Item eventKey="3">
-              <Accordion.Header>
-                <Row className="flight-header">
-                  <Col className="ms-4">
-                    <div className="flight-box-airline flight-flex">
-                      <img src={Lion} />
-                      <p className="mt-2">Lion Air</p>
-                    </div>
-                  </Col>
-                  <Col className="me-5">
-                    <div className="flight-box-time time-flight-flex">
-                      <div>
-                        <h3>
-                          <strong>14:00</strong>
-                        </h3>
-                        <p>CGK</p>
-                      </div>
-                      <span className="has-text-grey-dark">
-                        <img src={Arrow} alt="" />
-                      </span>
-                      <div>
-                        <h3>
-                          <strong>15:50</strong>
-                        </h3>
-                        <p>DPS</p>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col className="me-5">
-                    <div className="flight-box-time time-flight-flex">
-                      <div>
-                        <h3>
-                          <strong>1h 50m</strong>
-                        </h3>
-                        <p className="txt-langsung">Langsung</p>
-                      </div>
-                      <div className="baggage time-flight-flex">
-                        <img src={Baggage} alt="baggage" />
-                        <h4>20kg</h4>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col className="flight-box-price pt-3">
-                    <h3>
-                      <strong>US$52.37</strong>
-                      <span> /Org</span>
-                    </h3>
-                  </Col>
-                  <Col className="pt-2">
-                    <Button
-                      variant="light"
-                      type="submit"
-                      className="btn-flight my-2"
-                    >
-                      Pilih Penerbangan
-                    </Button>
-                  </Col>
-                </Row>
-              </Accordion.Header>
-              <Accordion.Body className="flight-detail-content p-4">
-                <Row>
-                  <Col xs={2} className="pt-3 ms-4">
-                    <div className="flight-detail-airline-info flight-flex">
-                      <img src={Lion} />
-                      <h4 className="mt-4">Lion Air</h4>
-                      <h4>
-                        <span>QG689</span>
-                      </h4>
-                    </div>
-                  </Col>
-                  <Col xs={7}>
-                    <Row>
-                      <Col xs={1} className="time-line p-0">
-                        <img src={Slider} alt="" />
-                      </Col>
-                      <Col xs={11} className="timeline-info pt-3">
-                        <div className="timeline-departure timeline-flex">
-                          <div className="timeline-datetime me-5">
-                            <h2 className="timeline-departure-time">
-                              <strong>14:00</strong>
-                            </h2>
-                            <p className="timeline-departure-date">
-                              10 Dec 2022
-                            </p>
-                          </div>
-                          <div className="timeline-cityairport">
-                            <p className="timeline-departure-city mb-0">
-                              Jakarta (CGK)
-                            </p>
-                            <p className="timeline-departure-airport mb-0">
-                              Soekarno Hatta International Airport
-                            </p>
-                            <p className="timeline-departure-terminal">
-                              Terminal 2E
-                            </p>
-                          </div>
-                        </div>
-                        <div className="timeline-duration-wrapper mt-4 mb-4">
-                          <p className="timeline-duration">
-                            <div className="icon-flex">
-                              <img src={Clock} alt="" />
-                              1h 50m
-                            </div>
-                          </p>
-                        </div>
-                        <div className="timeline-arrival timeline-flex">
-                          <div className="timeline-datetime me-5">
-                            <h2 className="timeline-arrival-time">
-                              <strong>15:50</strong>
-                            </h2>
-                            <p className="timeline-arrival-date">10 Dec 2022</p>
-                          </div>
-                          <div className="timeline-cityairport">
-                            <p className="timeline-arrival-city mb-0">
-                              Bali Denpasar (DPS)
-                            </p>
-                            <p className="timeline-arrival-airport mb-0">
-                              Ngurah Rai International Airport
-                            </p>
-                            <p className="timeline-arrival-terminal">
-                              Terminal 2E
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Col>
-                  <Col className="ms-4">
-                    <div className="flight-facility pt-3">
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Refund} alt="" />
-                        <p className="ms-2 mb-0">Refundable</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Reschedule} alt="" />
-                        <p className="ms-2 mb-0">Reschedule</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Cabin} alt="" />
-                        <p className="ms-2 mb-0">Cabin Baggage 7kg</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Baggage} alt="" />
-                        <p className="ms-3 mb-0">Baggage 20kg</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Entertainment} alt="" />
-                        <p className="ms-2 mb-0">Entertainment</p>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion> */}
 
           {/* 5 */}
           {/* <Accordion className="flight-content pb-2">
@@ -1145,164 +486,6 @@ const Tickets = () => {
                               </span>
                             </h2>
                             <p className="timeline-arrival-date">12 Dec 2022</p>
-                          </div>
-                          <div className="timeline-cityairport">
-                            <p className="timeline-arrival-city mb-0">
-                              Bali Denpasar (DPS)
-                            </p>
-                            <p className="timeline-arrival-airport mb-0">
-                              Ngurah Rai International Airport
-                            </p>
-                            <p className="timeline-arrival-terminal">
-                              Terminal 2E
-                            </p>
-                          </div>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Col>
-                  <Col className="ms-4">
-                    <div className="flight-facility pt-3">
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Refund} alt="" />
-                        <p className="ms-2 mb-0">Refundable</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Reschedule} alt="" />
-                        <p className="ms-2 mb-0">Reschedule</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Cabin} alt="" />
-                        <p className="ms-2 mb-0">Cabin Baggage 7kg</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Baggage} alt="" />
-                        <p className="ms-3 mb-0">Baggage 20kg</p>
-                      </div>
-                      <div className="facility-item facility-flex mb-2">
-                        <img src={Entertainment} alt="" />
-                        <p className="ms-2 mb-0">Entertainment</p>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion> */}
-
-          {/* 6  */}
-          {/* <Accordion className="flight-content pb-2">
-            <Accordion.Item eventKey="5">
-              <Accordion.Header>
-                <Row className="flight-header">
-                  <Col className="ms-4">
-                    <div className="flight-box-airline flight-flex">
-                      <img src={Lion} />
-                      <p className="mt-2">Lion Air</p>
-                    </div>
-                  </Col>
-                  <Col className="me-5">
-                    <div className="flight-box-time time-flight-flex">
-                      <div>
-                        <h3>
-                          <strong>11:00</strong>
-                        </h3>
-                        <p>CGK</p>
-                      </div>
-                      <span className="has-text-grey-dark">
-                        <img src={Arrow} alt="" />
-                      </span>
-                      <div>
-                        <h3>
-                          <strong>13:50</strong>
-                        </h3>
-                        <p>DPS</p>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col className="me-5">
-                    <div className="flight-box-time time-flight-flex">
-                      <div>
-                        <h3>
-                          <strong>1h 50m</strong>
-                        </h3>
-                        <p className="txt-langsung">Langsung</p>
-                      </div>
-                      <div className="baggage time-flight-flex">
-                        <img src={Baggage} alt="baggage" />
-                        <h4>20kg</h4>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col className="flight-box-price pt-3">
-                    <h3>
-                      <strong>US$55.93</strong>
-                      <span> /Org</span>
-                    </h3>
-                  </Col>
-                  <Col className="pt-2">
-                    <Button
-                      variant="light"
-                      type="submit"
-                      className="btn-flight my-2"
-                    >
-                      Pilih Penerbangan
-                    </Button>
-                  </Col>
-                </Row>
-              </Accordion.Header>
-              <Accordion.Body className="flight-detail-content p-4">
-                <Row>
-                  <Col xs={2} className="pt-3 ms-4">
-                    <div className="flight-detail-airline-info flight-flex">
-                      <img src={Lion} />
-                      <h4 className="mt-4">Lion Air</h4>
-                      <h4>
-                        <span>QG766</span>
-                      </h4>
-                    </div>
-                  </Col>
-                  <Col xs={7}>
-                    <Row>
-                      <Col xs={1} className="time-line p-0">
-                        <img src={Slider} alt="" />
-                      </Col>
-                      <Col xs={11} className="timeline-info pt-3">
-                        <div className="timeline-departure timeline-flex">
-                          <div className="timeline-datetime me-5">
-                            <h2 className="timeline-departure-time">
-                              <strong>11:00</strong>
-                            </h2>
-                            <p className="timeline-departure-date">
-                              11 Dec 2022
-                            </p>
-                          </div>
-                          <div className="timeline-cityairport">
-                            <p className="timeline-departure-city mb-0">
-                              Jakarta (CGK){" "}
-                            </p>
-                            <p className="timeline-departure-airport mb-0">
-                              Soekarno Hatta International Airport
-                            </p>
-                            <p className="timeline-departure-terminal">
-                              Terminal 2E
-                            </p>
-                          </div>
-                        </div>
-                        <div className="timeline-duration-wrapper mt-4 mb-4">
-                          <p className="timeline-duration">
-                            <div className="icon-flex">
-                              <img src={Clock} alt="" />
-                              1h 50m
-                            </div>
-                          </p>
-                        </div>
-                        <div className="timeline-arrival timeline-flex">
-                          <div className="timeline-datetime me-5">
-                            <h2 className="timeline-arrival-time">
-                              <strong>13:50</strong>
-                            </h2>
-                            <p className="timeline-arrival-date">11 Dec 2022</p>
                           </div>
                           <div className="timeline-cityairport">
                             <p className="timeline-arrival-city mb-0">

@@ -58,7 +58,6 @@ const SearchFlight = () => {
     }
   };
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -80,6 +79,7 @@ const SearchFlight = () => {
           to: to[0],
           type: selected,
           date: startDate,
+          endDate: endDate,
           willFly: true,
         },
         redirect,

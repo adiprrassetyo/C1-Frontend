@@ -52,12 +52,6 @@ import Payment from "../assets/images/payment-logo.svg";
                                     <i class="remix-icon ri-key-2-line"></i>
                                     <span>Ubah Password</span>
                                 </Button>
-                                <Button className="mb-3" variant="info" size="lg">
-                                    <div className="selected">
-                                        <i class="remix-icon ri-list-check"></i>
-                                        <span>Daftar Traveler</span>
-                                    </div> 
-                                </Button>
                                 <Button href="/#/account/order" className="mb-3" variant="light" size="lg">
                                     <i class="remix-icon ri-calendar-check-line"></i>
                                     <span>Daftar Pesanan</span>

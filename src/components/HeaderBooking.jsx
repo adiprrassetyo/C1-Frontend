@@ -35,14 +35,15 @@ import {
   readAllNotif,
   // read,
 } from "../redux/slices/notifSlice";
+import { readAll } from "../redux/services/notifServices";
 
 const HeaderBooking = () => {
-    const [sticky, setSticky] = useState(false);
-    const { user } = useSelector((state) => state.auth);
-    const dispatch = useDispatch();
-    let location = useLocation();
+  const [sticky, setSticky] = useState(false);
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  let location = useLocation();
 
-    useEffect(() => {
+  useEffect(() => {
     if (user) {
       const socket = io("wss://binair-backend-production.up.railway.app");
 
@@ -58,26 +59,26 @@ const HeaderBooking = () => {
     }
   }, []);
 
-    useEffect(() => {
-        const handleScroll = () => {
-        setSticky(window.scrollY > 50);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    });
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
 
-    //NOTIFICATION
-    const { notif, loading } = useSelector((state) => state.notif);
-    const [notifData, setNotifData] = useState(notif);
+  //NOTIFICATION
+  const { notif, loading } = useSelector((state) => state.notif);
+  const [notifData, setNotifData] = useState(notif);
 
-    useEffect(() => {
+  useEffect(() => {
     if (user) {
       dispatch(retriveNotif());
     }
-    }, [dispatch]);
+  }, [dispatch]);
 
-    return (
-        <>
+  return (
+    <>
       {["md"].map((expand) => (
         <Navbar
           key={expand}
@@ -92,15 +93,22 @@ const HeaderBooking = () => {
               </Link>
             </Navbar.Brand>
             <Nav className="flex-grow-1 pe-3 ">
-                    <ul className="bar-timeline">
-                        <li className="active">Pesanan</li>
-                        <li className={
-                          location.pathname === "/payment" ? "active" :
-                          location.pathname === "/payment/confirmation" ? "active" :
-                          ""}>Pembayaran</li>
-                        <li>Selesai</li>
-                    </ul>
-                </Nav>
+              <ul className="bar-timeline">
+                <li className="active">Pesanan</li>
+                <li
+                  className={
+                    location.pathname === "/payment"
+                      ? "active"
+                      : location.pathname === "/payment/confirmation"
+                      ? "active"
+                      : ""
+                  }
+                >
+                  Pembayaran
+                </li>
+                <li>Selesai</li>
+              </ul>
+            </Nav>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -117,7 +125,6 @@ const HeaderBooking = () => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body className="justify-content-end">
-                
                 <div className="d-flex justify-content-center align-items-center">
                   {user && (
                     <OverlayTrigger
@@ -147,6 +154,7 @@ const HeaderBooking = () => {
                                       className="readAll-btn"
                                       onClick={() => {
                                         dispatch(readAllNotif());
+                                        dispatch(readAll());
                                         setNotifData(notif);
                                       }}
                                       style={{
@@ -211,7 +219,7 @@ const HeaderBooking = () => {
                                     key={msg.id}
                                     onClick={() => {
                                       dispatch(readOneNotif([msg.id]));
-                                      // dispatch(read([msg.id]));
+                                      dispatch(read([msg.id]));
                                       setNotifData(notif);
                                     }}
                                   >
@@ -323,7 +331,7 @@ const HeaderBooking = () => {
         </Navbar>
       ))}
     </>
-    );
-}
+  );
+};
 
 export default HeaderBooking;

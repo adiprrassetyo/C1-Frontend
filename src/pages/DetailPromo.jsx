@@ -19,6 +19,7 @@ import "../assets/styles/detailPromo.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { retrivePromo } from "../redux/slices/promoSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 const DetailPromo = () => {
   const { loading, status, message, promoById } = useSelector(
@@ -50,7 +51,7 @@ const DetailPromo = () => {
     year: "numeric",
   })} (${diffDays} hari)`;
 
-  copyText = "TRDANAMON80";
+  copyText = promoById.promo_code;
 
   const handleCopyText = (e) => {
     setCopyText(e.target.value);
@@ -58,12 +59,13 @@ const DetailPromo = () => {
 
   const copyToClipboard = () => {
     copy(copyText);
-    //alert(`You have copied "${copyText}"`);
   };
 
   const [showAlert, setShowAlert] = useState("");
 
-
+  useEffect(() => {
+    showAlert && toast.success(`Kode ${copyText} berhasil disalin!`);
+  }, [showAlert]);
 
   return (
     <div>
@@ -90,17 +92,22 @@ const DetailPromo = () => {
           </section>
           <section className="discount-section">
             <Container>
-              {showAlert && (
-                <Alert
-                  variant="success"
-                  onClose={() => setShowAlert(false)}
-                  dismissible
-                >
-                  <p className="text-center">
-                    Kode <strong>{copyText}</strong> berhasil disalin!
-                  </p>
-                </Alert>
-              )}
+              {/* {showAlert &&
+                toast.success(
+                  `Kode ${copyText} berhasil disalin!`
+                )} */}
+              <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
               <Row className="discount-row">
                 <Col md={6} className="discount-card">
                   <h3 className="discount-card-title">

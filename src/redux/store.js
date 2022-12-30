@@ -8,6 +8,7 @@ import promoReducer from "./slices/promoSlice";
 import notifReducer from "./slices/notifSlice";
 import userReducer from "./slices/userSlice";
 import transReducer from "./slices/transactionSlice";
+import wishlistReducer from "./slices/wishlistSlice";
 
 // Konfigurasi untuk redux-persist
 const persistConfig = {
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   notif: notifReducer,
   user: userReducer,
   transaction: transReducer,
+  wishlist: wishlistReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer); // Reducer yang telah dipersist

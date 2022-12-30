@@ -104,10 +104,7 @@ const HeaderBookingDone = () => {
                       <i className="remix-icon ri-contacts-book-line"></i>
                       <span className="ml-2">Daftar Kontak</span>
                     </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <i className="remix-icon ri-list-check"></i>
-                      <span className="ml-2">Daftar Traveler</span>
-                    </NavDropdown.Item>
+
                     <NavDropdown.Item>
                       <i className="remix-icon ri-calendar-check-line"></i>
                       <span className="ml-2">Daftar Pesanan</span>

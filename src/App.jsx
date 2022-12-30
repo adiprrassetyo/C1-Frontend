@@ -88,7 +88,10 @@ const App = () => {
           <Route path="/flight/confirm" element={<ConfirmBooking />} />
           <Route path="/flight/done" element={<PaymentDone />} />
           <Route path="/payment" element={<PaymentBooking />} />
-          <Route path="/payment/confirmation" element={<PaymentConfirmation />} />
+          <Route
+            path="/payment/confirmation"
+            element={<PaymentConfirmation />}
+          />
           <Route path="/terms/condition" element={<TermofService />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/reset" element={<Reset />} />
