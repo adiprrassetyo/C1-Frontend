@@ -1,11 +1,15 @@
-// import { signInWithGoogle } from "../services/firebase";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { googleLoginUser } from "../redux/slices/authSlice";
+import {
+    Button,
+    Spinner
+  } from "react-bootstrap";
+import GoogleLogo from "../assets/images/google-logo.svg";
 
-const GLogin = ({isSignIn}) => {  
+const GLogin = ({isSignIn, loading}) => {  
 
     const firebaseConfig = { 
         apiKey: "AIzaSyAWp_X-Vy6zhj8umNQFWSFkl-MEdecrl4Y", 
@@ -41,8 +45,18 @@ const GLogin = ({isSignIn}) => {
 
     return (
         isSignIn ? 
-        (<button className="btn" onClick={signInWithGoogle}><i className="fab fa-google"></i>Sign in with google</button>) 
-        : (<button className="btn" onClick={()=>auth.signOut}><i className="fab fa-google"></i>Sign out google</button>)
+        (<Button
+            variant="primary"
+            className="btn-google-login mb-3"
+            onClick={signInWithGoogle}
+            >
+            {loading ? (
+                <Spinner animation="border" variant="info" />
+            ) : (
+                <><img className="me-1" src={GoogleLogo} alt="" />Sign in With Google</>
+            )}
+            </Button>) 
+        : (<Button className="btn" onClick={()=>auth.signOut}><img src={GoogleLogo} alt="" />Sign out google</Button>)
         
     );
 };
