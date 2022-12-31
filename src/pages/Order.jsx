@@ -18,7 +18,10 @@ import logo from "../assets/images/binair-logo.svg";
 import Nodata from "../assets/images/no-data.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { retriveTransUser } from "../redux/slices/transactionSlice";
+import {
+  filterTrans,
+  retriveTransUser,
+} from "../redux/slices/transactionSlice";
 import { ArrowDownUp } from "react-bootstrap-icons";
 import { ArrowRight } from "react-bootstrap-icons";
 import moment from "moment";
@@ -27,19 +30,21 @@ const Order = () => {
   const {
     loading,
     status,
-    transactionById,
     message,
     transactionsUser,
+    transactionsByStatus,
     totalPages,
     currentPage,
   } = useSelector((state) => state.transaction);
   const dispatch = useDispatch();
+  const [filterStatus, setFilterStatus] = useState("");
 
   useEffect(() => {
     dispatch(retriveTransUser(0));
-  }, [dispatch]);
+    dispatch(filterTrans(filterStatus));
+  }, [dispatch, filterStatus]);
 
-  console.info({ transactionsUser });
+  console.info({ transactionsUser, transactionsByStatus });
 
   return (
     <div>
@@ -112,50 +117,84 @@ const Order = () => {
                     <Button variant="outline-info">Search</Button>
                   </Form> */}
                 </Card.Header>
-                {/* <Card.Body>
-                  <div className="status-filter m-2">
+                <Card.Body>
+                  <div className="status-filter my-2 mx-5">
                     <div>
                       <Button
-                        className="ps-4 pe-4"
+                        className={filterStatus === "" && `bg-info text-white`}
                         variant="secondary"
-                        size="lg"
+                        size="md"
+                        onClick={() => {
+                          setFilterStatus("");
+                        }}
+                      >
+                        Semua
+                      </Button>{" "}
+                    </div>
+                    <div>
+                      <Button
+                        onClick={() => {
+                          setFilterStatus("PAYMENT SUCCESS");
+                        }}
+                        className={
+                          filterStatus === "PAYMENT SUCCESS" &&
+                          `bg-info text-white`
+                        }
+                        variant="secondary"
+                        size="md"
                       >
                         Dikonfirmasi
                       </Button>{" "}
                     </div>
                     <div>
                       <Button
-                        className="ps-4 pe-4"
+                        onClick={() => {
+                          setFilterStatus("SELESAI");
+                        }}
+                        className={
+                          filterStatus === "SELESAI" && `bg-info text-white`
+                        }
                         variant="secondary"
-                        size="lg"
+                        size="md"
                       >
                         Selesai
                       </Button>{" "}
                     </div>
                     <div>
                       <Button
-                        className="ps-4 pe-4"
+                        onClick={() => {
+                          setFilterStatus("PENDING PAYMENT");
+                        }}
+                        className={
+                          filterStatus === "PENDING PAYMENT" &&
+                          `bg-info text-white`
+                        }
                         variant="secondary"
-                        size="lg"
+                        size="md"
                       >
                         Menunggu
                       </Button>{" "}
                     </div>
                     <div>
                       <Button
-                        className="ps-4 pe-4"
+                        onClick={() => {
+                          setFilterStatus("CANCELED");
+                        }}
+                        className={
+                          filterStatus === "CANCELED" && `bg-info text-white`
+                        }
                         variant="secondary"
-                        size="lg"
+                        size="md"
                       >
                         Dibatalkan
                       </Button>{" "}
                     </div>
                   </div>
-                </Card.Body> */}
+                </Card.Body>
               </Card>
               <div className="img-box">
-                {transactionsUser ? (
-                  transactionsUser.map((trans) => (
+                {transactionsByStatus.length ? (
+                  transactionsByStatus.map((trans) => (
                     <Card
                       className="order-list mt-3"
                       onClick={() => {
@@ -284,10 +323,6 @@ const Order = () => {
                     <img src={Nodata} alt="" />
                     <p>
                       <strong>Tidak Ada Data</strong>
-                    </p>
-                    <p className="txt">
-                      Jika anda tidak bisa menyelesaikan proses pemesanan, kami
-                      akan menyimpannya di sini!
                     </p>
                   </>
                 )}

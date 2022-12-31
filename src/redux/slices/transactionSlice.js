@@ -52,6 +52,7 @@ const transSlice = createSlice({
     totalPages: 0,
     currentPage: 0,
     totalItems: 0,
+    transactionsByStatus: [],
   },
   reducers: {
     deleteTrans: (state, action) => {
@@ -59,6 +60,23 @@ const transSlice = createSlice({
         ...state,
         transactions: state.transactions.filter((t) => t.id != action.payload),
         message: "transaction deleted",
+      };
+    },
+    filterTrans: (state, action) => {
+      let data;
+      if (action.payload !== "") {
+        data = [
+          ...state.transactionsUser.filter(
+            (trans) => trans.status === action.payload
+          ),
+        ];
+      } else {
+        data = state.transactionsUser;
+      }
+      console.info(data)
+      return {
+        ...state,
+        transactionsByStatus: data,
       };
     },
   },
@@ -132,5 +150,5 @@ const transSlice = createSlice({
   },
 });
 
-export const { deleteTrans } = transSlice.actions;
+export const { deleteTrans, filterTrans } = transSlice.actions;
 export default transSlice.reducer;
