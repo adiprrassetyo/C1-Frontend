@@ -240,9 +240,9 @@ const Order = () => {
                                 <h2>
                                   <strong>{trans.ticket.to}</strong>
                                 </h2>
-                                <h3 className="is-grey">
+                                <h6 className="is-grey">
                                   {trans.ticket.airport_to}
-                                </h3>
+                                </h6>
                               </div>
                             </div>
                           </div>

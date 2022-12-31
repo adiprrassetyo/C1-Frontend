@@ -11,7 +11,7 @@ import "../assets/styles/order.css";
 import { Footer, Header } from "../components";
 import { logout } from "../redux/slices/authSlice";
 
-import { retriveTickets } from "../redux/slices/ticketSlice";
+import { retriveTickets, setSearch } from "../redux/slices/ticketSlice";
 
 const Whislist = () => {
   const { message, wishlists } = useSelector((state) => state.wishlist);
@@ -107,6 +107,11 @@ const Whislist = () => {
                     <Card
                       className="order-list mt-3"
                       onClick={() => {
+                        dispatch(
+                          setSearch({
+                            ...wish.search,
+                          })
+                        );
                         dispatch(
                           retriveTickets({
                             params: {
@@ -206,7 +211,7 @@ const Whislist = () => {
                                 <h2>
                                   <strong>{wish.to}</strong>
                                 </h2>
-                                <h3 className="is-grey">{wish.airport_to}</h3>
+                                <h6 className="is-grey">{wish.airport_to}</h6>
                               </div>
                             </div>
                           </div>
