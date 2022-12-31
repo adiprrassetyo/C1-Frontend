@@ -37,6 +37,7 @@ import {
   Detail,
   Order,
   Whislist,
+  Whislist,
   AddPromos,
   EditPromos,
   AddUsers,
