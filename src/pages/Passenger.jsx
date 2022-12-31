@@ -52,6 +52,12 @@ import Payment from "../assets/images/payment-logo.svg";
                                     <i class="remix-icon ri-key-2-line"></i>
                                     <span>Ubah Password</span>
                                 </Button>
+                                <Button className="mb-3" variant="info" size="lg">
+                                    <div className="selected">
+                                        <i class="remix-icon ri-list-check"></i>
+                                        <span>Daftar Traveler</span>
+                                    </div> 
+                                </Button>
                                 <Button href="/#/account/order" className="mb-3" variant="light" size="lg">
                                     <i class="remix-icon ri-calendar-check-line"></i>
                                     <span>Daftar Pesanan</span>
@@ -121,6 +127,78 @@ import Payment from "../assets/images/payment-logo.svg";
                                                             </Form.Select>
                                                         </Form.Group>   
                                                         <Form.Group as={Col} md="9" controlId="validationCustom04">
+                                                            <Form.Label>Nomor Paspor</Form.Label>
+                                                            <Form.Control type="text" required />
+                                                            <Form.Control.Feedback type="invalid">
+                                                                Masukan Nomor yang valid.
+                                                            </Form.Control.Feedback>
+                                                        </Form.Group>
+                                                    </Row>
+                                                    <div className="d-flex justify-content-end">
+                                                        <Button variant="outline-info" size="lg" className="m-2" onClick={handleChange}>Cancel</Button>
+                                                        <Button variant="outline-info" size="lg" className="m-2" type="submit">Submit form</Button>
+                                                    </div> 
+                                                </Form>
+                                            </div>
+                                        ) : (
+                                            <div className="panel mb-4">
+                                                <div className="contact-header d-flex justify-content-between p-3">
+                                                    <h3 className="contact-header-text"><i className="remix-icon ri-user-3-line"></i>Mr. Damas Muhammad <span className="is-grey">|</span><span>Dewasa</span></h3>
+                                                    <div className="is-pulled-right">
+                                                        <Button onClick={handleChange} className="edit me-3" variant="outline-info"><i class="ri-edit-fill"></i></Button>
+                                                        <Button className="delete" variant="outline-info"><i class="ri-close-fill"></i></Button>
+                                                    </div>
+                                                </div>
+                                                <div className="contact-content p-3">
+                                                    <Row>
+                                                        <Col>
+                                                            <p className="is-grey mb-0">Nama Lengkap</p>
+                                                            <p className="normal">Muhammad Damas</p>
+                                                        </Col>
+                                                        <Col>
+                                                            <p className="is-grey mb-0">Nomor Paspor</p>
+                                                            <p className="normal">15025125</p>
+                                                        </Col>
+                                                        <Col>
+                                                            <p className="is-grey mb-0">Kewarganegaraan</p>
+                                                            <p className="normal">Indonesia</p>
+                                                        </Col>
+                                                    </Row>
+                                                </div>
+                                            </div>
+                                        )}
+                                        
+                                        {/* // Kalau semisal ngga ada data
+                                        {onEdit ? (
+                                            <div>
+                                                <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                                                    <Row className="mb-3">
+                                                        <Form.Group as={Col} md="6" controlId="validationCustom02">
+                                                            <Form.Label>Nama Depan</Form.Label>
+                                                            <Form.Control
+                                                                required
+                                                                type="text"
+                                                            />
+                                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                                        </Form.Group>
+                                                        <Form.Group as={Col} md="6" controlId="validationCustom02">
+                                                            <Form.Label>Nama Akhir</Form.Label>
+                                                            <Form.Control
+                                                                required
+                                                                type="text"
+                                                            />
+                                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                                        </Form.Group>
+                                                    </Row>
+                                                    <Row className="mb-3">
+                                                        <Form.Group as={Col} md="3" controlId="validationCustom03">
+                                                            <Form.Label>Jenis Kelamin</Form.Label>
+                                                            <Form.Select className="selectForm" aria-label="Default select example">
+                                                                <option value="1">Laki-laki</option>
+                                                                <option value="2">Perempuan</option>
+                                                            </Form.Select>
+                                                        </Form.Group>   
+                                                        <Form.Group as={Col} md="9" controlId="validationCustom04">
                                                             <Form.Label>Nomor Telepon</Form.Label>
                                                             <Form.Control type="text" required />
                                                             <Form.Control.Feedback type="invalid">
@@ -145,12 +223,14 @@ import Payment from "../assets/images/payment-logo.svg";
                                                 </div> 
                                             </Button>
                                         </div>
-                                        )}
+                                        )} */}
                                         
 
                                     </Card.Body>
                                 </Card>
-                                
+                                {onEdit ? (<></>) : (
+                                    <Button onClick={handleChange} variant="warning" className="add-traveler"><i class="ri-user-add-line"></i><span>Traveler Baru</span></Button>
+                                )}
                             </Col>
                         </Row> 
                        

@@ -58,6 +58,7 @@
     color: #59595b;
     font-weight: 700;
     font-size: 3.5rem;
+    align-self: center;
 }
 
 .content-flex-passenger .content-p-txt {
@@ -67,6 +68,32 @@
 
 .selected.submit {
     color: white;
+}
+
+.panel {
+    border: 1px solid rgba(154,154,157,.35)!important;
+}
+
+.contact-header {
+    border-bottom: 1px solid rgba(154,154,157,.35)!important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.contac-content {
+    border: 1px solid rgba(154,154,157,.35)!important;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.add-traveler {
+    color: #fff;
+    width: 100%;
+}
+
+.contact-header-text {
+    font-weight: 700;
+    color: #59595b;
 }
 /* .content .card {
     display: block;

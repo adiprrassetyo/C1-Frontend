@@ -34,6 +34,7 @@ import {
   Profile,
   Password,
   Passenger,
+  Detail,
   Order,
   Whislist,
   AddPromos,
@@ -122,6 +123,7 @@ const App = () => {
           <Route path="/account/password" element={<Password />} />
           <Route path="/account/passenger" element={<Passenger />} />
           <Route path="/account/order" element={<Order />} />
+          <Route path="/account/order/tickets" element={<Detail />} />
           <Route path="/account/whislist" element={<Whislist />} />
         </Routes>
       </HashRouter>
