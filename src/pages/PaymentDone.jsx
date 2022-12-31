@@ -15,7 +15,7 @@ const PaymentDone = () => {
         <div>
             <HeaderBookingDone />
             <section className="e-ticket-section">
-                <Container fluid className="content me-5 mb-5 p-5 ms-0 ">
+                <Container fluid className="content-e-ticket me-5 mb-5 p-5 ms-0 ">
                     <Container className="content mb-5 mt-5 p-5">
                         <div className="d-flex flex-column align-items-center mb-5">
                             <img src={paymentSuccess} alt="" />
