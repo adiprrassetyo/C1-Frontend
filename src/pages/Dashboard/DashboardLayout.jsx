@@ -8,14 +8,17 @@ import {
   TicketDetailedFill,
   WalletFill,
 } from "react-bootstrap-icons";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/binair-blue-logo.svg";
 import "../../assets/styles/dashboard.css";
+import { logout } from "../../redux/slices/authSlice";
 
 const DashboardLayout = () => {
   const [isToggled, setIsToggled] = useState(true);
   let { pathname } = useLocation();
-
+  const dispatch = useDispatch();
+  const redirect = useNavigate();
   const location = pathname.split("/")[2];
   console.log(location);
 
@@ -23,7 +26,7 @@ const DashboardLayout = () => {
     <>
       <div className={isToggled ? "d-flex" : "d-flex toggled"} id="wrapper">
         {/* Sidebar */}
-        <div className="bg-white" id="sidebar-wrapper">
+        <div className="bg-white w-auto" id="sidebar-wrapper">
           <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
             <Image src={Logo} />
           </div>
@@ -88,7 +91,10 @@ const DashboardLayout = () => {
               </p>
             </Link>
             <Link
-              to={""}
+              onClick={() => {
+                // setDataUser({});
+                dispatch(logout());
+              }}
               className="list-group-item list-group-item-action bg-transparent text-danger fw-bold d-flex align-items-center"
             >
               <BoxArrowLeft className="me-2" />

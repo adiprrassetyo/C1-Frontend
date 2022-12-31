@@ -79,6 +79,7 @@ const SearchFlight = () => {
           to: to[0],
           type: selected,
           date: startDate,
+          endDate: endDate,
           willFly: true,
         },
         redirect,
