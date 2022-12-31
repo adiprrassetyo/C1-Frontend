@@ -24,6 +24,7 @@ import Refund from "../assets/images/Refund.svg";
 import Reschedule from "../assets/images/reschedule.svg";
 import Cabin from "../assets/images/cabin.svg";
 import Entertainment from "../assets/images/entertainment.svg";
+import { toast } from "react-toastify";
 // import Nodata from "../assets/images/no-data.svg";
 
 
@@ -222,6 +223,7 @@ const Order = () => {
                                     onClick={() => {
                                         // setDataUser({});
                                         dispatch(logout());
+                                        toast.success("Logout Success");
                                     }}
                                 >
                                     <i class="remix-icon ri-logout-box-r-line"></i>

@@ -63,7 +63,9 @@ const notifSlice = createSlice({
     readAll: (state, action) => {
       return {
         ...state,
-        notif: state.notif.map((n) => ({ ...n, isRead: true })),
+        notif: state.notif.map((n) => {
+          return { ...n, isRead: true };
+        }),
       };
     },
   },
@@ -119,7 +121,7 @@ const notifSlice = createSlice({
         loading: false,
         message: action.payload.msg,
         notif: state.notif.map((n) => {
-          return { ...n, [n.isRead]: true };
+          return { ...n, isRead: true };
         }),
         status: action.payload.status,
       };

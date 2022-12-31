@@ -149,6 +149,7 @@ const Tickets = () => {
                                   to: item.to,
                                   type: item.type,
                                   updatedAt: item.updatedAt,
+                                  search,
                                 })
                               );
                               toast.success(

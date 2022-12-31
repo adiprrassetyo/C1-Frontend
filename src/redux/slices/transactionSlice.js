@@ -14,6 +14,19 @@ export const retriveTransAdmin = createAsyncThunk(
   }
 );
 
+export const retriveTransUser = createAsyncThunk(
+  "transUser/retriveUser",
+  async (page, { rejectWithValue }) => {
+    try {
+      const res = await trans.retriveById(page);
+      console.log({ trans: res });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
 export const removeTrans = createAsyncThunk(
   "transAdmin/remove",
   async (id, { rejectWithValue }) => {
@@ -32,7 +45,8 @@ const transSlice = createSlice({
   initialState: {
     loading: false,
     status: "",
-    transactionById: {},
+    transactionDetail: {},
+    transactionsUser: [],
     message: "",
     transactions: [],
     totalPages: 0,
@@ -65,6 +79,29 @@ const transSlice = createSlice({
       };
     },
     [retriveTransAdmin.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        transactions: action.payload.data.data.transactions,
+        status: action.payload.data.status,
+      };
+    },
+    [retriveTransUser.pending]: (state, action) => {
+      return { ...state, loading: true };
+    },
+    [retriveTransUser.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        transactionsUser: action.payload.data.transactions,
+        status: action.payload.status,
+        totalPages: action.payload.data.totalPages,
+        totalItems: action.payload.data.totalItems,
+        currentPage: action.payload.data.currentPage,
+      };
+    },
+    [retriveTransUser.rejected]: (state, action) => {
       return {
         ...state,
         loading: false,

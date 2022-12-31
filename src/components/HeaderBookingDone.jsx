@@ -16,6 +16,7 @@ import indo_flag from "../assets/images/indo-flag.svg";
 import "../assets/styles/headerBooking.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/slices/authSlice";
+import { toast } from "react-toastify";
 
 const HeaderBookingDone = () => {
     const [sticky, setSticky] = useState(false);
@@ -117,6 +118,7 @@ const HeaderBookingDone = () => {
                       onClick={() => {
                         // setDataUser({});
                         dispatch(logout());
+                        toast.success("Logout Success");
                       }}
                     >
                       <i className="remix-icon ri-logout-box-r-line"></i>

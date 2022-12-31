@@ -18,6 +18,7 @@ import { retrivePromos } from "./../redux/slices/promoSlice";
 import "../assets/styles/homepage.css";
 import { retriveCurrentUser } from "../redux/slices/userSlice";
 import { ToastContainer } from "react-toastify";
+import { retriveTransUser } from "../redux/slices/transactionSlice";
 
 const Home = () => {
   const { loading, status, message, promos } = useSelector(
@@ -32,6 +33,10 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(retriveCurrentUser());
+  }, []);
+
+  useEffect(() => {
+    dispatch(retriveTransUser(0));
   }, []);
 
   return (

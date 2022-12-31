@@ -6,3 +6,4 @@ export const retriveAdmin = (page = 1) =>
     params: { page },
   });
 export const remove = (id) => api.delete(`/admin/trans/${id}`);
+export const retriveById = () => api.get("/trans/user");

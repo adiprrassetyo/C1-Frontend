@@ -39,7 +39,7 @@ const TransactionsMenu = () => {
 
   useEffect(() => {
     dispatch(retriveTransAdmin(0));
-  }, []);
+  }, [dispatch]);
 
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
@@ -90,7 +90,11 @@ const TransactionsMenu = () => {
         theme="light"
       />
       <div id="page-content-wrapper">
-        <Nav isToggled={isToggled} setIsToggled={setIsToggled} title={"Transaction"} />
+        <Nav
+          isToggled={isToggled}
+          setIsToggled={setIsToggled}
+          title={"Transaction"}
+        />
 
         <div className="container-fluid px-4 m-2">
           <div
@@ -144,11 +148,24 @@ const TransactionsMenu = () => {
                         <td>{`${trans.payment_method}   `}</td>
                         <td>
                           {trans.status === "PAYMENT SUCCESS" ? (
-                            <span className="badge text-bg-success">
+                            <span
+                              className="p-2 rounded fw-normal text-white bg-success"
+                              style={{ fontSize: "10px" }}
+                            >
+                              {trans.status}
+                            </span>
+                          ) : trans.status === "PENDING PAYMENT" ? (
+                            <span
+                              className="p-2 rounded fw-normal text-white bg-secondary"
+                              style={{ fontSize: "10px" }}
+                            >
                               {trans.status}
                             </span>
                           ) : (
-                            <span className="badge text-bg-warning">
+                            <span
+                              className="p-2 rounded fw-normal text-white bg-danger"
+                              style={{ fontSize: "10px" }}
+                            >
                               {trans.status}
                             </span>
                           )}

@@ -148,6 +148,7 @@ const Password = () => {
                 onClick={() => {
                   // setDataUser({});
                   dispatch(logout());
+                  toast.success("Logout Success");
                   redirect("/");
                 }}
               >

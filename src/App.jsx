@@ -42,6 +42,8 @@ import {
   AddUsers,
   EditUsers,
 } from "./pages";
+import { toast, ToastContainer } from "react-toastify";
+import { retriveTransUser } from "./redux/slices/transactionSlice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -72,14 +74,29 @@ const App = () => {
       const isExp = isTokenExpired(token);
       if (isExp) {
         dispatch(logout());
+        toast.error("Your seasion expired!");
       }
     }
   }, []);
+
+
 
   //fungsi gae logout lk token exp
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />

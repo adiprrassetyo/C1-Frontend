@@ -15,6 +15,7 @@ import {
   } from "react-bootstrap";
 import "../assets/styles/passenger.css";
 import Payment from "../assets/images/payment-logo.svg";
+import { toast } from "react-toastify";
 
 
   const Passenger = () => {
@@ -70,6 +71,7 @@ import Payment from "../assets/images/payment-logo.svg";
                                     onClick={() => {
                                         // setDataUser({});
                                         dispatch(logout());
+                                        toast.success("Logout Success");
                                     }}
                                 >
                                     <i class="remix-icon ri-logout-box-r-line"></i>

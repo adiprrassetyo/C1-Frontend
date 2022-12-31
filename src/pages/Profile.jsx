@@ -145,6 +145,7 @@ const Profile = () => {
                 onClick={() => {
                   // setDataUser({});
                   dispatch(logout());
+                  toast.success("Logout Success");
                   redirect("/");
                 }}
               >

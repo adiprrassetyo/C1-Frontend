@@ -38,10 +38,6 @@ const Header = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (message !== "Login success") toast.success(message);
-  }, [dispatch, message]);
-
-  useEffect(() => {
     if (user) {
       const socket = io("wss://binair-backend-production.up.railway.app");
 
@@ -278,11 +274,13 @@ const Header = () => {
                           style={{ fontSize: 19 }}
                         ></i>
                         <div className="text-lg" style={{ fontSize: "1rem" }}>
-                          {user?.firstname
-                            .toLowerCase()
-                            .slice(0, 1)
-                            .toUpperCase() +
-                            user?.firstname.toLowerCase().slice(1)}
+                          {user
+                            ? user?.firstname
+                                .toLowerCase()
+                                .slice(0, 1)
+                                .toUpperCase() +
+                              user?.firstname.toLowerCase().slice(1)
+                            : null}
                         </div>
                       </span>
                     }
@@ -309,6 +307,7 @@ const Header = () => {
                       onClick={() => {
                         // setDataUser({});
                         dispatch(logout());
+                        toast.success("Logout Success");
                       }}
                     >
                       <i className="remix-icon ri-logout-box-r-line"></i>

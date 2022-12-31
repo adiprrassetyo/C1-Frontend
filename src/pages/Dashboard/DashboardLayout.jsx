@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Logo from "../../assets/images/binair-blue-logo.svg";
 import "../../assets/styles/dashboard.css";
 import { logout } from "../../redux/slices/authSlice";
@@ -94,6 +95,7 @@ const DashboardLayout = () => {
               onClick={() => {
                 // setDataUser({});
                 dispatch(logout());
+                toast.success("Logout Success");
               }}
               className="list-group-item list-group-item-action bg-transparent text-danger fw-bold d-flex align-items-center"
             >

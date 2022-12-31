@@ -64,7 +64,7 @@ const DetailPromo = () => {
   const [showAlert, setShowAlert] = useState("");
 
   useEffect(() => {
-    showAlert && toast.success(`Kode ${copyText} berhasil disalin!`);
+    showAlert && toast.success(`Kode promo berhasil disalin!`);
   }, [showAlert]);
 
   return (

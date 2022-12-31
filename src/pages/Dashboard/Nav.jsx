@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import { readAll } from "../../redux/services/notifServices";
 import {
+  read,
   readAllNotif,
   readOneNotif,
   retriveNotif,
@@ -98,7 +99,7 @@ const Nav = ({ isToggled, setIsToggled, title }) => {
                       as="div"
                       className="bg-white w-100 d-flex justify-content-between align-items-center"
                     >
-                      <div className="fw-bold">Notifikasi</div>
+                      <div className="fw-bold text-black">Notifikasi</div>
                       <OverlayTrigger
                         trigger="click"
                         placement="bottom"
@@ -132,7 +133,7 @@ const Nav = ({ isToggled, setIsToggled, title }) => {
                         }
                       >
                         <div className="dots-btn">
-                          <ThreeDots style={{ cursor: "pointer" }} />
+                          <ThreeDots style={{ cursor: "pointer", color: "black" }} />
                         </div>
                       </OverlayTrigger>
                     </Popover.Header>
