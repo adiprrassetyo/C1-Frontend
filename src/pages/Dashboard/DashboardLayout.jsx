@@ -26,7 +26,7 @@ const DashboardLayout = () => {
     <>
       <div className={isToggled ? "d-flex" : "d-flex toggled"} id="wrapper">
         {/* Sidebar */}
-        <div className="bg-white" id="sidebar-wrapper">
+        <div className="bg-white w-auto" id="sidebar-wrapper">
           <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
             <Image src={Logo} />
           </div>

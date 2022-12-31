@@ -6,6 +6,7 @@ import { BellFill, Check, CircleFill, ThreeDots } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
+import { readAll } from "../../redux/services/notifServices";
 import {
   readAllNotif,
   readOneNotif,
@@ -108,6 +109,7 @@ const Nav = ({ isToggled, setIsToggled, title }) => {
                                 className="readAll-btn"
                                 onClick={() => {
                                   dispatch(readAllNotif());
+                                  dispatch(readAll());
                                   setNotifData(notif);
                                 }}
                                 style={{
@@ -170,7 +172,7 @@ const Nav = ({ isToggled, setIsToggled, title }) => {
                               key={msg.id}
                               onClick={() => {
                                 dispatch(readOneNotif([msg.id]));
-                                // dispatch(read([msg.id]));
+                                dispatch(read([msg.id]));
                                 setNotifData(notif);
                               }}
                             >

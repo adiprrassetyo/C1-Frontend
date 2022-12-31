@@ -14,6 +14,18 @@ export const retriveUsers = createAsyncThunk(
   }
 );
 
+export const retriveCurrentUser = createAsyncThunk(
+  "users/retriveCurrent",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await user.retriveCurrent();
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
 export const retriveUser = createAsyncThunk(
   "users/retriveById",
   async (id, { rejectWithValue }) => {
@@ -56,11 +68,40 @@ export const updateUsers = createAsyncThunk(
   "users/update",
   async ({ formData, id, redirect }, { rejectWithValue }) => {
     try {
-      console.info({formData})
+      console.info({ formData });
       const res = await user.update(formData, id);
       redirect("/dashboard/users");
       return res.data;
     } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
+export const updatePasswordUsers = createAsyncThunk(
+  "users/updateCurrentPassword",
+  async (formData, { rejectWithValue }) => {
+    try {
+      const res = await user.updatePasswordCurrent(formData);
+      console.info(res);
+      return res.data;
+    } catch (error) {
+      console.info(error);
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
+export const updateCurrentUsers = createAsyncThunk(
+  "users/updateCurrrent",
+  async (formData, { rejectWithValue }) => {
+    try {
+      console.info({ formData });
+      const res = await user.updateCurrent(formData);
+      console.info(res);
+      return res.data;
+    } catch (error) {
+      console.error(error);
       return rejectWithValue(error.response);
     }
   }
@@ -74,6 +115,7 @@ const userSlice = createSlice({
     message: "",
     users: [],
     user: {},
+    userCurrent: {},
     totalPages: 0,
     currentPage: 0,
     totalItems: 0,
@@ -100,6 +142,45 @@ const userSlice = createSlice({
         ...state,
         loading: false,
         users: action.payload.data.data.users,
+        status: action.payload.data.status,
+      };
+    },
+    [updatePasswordUsers.pending]: (state, action) => {
+      return { ...state, loading: true };
+    },
+    [updatePasswordUsers.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        status: action.payload.status,
+      };
+    },
+    [updatePasswordUsers.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        status: action.payload.data.status,
+        message: action.payload.data.message,
+      };
+    },
+    [retriveCurrentUser.pending]: (state, action) => {
+      return { ...state, loading: true };
+    },
+    [retriveCurrentUser.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        userCurrent: action.payload.data,
+        status: action.payload.status,
+      };
+    },
+    [retriveCurrentUser.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        userCurrent: action.payload.data.data,
         status: action.payload.data.status,
       };
     },
@@ -176,6 +257,24 @@ const userSlice = createSlice({
       };
     },
     [updateUsers.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        status: action.payload.data.status,
+      };
+    },
+    [updateCurrentUsers.pending]: (state, action) => {
+      return { ...state, loading: true };
+    },
+    [updateCurrentUsers.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        status: action.payload.status,
+      };
+    },
+    [updateCurrentUsers.rejected]: (state, action) => {
       return {
         ...state,
         loading: false,

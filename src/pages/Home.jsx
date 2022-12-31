@@ -16,6 +16,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { retrivePromos } from "./../redux/slices/promoSlice";
 
 import "../assets/styles/homepage.css";
+import { retriveCurrentUser } from "../redux/slices/userSlice";
+import { ToastContainer } from "react-toastify";
 
 const Home = () => {
   const { loading, status, message, promos } = useSelector(
@@ -27,10 +29,26 @@ const Home = () => {
     console.info("dispatch");
     dispatch(retrivePromos(0));
   }, [dispatch]);
-  
+
+  useEffect(() => {
+    dispatch(retriveCurrentUser());
+  }, []);
+
   return (
     <div>
       <Header />
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <section className="banner" id="home">
         <div className="jumbotron text-center">
           <h1 className="banner-title">

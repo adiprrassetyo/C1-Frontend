@@ -48,7 +48,7 @@ const EditUsers = () => {
       gender: user.gender,
       email: user.email,
       role: user.role,
-      password: null,
+      password: user.password,
     });
   }, [user]);
 
