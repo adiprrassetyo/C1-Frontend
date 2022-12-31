@@ -34,6 +34,7 @@ import {
   Profile,
   Password,
   Passenger,
+  Detail,
   Order,
   Whislist,
   AddPromos,
@@ -147,6 +148,14 @@ const App = () => {
             element={
               <Protected>
                 <Order />
+              </Protected>
+            }
+          />
+          <Route
+            path="/account/order/tickets"
+            element={
+              <Protected>
+                <Detail />
               </Protected>
             }
           />
