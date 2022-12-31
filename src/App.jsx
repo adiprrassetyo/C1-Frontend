@@ -177,7 +177,7 @@ const App = () => {
             }
           />
           <Route
-            path="/account/whislist"
+            path="/account/wishlist"
             element={
               <Protected>
                 <Whislist />

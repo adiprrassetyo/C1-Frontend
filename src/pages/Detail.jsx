@@ -215,7 +215,7 @@ const Order = () => {
                                         <span>Daftar Pesanan</span>
                                     </div>
                                 </Button>
-                                <Button href="/#/account/whislist" className="mb-3" variant="light" size="lg">
+                                <Button href="/#/account/wishlist" className="mb-3" variant="light" size="lg">
                                     <i class="remix-icon ri-shopping-basket-2-line"></i>
                                     <span>Wishlist</span>
                                 </Button>

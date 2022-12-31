@@ -1,42 +1,21 @@
+import moment from "moment";
 import React from "react";
-import { Header, Footer } from "../components";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Dropdown,
-  DropdownButton,
-  Card,
-  Accordion,
-  Form,
-  Pagination,
-} from "react-bootstrap";
-import "../assets/styles/order.css";
-import Payment from "../assets/images/payment-logo.svg";
-import Nodata from "../assets/images/no-data.svg";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { ArrowDownUp, ArrowRight } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../redux/slices/authSlice";
 import { toast } from "react-toastify";
-import { retriveTransUser } from "../redux/slices/transactionSlice";
-import { ArrowDownUp } from "react-bootstrap-icons";
-import { ArrowRight } from "react-bootstrap-icons";
-import moment from "moment";
 import logo from "../assets/images/binair-logo.svg";
+import Payment from "../assets/images/payment-logo.svg";
+import "../assets/styles/order.css";
+import { Footer, Header } from "../components";
+import { logout } from "../redux/slices/authSlice";
 
-import { Nu } from "react-flags-select";
 import { retriveTickets } from "../redux/slices/ticketSlice";
 
 const Whislist = () => {
-  // const [onEdit, setOnEdit] = useState(false);
   const { message, wishlists } = useSelector((state) => state.wishlist);
   console.info({ wishlists });
-
-  // const handleChange = (event) => {
-  //     event.preventDefault();
-  //     setOnEdit((prev) => !prev);
-  // };
 
   const dispatch = useDispatch();
   const redirect = useNavigate();
@@ -76,14 +55,14 @@ const Whislist = () => {
                 <span>Daftar Pesanan</span>
               </Button>
               <Button
-                href="/#/account/whislist"
+                href="/#/account/wishlist"
                 className="mb-3"
                 variant="info"
                 size="lg"
               >
                 <div className="selected">
                   <i class="remix-icon ri-shopping-basket-2-line"></i>
-                  <span>Whislist</span>
+                  <span>Wishlist</span>
                 </div>
               </Button>
               <Button
@@ -106,7 +85,7 @@ const Whislist = () => {
                 <Card.Header className="header-flex">
                   <div className="p-2 profile-header">
                     <i class="remix-icon ri-shopping-basket-2-line"></i>
-                    <span>Whislist</span>
+                    <span>Wishlist</span>
                   </div>
                 </Card.Header>
                 {/* <Card.Body>
@@ -269,7 +248,7 @@ const Whislist = () => {
                 ) : (
                   <div className="content-flex-passenger p-5">
                     <h1 className="content-h1-txt">OOPS !</h1>
-                    <p className="content-p-txt">Tidak Ada Whislist</p>
+                    <p className="content-p-txt">Tidak Ada Wishlist</p>
                     <Button className="mb-3" variant="info" size="lg">
                       <div className="selected submit">
                         <i class="remix-icon ri-coupon-2-line"></i>

@@ -8,6 +8,7 @@ specifiers:
   '@vitejs/plugin-react': ^2.2.0
   axios: ^1.2.0
   bootstrap: ^5.2.2
+  c1-frontend: 'link:'
   copy-to-clipboard: ^3.3.3
   firebase: ^9.15.0
   hamburger-react: ^2.5.0
@@ -47,6 +48,7 @@ dependencies:
   '@reduxjs/toolkit': 1.9.1_k4ae6lp43ej6mezo3ztvx6pykq
   axios: 1.2.1
   bootstrap: 5.2.3_@popperjs+core@2.11.6
+  c1-frontend: 'link:'
   copy-to-clipboard: 3.3.3
   firebase: 9.15.0
   hamburger-react: 2.5.0_react@18.2.0

@@ -299,7 +299,7 @@ const Header = () => {
                       <i className="remix-icon ri-calendar-check-line"></i>
                       <span className="ml-2">Daftar Pesanan</span>
                     </NavDropdown.Item>
-                    <NavDropdown.Item>
+                    <NavDropdown.Item href="/#/account/wishlist">
                       <i className="remix-icon ri-shopping-basket-2-line"></i>
                       <span className="ml-2">Wishlist</span>
                     </NavDropdown.Item>

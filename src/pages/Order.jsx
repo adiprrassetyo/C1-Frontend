@@ -73,7 +73,7 @@ const Order = () => {
                 </div>
               </Button>
               <Button
-                href="/#/account/whislist"
+                href="/#/account/wishlist"
                 className="mb-3"
                 variant="light"
                 size="lg"
