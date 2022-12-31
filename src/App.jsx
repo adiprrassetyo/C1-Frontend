@@ -118,11 +118,46 @@ const App = () => {
             <Route path="users/add" element={<AddUsers />} />
             <Route path="users/edit/:userId" element={<EditUsers />} />
           </Route>
-          <Route path="/account/profile" element={<Profile />} />
-          <Route path="/account/password" element={<Password />} />
-          <Route path="/account/passenger" element={<Passenger />} />
-          <Route path="/account/order" element={<Order />} />
-          <Route path="/account/whislist" element={<Whislist />} />
+          <Route
+            path="/account/profile"
+            element={
+              <Protected>
+                <Profile />
+              </Protected>
+            }
+          />
+          <Route
+            path="/account/password"
+            element={
+              <Protected>
+                <Password />
+              </Protected>
+            }
+          />
+          <Route
+            path="/account/passenger"
+            element={
+              <Protected>
+                <Passenger />
+              </Protected>
+            }
+          />
+          <Route
+            path="/account/order"
+            element={
+              <Protected>
+                <Order />
+              </Protected>
+            }
+          />
+          <Route
+            path="/account/whislist"
+            element={
+              <Protected>
+                <Whislist />
+              </Protected>
+            }
+          />
         </Routes>
       </HashRouter>
     </>

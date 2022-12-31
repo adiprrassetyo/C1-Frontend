@@ -50,7 +50,6 @@ const Password = () => {
 
   const handleFormData = (e) => {
     const { name, value, type, checked } = event.target; //event target destructuring
-    const dispatch = useDispatch();
     setFormData((prevFormData) => {
       //set State Value
       return {

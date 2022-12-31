@@ -161,7 +161,7 @@ const Home = () => {
                 dikantong? Yuk temukan promo menarik yang menanti perjalanmu
                 dengan BinAir
               </p>
-              <Button href="#" className="btn see-more-btn" variant="secondary">
+              <Button href="/#/promo" className="btn see-more-btn" variant="secondary">
                 Lihat Selengkapnya
               </Button>
             </Col>

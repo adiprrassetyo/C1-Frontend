@@ -104,7 +104,7 @@ const authSlice = createSlice({
         ...state,
         user: null,
         loading: false,
-        message: "",
+        message: "Logout Success",
         status: "",
       };
     },
