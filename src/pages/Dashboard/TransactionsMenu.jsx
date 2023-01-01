@@ -139,7 +139,7 @@ const TransactionsMenu = () => {
                           {trans.user.firstname + " " + trans.user.lastname}
                         </td>
                         <td>{`${trans.ticket?.from} - ${trans.ticket?.to} ${trans.ticket?.type} ticket `}</td>
-                        <td>{`${trans.amounts} `}</td>
+                        <td>{`Rp ${trans.amounts.toLocaleString()}`}</td>
                         <td>
                           <center>{`${
                             trans.quantity.adult + trans.quantity.child

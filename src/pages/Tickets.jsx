@@ -72,13 +72,13 @@ const Tickets = () => {
             </h3>
             <p>
               {search?.from.code} - {search?.to.code} <span>|</span>{" "}
-              {/* {search?.startDate
+              {search?.startDate
                 ? search.startDate
                 : new Date().toLocaleDateString("id-ID", {
                     weekday: "short",
                     day: "numeric",
                     month: "short",
-                  })} */}
+                  })}
             </p>
           </Col>
           <Col xs={2}>
@@ -251,7 +251,10 @@ const Tickets = () => {
                         </Col>
                         <Col xs={7}>
                           <Row>
-                            <Col xs={1} className="time-line p-0 text-center d-flex align-items-center">
+                            <Col
+                              xs={1}
+                              className="time-line p-0 text-center d-flex align-items-center"
+                            >
                               <img src={Slider} alt="" />
                             </Col>
                             <Col xs={11} className="timeline-info pt-3">
