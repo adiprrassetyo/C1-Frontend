@@ -4,9 +4,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const retriveTickets = createAsyncThunk(
   "ticket/retrive",
   async ({ params, redirect }, { rejectWithValue }) => {
-    console.info({ params });
     try {
+      console.info({ params });
       const res = await ticket.retrive(params);
+      console.info(res);
       redirect && redirect("/flight/search");
       return res.data;
     } catch (error) {

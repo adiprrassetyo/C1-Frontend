@@ -134,6 +134,21 @@ const Order = () => {
                     <div>
                       <Button
                         onClick={() => {
+                          setFilterStatus("PENDING PAYMENT");
+                        }}
+                        className={
+                          filterStatus === "PENDING PAYMENT" &&
+                          `bg-info text-white`
+                        }
+                        variant="secondary"
+                        size="md"
+                      >
+                        Menunggu
+                      </Button>{" "}
+                    </div>
+                    <div>
+                      <Button
+                        onClick={() => {
                           setFilterStatus("PAYMENT SUCCESS");
                         }}
                         className={
@@ -144,7 +159,7 @@ const Order = () => {
                         size="md"
                       >
                         Dikonfirmasi
-                      </Button>{" "}
+                      </Button>
                     </div>
                     <div>
                       <Button
@@ -160,21 +175,7 @@ const Order = () => {
                         Selesai
                       </Button>{" "}
                     </div>
-                    <div>
-                      <Button
-                        onClick={() => {
-                          setFilterStatus("PENDING PAYMENT");
-                        }}
-                        className={
-                          filterStatus === "PENDING PAYMENT" &&
-                          `bg-info text-white`
-                        }
-                        variant="secondary"
-                        size="md"
-                      >
-                        Menunggu
-                      </Button>{" "}
-                    </div>
+
                     <div>
                       <Button
                         onClick={() => {
@@ -302,12 +303,16 @@ const Order = () => {
                             </div>
                             <span
                               className={`order-status status-badge text-white ${
-                                trans.status === "PAYMENT SUCCESS"
+                                trans.status === "PAYMENT SUCCESS" || trans.status === "SELESAI"
                                   ? "bg-success"
+                                  : trans.status === "CANCELED"
+                                  ? "bg-danger"
                                   : "bg-secondary"
                               }`}
                             >
-                              {trans.status}
+                              {trans.status === "SELESAI"
+                                ? "DONE"
+                                : trans.status}
                             </span>
                             <p className="is-grey mt-3 text-center">
                               Tanggal pemesanan:{" "}

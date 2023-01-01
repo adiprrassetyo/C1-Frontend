@@ -24,7 +24,6 @@ export const loginUser = createAsyncThunk(
           JSON.stringify({ token: res.data.data.accessToken })
         );
 
-        console.info({ admin: res.data.data.role === "admin" });
         setTimeout(() => {
           if (res.data.data.role === "admin") {
             redirect("/dashboard");

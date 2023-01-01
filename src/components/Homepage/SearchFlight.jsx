@@ -59,15 +59,17 @@ const SearchFlight = () => {
   };
 
   const handleSubmit = (e) => {
+    const start = startDate ? moment(startDate).add(1, "days") : null;
+    const end = startDate ? moment(endDate).add(1, "days") : null;
     e.preventDefault();
     dispatch(
       setSearch({
         from: from[0],
         to: to[0],
         type: selected,
-        startDate: startDate,
-        endDate: endDate,
-        // willFly: false,
+        startDate: start,
+        endDate: end,
+        willFly: true,
         countDewasa,
         countAnak,
       })
@@ -78,8 +80,8 @@ const SearchFlight = () => {
           from: from[0],
           to: to[0],
           type: selected,
-          date: startDate,
-          endDate: endDate,
+          date: start,
+          endDate: end,
           willFly: true,
         },
         redirect,

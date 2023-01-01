@@ -28,7 +28,10 @@ import { retriveTickets, setSearch } from "../redux/slices/ticketSlice";
 import moment from "moment";
 import { Typeahead } from "react-bootstrap-typeahead";
 import axios from "axios";
-import { SingleDatePicker, RangeDatePicker } from 'react-google-flight-datepicker';
+import {
+  SingleDatePicker,
+  RangeDatePicker,
+} from "react-google-flight-datepicker";
 
 const Flight = () => {
   const [isRoundTrip, setIsRoundTrip] = useState(false);
@@ -111,12 +114,14 @@ const Flight = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const start = startDate ? moment(startDate).add(1, "days") : null;
+    const end = startDate ? moment(endDate).add(1, "days") : null;
     setSearch({
       from: from[0],
       to: to[0],
       type: isRoundTrip ? "roundtrip" : "oneway",
-      startDate,
-      endDate,
+      startDate: start,
+      endDate: end,
       willFly: true,
       sumChild,
       sumAdult,
@@ -127,8 +132,8 @@ const Flight = () => {
           from: from[0],
           to: to[0],
           type: isRoundTrip ? "roundtrip" : "oneway",
-          date: startDate,
-          endDate,
+          date: start,
+          endDate: end,
           willFly: true,
         },
         redirect,

@@ -44,7 +44,7 @@ const Tickets = () => {
   );
   const dispatch = useDispatch();
   const [showSearch, setShowSearch] = useState(false);
-  console.info({ wishlists });
+  console.info({ search });
 
   return (
     <div className="search-main">
@@ -72,13 +72,13 @@ const Tickets = () => {
             </h3>
             <p>
               {search?.from.code} - {search?.to.code} <span>|</span>{" "}
-              {search?.startDate
+              {/* {search?.startDate
                 ? search.startDate
                 : new Date().toLocaleDateString("id-ID", {
                     weekday: "short",
                     day: "numeric",
                     month: "short",
-                  })}
+                  })} */}
             </p>
           </Col>
           <Col xs={2}>
@@ -231,7 +231,6 @@ const Tickets = () => {
                         <Col className="pt-2">
                           <Button
                             variant="light"
-                            type="submit"
                             className="btn-flight my-2 p-2"
                           >
                             Pilih Penerbangan
@@ -252,7 +251,7 @@ const Tickets = () => {
                         </Col>
                         <Col xs={7}>
                           <Row>
-                            <Col xs={1} className="time-line p-0">
+                            <Col xs={1} className="time-line p-0 text-center d-flex align-items-center">
                               <img src={Slider} alt="" />
                             </Col>
                             <Col xs={11} className="timeline-info pt-3">
