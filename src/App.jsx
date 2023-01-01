@@ -34,6 +34,7 @@ import {
   Profile,
   Password,
   Passenger,
+  Detail,
   Order,
   Whislist,
   AddPromos,
@@ -41,6 +42,8 @@ import {
   AddUsers,
   EditUsers,
 } from "./pages";
+import { toast, ToastContainer } from "react-toastify";
+import { retriveTransUser } from "./redux/slices/transactionSlice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -71,14 +74,29 @@ const App = () => {
       const isExp = isTokenExpired(token);
       if (isExp) {
         dispatch(logout());
+        toast.error("Your seasion expired!");
       }
     }
   }, []);
+
+
 
   //fungsi gae logout lk token exp
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -118,11 +136,54 @@ const App = () => {
             <Route path="users/add" element={<AddUsers />} />
             <Route path="users/edit/:userId" element={<EditUsers />} />
           </Route>
-          <Route path="/account/profile" element={<Profile />} />
-          <Route path="/account/password" element={<Password />} />
-          <Route path="/account/passenger" element={<Passenger />} />
-          <Route path="/account/order" element={<Order />} />
-          <Route path="/account/whislist" element={<Whislist />} />
+          <Route
+            path="/account/profile"
+            element={
+              <Protected>
+                <Profile />
+              </Protected>
+            }
+          />
+          <Route
+            path="/account/password"
+            element={
+              <Protected>
+                <Password />
+              </Protected>
+            }
+          />
+          <Route
+            path="/account/passenger"
+            element={
+              <Protected>
+                <Passenger />
+              </Protected>
+            }
+          />
+          <Route
+            path="/account/order"
+            element={
+              <Protected>
+                <Order />
+              </Protected>
+            }
+          />
+          <Route
+            path="/account/order/tickets"
+            element={
+              <Protected>
+                <Detail />
+              </Protected>
+            }
+          />
+          <Route
+            path="/account/wishlist"
+            element={
+              <Protected>
+                <Whislist />
+              </Protected>
+            }
+          />
         </Routes>
       </HashRouter>
     </>

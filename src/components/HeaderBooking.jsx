@@ -36,6 +36,7 @@ import {
   // read,
 } from "../redux/slices/notifSlice";
 import { readAll } from "../redux/services/notifServices";
+import { toast } from "react-toastify";
 
 const HeaderBooking = () => {
   const [sticky, setSticky] = useState(false);
@@ -318,6 +319,7 @@ const HeaderBooking = () => {
                       onClick={() => {
                         // setDataUser({});
                         dispatch(logout());
+                        toast.success("Logout Success");
                       }}
                     >
                       <i className="remix-icon ri-logout-box-r-line"></i>

@@ -1,6 +1,9 @@
 import api from "./api";
+import moment from "moment/moment";
 
 export const retrive = ({ from, to, type, date, dateEnd, willFly, page }) => {
+  const start = date
+  const end = dateEnd
   return api.get("/tickets", {
     params: {
       from: from.city,
@@ -8,8 +11,8 @@ export const retrive = ({ from, to, type, date, dateEnd, willFly, page }) => {
       airport_from: from.airport,
       airport_to: to.airport,
       type,
-      date_start: date,
-      date_end: dateEnd,
+      date_start: start,
+      date_end: end,
       willFly,
       page,
       size: 6,

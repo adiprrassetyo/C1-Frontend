@@ -7,6 +7,7 @@ import Profile from "./Profile";
 import Password from "./Password";
 import Passenger from "./Passenger";
 import Order from "./Order";
+import Detail from "./Detail";
 import Whislist from "./Whislist";
 import DashboardLayout from "./Dashboard/DashboardLayout";
 import MainMenu from "./Dashboard/MainMenu";
@@ -57,6 +58,7 @@ export {
   Password,
   Passenger,
   Order,
+  Detail,
   Whislist,
   AddPromos,
   EditPromos,

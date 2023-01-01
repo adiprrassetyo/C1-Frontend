@@ -110,7 +110,7 @@ const Auth = () => {
         <Container className="auth-main rounded-2">
           <Row>
             <Col>
-              {message && (
+              {message && message !== "Logout Success" && (
                 <Alert
                   variant={
                     status === "success"

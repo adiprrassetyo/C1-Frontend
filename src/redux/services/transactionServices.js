@@ -12,4 +12,4 @@ export const updateTransaction = (data, id) =>
     headers: {
       "Content-Type": "multipart/form-data",
     },
-  });
+  });export const retriveById = () => api.get("/trans/user");

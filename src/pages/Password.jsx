@@ -50,7 +50,6 @@ const Password = () => {
 
   const handleFormData = (e) => {
     const { name, value, type, checked } = event.target; //event target destructuring
-    const dispatch = useDispatch();
     setFormData((prevFormData) => {
       //set State Value
       return {
@@ -134,7 +133,7 @@ const Password = () => {
                 <span>Daftar Pesanan</span>
               </Button>
               <Button
-                href="/#/account/whislist"
+                href="/#/account/wishlist"
                 className="mb-3"
                 variant="light"
                 size="lg"
@@ -149,6 +148,7 @@ const Password = () => {
                 onClick={() => {
                   // setDataUser({});
                   dispatch(logout());
+                  toast.success("Logout Success");
                   redirect("/");
                 }}
               >

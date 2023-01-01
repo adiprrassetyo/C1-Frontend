@@ -26,10 +26,11 @@ import {
   readOneNotif,
   retriveNotif,
 } from "../redux/slices/notifSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 const Header = () => {
   const [sticky, setSticky] = useState(false);
-  const { user } = useSelector((state) => state.auth);
+  const { user, message } = useSelector((state) => state.auth);
   //NOTIFICATION
   const { notif, loading } = useSelector((state) => state.notif);
   const [notifData, setNotifData] = useState(notif);
@@ -273,7 +274,13 @@ const Header = () => {
                           style={{ fontSize: 19 }}
                         ></i>
                         <div className="text-lg" style={{ fontSize: "1rem" }}>
-                          {user?.firstname}
+                          {user
+                            ? user?.firstname
+                                .toLowerCase()
+                                .slice(0, 1)
+                                .toUpperCase() +
+                              user?.firstname.toLowerCase().slice(1)
+                            : null}
                         </div>
                       </span>
                     }
@@ -292,7 +299,7 @@ const Header = () => {
                       <i className="remix-icon ri-calendar-check-line"></i>
                       <span className="ml-2">Daftar Pesanan</span>
                     </NavDropdown.Item>
-                    <NavDropdown.Item>
+                    <NavDropdown.Item href="/#/account/wishlist">
                       <i className="remix-icon ri-shopping-basket-2-line"></i>
                       <span className="ml-2">Wishlist</span>
                     </NavDropdown.Item>
@@ -300,6 +307,7 @@ const Header = () => {
                       onClick={() => {
                         // setDataUser({});
                         dispatch(logout());
+                        toast.success("Logout Success");
                       }}
                     >
                       <i className="remix-icon ri-logout-box-r-line"></i>

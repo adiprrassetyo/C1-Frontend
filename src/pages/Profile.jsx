@@ -130,7 +130,7 @@ const Profile = () => {
                 <span>Daftar Pesanan</span>
               </Button>
               <Button
-                href="/#/account/whislist"
+                href="/#/account/wishlist"
                 className="mb-3"
                 variant="light"
                 size="lg"
@@ -145,6 +145,7 @@ const Profile = () => {
                 onClick={() => {
                   // setDataUser({});
                   dispatch(logout());
+                  toast.success("Logout Success");
                   redirect("/");
                 }}
               >

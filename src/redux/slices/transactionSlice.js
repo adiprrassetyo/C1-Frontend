@@ -14,6 +14,19 @@ export const retriveTransAdmin = createAsyncThunk(
   }
 );
 
+export const retriveTransUser = createAsyncThunk(
+  "transUser/retriveUser",
+  async (page, { rejectWithValue }) => {
+    try {
+      const res = await trans.retriveById(page);
+      console.log({ trans: res });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
 export const removeTrans = createAsyncThunk(
   "transAdmin/remove",
   async (id, { rejectWithValue }) => {
@@ -66,12 +79,14 @@ const transSlice = createSlice({
   initialState: {
     loading: false,
     status: "",
-    transactionById: {},
+    transactionDetail: {},
+    transactionsUser: [],
     message: "",
     transactions: [],
     totalPages: 0,
     currentPage: 0,
     totalItems: 0,
+    transactionsByStatus: [],
   },
   reducers: {
     deleteTrans: (state, action) => {
@@ -79,6 +94,23 @@ const transSlice = createSlice({
         ...state,
         transactions: state.transactions.filter((t) => t.id != action.payload),
         message: "transaction deleted",
+      };
+    },
+    filterTrans: (state, action) => {
+      let data;
+      if (action.payload !== "") {
+        data = [
+          ...state.transactionsUser.filter(
+            (trans) => trans.status === action.payload
+          ),
+        ];
+      } else {
+        data = state.transactionsUser;
+      }
+      console.info(data)
+      return {
+        ...state,
+        transactionsByStatus: data,
       };
     },
   },
@@ -99,6 +131,29 @@ const transSlice = createSlice({
       };
     },
     [retriveTransAdmin.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        transactions: action.payload.data.data.transactions,
+        status: action.payload.data.status,
+      };
+    },
+    [retriveTransUser.pending]: (state, action) => {
+      return { ...state, loading: true };
+    },
+    [retriveTransUser.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        transactionsUser: action.payload.data.transactions,
+        status: action.payload.status,
+        totalPages: action.payload.data.totalPages,
+        totalItems: action.payload.data.totalItems,
+        currentPage: action.payload.data.currentPage,
+      };
+    },
+    [retriveTransUser.rejected]: (state, action) => {
       return {
         ...state,
         loading: false,
@@ -170,5 +225,5 @@ const transSlice = createSlice({
   },
 });
 
-export const { deleteTrans } = transSlice.actions;
+export const { deleteTrans, filterTrans } = transSlice.actions;
 export default transSlice.reducer;
