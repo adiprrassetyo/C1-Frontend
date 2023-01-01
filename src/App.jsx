@@ -103,7 +103,7 @@ const App = () => {
           <Route path="/flight" element={<Flight />}></Route>
           <Route path="/flight/search" element={<Tickets />} />
           <Route path="/flight/booking" element={<Booking />} />
-          <Route path="/flight/confirm" element={<ConfirmBooking />} />
+          <Route path="/flight/confirm/:idTicket" element={<ConfirmBooking />} />
           <Route path="/flight/done" element={<PaymentDone />} />
           <Route path="/payment" element={<PaymentBooking />} />
           <Route

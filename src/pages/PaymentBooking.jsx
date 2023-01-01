@@ -18,8 +18,17 @@ import logo from "../assets/images/binair-logo.svg";
 import Countdown from 'react-countdown';
 import { Link } from "react-router-dom";
 import copy from "copy-to-clipboard";  
+import {useSelector} from "react-redux"
 
 const PaymentBooking = () => {
+    const { loading, status, message, transactionById } = useSelector(
+        (state) => state.transaction
+    );
+    const { search, ticketById } = useSelector(
+        (state) => state.ticket
+    );
+    const { user} = useSelector((state) => state.auth);
+
     const [bank, setBank] = useState(false);
     const [ewallet, setEwallet] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState(true);
@@ -32,7 +41,29 @@ const PaymentBooking = () => {
     let [copyText, setCopyText] = useState('');
     let [copyRekening, setCopyRekening] = useState('');
 
-    copyText = "189.000";
+    const getTotalAmount = () => {
+        let total = 0
+        total = total + ticketById.adult_price * search.countDewasa + ticketById.child_price * search.countAnak
+        return total
+    }
+    const getTax = () => {
+        return getTotalAmount() * 0.1
+    }
+    const getTotalAmountWithTax = () => {
+        return getTotalAmount() + getTax()
+    }
+    const getAdultPrice = () => {
+        let total = 0
+        total = total + ticketById.adult_price * search.countDewasa
+        return total
+    }
+    const getChildPrice = () => {
+        let total = 0
+        total = total + ticketById.child_price * search.countAnak
+        return total
+    }
+
+    copyText = getTotalAmountWithTax();
     copyRekening = "8217631623";
 
     const handleCopyText = (e) => {
@@ -52,6 +83,18 @@ const PaymentBooking = () => {
     const copyToClipboardRekening = () => {
         copy(copyRekening);
     };
+
+    console.log(transactionById[0])
+
+    const getTitle = (gelar) => {
+        if(gelar === "tuan") {
+            return "Tn."
+        } else if (gelar === "nyonya") {
+            return "Mrs."
+        } else if (gelar === "Nona") {
+            return "Ms."
+        }
+    }
     
     const popover = (
     <Popover id="popover-basic">
@@ -181,7 +224,7 @@ const PaymentBooking = () => {
                                                         <p>Harga</p>
                                                     </Col>
                                                     <Col md={3} sm={3} xs={3}>
-                                                        <p className="d-flex flex-row-reverse">Rp. 849.000</p>
+                                                        <p className="d-flex flex-row-reverse">Rp. {getTotalAmount()}</p>
                                                     </Col>
                                                 </Row>
                                                  <Row>
@@ -189,7 +232,7 @@ const PaymentBooking = () => {
                                                         <p>Biaya Proses</p>
                                                     </Col>
                                                     <Col md={3} sm={3} xs={3}>
-                                                        <p className="d-flex flex-row-reverse">Rp 80.130</p>
+                                                        <p className="d-flex flex-row-reverse">Rp. {getTax()}</p>
                                                     </Col>
                                                 </Row>
                                                 <Row>
@@ -197,7 +240,7 @@ const PaymentBooking = () => {
                                                         <p className="fw-bold">Jumlah</p>
                                                     </Col>
                                                     <Col md={3} sm={3} xs={3}>
-                                                        <p className="d-flex flex-row-reverse fw-bold">Rp 1.682.716</p>
+                                                        <p className="d-flex flex-row-reverse fw-bold">Rp. {getTotalAmountWithTax()}</p>
                                                     </Col>
                                                 </Row>
                                             </Accordion.Body>
@@ -409,7 +452,7 @@ const PaymentBooking = () => {
                                     <h3>Kode BinAir</h3>
                                 </Col>
                                 <Col md={6} sm={6} xs={6} className="d-flex flex-row-reverse">
-                                    <p>1017905594</p>
+                                    <p>{transactionById[0].id}</p>
                                 </Col>
                             </Row>
                             <Row className="align-items-center">
@@ -434,7 +477,7 @@ const PaymentBooking = () => {
                                         <Row className="departure-flight align-items-center">
                                         <Col md={8} sm={8} xs={8}>
                                             <h3>Penerbangan Keberangkatan</h3>
-                                            <p>Rabu, 23 November 2022</p>
+                                            <p>{ticketById.date_start}</p>
                                         </Col>
                                         <Col md={4} sm={4} xs={4} className="d-flex flex-row-reverse">
                                             <Badge className="baggage-badge"> Gratis 20kg bagasi </Badge>
@@ -456,12 +499,12 @@ const PaymentBooking = () => {
                                             <div className="timeline-status"> </div>
                                             <Row className="timeline-content">
                                                 <Col md={5} sm={5} xs={5}>
-                                                    <h3>22:15</h3>
-                                                    <p>23 November 2022</p>
+                                                    <h3>{ticketById.departure_time}</h3>
+                                                    <p>{ticketById.start_date}</p>
                                                 </Col>
                                                 <Col md={7} sm={7} xs={7}>
-                                                    <h3>Jakarta (CGK) </h3>
-                                                    <p>Bandara Internasional Soekarno Hatta</p>
+                                                    <h3>{ticketById.from} </h3>
+                                                    <p>{ticketById.airport_from}</p>
                                                     <p>Terminal 1A</p>
                                                 </Col>
                                             </Row>
@@ -473,12 +516,12 @@ const PaymentBooking = () => {
                                             <div className="timeline-status"> </div>
                                             <Row className="timeline-content">
                                                 <Col md={5} sm={5} xs={5}>
-                                                    <h3>01:05</h3>
-                                                    <p>24 November 2022</p>
+                                                    <h3>{ticketById.arrival_time}</h3>
+                                                    <p>{ticketById.start_date}</p>
                                                 </Col>
                                                 <Col md={7} sm={7} xs={7}>
-                                                    <h3>Bali Denpasar (DPS) </h3>
-                                                    <p>Bandara Internasional Ngurah Rai</p>
+                                                    <h3>{ticketById.to} </h3>
+                                                    <p>{ticketById.airport_to}</p>
                                                     <p>Terminal Domestic</p>
                                                 </Col>
                                             </Row>
@@ -508,50 +551,70 @@ const PaymentBooking = () => {
                                 </div>
                                 <div className="price-content">
                                     <Accordion defaultActiveKey={['0']} alwaysOpen>
-                                        <Accordion.Item eventKey="0">
+                                    <Accordion.Item eventKey="0">
                                             <Accordion.Header>
                                                 <Row>
                                                     <Col md={7} sm={7} xs={7} className="accordion-timeline">
-                                                        <h3>Berangkat (CGK <span><i className="ri-arrow-right-line"></i></span> DPS)</h3>
+                                                        <h3>Berangkat ({search.from.code} <span><i className="ri-arrow-right-line"></i></span> {search.to.code})</h3>
                                                     </Col>
                                                     <Col md={5} sm={5} xs={5} className="accordion-timeline d-flex flex-row-reverse">
-                                                        <h3>Rp. 849.000 </h3>
+                                                        <h3>{getTotalAmount()} </h3>
                                                     </Col>
                                                 </Row>
                                             </Accordion.Header>
                                             <Accordion.Body>
                                                 <Row>
                                                     <Col md={7} sm={7} xs={6} className="accordion-timeline" >
-                                                        <p>Dewasa x 1</p>
+                                                        <p>Dewasa x {search.countDewasa}</p>
                                                     </Col>
                                                     <Col md={5} sm={5} xs={6}>
-                                                        <p className="d-flex flex-row-reverse">Rp. 849.000</p>
+                                                        <p className="d-flex flex-row-reverse">{ getAdultPrice()}</p>
                                                     </Col>
                                                 </Row>
+                                                {
+                                                    search.countAnak > 0 && <Row>
+                                                        <Col md={7} sm={7} xs={6} className="accordion-timeline" >
+                                                            <p>Anak-anak x {search.countAnak}</p>
+                                                        </Col>
+                                                        <Col md={5} sm={5} xs={6}>
+                                                            <p className="d-flex flex-row-reverse">{ getChildPrice()}</p>
+                                                        </Col>
+                                                    </Row>
+                                                }
                                             </Accordion.Body>
                                         </Accordion.Item>
-                                        <Accordion.Item eventKey="1">
+                                        {ticketById.type == "roundtrip" && <Accordion.Item eventKey="1">
                                             <Accordion.Header>
                                                 <Row>
                                                     <Col md={7} sm={7} xs={7} className="accordion-timeline">
-                                                        <h3>Pulang (CGK <span><i className="ri-arrow-right-line"></i></span> DPS)</h3>
+                                                        <h3>Pulang ({search.to.code} <span><i className="ri-arrow-right-line"></i></span> {search.from.code})</h3>
                                                     </Col>
                                                     <Col md={5} sm={5} xs={5} className="accordion-timeline d-flex flex-row-reverse">
-                                                        <h3>Rp. 849.000</h3>
+                                                        <h3>{getTotalAmount()}</h3>
                                                     </Col>
                                                 </Row>
                                             </Accordion.Header>
                                             <Accordion.Body>
                                                 <Row>
-                                                    <Col md={7} sm={7} xs={6} className="accordion-timeline">
-                                                        <p>Dewasa x 1</p>
+                                                    <Col md={7} sm={7} xs={6} className="accordion-timeline" >
+                                                        <p>Dewasa x {search.countDewasa}</p>
                                                     </Col>
                                                     <Col md={5} sm={5} xs={6}>
-                                                        <p className="d-flex flex-row-reverse">Rp. 849.000</p>
+                                                        <p className="d-flex flex-row-reverse">{ getAdultPrice()}</p>
                                                     </Col>
-                                                </Row>
+                                                    </Row>
+                                                    {
+                                                        search.countAnak > 0 && <Row>
+                                                            <Col md={7} sm={7} xs={6} className="accordion-timeline" >
+                                                                <p>Anak-anak x {search.countAnak}</p>
+                                                            </Col>
+                                                            <Col md={5} sm={5} xs={6}>
+                                                                <p className="d-flex flex-row-reverse">{ getChildPrice()}</p>
+                                                            </Col>
+                                                        </Row>
+                                                    }
                                             </Accordion.Body>
-                                        </Accordion.Item>
+                                        </Accordion.Item>}
                                         </Accordion>
                                 </div>
                                 <div className="price-total">
@@ -560,7 +623,7 @@ const PaymentBooking = () => {
                                             <h3>Total Harga</h3>
                                         </Col>
                                         <Col md={5} sm={5} xs={5}>
-                                            <h3 className="d-flex flex-row-reverse">Rp 1.686.656</h3>
+                                            <h3 className="d-flex flex-row-reverse">{ getTotalAmount()}</h3>
                                         </Col>
                                     </Row>
                                 </div>
@@ -603,16 +666,21 @@ const PaymentBooking = () => {
                                 </Row>
                             </div>
                             <div className="traveler-content">
-                                <Row>
-                                    <Col md={9} sm={9} xs={9}>
-                                        <ol>
-                                            <li>Mrs. Noviyana</li>
-                                        </ol>
-                                    </Col>
-                                    <Col md={3} sm={3} xs={3} className="d-flex flex-row-reverse">
-                                        <p>Dewasa</p>
-                                    </Col>
-                                </Row>
+                                {transactionById[0].traveler.map((traveler, index) => {
+                                    return(
+                                        <Row>
+                                            <Col md={9} sm={9} xs={9}>
+                                                <ul>
+                                                    <li>{getTitle(traveler.title)} {traveler.name}</li>
+                                                </ul>
+                                            </Col>
+                                            <Col md={3} sm={3} xs={3} className="d-flex flex-row-reverse">
+                                                <p>{traveler.type}</p>
+                                            </Col>
+                                        </Row>
+                                    )
+                                })}
+                                
                             </div>
                         </div>
                         {/* end traveler section */}
@@ -623,8 +691,8 @@ const PaymentBooking = () => {
                                 <h3>Keterangan Kontak</h3>
                             </div>
                             <div className="contact-content">
-                                <h4 className="contact-name">Mrs. Noviyana Ling</h4>
-                                <p>lingnoviyana123@gmail.com</p>
+                                <h4 className="contact-name">{user.gender=="perempuan" ? `Ny. ${user.firstname} ${user.lastname}`: `Tn. ${user.firstname} ${user.lastname}`}</h4>
+                                <p>{user.email}</p>
                                 <p>+62 82176319252</p>
                             </div>
                         </div>

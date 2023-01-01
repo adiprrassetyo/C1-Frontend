@@ -233,7 +233,9 @@ const Tickets = () => {
                             variant="light"
                             className="btn-flight my-2 p-2"
                           >
+                            <a href={"#/flight/confirm/" + item.id}>
                             Pilih Penerbangan
+                            </a>
                           </Button>
                         </Col>
                       </Row>
