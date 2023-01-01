@@ -6,3 +6,10 @@ export const retriveAdmin = (page = 1) =>
     params: { page },
   });
 export const remove = (id) => api.delete(`/admin/trans/${id}`);
+export const newTransaction = (data) => api.post("/trans", data);
+export const updateTransaction = (data, id) =>
+  api.put(`/trans/${id}`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });

@@ -1,17 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Header, Footer } from "../components";
 import { Container, Row, Col, Accordion, Button} from "react-bootstrap";
 import "../assets/styles/bookingConfirm.css";
 import logo from "../assets/images/binair-logo.svg";
 import { Link } from "react-router-dom";
+import {useParams} from "react-router-dom"
+import {useSelector, useDispatch} from "react-redux"
+import { retriveTicket } from "../redux/slices/ticketSlice";
 
 const ConfirmBooking = () => {
+    const {idTicket} = useParams()
+    const { loading, status, message, search, ticketById } = useSelector(
+        (state) => state.ticket
+    );
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(retriveTicket(idTicket))
+    }, [])
+    const getTotalAmount = () => {
+        let total = 0
+        total = total + ticketById.adult_price * search.countDewasa + ticketById.child_price * search.countAnak
+        return total
+    }
+    const getAdultPrice = () => {
+        let total = 0
+        total = total + ticketById.adult_price * search.countDewasa
+        return total
+    }
+    const getChildPrice = () => {
+        let total = 0
+        total = total + ticketById.child_price * search.countAnak
+        return total
+    }
     return (
         <div>
             <Header />
             <section className="booking-confirm-section">
                 <Container>
-                    <Row>
+                    {ticketById && <Row>
                         <Col md={8} className="left-booking-section">
                             {/* start departure section */}
                             <div className="departure-section">
@@ -20,7 +46,7 @@ const ConfirmBooking = () => {
                                     <Row className="align-items-center">
                                         <Col md={9}>
                                             <p className="flight-title">Penerbangan Keberangkatan</p>
-                                            <p className="flight-destination">Jakarta (HLP) <span><i className="ri-arrow-right-line"></i></span> Surabaya (SUB)</p>
+                                            <p className="flight-destination">{ticketById.from} <span><i className="ri-arrow-right-line"></i></span> {ticketById.to}</p>
                                             <p className="flight-details">1 Traveler <span> | </span> Langsung</p>
                                         </Col>
                                         <Col md={3}>
@@ -46,12 +72,12 @@ const ConfirmBooking = () => {
                                                 <div className="timeline-status-flights"></div>
                                                 <Row className="timeline-content-flights">
                                                     <Col md={4} sm={4} xs={4}>
-                                                        <h3>22:15</h3>
-                                                        <p className="m-0">12 November 2022</p>
+                                                        <h3>{ticketById.departure_time}</h3>
+                                                        <p className="m-0">{ticketById.date_start}</p>
                                                     </Col>
                                                     <Col md={8} sm={8} xs={8}>
-                                                        <h3>Jakarta (CGK) </h3>
-                                                        <p>Bandara Internasional Soekarno Hatta</p>
+                                                        <h3>{ticketById.from} </h3>
+                                                        <p>{ticketById.airport_from}</p>
                                                         <p>Terminal 1A</p>
                                                     </Col>
                                                 </Row>
@@ -63,12 +89,12 @@ const ConfirmBooking = () => {
                                                 <div className="timeline-status-flights"></div>
                                                 <Row className="timeline-content-flights">
                                                     <Col md={4} sm={4} xs={4}>
-                                                        <h3>22:15</h3>
-                                                        <p className="m-0">12 November 2022</p>
+                                                        <h3>{ticketById.arrival_time}</h3>
+                                                        <p className="m-0">{ticketById.date_start}</p>
                                                     </Col>
                                                     <Col md={8} sm={8} xs={8}>
-                                                        <h3>Jakarta (CGK) </h3>
-                                                        <p>Bandara Internasional Soekarno Hatta</p>
+                                                        <h3>{ticketById.to} </h3>
+                                                        <p>{ticketById.airport_to}</p>
                                                         <p>Terminal 1A</p>
                                                     </Col>
                                                 </Row>
@@ -91,13 +117,13 @@ const ConfirmBooking = () => {
                              {/* end departure section */}
 
                              {/* start arrival section */}
-                            <div className="arrival-section">
+                            { ticketById.type == "roundtrip" && <div className="arrival-section">
                                 {/* start arrival header*/}
                                <div className="flight-header">
                                     <Row className="align-items-center">
                                         <Col md={9}>
                                             <p className="flight-title">Penerbangan Pulang</p>
-                                            <p className="flight-destination">Surabaya (SUB) <span><i className="ri-arrow-right-line"></i></span> Jakarta (HLP)</p>
+                                            <p className="flight-destination">{ticketById.to} <span><i className="ri-arrow-right-line"></i></span> {ticketById.from}</p>
                                             <p className="flight-details">1 Traveler <span> | </span> Langsung</p>
                                         </Col>
                                         <Col md={3}>
@@ -123,12 +149,12 @@ const ConfirmBooking = () => {
                                                 <div className="timeline-status-flights"></div>
                                                 <Row className="timeline-content-flights">
                                                     <Col md={4} sm={4} xs={4}>
-                                                        <h3>22:15</h3>
-                                                        <p className="m-0">12 November 2022</p>
+                                                        <h3>{ticketById.departure_time}</h3>
+                                                        <p className="m-0">{ticketById.date_end}</p>
                                                     </Col>
                                                     <Col md={8} sm={8} xs={8}>
-                                                        <h3>Jakarta (CGK) </h3>
-                                                        <p>Bandara Internasional Soekarno Hatta</p>
+                                                        <h3>{ticketById.to} </h3>
+                                                        <p>{ticketById.airport_to}</p>
                                                         <p>Terminal 1A</p>
                                                     </Col>
                                                 </Row>
@@ -140,12 +166,12 @@ const ConfirmBooking = () => {
                                                 <div className="timeline-status-flights"></div>
                                                 <Row className="timeline-content-flights">
                                                     <Col md={4} sm={4} xs={4}>
-                                                        <h3>22:15</h3>
-                                                        <p className="m-0">12 November 2022</p>
+                                                        <h3>{ticketById.arrival_time}</h3>
+                                                        <p className="m-0">{ticketById.date_end}</p>
                                                     </Col>
                                                     <Col md={8} sm={8} xs={8}>
-                                                        <h3>Jakarta (CGK) </h3>
-                                                        <p>Bandara Internasional Soekarno Hatta</p>
+                                                        <h3>{ticketById.from} </h3>
+                                                        <p>{ticketById.airport_from}</p>
                                                         <p>Terminal 1A</p>
                                                     </Col>
                                                 </Row>
@@ -164,7 +190,7 @@ const ConfirmBooking = () => {
                                     </Row>
                                </div>
                                {/* end flight content*/}
-                            </div>
+                            </div>}
                              {/* end arrival section */}
                         </Col>
                         <Col md={4} className="right-booking-section">
@@ -174,50 +200,70 @@ const ConfirmBooking = () => {
                                 </div>
                                 <div className="price-content">
                                     <Accordion defaultActiveKey={['0']} alwaysOpen>
-                                        <Accordion.Item eventKey="0">
+                                    <Accordion.Item eventKey="0">
                                             <Accordion.Header>
                                                 <Row>
                                                     <Col md={7} sm={7} xs={7} className="accordion-timeline">
-                                                        <h3>Berangkat (CGK <span><i className="ri-arrow-right-line"></i></span> DPS)</h3>
+                                                        <h3>Berangkat ({search.from.code} <span><i className="ri-arrow-right-line"></i></span> {search.to.code})</h3>
                                                     </Col>
                                                     <Col md={5} sm={5} xs={5} className="accordion-timeline d-flex flex-row-reverse">
-                                                        <h3>Rp. 849.000 </h3>
+                                                        <h3>{getTotalAmount()} </h3>
                                                     </Col>
                                                 </Row>
                                             </Accordion.Header>
                                             <Accordion.Body>
                                                 <Row>
                                                     <Col md={7} sm={7} xs={6} className="accordion-timeline" >
-                                                        <p>Dewasa x 1</p>
+                                                        <p>Dewasa x {search.countDewasa}</p>
                                                     </Col>
                                                     <Col md={5} sm={5} xs={6}>
-                                                        <p className="d-flex flex-row-reverse">Rp. 849.000</p>
+                                                        <p className="d-flex flex-row-reverse">{ getAdultPrice()}</p>
                                                     </Col>
                                                 </Row>
+                                                {
+                                                    search.countAnak > 0 && <Row>
+                                                        <Col md={7} sm={7} xs={6} className="accordion-timeline" >
+                                                            <p>Anak-anak x {search.countAnak}</p>
+                                                        </Col>
+                                                        <Col md={5} sm={5} xs={6}>
+                                                            <p className="d-flex flex-row-reverse">{ getChildPrice()}</p>
+                                                        </Col>
+                                                    </Row>
+                                                }
                                             </Accordion.Body>
                                         </Accordion.Item>
-                                        <Accordion.Item eventKey="1">
+                                        {ticketById.type == "roundtrip" && <Accordion.Item eventKey="1">
                                             <Accordion.Header>
                                                 <Row>
                                                     <Col md={7} sm={7} xs={7} className="accordion-timeline">
                                                         <h3>Pulang (CGK <span><i className="ri-arrow-right-line"></i></span> DPS)</h3>
                                                     </Col>
                                                     <Col md={5} sm={5} xs={5} className="accordion-timeline d-flex flex-row-reverse">
-                                                        <h3>Rp. 849.000</h3>
+                                                        <h3>{getTotalAmount()}</h3>
                                                     </Col>
                                                 </Row>
                                             </Accordion.Header>
                                             <Accordion.Body>
                                                 <Row>
-                                                    <Col md={7} sm={7} xs={6} className="accordion-timeline">
-                                                        <p>Dewasa x 1</p>
+                                                    <Col md={7} sm={7} xs={6} className="accordion-timeline" >
+                                                        <p>Dewasa x {search.countDewasa}</p>
                                                     </Col>
                                                     <Col md={5} sm={5} xs={6}>
-                                                        <p className="d-flex flex-row-reverse">Rp. 849.000</p>
+                                                        <p className="d-flex flex-row-reverse">{ getAdultPrice()}</p>
                                                     </Col>
-                                                </Row>
+                                                    </Row>
+                                                    {
+                                                        search.countAnak > 0 && <Row>
+                                                            <Col md={7} sm={7} xs={6} className="accordion-timeline" >
+                                                                <p>Anak-anak x {search.countAnak}</p>
+                                                            </Col>
+                                                            <Col md={5} sm={5} xs={6}>
+                                                                <p className="d-flex flex-row-reverse">{ getChildPrice()}</p>
+                                                            </Col>
+                                                        </Row>
+                                                    }
                                             </Accordion.Body>
-                                        </Accordion.Item>
+                                        </Accordion.Item>}
                                         </Accordion>
                                 </div>
                                 <div className="price-total">
@@ -226,17 +272,17 @@ const ConfirmBooking = () => {
                                             <h3>Total Harga</h3>
                                         </Col>
                                         <Col md={5} sm={5} xs={5}>
-                                            <h3 className="d-flex flex-row-reverse">Rp 1.686.656</h3>
+                                            <h3 className="d-flex flex-row-reverse">{getTotalAmount()}</h3>
                                         </Col>
                                     </Row>
                                 </div>
                             </div>
-                            <Link to={`/flight/booking`}>
+                            <Link to={`/flight/booking/`}>
                                 <Button className="btn-confirm">Lanjutkan Pemesanan</Button>
                             </Link>
                             
                         </Col>
-                    </Row>
+                    </Row>}
                 </Container>
             </section>
             <Footer />

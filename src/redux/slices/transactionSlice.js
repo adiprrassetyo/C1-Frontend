@@ -27,6 +27,40 @@ export const removeTrans = createAsyncThunk(
   }
 );
 
+export const newTrans = createAsyncThunk(
+  "transUser/newTransaction",
+  async ({submitForm, redirect}, { rejectWithValue }) => {
+    try {
+      const res = await trans.newTransaction(submitForm);
+      if(res.data.status === 200){
+        redirect("/payment");
+        return res.data;
+      }
+    }
+    catch(error){
+      return rejectWithValue(error.response);
+    }
+  }
+)
+
+export const updateTrans = createAsyncThunk(
+  "transUser/updateTransaction",
+  async ({id, data, redirect}, { rejectWithValue }) => {
+    try {
+      const res = await trans.updateTransaction(data, id);
+      console.log(res)
+      if(res.data.status === 200){
+        console.log("Success" ,res)
+        redirect("/account/order");
+        return res.data;
+      }
+    }
+    catch(error){
+      return rejectWithValue(error.response);
+    }
+  }
+)
+
 const transSlice = createSlice({
   name: "transaction",
   initialState: {
@@ -92,6 +126,47 @@ const transSlice = createSlice({
         status: action.payload.data.status,
       };
     },
+    [newTrans.pending]: (state, action) => {
+      return { ...state, loading: true };
+    },
+    [newTrans.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.msg,
+        status: action.payload.status,
+        transactionById: action.payload.data,
+      };
+    },
+    [newTrans.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.message,
+        status: action.payload.data.status,
+      };
+    },
+    [updateTrans.pending]: (state, action) => {
+      return { ...state, loading: true };
+    },
+    [updateTrans.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.msg,
+        status: action.payload.status,
+        transactionById: action.payload.data,
+      };
+    },
+    [updateTrans.rejected]: (state, action) => {
+      console.log(action)
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.msg,
+        status: action.payload.status,
+      };
+    }
   },
 });
 
