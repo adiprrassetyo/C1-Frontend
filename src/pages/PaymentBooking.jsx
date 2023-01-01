@@ -84,6 +84,8 @@ const PaymentBooking = () => {
         copy(copyRekening);
     };
 
+    console.log(transactionById[0])
+
     const getTitle = (gelar) => {
         if(gelar === "tuan") {
             return "Tn."
@@ -91,8 +93,6 @@ const PaymentBooking = () => {
             return "Mrs."
         } else if (gelar === "Nona") {
             return "Ms."
-        } else {
-            return "Tuan"
         }
     }
     

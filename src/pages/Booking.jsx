@@ -48,7 +48,7 @@ const Booking = () => {
     for(let i = 1; i <= search.countDewasa; i++){
         adultFormInit.push({
             index: i,
-            title: "",
+            title: "tuan",
             name: "",
             surname: "",
             datebirth: new Date(),
@@ -61,7 +61,7 @@ const Booking = () => {
     for(let i = 1; i <= search.countAnak; i++){
         childFormInit.push({
             index: i,
-            title: "tuan",
+            title: "",
             name: "",
             surname: "",
             datebirth: new Date(),

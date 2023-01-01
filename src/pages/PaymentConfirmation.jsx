@@ -88,8 +88,6 @@ const PaymentConfirmation = () => {
             return "Mrs."
         } else if (gelar === "Nona") {
             return "Ms."
-        } else {
-            return "Tuan"
         }
     }
 

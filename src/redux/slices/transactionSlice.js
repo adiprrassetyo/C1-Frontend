@@ -64,7 +64,7 @@ export const updateTrans = createAsyncThunk(
       console.log(res)
       if(res.data.status === 200){
         console.log("Success" ,res)
-        redirect("/account/order");
+        redirect("/");
         return res.data;
       }
     }
