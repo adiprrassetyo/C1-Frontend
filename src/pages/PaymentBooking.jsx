@@ -18,7 +18,9 @@ import logo from "../assets/images/binair-logo.svg";
 import Countdown from 'react-countdown';
 import { Link } from "react-router-dom";
 import copy from "copy-to-clipboard";  
-import {useSelector} from "react-redux"
+import {useSelector, useDispatch} from "react-redux"
+import { retriveDirectTransUser } from "../redux/slices/transactionSlice";
+import { useNavigate } from "react-router-dom";
 
 const PaymentBooking = () => {
     const { loading, status, message, transactionById } = useSelector(
@@ -84,7 +86,8 @@ const PaymentBooking = () => {
         copy(copyRekening);
     };
 
-    console.log(transactionById[0])
+    const dispatch = useDispatch();
+    const redirect = useNavigate();
 
     const getTitle = (gelar) => {
         if(gelar === "tuan") {
@@ -321,9 +324,13 @@ const PaymentBooking = () => {
                                     value="paymentMethod" className="payment-method-btn" variant="link"><p><i className="ri-arrow-left-s-line ri-xl"></i><span>Pilih Metode Lain</span></p></Button>
                                 </Col>
                                 <Col md={5} sm={4} xs={5} className="d-flex flex-row-reverse">
-                                    <Link to={`/payment/confirmation`}>
+                                    {/* <Link to={`/payment/confirmation`}>
                                         <Button className="payment-btn">Bayar</Button>
-                                    </Link>
+                                    </Link> */}
+                                    <Button className="payment-btn" onClick={(e)=>{
+                                        e.preventDefault();
+                                        dispatch(retriveDirectTransUser({ id : transactionById[0].id, redirect: redirect}));
+                                    }}>Bayar</Button>
                                     
                                 </Col>
                             </Row>
@@ -433,9 +440,13 @@ const PaymentBooking = () => {
                                     value="paymentMethod" className="payment-method-btn" variant="link"><p><i className="ri-arrow-left-s-line ri-xl"></i><span>Pilih Metode Lain</span></p></Button>
                                 </Col>
                                 <Col md={5} sm={4} xs={5} className="d-flex flex-row-reverse">
-                                    <Link to={`/payment/confirmation`}>
+                                    {/* <Link to={`/payment/confirmation`}>
                                         <Button className="payment-btn">Bayar</Button>
-                                    </Link>
+                                    </Link> */}
+                                    <Button className="payment-btn" onClick={(e)=>{
+                                        e.preventDefault();
+                                        dispatch(retriveDirectTransUser({ id : transactionById[0].id, redirect: redirect}));
+                                    }}>Bayar</Button>
                                     
                                 </Col>
                             </Row>

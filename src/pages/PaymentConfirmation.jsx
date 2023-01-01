@@ -26,7 +26,7 @@ const PaymentConfirmation = () => {
   const { search, ticketById } = useSelector((state) => state.ticket);
   const { user } = useSelector((state) => state.auth);
 
-  const [visible, setVisible] = useState("banktransfer");
+  const [visible, setVisible] = useState(transactionById[0].payment_method);
   const [errorMsg, setErrorMsg] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [selectedFile, setSelectedFile] = useState();
@@ -71,8 +71,10 @@ const PaymentConfirmation = () => {
     let total = 0;
     total =
       total +
-      ticketById.adult_price * search.countDewasa +
-      ticketById.child_price * search.countAnak;
+      // ticketById.adult_price * search.countDewasa +
+      // ticketById.child_price * search.countAnak;
+      transactionById[0].ticket.adult_price * transactionById[0].quantity.adult +
+      transactionById[0].ticket.child_price * transactionById[0].quantity.child;
     return total;
   };
   const getTax = () => {
@@ -83,12 +85,13 @@ const PaymentConfirmation = () => {
   };
   const getAdultPrice = () => {
     let total = 0;
-    total = total + ticketById.adult_price * search.countDewasa;
+    // total = total + ticketById.adult_price * search.countDewasa;
+    total = total + transactionById[0].ticket.adult_price * transactionById[0].quantity.adult;
     return total;
   };
   const getChildPrice = () => {
     let total = 0;
-    total = total + ticketById.child_price * search.countAnak;
+    total = total + transactionById[0].ticket.child_price * transactionById[0].quantity.child;
     return total;
   };
   const getTitle = (gelar) => {
@@ -145,7 +148,7 @@ const PaymentConfirmation = () => {
                           </select>
                         </Form.Group>
                       </Col>
-                      {visible === "banktransfer" && (
+                      {visible === "banktransfer" ||  visible === "default" && (
                         <Col md={8}>
                           <Form.Group className="mb-4 border border-top-0 border-start-0 border-end-0 rounded-0 p-0">
                             <Form.Label>
@@ -314,7 +317,7 @@ const PaymentConfirmation = () => {
                       <Row className="departure-flight align-items-center">
                         <Col md={8} sm={8} xs={8}>
                           <h3>Penerbangan Keberangkatan</h3>
-                          <p>{ticketById.date_start}</p>
+                          <p>{transactionById[0].ticket.date_start}</p>
                         </Col>
                         <Col
                           md={4}
@@ -348,13 +351,13 @@ const PaymentConfirmation = () => {
                         <div className="departure-timeline bullet timeline-object not-complete">
                           <div className="timeline-status"> </div>
                           <Row className="timeline-content">
-                            <Col md={5} sm={5} xs={5}>
-                              <h3>{ticketById.departure_time}</h3>
-                              <p>{ticketById.start_date}</p>
+                            <Col md={3} sm={5} xs={5}>
+                              <h3>{transactionById[0].ticket.departure_time}</h3>
+                              <p>{transactionById[0].ticket.date_start}</p>
                             </Col>
-                            <Col md={7} sm={7} xs={7}>
-                              <h3>{ticketById.from} </h3>
-                              <p>{ticketById.airport_from}</p>
+                            <Col md={4} sm={7} xs={7}>
+                              <h3>{transactionById[0].ticket.from} </h3>
+                              <p>{transactionById[0].ticket.airport_from}</p>
                               <p>Terminal 1A</p>
                             </Col>
                           </Row>
@@ -370,13 +373,13 @@ const PaymentConfirmation = () => {
                         <div className="homecoming-timeline bullet timeline-object complete">
                           <div className="timeline-status"> </div>
                           <Row className="timeline-content">
-                            <Col md={5} sm={5} xs={5}>
-                              <h3>{ticketById.arrival_time}</h3>
-                              <p>{ticketById.start_date}</p>
+                            <Col md={3} sm={5} xs={5}>
+                              <h3>{transactionById[0].ticket.arrival_time}</h3>
+                              <p>{transactionById[0].ticket.date_start}</p>
                             </Col>
-                            <Col md={7} sm={7} xs={7}>
-                              <h3>{ticketById.to} </h3>
-                              <p>{ticketById.airport_to}</p>
+                            <Col md={4} sm={7} xs={7}>
+                              <h3>{transactionById[0].ticket.to} </h3>
+                              <p>{transactionById[0].ticket.airport_to}</p>
                               <p>Terminal Domestic</p>
                             </Col>
                           </Row>
@@ -469,7 +472,7 @@ const PaymentConfirmation = () => {
                                 xs={6}
                                 className="accordion-timeline"
                               >
-                                <p>Dewasa x {search.countDewasa}</p>
+                                <p>Dewasa x {transactionById[0].quantity.adult}</p>
                               </Col>
                               <Col md={5} sm={5} xs={6}>
                                 <p className="d-flex flex-row-reverse">
@@ -477,7 +480,7 @@ const PaymentConfirmation = () => {
                                 </p>
                               </Col>
                             </Row>
-                            {search.countAnak > 0 && (
+                            {transactionById[0].quantity.child > 0 && (
                               <Row>
                                 <Col
                                   md={7}
@@ -485,7 +488,7 @@ const PaymentConfirmation = () => {
                                   xs={6}
                                   className="accordion-timeline"
                                 >
-                                  <p>Anak-anak x {search.countAnak}</p>
+                                  <p>Anak-anak x {transactionById[0].quantity.child}</p>
                                 </Col>
                                 <Col md={5} sm={5} xs={6}>
                                   <p className="d-flex flex-row-reverse">
@@ -496,7 +499,7 @@ const PaymentConfirmation = () => {
                             )}
                           </Accordion.Body>
                         </Accordion.Item>
-                        {ticketById.type == "roundtrip" && (
+                        {transactionById[0].ticket.type == "roundtrip" && (
                           <Accordion.Item eventKey="1">
                             <Accordion.Header>
                               <Row>
@@ -540,7 +543,7 @@ const PaymentConfirmation = () => {
                                   </p>
                                 </Col>
                               </Row>
-                              {search.countAnak > 0 && (
+                              {transactionById[0].quantity.child > 0 && (
                                 <Row>
                                   <Col
                                     md={7}
@@ -548,7 +551,7 @@ const PaymentConfirmation = () => {
                                     xs={6}
                                     className="accordion-timeline"
                                   >
-                                    <p>Anak-anak x {search.countAnak}</p>
+                                    <p>Anak-anak x {transactionById[0].quantity.child}</p>
                                   </Col>
                                   <Col md={5} sm={5} xs={6}>
                                     <p className="d-flex flex-row-reverse">
