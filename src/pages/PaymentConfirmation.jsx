@@ -221,7 +221,7 @@ const PaymentConfirmation = () => {
                 </p>
                 <div className="button-payment-section">
                   <Row className="align-items-center">
-                    <Col md={7} sm={8} xs={12}>
+                    <Col md={4} sm={12} xs={12}>
                       <Link to={`/payment`}>
                         <Button
                           value="paymentMethod"
@@ -235,17 +235,17 @@ const PaymentConfirmation = () => {
                         </Button>
                       </Link>
                     </Col>
-                    <Col md={7} sm={8} xs={12}>
+                    <Col md={4} sm={12} xs={12}>
                       <Button
                         className="payment-btn"
-                        onClick={() => {}}
+                        onClick={() => {redirect("/account/order")}}
                       >
                         Cek Status Pembayaran
                       </Button>
                     </Col>
                     <Col
-                      md={5}
-                      sm={4}
+                      md={4}
+                      sm={12}
                       xs={12}
                       className="d-flex flex-row-reverse"
                     >
