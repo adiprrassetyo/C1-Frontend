@@ -72,13 +72,13 @@ const Tickets = () => {
             </h3>
             <p>
               {search?.from.code} - {search?.to.code} <span>|</span>{" "}
-              {search?.startDate
+              {/* {search?.startDate
                 ? search.startDate
                 : new Date().toLocaleDateString("id-ID", {
                     weekday: "short",
                     day: "numeric",
                     month: "short",
-                  })}
+                  })} */}
             </p>
           </Col>
           <Col xs={2}>
@@ -232,10 +232,9 @@ const Tickets = () => {
                           <Button
                             variant="light"
                             className="btn-flight my-2 p-2"
+                            href={"#/flight/confirm/" + item.id}
                           >
-                            <a href={"#/flight/confirm/" + item.id}>
                             Pilih Penerbangan
-                            </a>
                           </Button>
                         </Col>
                       </Row>
