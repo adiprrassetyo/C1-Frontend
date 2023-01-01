@@ -25,6 +25,8 @@ import {
 import { ArrowDownUp } from "react-bootstrap-icons";
 import { ArrowRight } from "react-bootstrap-icons";
 import moment from "moment";
+import { retriveDirectTransUser } from "../redux/slices/transactionSlice";
+import { useNavigate } from "react-router-dom";
 
 const Order = () => {
   const {
@@ -38,6 +40,7 @@ const Order = () => {
   } = useSelector((state) => state.transaction);
   const dispatch = useDispatch();
   const [filterStatus, setFilterStatus] = useState("");
+  const redirect = useNavigate();
 
   useEffect(() => {
     dispatch(retriveTransUser(0));
@@ -198,8 +201,10 @@ const Order = () => {
                   transactionsByStatus.map((trans) => (
                     <Card
                       className="order-list mt-3"
-                      onClick={() => {
-                        alert(`redirect ke payment transId: ${trans.id}`);
+                      onClick={(e) => {
+                        // alert(`redirect ke payment transId: ${trans.id}`);
+                        e.preventDefault();
+                        dispatch(retriveDirectTransUser({id: trans.id, redirect: redirect}));
                       }}
                     >
                       <Row>

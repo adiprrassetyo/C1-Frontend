@@ -9,8 +9,21 @@ import PhoneInput from "react-phone-number-input";
 import DatePicker from 'react-date-picker';
 import ReactFlagsSelect from "react-flags-select";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const PaymentDone = () => {
+    const { loading, status, message, transactionById } = useSelector(
+        (state) => state.transaction
+    );
+    const getTitle = (gelar) => {
+        if (gelar === "tuan") {
+          return "Tn.";
+        } else if (gelar === "nyonya") {
+          return "Mrs.";
+        } else if (gelar === "Nona") {
+          return "Ms.";
+        }
+      };
     return (
         <div>
             <HeaderBookingDone />
@@ -31,7 +44,8 @@ const PaymentDone = () => {
                             <div className="d-flex flex-column align-items-end">
                                 <h2 className="is-bold">E-Ticket</h2>
                                 <p className="is-bold">Penerbangan Keberangkatan</p>
-                                <p className="is-bold">Kode Booking: WHXBY</p>
+                                <p className="is-bold">Kode Booking: </p>
+                                <p className="is-bold">{transactionById[0].id.split("-")[0].toUpperCase()}{transactionById[0].id.split("-")[1].toUpperCase()}</p>
                             </div>
                         </div>
 
@@ -42,9 +56,9 @@ const PaymentDone = () => {
                                 <img src={logo} alt="" />
                             </div>
                             <div className="me-3">
-                                <p className="is-bold">23 November 2022</p>
-                                <p className="is-grey">22:15 - Jakarta ( CGK )</p>
-                                <p className="is-grey">Bandara Internasional Soekarno Hatta</p>
+                                <p className="is-bold">{transactionById[0].ticket.date_start}</p>
+                                <p className="is-grey">{transactionById[0].ticket.departure_time} - {transactionById[0].ticket.from}</p>
+                                <p className="is-grey">{transactionById[0].ticket.airport_from}</p>
                             </div>
                         </div>
                         <div className="d-flex justify-content-between align-items-center m-5">
@@ -52,9 +66,9 @@ const PaymentDone = () => {
                                 <p className="is-bold">Indonesia AirAsia (QZ7518)</p>
                             </div>
                             <div className="me-5">
-                                <p className="is-bold">24 November 2022</p>
-                                <p className="is-grey">01:05 - Bali Denpasar ( DPS )</p>
-                                <p className="is-grey">Bandara Internasional Ngurah Rai</p>
+                                <p className="is-bold">{transactionById[0].ticket.date_start}</p>
+                                <p className="is-grey">{transactionById[0].ticket.arrival_time} - {transactionById[0].ticket.to}</p>
+                                <p className="is-grey">{transactionById[0].ticket.airport_to}</p>
                             </div>
                         </div>
                         <Table striped bordered hover className="mt-5 mb-5">
@@ -67,12 +81,16 @@ const PaymentDone = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Muhammad Damas</td>
-                                    <td>Dewasa</td>
-                                    <td>Bagasi 20 Kg</td>
-                                </tr>
+                                {transactionById[0].traveler.map((item, index) => {
+                                    return (
+                                        <tr>
+                                            <td>{index + 1}</td>
+                                            <td>{getTitle(item.title)} {item.name} {item.surname}</td>
+                                            <td>{item.type}</td>
+                                            <td>Bagasi 20 Kg</td>
+                                        </tr>
+                                    )
+                                })}
                             </tbody>
                             </Table>
 

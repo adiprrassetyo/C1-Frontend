@@ -27,6 +27,27 @@ export const retriveTransUser = createAsyncThunk(
   }
 );
 
+export const retriveDirectTransUser = createAsyncThunk(
+  "transUser/retriveDirectUser",
+  async ({id, redirect}, { rejectWithValue }) => {
+    try {
+      const res = await trans.retriveByTransId(id);
+      if(res.data.status === 200 ){
+        if(res.data.data[0].status == "PAYMENT SUCCESS"){
+          redirect("/flight/done");
+        }
+        else{
+          redirect("/payment/confirmation");
+        }
+        return res.data;
+      }
+    }
+    catch(error){
+      return rejectWithValue(error.response);
+    }
+  }
+)
+
 export const removeTrans = createAsyncThunk(
   "transAdmin/remove",
   async (id, { rejectWithValue }) => {
@@ -61,10 +82,8 @@ export const updateTrans = createAsyncThunk(
   async ({id, data, redirect}, { rejectWithValue }) => {
     try {
       const res = await trans.updateTransaction(data, id);
-      console.log(res)
       if(res.data.status === 200){
-        console.log("Success" ,res)
-        redirect("/");
+        redirect("/flight/done");
         return res.data;
       }
     }
@@ -209,17 +228,35 @@ const transSlice = createSlice({
         ...state,
         loading: false,
         message: action.payload.msg,
-        status: action.payload.status,
-        transactionById: action.payload.data,
+        status: action.payload.status
       };
     },
     [updateTrans.rejected]: (state, action) => {
-      console.log(action)
       return {
         ...state,
         loading: false,
         message: action.payload.msg,
         status: action.payload.status,
+      };
+    },
+    [retriveDirectTransUser.pending]: (state, action) => {
+      return { ...state, loading: true };
+    },
+    [retriveDirectTransUser.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.msg,
+        status: action.payload.status,
+        transactionById: action.payload.data,
+      };
+    },
+    [retriveDirectTransUser.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload.msg,
+        status: action.payload.data.status,
       };
     }
   },

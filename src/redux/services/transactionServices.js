@@ -15,3 +15,4 @@ export const updateTransaction = (data, id) =>
   });
 export const retriveById = () =>
   api.get("/trans/user", { params: { size: 99 } });
+export const retriveByTransId = (id) => api.get(`trans/${id}`);
