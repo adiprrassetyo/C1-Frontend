@@ -116,16 +116,18 @@ const Flight = () => {
     e.preventDefault();
     const start = startDate ? moment(startDate).add(1, "days") : null;
     const end = startDate ? moment(endDate).add(1, "days") : null;
-    setSearch({
-      from: from[0],
-      to: to[0],
-      type: isRoundTrip ? "roundtrip" : "oneway",
-      startDate: start,
-      endDate: end,
-      willFly: true,
-      sumChild,
-      sumAdult,
-    });
+    dispatch(
+      setSearch({
+        from: from[0],
+        to: to[0],
+        type: isRoundTrip ? "roundtrip" : "oneway",
+        startDate: start,
+        endDate: end,
+        willFly: true,
+        countAnak: sumChild,
+        countDewasa: sumAdult,
+      })
+    );
     dispatch(
       retriveTickets({
         params: {

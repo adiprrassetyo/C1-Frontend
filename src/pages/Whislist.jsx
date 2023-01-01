@@ -254,8 +254,8 @@ const Whislist = () => {
                   <div className="content-flex-passenger p-5">
                     <h1 className="content-h1-txt">OOPS !</h1>
                     <p className="content-p-txt">Tidak Ada Wishlist</p>
-                    <Button className="mb-3" variant="info" size="lg">
-                      <div className="selected submit">
+                    <Button href="/#/flight" className="mb-3" variant="info" size="lg">
+                      <div className="selected submit d-flex align-items-center">
                         <i class="remix-icon ri-coupon-2-line"></i>
                         <span>Cari Tiket</span>
                       </div>
