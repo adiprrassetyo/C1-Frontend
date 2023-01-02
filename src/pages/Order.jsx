@@ -1,115 +1,116 @@
-import React, { useEffect, useState } from "react";
-import { Header, Footer } from "../components";
+import React, { useEffect, useState } from 'react'
+import { Header, Footer } from '../components'
 import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Dropdown,
-  DropdownButton,
-  Card,
-  Accordion,
-  Form,
-  Pagination,
-} from "react-bootstrap";
-import "../assets/styles/order.css";
-import Payment from "../assets/images/payment-logo.svg";
-import logo from "../assets/images/binair-logo.svg";
-import Nodata from "../assets/images/no-data.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import {
-  filterTrans,
-  retriveTransUser,
-} from "../redux/slices/transactionSlice";
-import { ArrowDownUp } from "react-bootstrap-icons";
-import { ArrowRight } from "react-bootstrap-icons";
-import moment from "moment";
-import { retriveDirectTransUser } from "../redux/slices/transactionSlice";
-import { useNavigate } from "react-router-dom";
+    Container,
+    Row,
+    Col,
+    Button,
+    Dropdown,
+    DropdownButton,
+    Card,
+    Accordion,
+    Form,
+    Pagination,
+} from 'react-bootstrap'
+import '../assets/styles/order.css'
+import Payment from '../assets/images/payment-logo.svg'
+import logo from '../assets/images/binair-logo.svg'
+import Nodata from '../assets/images/no-data.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
+import { filterTrans, retriveTransUser } from '../redux/slices/transactionSlice'
+import { ArrowDownUp } from 'react-bootstrap-icons'
+import { ArrowRight } from 'react-bootstrap-icons'
+import moment from 'moment'
+import { retriveDirectTransUser } from '../redux/slices/transactionSlice'
+import { useNavigate } from 'react-router-dom'
 
 const Order = () => {
-  const {
-    loading,
-    status,
-    message,
-    transactionsUser,
-    transactionsByStatus,
-    totalPages,
-    currentPage,
-  } = useSelector((state) => state.transaction);
-  const dispatch = useDispatch();
-  const [filterStatus, setFilterStatus] = useState("");
-  const redirect = useNavigate();
+    const {
+        loading,
+        status,
+        message,
+        transactionsUser,
+        transactionsByStatus,
+        totalPages,
+        currentPage,
+    } = useSelector((state) => state.transaction)
+    const dispatch = useDispatch()
+    const [filterStatus, setFilterStatus] = useState('')
+    const redirect = useNavigate()
 
-  useEffect(() => {
-    dispatch(retriveTransUser(0));
-    dispatch(filterTrans(filterStatus));
-  }, [dispatch, filterStatus]);
+    useEffect(() => {
+        dispatch(retriveTransUser(0))
+        dispatch(filterTrans(filterStatus))
+    }, [dispatch, filterStatus])
 
-
-  return (
-    <div>
-      <Header />
-      <Container fluid className="account-box p-5">
-        <Container fluid="xl" className="account-main p-3">
-          <Row>
-            <Col xs={3} className="left-panel left-flex">
-              <Button
-                href="/#/account/profile"
-                className="mb-3"
-                variant="light"
-                size="lg"
-              >
-                <i class="remix-icon ri-user-3-line"></i>
-                <span>Profil</span>
-              </Button>
-              <Button
-                href="/#/account/password"
-                className="mb-3"
-                variant="light"
-                size="lg"
-              >
-                <i class="remix-icon ri-key-2-line"></i>
-                <span>Ubah Password</span>
-              </Button>
-              <Button className="mb-3" variant="info" size="lg">
-                <div className="selected">
-                  <i class="remix-icon ri-calendar-check-line"></i>
-                  <span>Daftar Pesanan</span>
-                </div>
-              </Button>
-              <Button
-                href="/#/account/wishlist"
-                className="mb-3"
-                variant="light"
-                size="lg"
-              >
-                <i class="remix-icon ri-shopping-basket-2-line"></i>
-                <span>Wishlist</span>
-              </Button>
-              <Button
-                className="mb-3"
-                variant="light"
-                size="lg"
-                onClick={() => {
-                  dispatch(logout());
-                  toast.success("Logout Success");
-                  redirect("/");
-                }}
-              >
-                <i class="remix-icon ri-logout-box-r-line"></i>
-                <span>Keluar</span>
-              </Button>
-            </Col>
-            <Col xs={9} className="content-panel ps-5">
-              <Card bg="light" key="Light" text="dark" className="mb-2">
-                <Card.Header className="header-flex">
-                  <div className="p-2 profile-header">
-                    <i class="remix-icon ri-calendar-check-line"></i>
-                    <span>Daftar Pesanan</span>
-                  </div>
-                  {/* <Form className="d-flex">
+    return (
+        <div>
+            <Header />
+            <Container fluid className='account-box p-5'>
+                <Container fluid='xl' className='account-main p-3'>
+                    <Row>
+                        <Col xs={3} className='left-panel left-flex'>
+                            <Button
+                                href='/#/account/profile'
+                                className='mb-3'
+                                variant='light'
+                                size='lg'
+                            >
+                                <i class='remix-icon ri-user-3-line'></i>
+                                <span>Profil</span>
+                            </Button>
+                            <Button
+                                href='/#/account/password'
+                                className='mb-3'
+                                variant='light'
+                                size='lg'
+                            >
+                                <i class='remix-icon ri-key-2-line'></i>
+                                <span>Ubah Password</span>
+                            </Button>
+                            <Button className='mb-3' variant='info' size='lg'>
+                                <div className='selected'>
+                                    <i class='remix-icon ri-calendar-check-line'></i>
+                                    <span>Daftar Pesanan</span>
+                                </div>
+                            </Button>
+                            <Button
+                                href='/#/account/wishlist'
+                                className='mb-3'
+                                variant='light'
+                                size='lg'
+                            >
+                                <i class='remix-icon ri-shopping-basket-2-line'></i>
+                                <span>Wishlist</span>
+                            </Button>
+                            <Button
+                                className='mb-3'
+                                variant='light'
+                                size='lg'
+                                onClick={() => {
+                                    dispatch(logout())
+                                    toast.success('Logout Success')
+                                    redirect('/')
+                                }}
+                            >
+                                <i class='remix-icon ri-logout-box-r-line'></i>
+                                <span>Keluar</span>
+                            </Button>
+                        </Col>
+                        <Col xs={9} className='content-panel ps-5'>
+                            <Card
+                                bg='light'
+                                key='Light'
+                                text='dark'
+                                className='mb-2'
+                            >
+                                <Card.Header className='header-flex'>
+                                    <div className='p-2 profile-header'>
+                                        <i class='remix-icon ri-calendar-check-line'></i>
+                                        <span>Daftar Pesanan</span>
+                                    </div>
+                                    {/* <Form className="d-flex">
                     <Form.Control
                       type="search"
                       placeholder="Kode BinAir"
@@ -118,102 +119,123 @@ const Order = () => {
                     />
                     <Button variant="outline-info">Search</Button>
                   </Form> */}
-                </Card.Header>
-                <Card.Body>
-                  <div className="status-filter my-2 mx-5">
-                    <div>
-                      <Button
-                        className={filterStatus === "" && `bg-info text-white`}
-                        variant="secondary"
-                        size="md"
-                        onClick={() => {
-                          setFilterStatus("");
-                        }}
-                      >
-                        Semua
-                      </Button>{" "}
-                    </div>
-                    <div>
-                      <Button
-                        onClick={() => {
-                          setFilterStatus("PENDING PAYMENT");
-                        }}
-                        className={
-                          filterStatus === "PENDING PAYMENT" &&
-                          `bg-info text-white`
-                        }
-                        variant="secondary"
-                        size="md"
-                      >
-                        Menunggu
-                      </Button>{" "}
-                    </div>
-                    <div>
-                      <Button
-                        onClick={() => {
-                          setFilterStatus("PAYMENT SUCCESS");
-                        }}
-                        className={
-                          filterStatus === "PAYMENT SUCCESS" &&
-                          `bg-info text-white`
-                        }
-                        variant="secondary"
-                        size="md"
-                      >
-                        Dikonfirmasi
-                      </Button>
-                    </div>
-                    <div>
-                      <Button
-                        onClick={() => {
-                          setFilterStatus("SELESAI");
-                        }}
-                        className={
-                          filterStatus === "SELESAI" && `bg-info text-white`
-                        }
-                        variant="secondary"
-                        size="md"
-                      >
-                        Selesai
-                      </Button>{" "}
-                    </div>
+                                </Card.Header>
+                                <Card.Body>
+                                    <div className='status-filter my-2 mx-5'>
+                                        <div>
+                                            <Button
+                                                className={
+                                                    filterStatus === '' &&
+                                                    `bg-info text-white`
+                                                }
+                                                variant='secondary'
+                                                size='md'
+                                                onClick={() => {
+                                                    setFilterStatus('')
+                                                }}
+                                            >
+                                                Semua
+                                            </Button>{' '}
+                                        </div>
+                                        <div>
+                                            <Button
+                                                onClick={() => {
+                                                    setFilterStatus(
+                                                        'PENDING PAYMENT'
+                                                    )
+                                                }}
+                                                className={
+                                                    filterStatus ===
+                                                        'PENDING PAYMENT' &&
+                                                    `bg-info text-white`
+                                                }
+                                                variant='secondary'
+                                                size='md'
+                                            >
+                                                Menunggu
+                                            </Button>{' '}
+                                        </div>
+                                        <div>
+                                            <Button
+                                                onClick={() => {
+                                                    setFilterStatus(
+                                                        'PAYMENT SUCCESS'
+                                                    )
+                                                }}
+                                                className={
+                                                    filterStatus ===
+                                                        'PAYMENT SUCCESS' &&
+                                                    `bg-info text-white`
+                                                }
+                                                variant='secondary'
+                                                size='md'
+                                            >
+                                                Dikonfirmasi
+                                            </Button>
+                                        </div>
+                                        <div>
+                                            <Button
+                                                onClick={() => {
+                                                    setFilterStatus('SELESAI')
+                                                }}
+                                                className={
+                                                    filterStatus ===
+                                                        'SELESAI' &&
+                                                    `bg-info text-white`
+                                                }
+                                                variant='secondary'
+                                                size='md'
+                                            >
+                                                Selesai
+                                            </Button>{' '}
+                                        </div>
 
-                    <div>
-                      <Button
-                        onClick={() => {
-                          setFilterStatus("CANCELED");
-                        }}
-                        className={
-                          filterStatus === "CANCELED" && `bg-info text-white`
-                        }
-                        variant="secondary"
-                        size="md"
-                      >
-                        Dibatalkan
-                      </Button>{" "}
-                    </div>
-                  </div>
-                </Card.Body>
-              </Card>
-              <div className="img-box">
-                {transactionsByStatus.length ? (
-                  transactionsByStatus.map((trans) => (
-                    <Card
-                      className="order-list mt-3"
-                      onClick={(e) => {
-                        // alert(`redirect ke payment transId: ${trans.id}`);
-                        e.preventDefault();
-                        dispatch(retriveDirectTransUser({id: trans.id, redirect: redirect}));
-                      }}
-                    >
-                      <Row>
-                        <Col md={8} className="d-flex flex-column pe-0">
-                          <div className="header d-flex justify-content-between p-3">
-                            <h2 className="header-text">
-                              <i class="remix-icon ri-flight-takeoff-line"></i>
-                              PENERBANGAN
-                            </h2>
-                            {/* <DropdownButton id="dropdown-basic-button" title="">
+                                        <div>
+                                            <Button
+                                                onClick={() => {
+                                                    setFilterStatus('CANCELED')
+                                                }}
+                                                className={
+                                                    filterStatus ===
+                                                        'CANCELED' &&
+                                                    `bg-info text-white`
+                                                }
+                                                variant='secondary'
+                                                size='md'
+                                            >
+                                                Dibatalkan
+                                            </Button>{' '}
+                                        </div>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                            <div className='img-box'>
+                                {transactionsByStatus.length ? (
+                                    transactionsByStatus.map((trans) => (
+                                        <Card
+                                            className='order-list mt-3'
+                                            onClick={(e) => {
+                                                // alert(`redirect ke payment transId: ${trans.id}`);
+                                                e.preventDefault()
+                                                dispatch(
+                                                    retriveDirectTransUser({
+                                                        id: trans.id,
+                                                        redirect: redirect,
+                                                    })
+                                                )
+                                            }}
+                                        >
+                                            <Row>
+                                                <Col
+                                                    md={8}
+                                                    className='d-flex flex-column pe-0'
+                                                >
+                                                    <div className='header d-flex justify-content-between p-3'>
+                                                        <h2 className='header-text'>
+                                                            <i class='remix-icon ri-flight-takeoff-line'></i>
+                                                            PENERBANGAN
+                                                        </h2>
+                                                        {/* <DropdownButton id="dropdown-basic-button" title="">
                               <Dropdown.Item href="#/account/order/tickets">
                                 Detail
                               </Dropdown.Item>
@@ -221,46 +243,72 @@ const Order = () => {
                                 Lanjutkan ke Pembayaran
                               </Dropdown.Item>
                             </DropdownButton> */}
-                          </div>
-                          <div className="subheader d-flex justify-content-center pe-3 ps-3">
-                            <img src={logo} alt="" />
-                            {/* <p className="subheader-text mt-2 mb-0 ms-2">
+                                                    </div>
+                                                    <div className='subheader d-flex justify-content-center pe-3 ps-3'>
+                                                        <img
+                                                            src={logo}
+                                                            alt=''
+                                                        />
+                                                        {/* <p className="subheader-text mt-2 mb-0 ms-2">
                               Binair
                             </p> */}
-                          </div>
-                          <div className="summary-info d-flex justify-content-center mt-4 pb-5">
-                            <div className="flight-info d-flex">
-                              <div className="flight-info-start text-center">
-                                <h2>
-                                  <strong>{trans.ticket.from}</strong>
-                                </h2>
-                                <h6 className="is-grey">
-                                  {trans.ticket.airport_from}
-                                </h6>
-                              </div>
-                              <div className="flight-info-timeline flex-column d-flex align-items-center justify-content-center">
-                                <span className="mx-4">
-                                  {trans.ticket.type === "oneway" ? (
-                                    <ArrowRight
-                                      size={30}
-                                      className=" text-secondary"
-                                    />
-                                  ) : (
-                                    <ArrowDownUp
-                                      size={30}
-                                      className="rotate text-secondary"
-                                    />
-                                  )}
-                                </span>
-                                <p
-                                  className="text-secondary"
-                                  style={{ fontSize: "9px" }}
-                                >
-                                  {trans.ticket.type === "oneway"
-                                    ? "sekali jalan"
-                                    : "pulang pergi"}
-                                </p>
-                                {/* <div className="timeline d-flex flex-row justify-content-center align-items-center">
+                                                    </div>
+                                                    <div className='summary-info d-flex justify-content-center mt-4 pb-5'>
+                                                        <div className='flight-info d-flex'>
+                                                            <div className='flight-info-start text-center'>
+                                                                <h2>
+                                                                    <strong>
+                                                                        {
+                                                                            trans
+                                                                                .ticket
+                                                                                .from
+                                                                        }
+                                                                    </strong>
+                                                                </h2>
+                                                                <h6 className='is-grey'>
+                                                                    {
+                                                                        trans
+                                                                            .ticket
+                                                                            .airport_from
+                                                                    }
+                                                                </h6>
+                                                            </div>
+                                                            <div className='flight-info-timeline flex-column d-flex align-items-center justify-content-center'>
+                                                                <span className='mx-4'>
+                                                                    {trans
+                                                                        .ticket
+                                                                        .type ===
+                                                                    'oneway' ? (
+                                                                        <ArrowRight
+                                                                            size={
+                                                                                30
+                                                                            }
+                                                                            className=' text-secondary'
+                                                                        />
+                                                                    ) : (
+                                                                        <ArrowDownUp
+                                                                            size={
+                                                                                30
+                                                                            }
+                                                                            className='rotate text-secondary'
+                                                                        />
+                                                                    )}
+                                                                </span>
+                                                                <p
+                                                                    className='text-secondary'
+                                                                    style={{
+                                                                        fontSize:
+                                                                            '9px',
+                                                                    }}
+                                                                >
+                                                                    {trans
+                                                                        .ticket
+                                                                        .type ===
+                                                                    'oneway'
+                                                                        ? 'sekali jalan'
+                                                                        : 'pulang pergi'}
+                                                                </p>
+                                                                {/* <div className="timeline d-flex flex-row justify-content-center align-items-center">
                                   <div className="airplane-single">
                                     <svg
                                       class="svg-inline--fa fa-plane fa-w-18 fa-fw"
@@ -279,64 +327,93 @@ const Order = () => {
                                   </div>
                                   <div className="divider"></div>
                                 </div> */}
-                              </div>
-                              <div className="flight-info-end text-center">
-                                <h2>
-                                  <strong>{trans.ticket.to}</strong>
-                                </h2>
-                                <h6 className="is-grey">
-                                  {trans.ticket.airport_to}
-                                </h6>
-                              </div>
-                            </div>
-                          </div>
-                        </Col>
-                        <Col
-                          md={4}
-                          className="order-right-summary d-flex flex-column justify-content-center"
-                        >
-                          <div className="order-status-container d-flex flex-column align-items-center">
-                            <div className="order-code">
-                              <p className="is-grey mb-1">Kode Binair</p>
-                              <p className="header-text">
-                                <strong>
-                                  {trans.id.split("-")[0].toUpperCase() +
-                                    trans.id.split("-")[1].toUpperCase()}
-                                </strong>
-                              </p>
-                            </div>
-                            <span
-                              className={`order-status status-badge text-white ${
-                                trans.status === "PAYMENT SUCCESS" || trans.status === "SELESAI"
-                                  ? "bg-success"
-                                  : trans.status === "CANCELED"
-                                  ? "bg-danger"
-                                  : "bg-secondary"
-                              }`}
-                            >
-                              {trans.status === "SELESAI"
-                                ? "DONE"
-                                : trans.status}
-                            </span>
-                            <p className="is-grey mt-3 text-center">
-                              Tanggal pemesanan:{" "}
-                              {moment(trans.createdAt).format("DD MMMM YYYY")}
-                            </p>
-                          </div>
-                        </Col>
-                      </Row>
-                    </Card>
-                  ))
-                ) : (
-                  <>
-                    <img src={Nodata} alt="" />
-                    <p>
-                      <strong>Tidak Ada Data</strong>
-                    </p>
-                  </>
-                )}
+                                                            </div>
+                                                            <div className='flight-info-end text-center'>
+                                                                <h2>
+                                                                    <strong>
+                                                                        {
+                                                                            trans
+                                                                                .ticket
+                                                                                .to
+                                                                        }
+                                                                    </strong>
+                                                                </h2>
+                                                                <h6 className='is-grey'>
+                                                                    {
+                                                                        trans
+                                                                            .ticket
+                                                                            .airport_to
+                                                                    }
+                                                                </h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </Col>
+                                                <Col
+                                                    md={4}
+                                                    className='order-right-summary d-flex flex-column justify-content-center'
+                                                >
+                                                    <div className='order-status-container d-flex flex-column align-items-center'>
+                                                        <div className='order-code'>
+                                                            <p className='is-grey mb-1'>
+                                                                Kode Binair
+                                                            </p>
+                                                            <p className='header-text'>
+                                                                <strong>
+                                                                    {trans.id
+                                                                        .split(
+                                                                            '-'
+                                                                        )[0]
+                                                                        .toUpperCase() +
+                                                                        trans.id
+                                                                            .split(
+                                                                                '-'
+                                                                            )[1]
+                                                                            .toUpperCase()}
+                                                                </strong>
+                                                            </p>
+                                                        </div>
+                                                        <span
+                                                            className={`order-status status-badge text-white ${
+                                                                trans.status ===
+                                                                    'PAYMENT SUCCESS' ||
+                                                                trans.status ===
+                                                                    'SELESAI'
+                                                                    ? 'bg-success'
+                                                                    : trans.status ===
+                                                                      'CANCELED'
+                                                                    ? 'bg-danger'
+                                                                    : 'bg-secondary'
+                                                            }`}
+                                                        >
+                                                            {trans.status ===
+                                                            'SELESAI'
+                                                                ? 'DONE'
+                                                                : trans.status}
+                                                        </span>
+                                                        <p className='is-grey mt-3 text-center'>
+                                                            Tanggal pemesanan:{' '}
+                                                            {moment(
+                                                                trans.createdAt
+                                                            ).format(
+                                                                'DD MMMM YYYY'
+                                                            )}
+                                                        </p>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                        </Card>
+                                    ))
+                                ) : (
+                                    <>
+                                        <img src={Nodata} alt='' />
+                                        <p>
+                                            <strong>Tidak Ada Data</strong>
+                                        </p>
+                                    </>
+                                )}
 
-                {/* <Card className="order-list mt-3">
+                                {/* <Card className="order-list mt-3">
                   <Row>
                     <Col md={8} className="d-flex flex-column pe-0">
                       <div className="header d-flex justify-content-between p-3">
@@ -660,29 +737,32 @@ const Order = () => {
                     </Col>
                   </Row>
                 </Card> */}
-              </div>
-            </Col>
-          </Row>
+                            </div>
+                        </Col>
+                    </Row>
 
-          <Card className="payment-content mt-5" style={{ width: "13rem" }}>
-            <Card.Body>
-              <Card.Title>
-                <strong>Jenis Pembayaran:</strong>
-              </Card.Title>
-              <Card.Text>
-                <img
-                  src={Payment}
-                  alt="
-                                            payment"
-                />
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Container>
-      </Container>
+                    <Card
+                        className='payment-content mt-5'
+                        style={{ width: '13rem' }}
+                    >
+                        <Card.Body>
+                            <Card.Title>
+                                <strong>Jenis Pembayaran:</strong>
+                            </Card.Title>
+                            <Card.Text>
+                                <img
+                                    src={Payment}
+                                    alt='
+                                            payment'
+                                />
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Container>
+            </Container>
 
-      <Footer />
-    </div>
-  );
-};
-export default Order;
+            <Footer />
+        </div>
+    )
+}
+export default Order

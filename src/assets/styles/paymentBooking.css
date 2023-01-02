@@ -1,185 +1,192 @@
-.payment-section{
+.payment-section {
     margin-bottom: 50px;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
 }
-.booking-countdown{
+.booking-countdown {
     padding: 30px 0 40px 0;
-    background-color: #13A2D7;
+    background-color: #13a2d7;
 }
-.booking-countdown p{
+.booking-countdown p {
     color: #fff;
     font-size: 14px;
-    margin-bottom:0;
+    margin-bottom: 0;
 }
-.countdown{
+.countdown {
     color: #fff;
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 4px;
 }
-.payment-section .container{
+.payment-section .container {
     margin-top: -20px;
 }
-.payment-section .container .row{
+.payment-section .container .row {
     margin: 0 auto;
 }
-.currency{
+.currency {
     background-color: pink;
     padding: 20px;
     border-radius: 12px;
 }
-.payment-method{
+.payment-method {
     border-radius: 12px;
     box-shadow: 1px 1px 5px 0 #e7e7e7;
     /*margin-top: 32px;*/
     background-color: #fff;
 }
-.payment-method-confirm{
+.payment-method-confirm {
     padding: 20px 20px 0px 20px;
 }
-.payment-method-confirm .row .col-md-12{
+.payment-method-confirm .row .col-md-12 {
     padding: 0;
 }
-.payment-method-confirm .row p{
+.payment-method-confirm .row p {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     margin-bottom: 4px;
 }
-.payment-method-confirm .row h4{
+.payment-method-confirm .row h4 {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     font-weight: 700;
     margin-bottom: 4px;
 }
-.payment-method-confirm .row .col-md-12 img{
+.payment-method-confirm .row .col-md-12 img {
     width: 112px;
     padding: 16px 0;
 }
-.total-payment-confirm .accordion-item{
+.total-payment-confirm .accordion-item {
     border: none;
 }
-.total-payment-confirm .accordion-header .row .col-md-4{
+.total-payment-confirm .accordion-header .row .col-md-4 {
     padding: 0;
 }
-.total-payment-confirm .accordion-header .row .col-md-4 p{
+.total-payment-confirm .accordion-header .row .col-md-4 p {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     margin-bottom: 4px;
 }
-.total-payment-confirm .accordion-header .row .col-md-4 h3{
+.total-payment-confirm .accordion-header .row .col-md-4 h3 {
     font-size: 18px;
     font-weight: 700;
-    color: #59595B;
+    color: #59595b;
     margin-bottom: 4px;
 }
-.btn-copy-price{
-    color: #13A2D7;
+.btn-copy-price {
+    color: #13a2d7;
 }
-.btn-copy-price:hover, .btn-copy-price:focus, .btn-copy-price:active{
+.btn-copy-price:hover,
+.btn-copy-price:focus,
+.btn-copy-price:active {
     background-color: transparent !important;
-    color: #13A2D7;
+    color: #13a2d7;
     border: none !important;
 }
-.popover{
+.popover {
     z-index: 10;
 }
-.popover-header{
-    background-color: #13A2D7;
+.popover-header {
+    background-color: #13a2d7;
     color: #fff;
 }
-.accordion-body .row .col-md-9, .accordion-body .row .col-md-3{
+.accordion-body .row .col-md-9,
+.accordion-body .row .col-md-3 {
     padding: 0;
 }
-.accordion-body .row p{
+.accordion-body .row p {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     margin-bottom: 8px;
 }
-.payment-instruction-section{
+.payment-instruction-section {
     margin-top: 32px;
     border-radius: 12px;
     background-color: #fff;
     box-shadow: 1px 1px 5px 0 #e7e7e7;
 }
-.payment-instruction-section .payment-type{
+.payment-instruction-section .payment-type {
     padding: 20px 20px 0 20px;
 }
-.payment-instruction-section .payment-type .col-md-12{
+.payment-instruction-section .payment-type .col-md-12 {
     padding: 0;
 }
-.payment-instruction-section .payment-type .col-md-12 p{
+.payment-instruction-section .payment-type .col-md-12 p {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     margin-bottom: 12px;
     font-weight: 700;
 }
-.payment-instruction-section .payment-type .col-md-12 img{
+.payment-instruction-section .payment-type .col-md-12 img {
     width: 112px;
 }
-.qr-code-img{
+.qr-code-img {
     width: 200px !important;
 }
-.payment-instruction-section .payment-codes{
+.payment-instruction-section .payment-codes {
     padding: 20px 20px 0 20px;
 }
-.payment-codes .col-md-3, .payment-codes .col-md-1, .payment-codes .col-md-8{
+.payment-codes .col-md-3,
+.payment-codes .col-md-1,
+.payment-codes .col-md-8 {
     padding: 0;
 }
-.payment-codes .col-md-3 p, .payment-codes .col-md-1 p, .payment-codes .col-md-8 p{
+.payment-codes .col-md-3 p,
+.payment-codes .col-md-1 p,
+.payment-codes .col-md-8 p {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     margin-bottom: 4px;
 }
-.alert-payment{
+.alert-payment {
     z-index: 500;
     position: fixed;
     left: 43%;
     width: 200px;
     top: 130px;
 }
-.instruction{
+.instruction {
     padding: 4px 20px 12px 20px;
 }
-.instruction .col-md-12{
+.instruction .col-md-12 {
     padding: 0;
 }
-.note-payment{
+.note-payment {
     font-size: 12px;
-    color: #59595B;
+    color: #59595b;
     padding-top: 12px;
 }
-.payment-method-header{
+.payment-method-header {
     padding: 20px;
 }
-.payment-method-header h3{
+.payment-method-header h3 {
     font-size: 24px;
     font-weight: 600;
-    color: #59595B;
+    color: #59595b;
 }
-.payment-method-item{
+.payment-method-item {
     margin: 0 auto;
     padding: 0 20px 20px 20px;
 }
-.payment-method-item p{
+.payment-method-item p {
     padding: 0;
     font-size: 14px;
-    color: #9A9A9D;
+    color: #9a9a9d;
 }
-.payment-method-item .col-md-3{
+.payment-method-item .col-md-3 {
     padding-left: 0;
     margin-bottom: 16px;
 }
-.payment-method-item .col-md-3:nth-child(5){
-    padding: 0; 
+.payment-method-item .col-md-3:nth-child(5) {
+    padding: 0;
 }
-.payment-method-item .col-md-3 a img{  
+.payment-method-item .col-md-3 a img {
     padding: 12px;
     height: 70px;
     width: 100%;
     box-shadow: 1px 1px 10px 0 #e7e7e7;
     border-radius: 8px;
 }
-.payment-method-item .col-md-3 .btn-payment{
+.payment-method-item .col-md-3 .btn-payment {
     box-shadow: 1px 1px 10px 0 #e7e7e7;
     border-radius: 8px;
     background-color: #fff;
@@ -187,468 +194,483 @@
     width: 100%;
     height: 100px;
 }
-.payment-method-item .col-md-3 .btn-payment:hover{
+.payment-method-item .col-md-3 .btn-payment:hover {
     box-shadow: 1px 5px 15px 0 #e7e7e7;
 }
-.payment-method-item .col-md-3 .btn-payment img{  
+.payment-method-item .col-md-3 .btn-payment img {
     width: 100%;
 }
-.payment-status{
+.payment-status {
     box-shadow: 1px 1px 5px 0 #e7e7e7;
     border-radius: 12px;
     padding: 20px;
     background-color: #fff;
 }
-.payment-status .row{
+.payment-status .row {
     margin: 0 auto;
 }
-.payment-status .row .col-md-6, .payment-status .row .col-md-6{
+.payment-status .row .col-md-6,
+.payment-status .row .col-md-6 {
     padding: 0;
 }
-.payment-status .row .col-md-6 h3{
+.payment-status .row .col-md-6 h3 {
     font-size: 18px;
-} 
-.payment-status .row .col-md-6 p{
+}
+.payment-status .row .col-md-6 p {
     font-size: 14px;
     font-weight: 600;
 }
-.badge-payment{
+.badge-payment {
     padding: 14px 20px;
     font-size: 14px;
-    border: 1px solid #F2964C;
-    background-color: #FFECDC !important;
-    color: #F2964C;
+    border: 1px solid #f2964c;
+    background-color: #ffecdc !important;
+    color: #f2964c;
 }
-.flight-detail-section{
+.flight-detail-section {
     margin-top: 32px;
     border-radius: 12px;
     background-color: #fff;
     box-shadow: 1px 1px 5px 0 #e7e7e7;
 }
-.flight-detail-section p{
+.flight-detail-section p {
     font-size: 14px;
 }
-.departure-flight{
+.departure-flight {
     margin: 0 auto;
 }
-.departure-flight h3{
+.departure-flight h3 {
     font-size: 14px;
     font-weight: 700;
-    color: #59595B;
+    color: #59595b;
 }
-.departure-flight p{
+.departure-flight p {
     font-size: 14px;
-    color: #9A9A9D;
+    color: #9a9a9d;
     margin-bottom: 0;
 }
-.departure-flight .col-md-4, .departure-flight .col-md-8{
+.departure-flight .col-md-4,
+.departure-flight .col-md-8 {
     padding: 0;
     margin-bottom: 20px;
-    
 }
-.departure-flight .col-md-3{
+.departure-flight .col-md-3 {
     padding: 0;
 }
-.baggage-badge{
-    background-color: #13A2D7 !important;
+.baggage-badge {
+    background-color: #13a2d7 !important;
     font-size: 9px;
     padding: 8px 10px;
 }
-.flight-type{
+.flight-type {
     margin: 0 auto;
 }
-.flight-type .col-md-4, .flight-type .col-md-8{
+.flight-type .col-md-4,
+.flight-type .col-md-8 {
     padding: 0;
     margin-bottom: 8px;
-    
 }
-.flight-type h3{
+.flight-type h3 {
     font-size: 14px;
     font-weight: 700;
-    color: #59595B;
+    color: #59595b;
 }
-.flight-type p{
+.flight-type p {
     font-size: 12px;
-    color: #9A9A9D;
+    color: #9a9a9d;
     margin-bottom: 0;
 }
-.logo-flight{
+.logo-flight {
     width: 60px;
 }
-.flight-timeline{
+.flight-timeline {
     margin-top: 22px;
 }
-.flight-timeline p{
+.flight-timeline p {
     font-size: 12px;
-    color: #9A9A9D;
+    color: #9a9a9d;
 }
-.flight-timeline h3{
+.flight-timeline h3 {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     font-weight: 700;
 }
-.timeline-object{
+.timeline-object {
     display: flex;
     position: relative;
     align-items: center;
     margin-top: 0px;
     margin-left: 0px;
 }
-.timeline-object.not-complete::after{
+.timeline-object.not-complete::after {
     content: '';
     display: block;
     position: absolute;
 
     width: 2px;
     height: 108px;
-    background-color: #DEDEDE;
+    background-color: #dedede;
     left: 5px;
     top: 35px !important;
     transform: translateX(-50%);
 }
 
-.timeline-status{
+.timeline-status {
     height: 12px;
     width: 12px;
     border-radius: 50%;
-    background-color: #C4C4C4;
+    background-color: #c4c4c4;
     margin-left: 0px;
     margin-top: -50px !important;
 }
-.timeline-object.not-complete .timeline-status{
+.timeline-object.not-complete .timeline-status {
     background: #fff;
-    border: 2px solid #C4C4C4;
+    border: 2px solid #c4c4c4;
 }
-.timeline-content{
+.timeline-content {
     margin: 0 auto;
 }
-.timeline-content .col-md-5, .timeline-content .col-md-7{
+.timeline-content .col-md-5,
+.timeline-content .col-md-7 {
     padding: 0;
 }
-.timeline-content .col-md-5 p, .timeline-content .col-md-7 p{
+.timeline-content .col-md-5 p,
+.timeline-content .col-md-7 p {
     margin-bottom: 8px;
 }
-.timeline-content .col-md-5 p, .timeline-content .col-md-5 h3{
+.timeline-content .col-md-5 p,
+.timeline-content .col-md-5 h3 {
     margin-left: 8px;
 }
-.duration{
+.duration {
     margin-left: 20px;
 }
 
-.flight-facility ul{
+.flight-facility ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-.flight-facility ul li p{
+.flight-facility ul li p {
     font-size: 12px;
     margin-bottom: 6px;
 }
-.flight-facility ul li .information{
+.flight-facility ul li .information {
     font-size: 12px;
-    color: #73B465;
+    color: #73b465;
 }
-.price-section{
+.price-section {
     margin-top: 32px;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 1px 1px 5px 0 #e7e7e7;
 }
-.price-header{
+.price-header {
     padding: 20px 20px 16px 20px;
 }
-.price-header h3{
+.price-header h3 {
     font-size: 18px;
     margin: 0;
 }
-.price-content .accordion-item{
+.price-content .accordion-item {
     border: none;
 }
-.price-content .row{
+.price-content .row {
     margin: 0 auto;
 }
 
-.price-content .accordion-button{
+.price-content .accordion-button {
     padding: 8px 20px;
     border-radius: 0 !important;
     border: none !important;
 }
-.accordion-timeline{
+.accordion-timeline {
     padding: 0;
 }
-.accordion-timeline h3{
+.accordion-timeline h3 {
     margin: 8px 0;
 }
-.accordion-button:not(.collapsed)::after{
-    background-image: url("../images/arrow-down-s-line.svg");
+.accordion-button:not(.collapsed)::after {
+    background-image: url('../images/arrow-down-s-line.svg');
     margin-top: -5px !important;
 }
-.accordion-button::after{
-    background-image: url("../images/arrow-down-s-line.svg");
+.accordion-button::after {
+    background-image: url('../images/arrow-down-s-line.svg');
     margin-top: -5px !important;
 }
-.price-total{
+.price-total {
     padding: 12px 20px 0 20px;
     margin: 0;
-    border-top: 1px solid #BFBFBF;
+    border-top: 1px solid #bfbfbf;
 }
-.price-total .row{
+.price-total .row {
     margin: 0 auto;
 }
-.price-total .row .col-md-7, .price-total .row .col-md-5{
+.price-total .row .col-md-7,
+.price-total .row .col-md-5 {
     padding: 0;
     margin-bottom: 6px;
 }
-.price-total h3{
+.price-total h3 {
     font-size: 18px;
 }
-.voucher-section{
+.voucher-section {
     background-color: #fff;
     box-shadow: 1px 1px 5px 0 #e7e7e7;
     margin-top: 32px;
     border-radius: 12px;
 }
-.voucher-header{
+.voucher-header {
     padding: 20px;
 }
-.voucher-header h3{
+.voucher-header h3 {
     font-size: 18px;
     font-weight: 700;
-    color: #59595B;
+    color: #59595b;
     margin: 0;
 }
-.voucher-content{
+.voucher-content {
     padding: 0 20px 0px 20px;
 }
-.voucher-content .row{
+.voucher-content .row {
     margin: 0 auto;
 }
-.voucher-content .row .col-md-8{
+.voucher-content .row .col-md-8 {
     padding: 0 20px 0 0;
     margin: 0;
 }
-.voucher-content .row .col-md-4{
+.voucher-content .row .col-md-4 {
     padding: 0;
 }
-.traveler-section{
+.traveler-section {
     background-color: #fff;
     box-shadow: 1px 1px 5px 0 #e7e7e7;
     margin-top: 32px;
     border-radius: 12px;
 }
-.traveler-header{
+.traveler-header {
     padding: 20px;
 }
-.traveler-header .row, .traveler-content .row{
+.traveler-header .row,
+.traveler-content .row {
     margin: 0 auto;
 }
-.traveler-header .row .col-md-12, .traveler-content .row .col-md-9, .traveler-content .row .col-md-3{
+.traveler-header .row .col-md-12,
+.traveler-content .row .col-md-9,
+.traveler-content .row .col-md-3 {
     padding: 0;
 }
-.traveler-header .row .col-md-12 h3{
+.traveler-header .row .col-md-12 h3 {
     font-size: 18px;
     font-weight: 700;
-    color: #59595B;
+    color: #59595b;
     margin: 0;
 }
-.traveler-header .row .col-md-3 p{
+.traveler-header .row .col-md-3 p {
     font-size: 14px;
-    color: #F37C20;
+    color: #f37c20;
     margin: 0;
 }
-.traveler-content{
+.traveler-content {
     padding: 0 20px 6px 20px;
 }
-.traveler-content .row .col-md-9 ol{
+.traveler-content .row .col-md-9 ol {
     padding-left: 16px;
 }
-.traveler-content .row .col-md-9 li{
+.traveler-content .row .col-md-9 li {
     font-size: 14px;
     font-weight: 700;
-    color: #59595B;
+    color: #59595b;
 }
-.traveler-content .row .col-md-3 p{ 
+.traveler-content .row .col-md-3 p {
     font-size: 12px;
-    color: #9A9A9D;
+    color: #9a9a9d;
 }
-.contact-section{
+.contact-section {
     background-color: #fff;
     box-shadow: 1px 1px 5px 0 #e7e7e7;
     margin-top: 32px;
     border-radius: 12px;
     margin-bottom: 32px;
 }
-.contact-header{
+.contact-header {
     padding: 20px;
 }
-.contact-header h3{
+.contact-header h3 {
     font-size: 18px;
     font-weight: 700;
-    color: #59595B;
+    color: #59595b;
     margin: 0;
 }
-.contact-content{
+.contact-content {
     padding: 0 20px 6px 20px;
 }
-.contact-content p{
+.contact-content p {
     margin-bottom: 6px;
     font-size: 12px;
-    color: #9A9A9D;
+    color: #9a9a9d;
 }
-.contact-name{
+.contact-name {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     margin-bottom: 6px;
 }
-.verification-btn{
-    background-color: #13A2D7;
+.verification-btn {
+    background-color: #13a2d7;
     border: none;
     width: 100%;
     font-size: 14px;
     padding: 8px 0;
 }
-.verification-btn:hover, .verification-btn:active{
-    background-color: #0993C7 !important;
+.verification-btn:hover,
+.verification-btn:active {
+    background-color: #0993c7 !important;
     border: none;
 }
-.virtual-account-type{
-    border-bottom: 1.5px solid #DEDEDE;
+.virtual-account-type {
+    border-bottom: 1.5px solid #dedede;
 }
-.virtual-account-type .row .col-md-12{
+.virtual-account-type .row .col-md-12 {
     padding: 0 20px;
 }
-.virtual-account-type .row .col-md-12 img{
+.virtual-account-type .row .col-md-12 img {
     width: 110px;
     padding-bottom: 20px;
 }
-.virtual-account-type .row .col-md-12 p{
+.virtual-account-type .row .col-md-12 p {
     font-size: 14px;
     font-weight: 700;
-    color: #59595B;
+    color: #59595b;
 }
-.total-payment{
+.total-payment {
     padding: 20px 20px 12px 20px;
-    border-bottom: 1.5px solid #DEDEDE;
+    border-bottom: 1.5px solid #dedede;
 }
-.total-payment .row .col-md-9, .total-payment .row .col-md-3, .total-payment .row .col-md-12{
+.total-payment .row .col-md-9,
+.total-payment .row .col-md-3,
+.total-payment .row .col-md-12 {
     padding: 0;
 }
-.total-payment .row p{
+.total-payment .row p {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     margin-bottom: 4px;
 }
-.total-payment .row .total{
+.total-payment .row .total {
     font-weight: 700;
 }
-.total-payment .row h3{
+.total-payment .row h3 {
     font-size: 18px;
-    color: #13A2D7;
+    color: #13a2d7;
     font-weight: 700;
 }
-.payment-instruction{
+.payment-instruction {
     padding: 20px 20px 4px 20px;
-    border-bottom: 1.5px solid #DEDEDE;
+    border-bottom: 1.5px solid #dedede;
 }
-.payment-instruction .row .col-md-12{
+.payment-instruction .row .col-md-12 {
     padding: 0;
 }
-.payment-instruction .row .col-md-12 h4{
+.payment-instruction .row .col-md-12 h4 {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     font-weight: 700;
     margin-bottom: 4px;
 }
-.instruction-list{
+.instruction-list {
     padding-left: 14px;
 }
-.instruction-list li, .instruction-list li p{
+.instruction-list li,
+.instruction-list li p {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     margin-bottom: 4px;
 }
-.agreement-payment{
+.agreement-payment {
     padding: 20px;
 }
-.agreement-payment .row .col-md-12{
+.agreement-payment .row .col-md-12 {
     padding: 0;
 }
-.agreement-payment .row .col-md-12 p{
+.agreement-payment .row .col-md-12 p {
     font-size: 14px;
-    color: #59595B;
+    color: #59595b;
     margin-bottom: 4px;
     display: flex;
     vertical-align: middle;
 }
-.agreement-payment .row .col-md-12 a{
+.agreement-payment .row .col-md-12 a {
     font-size: 14px;
-    color: #13A2D7;
+    color: #13a2d7;
 }
-.agreement-payment .row .col-md-12 a:hover{
+.agreement-payment .row .col-md-12 a:hover {
     text-decoration: underline;
 }
-.button-payment-section{
+.button-payment-section {
     margin-top: 20px;
 }
-.button-payment-section .row .col-md-7, .button-payment-section .row .col-md-5{
+.button-payment-section .row .col-md-7,
+.button-payment-section .row .col-md-5 {
     padding: 0;
 }
-.payment-method-btn{
+.payment-method-btn {
     padding: 0;
     background-color: none !important;
 }
-.payment-method-btn:active{
+.payment-method-btn:active {
     background-color: none !important;
 }
-.ri-arrow-left-s-line, span{
+.ri-arrow-left-s-line,
+span {
     display: inline-block;
     vertical-align: middle;
 }
-.payment-method-btn p{
+.payment-method-btn p {
     margin: 0;
     color: #bfbfbf;
     font-size: 16px;
     font-weight: 700;
 }
-.payment-btn{
-    background-color: #13A2D7;
+.payment-btn {
+    background-color: #13a2d7;
     border: none;
     width: 100%;
     font-size: 16px;
     padding: 12px 40px;
     font-weight: 700;
 }
-.payment-btn:hover, .payment-btn:active{
-    background-color: #0993C7 !important;
+.payment-btn:hover,
+.payment-btn:active {
+    background-color: #0993c7 !important;
     border: none;
 }
-.line-divider .col-md-12 hr{
+.line-divider .col-md-12 hr {
     border-top: 1.5px dotted;
 }
 
 @media (min-width: 768px) and (max-width: 991.9px) {
-    .left-payment-section{
-        width:100%;
+    .left-payment-section {
+        width: 100%;
     }
-    .right-payment-section{
-        width:100%;
+    .right-payment-section {
+        width: 100%;
     }
-    .right-payment-section{
+    .right-payment-section {
         margin-top: 32px;
     }
 }
 
 @media (min-width: 576px) and (max-width: 767.9px) {
-     .right-payment-section{
+    .right-payment-section {
         margin-top: 32px;
     }
-    .payment-method-item .col-md-3:nth-child(4){
-        padding: 0; 
+    .payment-method-item .col-md-3:nth-child(4) {
+        padding: 0;
     }
-    .payment-method-item .col-md-3:nth-child(5){
-        padding-right: 12px; 
+    .payment-method-item .col-md-3:nth-child(5) {
+        padding-right: 12px;
     }
-    .alert-payment{
+    .alert-payment {
         left: 40%;
         width: 200px;
         top: 130px;
@@ -656,58 +678,58 @@
 }
 
 @media (min-width: 419px) and (max-width: 575.9px) {
-    .right-payment-section{
+    .right-payment-section {
         margin-top: 32px;
     }
-    .payment-method-item .col-md-3:nth-child(4){
-        padding: 0; 
+    .payment-method-item .col-md-3:nth-child(4) {
+        padding: 0;
     }
-    .payment-method-item .col-md-3:nth-child(5){
-        padding-right: 12px; 
+    .payment-method-item .col-md-3:nth-child(5) {
+        padding-right: 12px;
     }
-    .alert-payment{
+    .alert-payment {
         left: 35%;
         width: 200px;
         top: 130px;
     }
-    .payment-btn{
-        margin-top:8px;
+    .payment-btn {
+        margin-top: 8px;
     }
-    .payment-status .row .col-12{
+    .payment-status .row .col-12 {
         width: 50%;
     }
-    .popover{
+    .popover {
         width: 48%;
     }
-    .popover-body{
+    .popover-body {
         font-size: 12px;
     }
 }
-@media(max-width: 418.9px){
-    .right-payment-section{
+@media (max-width: 418.9px) {
+    .right-payment-section {
         margin-top: 32px;
     }
-    .payment-method-item .col-md-3:nth-child(4){
-        padding: 0; 
+    .payment-method-item .col-md-3:nth-child(4) {
+        padding: 0;
     }
-    .payment-method-item .col-md-3:nth-child(5){
-        padding-right: 12px; 
+    .payment-method-item .col-md-3:nth-child(5) {
+        padding-right: 12px;
     }
-    .alert-payment{
+    .alert-payment {
         left: 27%;
         width: 200px;
         top: 130px;
     }
-    .payment-btn{
-        margin-top:8px;
+    .payment-btn {
+        margin-top: 8px;
     }
-    .badge-payment{
+    .badge-payment {
         width: 100%;
     }
-    .popover{
+    .popover {
         width: 48%;
     }
-    .popover-body{
+    .popover-body {
         font-size: 12px;
     }
 }

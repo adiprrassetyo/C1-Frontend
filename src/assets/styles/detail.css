@@ -6,7 +6,7 @@
 
 .panel .panel-block {
     border-top: none;
-    border-bottom: 1px solid rgba(154,154,157,.35);
+    border-bottom: 1px solid rgba(154, 154, 157, 0.35);
 }
 
 .modal-header-detail {
@@ -25,10 +25,9 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: #59595b;
-    
 }
 
-.modal-open p.normal{
+.modal-open p.normal {
     font-weight: 500;
 }
 
@@ -47,7 +46,7 @@
     vertical-align: -0.125em;
 }
 
-.icon.circle svg{
+.icon.circle svg {
     height: 0.5em;
     color: #9a9a9d;
 }
@@ -58,12 +57,12 @@
     color: #59595b;
 }
 
-.order-detail h3{
+.order-detail h3 {
     font-size: 1rem;
     font-weight: 500;
 }
 
-.order-detail h4{
+.order-detail h4 {
     font-size: 1rem;
     font-weight: 700;
     color: #59595b;
@@ -89,7 +88,7 @@
 
 .flight-timeline {
     width: 520px;
-}   
+}
 
 .flight-detail-airline-info {
     margin-left: 10px;
@@ -105,7 +104,7 @@
 }
 
 .time-line-wrapper {
-    flex: 1!important;
+    flex: 1 !important;
 }
 
 .time-line .divider {
@@ -120,7 +119,7 @@
     width: 170px;
 }
 
-.time-line svg{
+.time-line svg {
     background-color: #fff;
     width: 30px;
     z-index: 1;

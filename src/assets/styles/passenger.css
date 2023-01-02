@@ -71,17 +71,17 @@
 }
 
 .panel {
-    border: 1px solid rgba(154,154,157,.35)!important;
+    border: 1px solid rgba(154, 154, 157, 0.35) !important;
 }
 
 .contact-header {
-    border-bottom: 1px solid rgba(154,154,157,.35)!important;
+    border-bottom: 1px solid rgba(154, 154, 157, 0.35) !important;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
 .contac-content {
-    border: 1px solid rgba(154,154,157,.35)!important;
+    border: 1px solid rgba(154, 154, 157, 0.35) !important;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -139,7 +139,6 @@
     font-weight: 700;
 } */
 
-
 /* .content-panel .header-flex {
     display: flex;
     flex-wrap: wrap;
@@ -178,7 +177,3 @@
     color: #59595B;
     border: none;
 } */
-
-
-
-

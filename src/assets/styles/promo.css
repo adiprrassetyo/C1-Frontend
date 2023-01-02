@@ -1,106 +1,106 @@
-.carousel-item img{
+.carousel-item img {
     height: 380px;
     width: 100%;
-    object-fit:cover;
+    object-fit: cover;
 }
-.card-promo-section{
+.card-promo-section {
     margin-top: 80px;
 }
-.card-promo-section .container{
+.card-promo-section .container {
     padding-right: 0px;
 }
-.card{
+.card {
     box-shadow: 0px 1px 5px 1px #e6e6e6;
     margin-bottom: 24px;
 }
-.card:hover{
+.card:hover {
     box-shadow: 0px 1px 15px 1px #e6e6e6;
 }
-.card-img-top{
+.card-img-top {
     width: 100%;
     height: 210px;
     object-fit: cover;
 }
-.card-title{
+.card-title {
     text-align: left;
 }
-.card-title a{
+.card-title a {
     font-size: 15px;
     font-weight: bold;
-    color: #59595B;
+    color: #59595b;
 }
-.card-title p{
+.card-title p {
     font-size: 14px;
     color: #9a9a9d;
     line-height: 30px;
     letter-spacing: 0.32px;
 }
-.periode-promo-container{
-    border-top: 1.5px solid #EAEAEC;
-    border-bottom: 1.5px solid #EAEAEC;
+.periode-promo-container {
+    border-top: 1.5px solid #eaeaec;
+    border-bottom: 1.5px solid #eaeaec;
 }
-.periode-promo-container.row{
+.periode-promo-container.row {
     margin-left: 0;
     /* //padding-top: 16px; */
 }
-.periode-promo-left{
-    border-right: 1.5px solid #EAEAEC;
+.periode-promo-left {
+    border-right: 1.5px solid #eaeaec;
 }
-.periode-promo-title{
+.periode-promo-title {
     font-size: 12px;
-    color: #9A9A9D;
+    color: #9a9a9d;
     margin-bottom: 4px;
-    margin-top:16px;
+    margin-top: 16px;
 }
-.periode-promo-desc{
+.periode-promo-desc {
     font-size: 12px;
-    color: #59595B;
+    color: #59595b;
     font-weight: bold;
 }
-.detail-button{
+.detail-button {
     width: 100%;
     margin-top: 20px;
     border-radius: 4px;
-    background-color: #F7F7F7;
-    color: #9A9A9D;
+    background-color: #f7f7f7;
+    color: #9a9a9d;
     border: none;
     font-size: 14px;
     font-weight: bold;
     padding: 8px 0;
 }
-.jenis-pembayaran-section{
+.jenis-pembayaran-section {
     margin-top: 64px;
 }
-.jenis-pembayaran-title{
+.jenis-pembayaran-title {
     font-size: 18px;
     font-weight: bold;
-    color: #59595B;
+    color: #59595b;
 }
-.payment_img{
+.payment_img {
     margin-bottom: 80px;
     width: 65%;
 }
 
 @media (min-width: 576px) and (max-width: 767.9px) {
-    .carousel-item img{
+    .carousel-item img {
         height: 320px;
     }
-    .periode-promo-left{
+    .periode-promo-left {
         border: none;
     }
-    .payment_img{
+    .payment_img {
         width: 80%;
     }
 }
 
 @media (max-width: 575px) {
-    .carousel-item img{
+    .carousel-item img {
         height: 280px;
     }
-    .periode-promo-left{
+    .periode-promo-left {
         border: none;
     }
-    .payment_img{
+    .payment_img {
         width: 80%;
     }
 }

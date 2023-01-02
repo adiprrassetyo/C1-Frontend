@@ -1,13 +1,13 @@
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom'
 
 const Protected = ({ children }) => {
-  const token = JSON.parse(localStorage.getItem("user"))?.token;
+    const token = JSON.parse(localStorage.getItem('user'))?.token
 
-  if (!token) {
-    return <Navigate to="/auth"></Navigate>;
-  }
+    if (!token) {
+        return <Navigate to='/auth'></Navigate>
+    }
 
-  return children;
-};
+    return children
+}
 
-export default Protected;
+export default Protected

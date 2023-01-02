@@ -1,31 +1,31 @@
 name: Deploy Development to Railway
 
 on:
-  push:
-    branches: [main]
+    push:
+        branches: [main]
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+    deploy:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
 
-      - name: Use Node 16
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
+            - name: Use Node 16
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '16'
 
-      - name: Install packages
-        run: npm install --force
+            - name: Install packages
+              run: npm install --force
 
-      - name: install http-server
-        run: npm i -g http-server
+            - name: install http-server
+              run: npm i -g http-server
 
-      - name: Install Railway
-        run:  npm i -g @railway/cli
+            - name: Install Railway
+              run: npm i -g @railway/cli
 
-      - name: Deploy
-        uses: bervProject/railway-deploy@main
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_MAIN }}
+            - name: Deploy
+              uses: bervProject/railway-deploy@main
+              env:
+                  RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_MAIN }}
