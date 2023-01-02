@@ -17,6 +17,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { registerUser, loginUser, clearState } from "../redux/slices/authSlice";
 import { Eye, EyeSlash } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
+import { GLogin } from "../components";
+
 const Auth = () => {
   const { loading, message, user, status } = useSelector((state) => state.auth);
 
@@ -30,7 +33,7 @@ const Auth = () => {
   const initialState = {
     firstname: "",
     lastname: "",
-    gender: "khusus",
+    gender: "Laki-Laki",
     email: "",
     password: "",
     confirmPassword: "",
@@ -67,8 +70,10 @@ const Auth = () => {
     e.preventDefault();
     if (isSignUp) {
       dispatch(registerUser({ formData: { ...formData, phone }, redirect }));
+      // dispatch(clearState());
     } else {
       dispatch(loginUser({ formData, redirect }));
+      // dispatch(clearState());
     }
     setFormData(initialState);
   };
@@ -105,7 +110,7 @@ const Auth = () => {
         <Container className="auth-main rounded-2">
           <Row>
             <Col>
-              {message && (
+              {message && message !== "Logout Success" && (
                 <Alert
                   variant={
                     status === "success"
@@ -140,7 +145,7 @@ const Auth = () => {
                   <Row>
                     <Col>
                       <Form.Group className=" mb-3">
-                        <Form.Label>
+                        <Form.Label className="p-0">
                           <h4>Nama Depan</h4>
                         </Form.Label>
                         <Form.Control
@@ -156,7 +161,7 @@ const Auth = () => {
                     </Col>
                     <Col>
                       <Form.Group className=" mb-3">
-                        <Form.Label>
+                        <Form.Label className="p-0">
                           <h4>Nama Belakang</h4>
                         </Form.Label>
                         <Form.Control
@@ -174,7 +179,7 @@ const Auth = () => {
                   <Row>
                     <Col>
                       <Form.Group className=" mb-3">
-                        <Form.Label>
+                        <Form.Label className="p-0">
                           <h4>Nomor Ponsel</h4>
                         </Form.Label>
                         <PhoneInput
@@ -189,7 +194,7 @@ const Auth = () => {
                     </Col>
                     <Col>
                       <Form.Group className=" mb-3">
-                        <Form.Label>
+                        <Form.Label className="p-0">
                           <h4>Jenis Kelamin</h4>
                         </Form.Label>
                         <br />
@@ -199,15 +204,14 @@ const Auth = () => {
                           onChange={handleChange}
                           className="dropdown-toggle"
                         >
-                          <option value="male">Laki - Laki</option>
-                          <option value="female">Perempuan</option>
-                          <option value="other">Khusus</option>
+                          <option value="Laki-laki">Laki - Laki</option>
+                          <option value="Perempuan">Perempuan</option>
                         </select>
                       </Form.Group>
                     </Col>
                   </Row>
                   <Form.Group className=" mb-3" controlId="formBasicEmail">
-                    <Form.Label>
+                    <Form.Label className="p-0">
                       <h4>Email</h4>
                     </Form.Label>
                     <Form.Control
@@ -225,7 +229,7 @@ const Auth = () => {
                     className="form mb-3"
                     controlId="formBasicPassword"
                   >
-                    <Form.Label>
+                    <Form.Label className="p-0">
                       <h4>Password</h4>
                     </Form.Label>
                     <Row>
@@ -258,7 +262,7 @@ const Auth = () => {
                     className="form mb-3"
                     controlId="formBasicPassword"
                   >
-                    <Form.Label>
+                    <Form.Label className="p-0">
                       <h4>Konfirmasi Password</h4>
                     </Form.Label>
                     <Row>
@@ -288,9 +292,9 @@ const Auth = () => {
                     </Row>
                   </Form.Group>
                   <Button
-                    variant="info"
+                    variant="primary"
                     type="submit"
-                    className="btn-login my-3 text-white"
+                    className="btn-login my-3"
                   >
                     {loading ? (
                       <Spinner animation="border" variant="info" />
@@ -309,7 +313,7 @@ const Auth = () => {
               ) : (
                 <>
                   <Form.Group className=" mb-3" controlId="formBasicEmail">
-                    <Form.Label>
+                    <Form.Label className="p-0">
                       <h4>Email</h4>
                     </Form.Label>
                     <Form.Control
@@ -327,7 +331,7 @@ const Auth = () => {
                     className="form mb-3"
                     controlId="formBasicPassword"
                   >
-                    <Form.Label>
+                    <Form.Label className="p-0">
                       <h4>Password</h4>
                     </Form.Label>
                     <Row>
@@ -356,13 +360,16 @@ const Auth = () => {
                       </Col>
                     </Row>
                   </Form.Group>
-                  <h4 className="text-end mt-4" style={{ color: "#F37C20" }}>
-                    Lupa Password?
-                  </h4>
+                  <Link to="/reset" className="btn-switchForm ms-1 fw-normal ">
+                    <h4 className="text-end mt-4" style={{ color: "#F37C20" }}>
+                      Lupa Password?
+                    </h4>
+                  </Link>
+
                   <Button
-                    variant="info"
+                    variant="primary"
                     type="submit"
-                    className="btn-login my-3 d-flex justify-content-center align-items-center text-white"
+                    className="btn-login my-3 d-flex justify-content-center align-items-center"
                   >
                     {loading ? (
                       <Spinner animation="border" variant="info" />
@@ -370,6 +377,7 @@ const Auth = () => {
                       "Login"
                     )}
                   </Button>
+                  <GLogin isSignIn={true} loading={loading} />
                 </>
               )}
               <center>

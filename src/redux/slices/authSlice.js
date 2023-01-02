@@ -6,15 +6,8 @@ export const registerUser = createAsyncThunk(
   async ({ formData, redirect }, { rejectWithValue }) => {
     try {
       const res = await auth.register(formData);
-
-      if (res.data.status == "success") {
-        setTimeout(() => {
-          redirect("/auth");
-        }, 3000);
-      }
       return res.data;
     } catch (error) {
-      console.error(error);
       return rejectWithValue(error.response);
     }
   }
@@ -25,6 +18,33 @@ export const loginUser = createAsyncThunk(
   async ({ formData, redirect }, { rejectWithValue }) => {
     try {
       const res = await auth.login(formData);
+      if (res.data.status == "success") {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ token: res.data.data.accessToken })
+        );
+
+        setTimeout(() => {
+          if (res.data.data.role === "admin") {
+            redirect("/dashboard");
+          } else {
+            redirect("/");
+          }
+        }, 2000);
+      }
+
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
+
+export const googleLoginUser = createAsyncThunk(
+  "user/googleLogin",
+  async ({ formData, redirect }, { rejectWithValue }) => {
+    try {
+      const res = await auth.googleLogin(formData);
 
       if (res.data.status == "success") {
         localStorage.setItem(
@@ -42,22 +62,23 @@ export const loginUser = createAsyncThunk(
 
       return res.data;
     } catch (error) {
-      console.error(error);
       return rejectWithValue(error.response);
     }
   }
 );
-export const logoutUser = createAsyncThunk("user/logout", async (navigate) => {
-  try {
-    const res = await auth.logout();
-    if (res.data.status == "success") {
-      navigate("/");
+
+export const resetPass = createAsyncThunk(
+  "user/reset",
+  async (email, { rejectWithValue }) => {
+    try {
+      const res = await auth.reset(email);
+      console.info(res);
+      return res;
+    } catch (error) {
+      return rejectWithValue(error.response);
     }
-    return res.data;
-  } catch (error) {
-    console.error(error);
   }
-});
+);
 
 const authSlice = createSlice({
   name: "auth",
@@ -70,9 +91,19 @@ const authSlice = createSlice({
   reducers: {
     clearState: (state, action) => {
       return {
+        ...state,
         loading: false,
         message: "",
-        user: {},
+        status: "",
+      };
+    },
+    logout: (state, action) => {
+      localStorage.removeItem("user");
+      return {
+        ...state,
+        user: null,
+        loading: false,
+        message: "Logout Success",
         status: "",
       };
     },
@@ -103,6 +134,7 @@ const authSlice = createSlice({
       return { ...state, loading: true, message: "Processing your action..." };
     },
     [loginUser.fulfilled]: (state, action) => {
+      console.info({ payMessageLogin: action.payload });
       return {
         loading: false,
         message: action.payload?.message,
@@ -112,30 +144,57 @@ const authSlice = createSlice({
     },
     [loginUser.rejected]: (state, action) => {
       return {
+        ...state,
         loading: false,
         message: action.payload?.data.message,
-        user: {},
         status: "error",
       };
     },
-    //logout
-    [logoutUser.pending]: (state, action) => {
-      return { ...state, loading: true };
+    //google login
+    [googleLoginUser.pending]: (state, action) => {
+      return { ...state, loading: true, message: "Processing your action..." };
     },
-    [logoutUser.fulfilled]: (state, action) => {
-      localStorage.removeItem("user");
+    [googleLoginUser.fulfilled]: (state, action) => {
+      console.info({ payMessageLogin: action.payload });
       return {
         loading: false,
-        message: action.payload.message,
-        user: {},
+        message: action.payload?.message,
+        user: action.payload?.data,
+        status: action.payload?.status,
       };
     },
-    [logoutUser.rejected]: (state, action) => {
-      return { ...state, loading: false };
+    [googleLoginUser.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload?.data.message,
+        status: "error",
+      };
+    },
+    //reset pass
+    [resetPass.pending]: (state, action) => {
+      return { ...state, loading: true, message: "Processing your action..." };
+    },
+    [resetPass.fulfilled]: (state, action) => {
+      console.info({ payMessage: action.payload });
+      return {
+        ...state,
+        loading: false,
+        message: action.payload?.data.message,
+        status: action.payload.data.status,
+      };
+    },
+    [resetPass.rejected]: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        message: action.payload?.data.message,
+        status: "error",
+      };
     },
   },
 });
 
-export const { clearState } = authSlice.actions;
+export const { clearState, logout } = authSlice.actions;
 
 export default authSlice.reducer;

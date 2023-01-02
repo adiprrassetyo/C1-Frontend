@@ -1,0 +1,147 @@
+.navbar {
+  padding: 8px 0px;
+  transition: 0.3s;
+}
+.navbar-brand img {
+  margin-bottom: 8px;
+}
+nav.sticky {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav,
+.row {
+  width: 100%;
+}
+.selected-link {
+  color: red;
+}
+.nav-dropdown {
+  display: inline-block;
+}
+.dropdown-toggle {
+  border: none !important;
+}
+.button-login {
+  background-color: #fff;
+  box-shadow: 0px 2px 8px 0 rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: #9a9a9d;
+}
+.button-login:hover {
+  background-color: #fff;
+}
+.nav-dropdown a {
+  color: #4a4a4a;
+  margin-top: 4px;
+}
+
+nav a {
+  color: #59595b;
+  padding: 12px;
+}
+nav a.active {
+  color: #13a2d7 !important;
+  font-weight: 600;
+}
+.tab {
+  color: #9a9a9d;
+}
+.tab:active {
+  color: red;
+}
+.dropdown-toggle {
+  display: flex;
+  align-items: flex-start;
+}
+.dropdown-menu.show {
+  padding: 20px;
+}
+.dropdown-item {
+  padding: 8px 20px 8px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.dropdown-item:hover {
+  background-color: #13a2d7;
+  color: #fff;
+}
+.remix-icon {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.icon {
+  cursor: pointer;
+  position: relative;
+}
+
+.counter {
+  width: 15px;
+  height: 15px;
+  background-color: #13a2d7;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.notif-msg {
+  padding: 5px 15px;
+  cursor: pointer;
+}
+.notif-msg:hover {
+  background-color: #f0f2f5;
+}
+
+.dots-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.dots-btn:hover {
+  background: #f0f2f5;
+  border-radius: 50%;
+}
+
+.readAll-btn {
+  background: white;
+}
+.readAll-btn:hover {
+  background: #f0f2f5;
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .nav-dropdown {
+    display: block;
+    padding: 2px 0;
+  }
+  .btn-login {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .nav-dropdown {
+    display: block;
+    padding: 6px 0;
+  }
+  .btn-login {
+    margin-top: 20px;
+  }
+}
