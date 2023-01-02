@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Footer, HeaderBooking } from "../components";
 import "../assets/styles/paymentBooking.css";
 import { Container, Row, Col, Badge, Accordion, Button, Form, Alert, OverlayTrigger,Popover  } from "react-bootstrap";
-import bca_va from "../assets/images/bca.webp";
+import bca_va from "../assets/images/BCA.webp";
 import mandiri from "../assets/images/mandiri.webp";
 import bni from "../assets/images/BNI.webp";
 import cimb from "../assets/images/CIMB.webp";
