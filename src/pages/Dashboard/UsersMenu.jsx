@@ -118,7 +118,7 @@ const UsersMenu = () => {
                                     </div>
                                 </Button>
                             </Link>
-                            <div style={{ height: '80vh' }}>
+                            <div style={{ minHeight: '80vh' }}>
                                 <table className='table bg-white table-hover text-secondary mt-4'>
                                     <thead>
                                         <tr>
