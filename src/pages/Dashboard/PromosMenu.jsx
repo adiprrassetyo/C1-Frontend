@@ -11,7 +11,6 @@ import { PencilFill, Plus, TrashFill } from 'react-bootstrap-icons'
 import { Link, useOutletContext } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import {
-    retrivePromosAdmin,
     retrivePromos,
     removePromo,
     deletePromo,
