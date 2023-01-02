@@ -29,7 +29,6 @@ const AddTicket = () => {
 
   const redirect = useNavigate();
 
-  console.info({ departure_time, arrival_time });
   useEffect(() => {
     const getOptions = async () => {
       const res = await axios.get(
@@ -86,22 +85,6 @@ const AddTicket = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    // console.info({
-    //   ...formData,
-    //   adult_price: parseInt(formData.adult_price),
-    //   child_price: parseInt(formData.child_price),
-    //   type,
-    //   from: from[0]?.city,
-    //   to: to[0]?.city,
-    //   airport_from: from[0].airport,
-    //   airport_to: to[0].airport,
-    //   init_stock: parseInt(formData.init_stock),
-    //   curr_stock: parseInt(formData.init_stock),
-    //   available: true,
-    //   departure_time,
-    //   arrival_time,
-    // });
-    console.info("submit");
     dispatch(
       createTickets({
         formData: {

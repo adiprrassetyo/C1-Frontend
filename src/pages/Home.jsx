@@ -24,19 +24,19 @@ const Home = () => {
   const { loading, status, message, promos } = useSelector(
     (state) => state.promo
   );
+  const { user } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
-    console.info("dispatch");
     dispatch(retrivePromos(0));
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(retriveCurrentUser());
-  }, []);
-
-  useEffect(() => {
-    dispatch(retriveTransUser(0));
+    if (user) {
+      dispatch(retriveCurrentUser());
+      dispatch(retriveTransUser(0));
+    }
   }, []);
 
   return (
@@ -166,7 +166,11 @@ const Home = () => {
                 dikantong? Yuk temukan promo menarik yang menanti perjalanmu
                 dengan BinAir
               </p>
-              <Button href="/#/promo" className="btn see-more-btn" variant="secondary">
+              <Button
+                href="/#/promo"
+                className="btn see-more-btn"
+                variant="secondary"
+              >
                 Lihat Selengkapnya
               </Button>
             </Col>

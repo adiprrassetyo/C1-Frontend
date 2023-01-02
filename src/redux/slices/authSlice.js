@@ -72,7 +72,6 @@ export const resetPass = createAsyncThunk(
   async (email, { rejectWithValue }) => {
     try {
       const res = await auth.reset(email);
-      console.info(res);
       return res;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -134,7 +133,6 @@ const authSlice = createSlice({
       return { ...state, loading: true, message: "Processing your action..." };
     },
     [loginUser.fulfilled]: (state, action) => {
-      console.info({ payMessageLogin: action.payload });
       return {
         loading: false,
         message: action.payload?.message,
@@ -155,7 +153,6 @@ const authSlice = createSlice({
       return { ...state, loading: true, message: "Processing your action..." };
     },
     [googleLoginUser.fulfilled]: (state, action) => {
-      console.info({ payMessageLogin: action.payload });
       return {
         loading: false,
         message: action.payload?.message,
@@ -176,7 +173,6 @@ const authSlice = createSlice({
       return { ...state, loading: true, message: "Processing your action..." };
     },
     [resetPass.fulfilled]: (state, action) => {
-      console.info({ payMessage: action.payload });
       return {
         ...state,
         loading: false,

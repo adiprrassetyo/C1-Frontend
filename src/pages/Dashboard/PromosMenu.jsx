@@ -46,7 +46,6 @@ const PromosMenu = () => {
   const dispatch = useDispatch();
 
   const handlePageChange = (page) => {
-    console.info({ page });
     dispatch(retrivePromos(page));
   };
 

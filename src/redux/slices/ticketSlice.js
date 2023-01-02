@@ -5,16 +5,10 @@ export const retriveTickets = createAsyncThunk(
   "ticket/retrive",
   async ({ params, redirect }, { rejectWithValue }) => {
     try {
-      console.info({ params });
       const res = await ticket.retrive(params);
-      console.info(res);
       redirect && redirect("/flight/search");
       return res.data;
     } catch (error) {
-      console.info({ error });
-      if (error.response) {
-        console.log(error.response);
-      }
       redirect("/flight/search");
       return rejectWithValue(error.response);
     }
@@ -26,7 +20,6 @@ export const retriveTicket = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const res = await ticket.retriveById(id);
-      console.info(res);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -37,14 +30,11 @@ export const retriveTicket = createAsyncThunk(
 export const createTickets = createAsyncThunk(
   "ticket/create",
   async ({ formData, redirect }, { rejectWithValue }) => {
-    console.info({ formData });
     try {
       const res = await ticket.create(formData);
-      console.info(res);
       redirect("/dashboard/tickets");
       return res.data;
     } catch (error) {
-      console.info(error);
       return rejectWithValue(error.response);
     }
   }
@@ -53,13 +43,11 @@ export const createTickets = createAsyncThunk(
 export const updateTickets = createAsyncThunk(
   "ticket/update",
   async ({ formData, id, redirect }, { rejectWithValue }) => {
-    console.info({ formData });
     try {
       const res = await ticket.update(formData, id);
       redirect("/dashboard/tickets");
       return res.data;
     } catch (error) {
-      console.info(error);
       return rejectWithValue(error.response);
     }
   }
@@ -135,7 +123,6 @@ const ticketSlice = createSlice({
       };
     },
     [retriveTickets.rejected]: (state, action) => {
-      console.log(action.payload);
       return {
         ...state,
         loading: false,
@@ -170,7 +157,6 @@ const ticketSlice = createSlice({
       };
     },
     [updateTickets.fulfilled]: (state, action) => {
-      console.info(action.payload);
       return {
         ...state,
         loading: false,
@@ -193,7 +179,6 @@ const ticketSlice = createSlice({
       };
     },
     [createTickets.fulfilled]: (state, action) => {
-      console.info(action.payload);
       return {
         ...state,
         loading: false,
@@ -217,7 +202,6 @@ const ticketSlice = createSlice({
       };
     },
     [removeTickets.fulfilled]: (state, action) => {
-      console.info({ rmPLD: action.payload });
       return {
         ...state,
         loading: false,
@@ -225,7 +209,6 @@ const ticketSlice = createSlice({
       };
     },
     [removeTickets.rejected]: (state, action) => {
-      console.info(action.payload);
       return {
         ...state,
         loading: false,

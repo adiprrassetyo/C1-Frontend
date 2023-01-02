@@ -6,11 +6,8 @@ export const retriveNotif = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await notif.retrive();
-      console.info(res);
       return res.data;
     } catch (error) {
-      console.info(error);
-      console.error(error);
       return rejectWithValue(error.response);
     }
   }
@@ -23,7 +20,6 @@ export const readOneNotif = createAsyncThunk(
       const res = await notif.readOne(id);
       return res.data;
     } catch (error) {
-      console.info(error);
       return rejectWithValue(error.response);
     }
   }
@@ -34,10 +30,8 @@ export const readAllNotif = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await notif.readAll();
-      console.info(res);
       return res.data;
     } catch (error) {
-      console.info(error);
       return rejectWithValue(error.response);
     }
   }
@@ -115,7 +109,6 @@ const notifSlice = createSlice({
       return { ...state, loading: true };
     },
     [readAllNotif.fulfilled]: (state, action) => {
-      console.info(action.payload);
       return {
         ...state,
         loading: false,

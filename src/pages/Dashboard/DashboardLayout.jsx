@@ -21,7 +21,6 @@ const DashboardLayout = () => {
   const dispatch = useDispatch();
   const redirect = useNavigate();
   const location = pathname.split("/")[2];
-  console.log(location);
 
   return (
     <>

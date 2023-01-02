@@ -60,10 +60,6 @@ const Flight = () => {
     getOptions();
   }, []);
 
-  useEffect(() => {
-    console.info({ ticket, status });
-  }, [dispatch]);
-
   const switchForm = (e) => {
     e.preventDefault();
     setIsRoundTrip((prev) => !prev);
@@ -99,18 +95,6 @@ const Flight = () => {
       setSumChild((prev) => prev - 1);
     }
   };
-
-  console.log({
-    params: {
-      from: from[0],
-      to: to[0],
-      type: isRoundTrip ? "roundtrip" : "oneway",
-      date: startDate,
-      // willFly: true,
-      sumChild,
-      sumAdult,
-    },
-  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -191,6 +175,7 @@ const Flight = () => {
                       name="btnradio"
                       id="btnradio2"
                       autoComplete="off"
+                      onChange={() => {}}
                       checked
                     ></input>
                     <label className="btn btn-switch-form" htmlFor="btnradio2">
@@ -209,6 +194,7 @@ const Flight = () => {
                       name="btnradio"
                       id="btnradio1"
                       autoComplete="off"
+                      onChange={() => {}}
                       checked={isRoundTrip ? false : true}
                     ></input>
                     <label className="btn btn-switch-form" htmlFor="btnradio1">

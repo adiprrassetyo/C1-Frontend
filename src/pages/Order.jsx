@@ -47,7 +47,6 @@ const Order = () => {
     dispatch(filterTrans(filterStatus));
   }, [dispatch, filterStatus]);
 
-  console.info({ transactionsUser, transactionsByStatus });
 
   return (
     <div>

@@ -46,7 +46,6 @@ const Password = () => {
     confirmPassword: "",
   });
 
-  console.info(formData);
 
   const handleFormData = (e) => {
     const { name, value, type, checked } = event.target; //event target destructuring

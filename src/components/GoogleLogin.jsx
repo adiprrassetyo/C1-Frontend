@@ -40,7 +40,6 @@ const GLogin = ({isSignIn, loading}) => {
         const photoUrl = result._tokenResponse.photoUrl;
         dispatch(googleLoginUser( { formData: {token: token, first_name: firstName, last_name: lastName, profile_picture: photoUrl}, redirect } ));
     }).catch((error) => {
-        console.log( error);
     });
 
     return (

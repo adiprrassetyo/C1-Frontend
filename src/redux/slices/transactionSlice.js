@@ -6,7 +6,6 @@ export const retriveTransAdmin = createAsyncThunk(
   async (page, { rejectWithValue }) => {
     try {
       const res = await trans.retriveAdmin(page);
-      console.log({ trans: res });
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -19,7 +18,6 @@ export const retriveTransUser = createAsyncThunk(
   async (page, { rejectWithValue }) => {
     try {
       const res = await trans.retriveById(page);
-      console.log({ trans: res });
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -53,7 +51,6 @@ export const removeTrans = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const res = await trans.remove(id);
-      console.log({ trans: res });
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -126,7 +123,6 @@ const transSlice = createSlice({
       } else {
         data = state.transactionsUser;
       }
-      console.info(data)
       return {
         ...state,
         transactionsByStatus: data,
@@ -184,7 +180,6 @@ const transSlice = createSlice({
       return { ...state, loading: true };
     },
     [removeTrans.fulfilled]: (state, action) => {
-      console.info(action.payload);
       return {
         ...state,
         loading: false,

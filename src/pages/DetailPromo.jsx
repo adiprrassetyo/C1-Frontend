@@ -30,7 +30,6 @@ const DetailPromo = () => {
   useEffect(() => {
     dispatch(retrivePromo(promoId));
   }, [dispatch]);
-  console.info({ promoById });
 
   let [copyText, setCopyText] = useState(promoById.promo_code);
 
@@ -84,10 +83,10 @@ const DetailPromo = () => {
             <Container>
               <h2 className="promo-section-title">{promoById.title}</h2>
               <h3 className="promo-section-subtitle">{promoById.desc}</h3>
-              <p class="promo-section-booking">
+              <p className="promo-section-booking">
                 Bisa booking melalui website atau aplikasi Airpaz
               </p>
-              <p class="promo-section-periode">Periode promo {period}</p>
+              <p className="promo-section-periode">Periode promo {period}</p>
             </Container>
           </section>
           <section className="discount-section">
@@ -135,7 +134,7 @@ const DetailPromo = () => {
                           setShowAlert(true);
                         }}
                       >
-                        <i class="ri-file-copy-line ri-xl"></i>
+                        <i className="ri-file-copy-line ri-xl"></i>
                         <p>Salin</p>
                       </Button>
                     </InputGroup>
@@ -162,16 +161,16 @@ const DetailPromo = () => {
                 <p>Berbagi dengan teman anda:</p>
                 <div className="share-discount-icon">
                   <a href="#">
-                    <i class="ri-facebook-fill ri-xl"></i>
+                    <i className="ri-facebook-fill ri-xl"></i>
                   </a>
                   <a href="#">
-                    <i class="ri-twitter-fill ri-xl"></i>
+                    <i className="ri-twitter-fill ri-xl"></i>
                   </a>
                   <a href="#">
-                    <i class="ri-whatsapp-fill ri-xl"></i>
+                    <i className="ri-whatsapp-fill ri-xl"></i>
                   </a>
                   <a href="#">
-                    <i class="ri-mail-fill ri-xl"></i>
+                    <i className="ri-mail-fill ri-xl"></i>
                   </a>
                 </div>
               </div>
@@ -182,7 +181,7 @@ const DetailPromo = () => {
 
       <section className="jenis-pembayaran-section">
         <Container>
-          <h3 class="jenis-pembayaran-title">Jenis Pembayaran:</h3>
+          <h3 className="jenis-pembayaran-title">Jenis Pembayaran:</h3>
           <img
             className="payment_img"
             src={payment_img}

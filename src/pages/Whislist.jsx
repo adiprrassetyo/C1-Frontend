@@ -15,7 +15,6 @@ import { retriveTickets, setSearch } from "../redux/slices/ticketSlice";
 
 const Whislist = () => {
   const { message, wishlists } = useSelector((state) => state.wishlist);
-  console.info({ wishlists });
 
   const dispatch = useDispatch();
   const redirect = useNavigate();

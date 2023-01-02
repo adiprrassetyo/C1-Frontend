@@ -44,7 +44,6 @@ const Tickets = () => {
   );
   const dispatch = useDispatch();
   const [showSearch, setShowSearch] = useState(false);
-  console.info({ search });
 
   return (
     <div className="search-main">

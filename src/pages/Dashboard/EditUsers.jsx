@@ -66,11 +66,7 @@ const EditUsers = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.info({
-      formData: { ...formData, phone, profile_image },
-      id: userId,
-      redirect,
-    });
+
 
     if (!profile_image) {
       dispatch(

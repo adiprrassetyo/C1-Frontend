@@ -8,7 +8,7 @@ import {
   NavDropdown,
   Offcanvas,
   OverlayTrigger,
-  Popover,
+  Popover
 } from "react-bootstrap";
 import { io } from "socket.io-client";
 
@@ -16,6 +16,7 @@ import { io } from "socket.io-client";
 import { Bell, Check, CircleFill, ThreeDots } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 import logo from "../assets/images/binair-logo.svg";
 import "../assets/styles/header.css";
 import { readAll } from "../redux/services/notifServices";
@@ -24,9 +25,8 @@ import {
   read,
   readAllNotif,
   readOneNotif,
-  retriveNotif,
+  retriveNotif
 } from "../redux/slices/notifSlice";
-import { toast, ToastContainer } from "react-toastify";
 
 const Header = () => {
   const [sticky, setSticky] = useState(false);
@@ -47,9 +47,7 @@ const Header = () => {
         setNotifData(newdatas);
       });
 
-      socket.on("disconnect", () => {
-        console.log("Socket disconnecting");
-      });
+      socket.on("disconnect", () => {});
     }
   }, []);
 
@@ -275,9 +273,12 @@ const Header = () => {
                         <span className="d-flex align-items-center">
                           <i
                             className="ri-user-3-line me-1 ri-1x"
-                            style={{ fontSize: 19 }}
+                            // style={{ fontSize: 19 }}
                           ></i>
-                          <div className="text-lg" style={{ fontSize: "1rem" }}>
+                          <div
+                            className="text-lg"
+                            // style={{ fontSize: "1rem" }}
+                          >
                             {user.firstname
                               ? user?.firstname
                                   .toLowerCase()

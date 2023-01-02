@@ -68,7 +68,6 @@ const EditTicket = () => {
 
   const redirect = useNavigate();
 
-  console.info({ departure_time, arrival_time });
   useEffect(() => {
     const getOptions = async () => {
       const res = await axios.get(

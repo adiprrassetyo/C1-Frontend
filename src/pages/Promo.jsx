@@ -15,7 +15,6 @@ const Promo = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    console.info("dispatch");
     dispatch(retrivePromos());
   }, [dispatch]);
 
@@ -66,7 +65,7 @@ const Promo = () => {
                 year: "numeric",
               })} (${diffDays} hari)`;
               return (
-                <Col md={4}>
+                <Col md={4} key={promo.id}>
                   <Card>
                     <Card.Img variant="top" src={promo.promo_image} />
                     <Card.Body>

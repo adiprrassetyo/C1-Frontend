@@ -1,103 +1,130 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Footer, HeaderBookingDone } from "../components";
-import { Container, Table, Row, Col, Form, Badge, Accordion, Button} from "react-bootstrap";
+import {
+  Container,
+  Table,
+  Row,
+  Col,
+  Form,
+  Badge,
+  Accordion,
+  Button,
+} from "react-bootstrap";
 import "../assets/styles/paymentDone.css";
 import logo from "../assets/images/binair-logo.svg";
 import paymentSuccess from "../assets/images/payment-success-logo.svg";
 import airasia from "../assets/images/airasia.svg";
 import PhoneInput from "react-phone-number-input";
-import DatePicker from 'react-date-picker';
+import DatePicker from "react-date-picker";
 import ReactFlagsSelect from "react-flags-select";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const PaymentDone = () => {
-    const { loading, status, message, transactionById } = useSelector(
-        (state) => state.transaction
-    );
-    const getTitle = (gelar) => {
-        if (gelar === "tuan") {
-          return "Tn.";
-        } else if (gelar === "nyonya") {
-          return "Mrs.";
-        } else if (gelar === "Nona") {
-          return "Ms.";
-        }
-      };
-    return (
-        <div>
-            <HeaderBookingDone />
-            <section className="e-ticket-section">
-                <Container fluid className="content-e-ticket me-5 mb-5 p-5 ms-0 ">
-                    <Container className="content mb-5 mt-5 p-5">
-                        <div className="d-flex flex-column align-items-center mb-5">
-                            <img src={paymentSuccess} alt="" />
-                            <h1 className="is-bold">Pembayaran Selesai</h1>
-                        </div>
-                        
-                        <hr className="head-line" />
-                        <br />
-                        <div className="d-flex justify-content-between m-5">
-                            <div className="e-ticket-logo">
-                                <img src={logo} alt="" />
-                            </div>
-                            <div className="d-flex flex-column align-items-end">
-                                <h2 className="is-bold">E-Ticket</h2>
-                                <p className="is-bold">Penerbangan Keberangkatan</p>
-                                <p className="is-bold">Kode Booking: </p>
-                                <p className="is-bold">{transactionById[0].id.split("-")[0].toUpperCase()}{transactionById[0].id.split("-")[1].toUpperCase()}</p>
-                            </div>
-                        </div>
+  const { loading, status, message, transactionById } = useSelector(
+    (state) => state.transaction
+  );
+  const getTitle = (gelar) => {
+    if (gelar === "tuan") {
+      return "Tn.";
+    } else if (gelar === "nyonya") {
+      return "Mrs.";
+    } else if (gelar === "Nona") {
+      return "Ms.";
+    }
+  };
+  return (
+    <div>
+      <HeaderBookingDone />
+      <section className="e-ticket-section">
+        <Container fluid className="content-e-ticket me-5 mb-5 p-5 ms-0 ">
+          <Container className="content mb-5 mt-5 p-5">
+            <div className="d-flex flex-column align-items-center mb-5">
+              <img src={paymentSuccess} alt="" />
+              <h1 className="is-bold">Pembayaran Selesai</h1>
+            </div>
 
-                        <hr />
+            <hr className="head-line" />
+            <br />
+            <div className="d-flex justify-content-between m-5">
+              <div className="e-ticket-logo">
+                <img src={logo} alt="" />
+              </div>
+              <div className="d-flex flex-column align-items-end">
+                <h2 className="is-bold">E-Ticket</h2>
+                <p className="is-bold">Penerbangan Keberangkatan</p>
+                <p className="is-bold">Kode Booking: </p>
+                <p className="is-bold">
+                  {transactionById[0].id.split("-")[0].toUpperCase()}
+                  {transactionById[0].id.split("-")[1].toUpperCase()}
+                </p>
+              </div>
+            </div>
 
-                        <div className="d-flex justify-content-between align-items-center m-5">
-                            <div className="flight-logo">
-                                <img src={logo} alt="" />
-                            </div>
-                            <div className="me-3">
-                                <p className="is-bold">{transactionById[0].ticket.date_start}</p>
-                                <p className="is-grey">{transactionById[0].ticket.departure_time} - {transactionById[0].ticket.from}</p>
-                                <p className="is-grey">{transactionById[0].ticket.airport_from}</p>
-                            </div>
-                        </div>
-                        <div className="d-flex justify-content-between align-items-center m-5">
-                            <div>
-                                <p className="is-bold">Indonesia AirAsia (QZ7518)</p>
-                            </div>
-                            <div className="me-5">
-                                <p className="is-bold">{transactionById[0].ticket.date_start}</p>
-                                <p className="is-grey">{transactionById[0].ticket.arrival_time} - {transactionById[0].ticket.to}</p>
-                                <p className="is-grey">{transactionById[0].ticket.airport_to}</p>
-                            </div>
-                        </div>
-                        <Table striped bordered hover className="mt-5 mb-5">
-                            <thead>
-                                <tr>
-                                <th>No</th>
-                                <th>Nama Penumpang</th>
-                                <th>Tipe Penumpang</th>
-                                <th>Fasilitas</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {transactionById[0].traveler.map((item, index) => {
-                                    return (
-                                        <tr>
-                                            <td>{index + 1}</td>
-                                            <td>{getTitle(item.title)} {item.name} {item.surname}</td>
-                                            <td>{item.type}</td>
-                                            <td>Bagasi 20 Kg</td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                            </Table>
+            <hr />
 
-                    </Container>
-                </Container>
-            </section>
-            {/* <section className="booking-section">
+            <div className="d-flex justify-content-between align-items-center m-5">
+              <div className="flight-logo">
+                <img src={logo} alt="" />
+              </div>
+              <div className="me-3">
+                <p className="is-bold">
+                  {transactionById[0].ticket.date_start}
+                </p>
+                <p className="is-grey">
+                  {transactionById[0].ticket.departure_time} -{" "}
+                  {transactionById[0].ticket.from}
+                </p>
+                <p className="is-grey">
+                  {transactionById[0].ticket.airport_from}
+                </p>
+              </div>
+            </div>
+            <div className="d-flex justify-content-between align-items-center m-5">
+              <div>
+                <p className="is-bold">Indonesia AirAsia (QZ7518)</p>
+              </div>
+              <div className="me-5">
+                <p className="is-bold">
+                  {transactionById[0].ticket.date_start}
+                </p>
+                <p className="is-grey">
+                  {transactionById[0].ticket.arrival_time} -{" "}
+                  {transactionById[0].ticket.to}
+                </p>
+                <p className="is-grey">
+                  {transactionById[0].ticket.airport_to}
+                </p>
+              </div>
+            </div>
+            <Table striped bordered hover className="mt-5 mb-5">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama Penumpang</th>
+                  <th>Tipe Penumpang</th>
+                  <th>Fasilitas</th>
+                </tr>
+              </thead>
+              <tbody>
+                {transactionById[0].traveler.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>
+                        {getTitle(item.title)} {item.name} {item.surname}
+                      </td>
+                      <td>{item.type}</td>
+                      <td>Bagasi 20 Kg</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+          </Container>
+        </Container>
+      </section>
+      {/* <section className="booking-section">
                 <Container>
                     <Row>
                         <Col md={8} className="left-section">
@@ -434,8 +461,8 @@ const PaymentDone = () => {
                                         </Col>
                                     </Row>
                                     <hr></hr> */}
-                                    {/* timeline pesawat*/}
-                                    {/* <div className="flight-timeline">
+      {/* timeline pesawat*/}
+      {/* <div className="flight-timeline">
                                         <div className="departure-timeline bullet timeline-object not-complete">
                                             <div className="timeline-status"> </div>
                                             <Row className="timeline-content">
@@ -556,9 +583,9 @@ const PaymentDone = () => {
                     </Row>
                 </Container>
             </section>*/}
-            <Footer /> 
-        </div>
-    );
-}
+      <Footer />
+    </div>
+  );
+};
 
 export default PaymentDone;

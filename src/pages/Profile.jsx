@@ -50,7 +50,6 @@ const Profile = () => {
   }, [dispatch, onEdit]);
 
   const [profile_image, setProfile_image] = useState();
-  console.info({ ...formData, profile_image });
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -76,7 +75,6 @@ const Profile = () => {
     dispatch(updateCurrentUsers({ ...formData, profile_image }));
   };
 
-  console.info({ message });
   useEffect(() => {
     if (message === "User updated") {
       toast.success("Profile updated successfully !");

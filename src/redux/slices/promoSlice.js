@@ -29,7 +29,6 @@ export const retrivePromo = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const res = await promo.retriveById(id);
-      console.log({ res });
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -65,14 +64,11 @@ export const updatePromo = createAsyncThunk(
 export const createPromo = createAsyncThunk(
   "promo/create",
   async ({ formData, redirect }, { rejectWithValue }) => {
-    console.info({ formData });
     try {
       const res = await promo.create(formData);
-      console.info(res);
       redirect("/dashboard/promos");
       return res.data;
     } catch (error) {
-      console.info(error);
       return rejectWithValue(error.response);
     }
   }
@@ -127,7 +123,6 @@ const promoSlice = createSlice({
       return { ...state, loading: true };
     },
     [retrivePromosAdmin.fulfilled]: (state, action) => {
-      console.info(action.payload);
       return {
         ...state,
         loading: false,
@@ -157,8 +152,6 @@ const promoSlice = createSlice({
       };
     },
     [removePromo.rejected]: (state, action) => {
-      console.log({ payload: action.payload });
-
       return {
         ...state,
         loading: false,
@@ -195,8 +188,6 @@ const promoSlice = createSlice({
       };
     },
     [retrivePromo.rejected]: (state, action) => {
-      console.log({ payload: action.payload });
-
       return {
         ...state,
         loading: false,
@@ -211,7 +202,6 @@ const promoSlice = createSlice({
       };
     },
     [createPromo.fulfilled]: (state, action) => {
-      console.info(action.payload);
       return {
         ...state,
         loading: false,

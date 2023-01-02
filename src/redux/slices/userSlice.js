@@ -6,7 +6,6 @@ export const retriveUsers = createAsyncThunk(
   async (page, { rejectWithValue }) => {
     try {
       const res = await user.retrive(page);
-      console.info(res);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -31,7 +30,6 @@ export const retriveUser = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const res = await user.retriveById(id);
-      console.info(res);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response);
@@ -68,7 +66,6 @@ export const updateUsers = createAsyncThunk(
   "users/update",
   async ({ formData, id, redirect }, { rejectWithValue }) => {
     try {
-      console.info({ formData });
       const res = await user.update(formData, id);
       redirect("/dashboard/users");
       return res.data;
@@ -83,10 +80,8 @@ export const updatePasswordUsers = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const res = await user.updatePasswordCurrent(formData);
-      console.info(res);
       return res.data;
     } catch (error) {
-      console.info(error);
       return rejectWithValue(error.response);
     }
   }
@@ -96,12 +91,9 @@ export const updateCurrentUsers = createAsyncThunk(
   "users/updateCurrrent",
   async (formData, { rejectWithValue }) => {
     try {
-      console.info({ formData });
       const res = await user.updateCurrent(formData);
-      console.info(res);
       return res.data;
     } catch (error) {
-      console.error(error);
       return rejectWithValue(error.response);
     }
   }

@@ -39,7 +39,6 @@ const Nav = ({ isToggled, setIsToggled, title }) => {
       });
 
       socket.on("disconnect", () => {
-        console.log("Socket disconnecting");
       });
     }
   }, []);

@@ -73,7 +73,8 @@ const PaymentConfirmation = () => {
       total +
       // ticketById.adult_price * search.countDewasa +
       // ticketById.child_price * search.countAnak;
-      transactionById[0].ticket.adult_price * transactionById[0].quantity.adult +
+      transactionById[0].ticket.adult_price *
+        transactionById[0].quantity.adult +
       transactionById[0].ticket.child_price * transactionById[0].quantity.child;
     return total;
   };
@@ -86,12 +87,16 @@ const PaymentConfirmation = () => {
   const getAdultPrice = () => {
     let total = 0;
     // total = total + ticketById.adult_price * search.countDewasa;
-    total = total + transactionById[0].ticket.adult_price * transactionById[0].quantity.adult;
+    total =
+      total +
+      transactionById[0].ticket.adult_price * transactionById[0].quantity.adult;
     return total;
   };
   const getChildPrice = () => {
     let total = 0;
-    total = total + transactionById[0].ticket.child_price * transactionById[0].quantity.child;
+    total =
+      total +
+      transactionById[0].ticket.child_price * transactionById[0].quantity.child;
     return total;
   };
   const getTitle = (gelar) => {
@@ -109,14 +114,14 @@ const PaymentConfirmation = () => {
       <HeaderBooking />
       <section className="payment-section">
         <div className="booking-countdown text-center">
-          <p>
+          {/* <p>
             Konfirmasi pembayaran anda dalam{" "}
             <Countdown
               className="countdown"
-              daysInHours="true"
-              date={Date.now() + 5400000}
+              daysInHours={true}
+              date={}
             />
-          </p>
+          </p> */}
         </div>
         <Container>
           <Form onSubmit={handleSubmit}>
@@ -148,29 +153,31 @@ const PaymentConfirmation = () => {
                           </select>
                         </Form.Group>
                       </Col>
-                      {visible === "banktransfer" ||  visible === "default" && (
-                        <Col md={8}>
-                          <Form.Group className="mb-4 border border-top-0 border-start-0 border-end-0 rounded-0 p-0">
-                            <Form.Label>
-                              <h4>
-                                Pilih Bank <span className="required"> *</span>
-                              </h4>
-                            </Form.Label>
-                            <br />
-                            <select
-                              name="bank"
-                              className="dropdown-toggle"
-                              required
-                            >
-                              <option value="BCA">BCA</option>
-                              <option value="Mandiri">Mandiri</option>
-                              <option value="BNI">BNI</option>
-                              <option value="CIMB">CIMB Niaga</option>
-                              <option value="Permata">Permata Bank</option>
-                            </select>
-                          </Form.Group>
-                        </Col>
-                      )}
+                      {visible === "banktransfer" ||
+                        (visible === "default" && (
+                          <Col md={8}>
+                            <Form.Group className="mb-4 border border-top-0 border-start-0 border-end-0 rounded-0 p-0">
+                              <Form.Label>
+                                <h4>
+                                  Pilih Bank{" "}
+                                  <span className="required"> *</span>
+                                </h4>
+                              </Form.Label>
+                              <br />
+                              <select
+                                name="bank"
+                                className="dropdown-toggle"
+                                required
+                              >
+                                <option value="BCA">BCA</option>
+                                <option value="Mandiri">Mandiri</option>
+                                <option value="BNI">BNI</option>
+                                <option value="CIMB">CIMB Niaga</option>
+                                <option value="Permata">Permata Bank</option>
+                              </select>
+                            </Form.Group>
+                          </Col>
+                        ))}
 
                       {visible === "e-wallet" && (
                         <Col md={8}>
@@ -241,7 +248,9 @@ const PaymentConfirmation = () => {
                     <Col md={4} sm={12} xs={12}>
                       <Button
                         className="payment-btn"
-                        onClick={() => {redirect("/account/order")}}
+                        onClick={() => {
+                          redirect("/account/order");
+                        }}
                       >
                         Cek Status Pembayaran
                       </Button>
@@ -352,7 +361,9 @@ const PaymentConfirmation = () => {
                           <div className="timeline-status"> </div>
                           <Row className="timeline-content">
                             <Col md={3} sm={5} xs={5}>
-                              <h3>{transactionById[0].ticket.departure_time}</h3>
+                              <h3>
+                                {transactionById[0].ticket.departure_time}
+                              </h3>
                               <p>{transactionById[0].ticket.date_start}</p>
                             </Col>
                             <Col md={4} sm={7} xs={7}>
@@ -472,7 +483,9 @@ const PaymentConfirmation = () => {
                                 xs={6}
                                 className="accordion-timeline"
                               >
-                                <p>Dewasa x {transactionById[0].quantity.adult}</p>
+                                <p>
+                                  Dewasa x {transactionById[0].quantity.adult}
+                                </p>
                               </Col>
                               <Col md={5} sm={5} xs={6}>
                                 <p className="d-flex flex-row-reverse">
@@ -488,7 +501,10 @@ const PaymentConfirmation = () => {
                                   xs={6}
                                   className="accordion-timeline"
                                 >
-                                  <p>Anak-anak x {transactionById[0].quantity.child}</p>
+                                  <p>
+                                    Anak-anak x{" "}
+                                    {transactionById[0].quantity.child}
+                                  </p>
                                 </Col>
                                 <Col md={5} sm={5} xs={6}>
                                   <p className="d-flex flex-row-reverse">
@@ -551,7 +567,10 @@ const PaymentConfirmation = () => {
                                     xs={6}
                                     className="accordion-timeline"
                                   >
-                                    <p>Anak-anak x {transactionById[0].quantity.child}</p>
+                                    <p>
+                                      Anak-anak x{" "}
+                                      {transactionById[0].quantity.child}
+                                    </p>
                                   </Col>
                                   <Col md={5} sm={5} xs={6}>
                                     <p className="d-flex flex-row-reverse">
@@ -592,7 +611,7 @@ const PaymentConfirmation = () => {
                     <div className="traveler-content">
                       {transactionById[0].traveler.map((traveler, index) => {
                         return (
-                          <Row>
+                          <Row key={index}>
                             <Col md={9} sm={9} xs={9}>
                               <ul>
                                 <li>
