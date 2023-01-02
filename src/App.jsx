@@ -100,16 +100,45 @@ const App = () => {
                     <Route path='/' element={<Home />} />
                     <Route path='/flight' element={<Flight />}></Route>
                     <Route path='/flight/search' element={<Tickets />} />
-                    <Route path='/flight/booking' element={<Booking />} />
+                    <Route
+                        path='/flight/booking'
+                        element={
+                            <Protected>
+                                <Booking />
+                            </Protected>
+                        }
+                    />
                     <Route
                         path='/flight/confirm/:idTicket'
-                        element={<ConfirmBooking />}
+                        element={
+                            <Protected>
+                                <ConfirmBooking />
+                            </Protected>
+                        }
                     />
-                    <Route path='/flight/done' element={<PaymentDone />} />
-                    <Route path='/payment' element={<PaymentBooking />} />
+                    <Route
+                        path='/flight/done'
+                        element={
+                            <Protected>
+                                <PaymentDone />
+                            </Protected>
+                        }
+                    />
+                    <Route
+                        path='/payment'
+                        element={
+                            <Protected>
+                                <PaymentBooking />
+                            </Protected>
+                        }
+                    />
                     <Route
                         path='/payment/confirmation'
-                        element={<PaymentConfirmation />}
+                        element={
+                            <Protected>
+                                <PaymentConfirmation />
+                            </Protected>
+                        }
                     />
                     <Route
                         path='/terms/condition'

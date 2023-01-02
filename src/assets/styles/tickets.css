@@ -15,6 +15,21 @@
     justify-content: space-between;
 }
 
+.recomlogin {
+    overflow: hidden;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    background: linear-gradient(
+        112.87deg,
+        #13a2d7 0%,
+        #3492b5 45.3%,
+        #8bbcce 100%
+    );
+    height: 50px;
+}
+
 .flex {
     display: flex;
     flex-wrap: wrap;

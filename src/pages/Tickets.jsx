@@ -9,6 +9,7 @@ import {
     Card,
     Accordion,
     Form,
+    NavLink,
 } from 'react-bootstrap'
 import Plane from '../assets/images/plane.svg'
 import '../assets/styles/tickets.css'
@@ -99,6 +100,19 @@ const Tickets = () => {
             </Container>
             <Container fluid className='search-box pt-3'>
                 <Container fluid='xl' className='search'>
+                    {!user?.firstname && (
+                        <Container fluid className='recomlogin'>
+                            <p className='m-0 p-0'>
+                                Daftar atau log in sekarang untuk mendapatkan
+                                pengalaman booking yang terbaik
+                            </p>
+
+                            <Button href='/#/auth' variant='outline-light'>
+                                Login
+                            </Button>
+                        </Container>
+                    )}
+
                     {ticket.length > 0 && !loading ? (
                         ticket.map((item) => {
                             let wished = wishlists?.find(
@@ -294,7 +308,11 @@ const Tickets = () => {
                                                 <Col className='pt-2'>
                                                     <Button
                                                         variant='light'
-                                                        className='btn-flight my-2 p-2'
+                                                        className={`btn-flight my-2 p-2 ${
+                                                            user?.firstname
+                                                                ? ''
+                                                                : 'disabled'
+                                                        }`}
                                                         href={
                                                             '#/flight/confirm/' +
                                                             item.id
