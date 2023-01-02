@@ -105,7 +105,7 @@ const Header = () => {
                   <NavLink to="/promo" className="pb-3 text-secondary">
                     Promo
                   </NavLink>
-                  {user ? (
+                  {user?.firstname ? (
                     <NavLink
                       to="/account/order"
                       className="pb-3 text-secondary"
