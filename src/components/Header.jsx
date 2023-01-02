@@ -66,6 +66,7 @@ const Header = () => {
       dispatch(retriveNotif());
     }
   }, [dispatch]);
+
   return (
     <>
       {["md"].map((expand) => (
@@ -118,7 +119,7 @@ const Header = () => {
                     <NavDropdown.Item>US</NavDropdown.Item>
                     <NavDropdown.Item>IDR</NavDropdown.Item>
                   </NavDropdown> */}
-                  {user && (
+                  {user?.firstname && (
                     <OverlayTrigger
                       trigger="click"
                       placement="bottom"
@@ -255,10 +256,11 @@ const Header = () => {
                       </div>
                     </OverlayTrigger>
                   )}
+
                   <NavLink to="/auth" className="m-0 p-0">
                     <Button
                       className={
-                        user
+                        user?.firstname
                           ? "btn btn-light button-login d-none"
                           : "btn btn-light button-login"
                       }
@@ -266,54 +268,57 @@ const Header = () => {
                       Login
                     </Button>
                   </NavLink>
-                  <NavDropdown
-                    title={
-                      <span className="d-flex align-items-center">
-                        <i
-                          className="ri-user-3-line me-1 ri-1x"
-                          style={{ fontSize: 19 }}
-                        ></i>
-                        <div className="text-lg" style={{ fontSize: "1rem" }}>
-                          {user
-                            ? user?.firstname
-                                .toLowerCase()
-                                .slice(0, 1)
-                                .toUpperCase() +
-                              user?.firstname.toLowerCase().slice(1)
-                            : null}
-                        </div>
-                      </span>
-                    }
-                    className={user ? `nav-dropdown` : `nav-dropdown d-none`}
-                    // noCarret
-                  >
-                    <NavDropdown.Item href="/#/account/profile">
-                      <i className="remix-icon ri-user-3-line"></i>
-                      <span className="ml-2 profile-item">Profil</span>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/#/account/password">
-                      <i className="remix-icon ri-key-2-line"></i>
-                      <span className="ml-2">Ubah Password</span>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/#/account/order">
-                      <i className="remix-icon ri-calendar-check-line"></i>
-                      <span className="ml-2">Daftar Pesanan</span>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/#/account/wishlist">
-                      <i className="remix-icon ri-shopping-basket-2-line"></i>
-                      <span className="ml-2">Wishlist</span>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      onClick={() => {
-                        // setDataUser({});
-                        dispatch(logout());
-                        toast.success("Logout Success");
-                      }}
+
+                  {user?.firstname && (
+                    <NavDropdown
+                      title={
+                        <span className="d-flex align-items-center">
+                          <i
+                            className="ri-user-3-line me-1 ri-1x"
+                            style={{ fontSize: 19 }}
+                          ></i>
+                          <div className="text-lg" style={{ fontSize: "1rem" }}>
+                            {user.firstname
+                              ? user?.firstname
+                                  .toLowerCase()
+                                  .slice(0, 1)
+                                  .toUpperCase() +
+                                user?.firstname.toLowerCase().slice(1)
+                              : null}
+                          </div>
+                        </span>
+                      }
+                      className={user ? `nav-dropdown` : `nav-dropdown d-none`}
+                      // noCarret
                     >
-                      <i className="remix-icon ri-logout-box-r-line"></i>
-                      <span className="ml-2">Keluar</span>
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                      <NavDropdown.Item href="/#/account/profile">
+                        <i className="remix-icon ri-user-3-line"></i>
+                        <span className="ml-2 profile-item">Profil</span>
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/#/account/password">
+                        <i className="remix-icon ri-key-2-line"></i>
+                        <span className="ml-2">Ubah Password</span>
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/#/account/order">
+                        <i className="remix-icon ri-calendar-check-line"></i>
+                        <span className="ml-2">Daftar Pesanan</span>
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/#/account/wishlist">
+                        <i className="remix-icon ri-shopping-basket-2-line"></i>
+                        <span className="ml-2">Wishlist</span>
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
+                        onClick={() => {
+                          // setDataUser({});
+                          dispatch(logout());
+                          toast.success("Logout Success");
+                        }}
+                      >
+                        <i className="remix-icon ri-logout-box-r-line"></i>
+                        <span className="ml-2">Keluar</span>
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  )}
                 </div>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
