@@ -1,0 +1,152 @@
+.banner {
+    margin-top: 64px;
+}
+.banner-title {
+    font-size: 44px;
+    color: #59595b;
+    font-weight: bold;
+    margin-bottom: 48px;
+}
+.section-title {
+    font-size: 32px;
+    color: #59595b;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.section-desc {
+    font-size: 14px;
+    color: #59595b;
+    margin-bottom: 18px;
+}
+.feature {
+    margin-top: 42px;
+}
+.feature-section {
+    margin-top: 100px;
+}
+.feature-col {
+    margin-bottom: 32px;
+}
+.feature-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #59595b;
+    margin-bottom: 12px;
+}
+.feature-desc {
+    font-size: 14px;
+    color: #9a9a9d;
+}
+.feature-img {
+    margin-bottom: 24px;
+}
+.promo-section {
+    margin-top: 74px;
+}
+.see-more-btn {
+    background-color: #f37c20;
+    border: none;
+    padding: 8px 12px;
+}
+.see-more-btn:hover {
+    background-color: #f37c20;
+}
+.mobile-mockup {
+    position: absolute;
+    margin-top: 80px;
+    margin-left: 75px;
+}
+.mobile-section-content {
+    margin-top: 180px;
+    height: 320px;
+    background-color: #13a2d7;
+    margin-bottom: 80px;
+}
+.text-mobile-section {
+    margin-top: 100px;
+}
+.text-mobile-section p {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 500;
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .banner-title {
+        font-size: 40px;
+    }
+    .mobile-section-content {
+        margin-top: 180px;
+        height: 290px;
+        background-color: #13a2d7;
+        margin-bottom: 80px;
+    }
+    .mobile-mockup {
+        width: 370px;
+        margin-top: 109px;
+    }
+    .text-mobile-section {
+        margin-top: 80px;
+        margin-left: 400px;
+    }
+    .text-mobile-section p {
+        font-size: 18px;
+        color: #fff;
+        font-weight: 500;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .banner-title {
+        font-size: 36px;
+    }
+    .promo-section-left {
+        margin-bottom: 42px;
+    }
+    .mobile-section-content {
+        height: 250px;
+    }
+    .mobile-mockup {
+        width: 300px;
+        margin-top: 137px;
+    }
+    .text-mobile-section {
+        margin-top: 60px;
+        margin-left: 320px;
+    }
+    .text-mobile-section p {
+        font-size: 16px;
+        color: #fff;
+        font-weight: 500;
+    }
+    .google-play-logo {
+        width: 100px;
+    }
+}
+@media (max-width: 575px) {
+    .banner-title {
+        font-size: 30px;
+    }
+    .promo-section-left {
+        margin-bottom: 42px;
+    }
+    .mobile-section-content {
+        height: 530px;
+    }
+    .mobile-mockup {
+        width: 320px;
+        margin-top: 398px;
+    }
+    .text-mobile-section {
+        margin-top: 60px;
+        margin-left: 0px;
+    }
+    .text-mobile-section p {
+        font-size: 20px;
+        color: #fff;
+        font-weight: 500;
+    }
+    .google-play-logo {
+        width: 110px;
+    }
+}

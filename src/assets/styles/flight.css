@@ -1,22 +1,23 @@
-*{
+* {
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #ea741a;
     --bs-btn-active-border-color: #ea741a 1px solid;
     --second-color: #ea741a;
 }
-.flight{
+.flight {
     padding: 0;
 }
-.jumbotron{
-    height: 100vh;
-    background-image: url("../images/flight-image.png");
+.jumbotronFlight {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../images/flight-image.png');
     background-size: cover;
 }
-.jumbotron-content{
-    padding: 30vh 10vw 30vh 10vw;
+.jumbotron-content {
+    padding: 30px 0px;
     gap: 20px;
 }
-.flight-form{
+.flight-form {
+    max-width: 600px;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -24,45 +25,69 @@
     flex-direction: column;
     gap: 10px;
 }
-.btn-switch-form{
+.btn-switch-form {
     border: var(--second-color) 1px solid;
 }
-.btn-check:checked + .btn{
+
+.btn-check:checked + .btn {
     border: var(--second-color) 1px solid;
 }
-.switch-city-btn{
+.switch-city-btn {
     box-shadow: grey 0px 2px 3px 0px;
     border-radius: 30px;
     height: 70px;
     border: none;
 }
-.popover-container{
+.popover-container {
     padding: 0;
 }
-.popover-trigger , .popover-trigger:hover{
+.popover-trigger,
+.popover-trigger:hover {
     width: 100%;
     background-color: transparent;
     border: none;
     color: black;
     text-align: start;
 }
-.popover-trigger:active{
+.feature {
+    margin-top: 42px;
+}
+.feature-section {
+    margin-top: 100px;
+}
+.feature-col {
+    margin-bottom: 32px;
+}
+.feature-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #59595b;
+    margin-bottom: 12px;
+}
+.feature-desc {
+    font-size: 14px;
+    color: #9a9a9d;
+}
+.feature-img {
+    margin-bottom: 24px;
+}
+.popover-trigger:active {
     width: 100%;
     background-color: var(--second-color);
     border: none;
     color: white;
     text-align: start;
 }
-#popover-positioned-top{
+#popover-positioned-top {
     width: 100%;
 }
-.set-traveler{
+.set-traveler {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 20px;
 }
-.set-traveler .btn-active{
+.set-traveler .btn-active {
     width: 30px;
     height: 30px;
     padding: 0;
@@ -70,12 +95,13 @@
     background-color: transparent;
     border: var(--second-color) 1px solid;
 }
-.set-traveler .btn-active:hover, .set-traveler .btn-active:active{
+.set-traveler .btn-active:hover,
+.set-traveler .btn-active:active {
     color: white;
     background-color: var(--second-color);
     border: var(--second-color) 1px solid;
 }
-.set-traveler .btn-inactive{
+.set-traveler .btn-inactive {
     width: 30px;
     height: 30px;
     padding: 0;
@@ -83,94 +109,103 @@
     background-color: silver;
     border: silver 1px solid;
 }
-.set-traveler .btn-inactive:hover, .set-traveler .btn-inactive:active{
+.set-traveler .btn-inactive:hover,
+.set-traveler .btn-inactive:active {
     cursor: disabled;
     pointer-events: all !important;
     color: grey;
     background-color: silver;
     border: silver 1px solid;
 }
-.jumbotron h2{
+.jumbotron h2 {
     color: white;
     text-align: center;
     font-weight: bold;
 }
-.recomendation{
+.recomendation {
     padding: 15vh 10vw 15vh 10vw;
 }
-.recomendation h3{
+.recomendation h3 {
     font-weight: bold;
 }
-.recomendation-card{
+.recomendation-card {
     height: 250px;
     margin: 10px;
     padding: 15px;
     color: white;
 }
-.recomendation-card span{
+.recomendation-card span {
     font-weight: bold;
 }
-.recomendation-card h3{
+.recomendation-card h3 {
     line-height: 28px;
 }
-.rc-1{
-    background-image: url("../images/rec-1.png");
+.rc-1 {
+    background-image: url('../images/rec-1.png');
     background-size: cover;
 }
-.rc-2{
-    background-image: url("../images/rec-2.png");
+.rc-2 {
+    background-image: url('../images/rec-2.png');
     background-size: cover;
 }
-.rc-3{
-    background-image: url("../images/rec-3.png");
+.rc-3 {
+    background-image: url('../images/rec-3.png');
     background-size: cover;
 }
-.rc-4{
-    background-image: url("../images/rec-4.png");
+.rc-4 {
+    background-image: url('../images/rec-4.png');
     background-size: cover;
 }
-.rc-5{
-    background-image: url("../images/rec-5.png");
+.rc-5 {
+    background-image: url('../images/rec-5.png');
     background-size: cover;
 }
-.rc-6{
-    background-image: url("../images/rec-6.png");
+.rc-6 {
+    background-image: url('../images/rec-6.png');
     background-size: cover;
 }
-.rec-icon{
+.rec-icon {
     width: 25px;
     height: fit-content;
 }
-.service{
-    padding: 15vh 10vw 15vh 10vw;
+
+.section-title {
+    font-size: 32px;
+    color: #59595b;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.service {
+    padding: 5vw 0vw 10vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 50px;
-    border-top: #DEDEDE 1px solid;
-    border-bottom: #DEDEDE 1px solid;
+    border-top: #dedede 1px solid;
+    border-bottom: #dedede 1px solid;
 }
-.card-img-top{
+.card-img-top {
     height: 150px;
     width: fit-content;
 }
-.card{
+.card {
     border: none;
     text-align: center;
     display: flex;
     align-items: center;
 }
-.card-footer{
+.card-footer {
     border: none;
     background-color: transparent;
 }
-.mobile{
+.mobile {
     height: 100vh;
     display: flex;
     align-items: flex-end;
     padding: 0;
 }
-.mobile-content{
+.mobile-content {
     height: 70%;
     background: linear-gradient(
         112.87deg,
@@ -182,17 +217,57 @@
     align-items: center;
     padding: 0 5vw 0 5vw;
 }
-.mobile-content h3{
+.mobile-content h3 {
     color: white;
     font-weight: bold;
 }
-.mobile-img{
+.mobile-img {
     position: relative;
-    height: 120%;
+    height: 80vh;
     width: fit-content;
-    top: -10%;
+    top: -5vh;
 }
-.google-play-img{
+.google-play-img {
     height: 50px;
     width: fit-content;
+}
+
+.mobile-mockup {
+    position: absolute;
+    margin-top: 80px;
+    margin-left: 75px;
+}
+.mobile-section-content {
+    margin-top: 180px;
+    height: 320px;
+    background-color: #13a2d7;
+    margin-bottom: 80px;
+}
+.text-mobile-section {
+    margin-top: 100px;
+}
+.text-mobile-section p {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 1000px) {
+    .jumbotron-content {
+        flex-direction: column-reverse;
+    }
+    .mobile-content {
+        flex-direction: column-reverse;
+        padding: 50px;
+    }
+    .mobile-img {
+        height: 50vh;
+        top: 4vh;
+    }
+}
+@media screen and (max-width: 500px) {
+    .mobile-img {
+        height: 35vh;
+        top: 6vh;
+    }
 }

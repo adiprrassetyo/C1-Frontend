@@ -1,0 +1,179 @@
+/* .account-box {
+    background-color: #F7F7F7;
+}
+
+.account-main {
+    background-color: #F7F7F7;
+}
+
+.left-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.left-panel .btn {
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
+    color: #9A9A9D;
+    text-align: left;
+    font-size: 18px;
+}
+
+.left-panel .btn .selected {
+    color: #FFFFFF;
+}
+
+.content-panel .card{
+    text-align: left;
+    align-items: flex-start;
+    display: block;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
+}
+
+.content-panel .card-header {
+    background-color: #FFFFFF;
+}
+
+.has-text-danger {
+    color: red;
+}
+
+
+.is-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+} */
+
+.content-flex-passenger {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.content-flex-passenger .content-h1-txt {
+    color: #59595b;
+    font-weight: 700;
+    font-size: 3.5rem;
+    align-self: center;
+}
+
+.content-flex-passenger .content-p-txt {
+    color: #59595b;
+    font-size: 1.5rem;
+}
+
+.selected.submit {
+    color: white;
+}
+
+.panel {
+    border: 1px solid rgba(154, 154, 157, 0.35) !important;
+}
+
+.contact-header {
+    border-bottom: 1px solid rgba(154, 154, 157, 0.35) !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.contac-content {
+    border: 1px solid rgba(154, 154, 157, 0.35) !important;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.add-traveler {
+    color: #fff;
+    width: 100%;
+}
+
+.contact-header-text {
+    font-weight: 700;
+    color: #59595b;
+}
+/* .content .card {
+    display: block;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
+    border-radius: 2px;
+}
+
+.content .card-header {
+    font-size: large;
+    color: #59595B;
+    font-weight: 700;
+}
+
+.card-header.is-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.is-pulled-right .btn {
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
+    margin-right: 10px;
+}
+
+.is-pulled-right .delete{
+    color: red;
+}
+
+.is-grey-text {
+    color: #9A9A9D;
+    font-size: small;
+}
+
+.submit .btn {
+    width: 100%;
+    color: #FFFFFF;
+    font-weight: 700;
+} */
+
+/* .content-panel .card-header .profile-header{
+    color: #59595B;
+    font-size: 24px;
+    font-weight: 700;
+} */
+
+/* .content-panel .header-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+} */
+
+/* .content-panel .content-flex {
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+/* .profile-item.is-full {
+    flex: none;
+    width: 100%;
+}
+
+.profile-item.is-half{
+    flex: none;
+    width: 50%;
+}
+
+.has-text-grey {
+    font-size: 14px;
+    color: #9A9A9D;
+}
+
+.normal {
+    font-size: 14px;
+    font-weight: 700;
+    color: #59595B;
+} */
+
+/* .payment-content {
+    background-color: #F5F5F5;
+    font-size: 18px;
+    color: #59595B;
+    border: none;
+} */

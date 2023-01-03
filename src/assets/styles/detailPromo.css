@@ -1,0 +1,160 @@
+.jumbotron-img {
+    width: 100%;
+    object-fit: cover;
+    height: 380px;
+}
+.promo-section {
+    text-align: center;
+}
+.promo-section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #59595b;
+}
+.promo-section-subtitle {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #9a9a9d;
+}
+.promo-section-booking,
+.promo-section-periode {
+    font-size: 14px;
+    color: #59595b;
+    margin-top: 24px;
+}
+.discount-section {
+    margin-top: 80px;
+}
+.discount-row {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.discount-card {
+    margin: 0 12px 12px 12px;
+    padding: 36px;
+    box-shadow: 0px 1px 5px 1px #e6e6e6;
+    width: 40%;
+}
+.text-discount {
+    padding: 14px;
+    margin: 0;
+}
+.button-discount {
+    padding: 0;
+}
+
+.copy-button {
+    background-color: #f37c20;
+    padding: 10px 16px;
+    color: #fff;
+    font-size: 12px;
+    margin-left: 0;
+}
+.copy-button:hover,
+.copy-button:focus {
+    background-color: #f37c20;
+    color: #fff;
+}
+.copy-button p {
+    margin: 0;
+    font-weight: 700;
+}
+.discount-card .form-control {
+    text-align: center;
+}
+.discount-card-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #59595b;
+}
+.discount-card-subtitle {
+    font-size: 12px;
+    color: #9a9a9d;
+}
+.rules-section {
+    margin: 80px 0;
+}
+.rules-section-title {
+    font-size: 18px;
+    color: #59595b;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.rules-section-list {
+    padding-left: 16px;
+}
+.rules-section li {
+    font-size: 14px;
+    color: #59595b;
+    line-height: 1;
+}
+.alert {
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+}
+.alert p {
+    margin-bottom: 0;
+}
+.share-discount {
+    margin-top: 32px;
+}
+.share-discount-icon {
+    margin-top: 28px;
+}
+.share-discount p {
+    color: #59595b;
+    font-size: 14px;
+}
+.share-discount-icon a {
+    margin-left: 12px;
+    padding: 14px 8px 5px 8px;
+    box-shadow: 0px 1px 5px 1px #e6e6e6;
+    color: #bfbfbf;
+    border-radius: 8px;
+}
+.share-discount-icon a:hover {
+    color: #59595b;
+    box-shadow: 0px 1px 12px 1px #e6e6e6;
+}
+
+.jenis-pembayaran-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #59595b;
+}
+.payment_img {
+    margin-bottom: 80px;
+    width: 65%;
+}
+@media (min-width: 576px) and (max-width: 767.9px) {
+    .carousel-item img {
+        height: 320px;
+    }
+    .discount-card {
+        width: 100%;
+        margin-bottom: 24px;
+    }
+    .payment_img {
+        width: 80%;
+    }
+}
+@media (max-width: 575px) {
+    .carousel-item img {
+        height: 280px;
+    }
+    .discount-row {
+        display: block;
+    }
+    .discount-card {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 24px;
+        margin-left: 12%;
+    }
+    .payment_img {
+        width: 80%;
+    }
+}

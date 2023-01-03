@@ -1,14 +1,15 @@
-import axios from "axios";
+import axios from 'axios'
 
-export default axios.create({
-  baseURL: "https://binair-backend-production.up.railway.app/api/v1",
-});
+const API = axios.create({
+    baseURL: 'https://binair-backend-production.up.railway.app/api/v1',
+})
 
 API.interceptors.request.use((req) => {
-  if (localStorage.getItem("user")) {
-    req.headers.Authorization = `Bearer ${JSON.parse(
-      localStorage.getItem("user").token
-    )}`;
-  }
-  return req;
-});
+    if (localStorage.getItem('user')) {
+        const user = JSON.parse(localStorage.getItem('user'))
+        req.headers.Authorization = 'Bearer ' + user.token
+    }
+    return req
+})
+
+export default API

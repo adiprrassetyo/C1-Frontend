@@ -1,0 +1,88 @@
+.account-box {
+    background-color: #f7f7f7;
+}
+
+.account-main {
+    background-color: #f7f7f7;
+}
+
+.left-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.left-panel .btn {
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
+    color: #9a9a9d;
+    text-align: left;
+    font-size: 18px;
+}
+
+.left-panel .btn .selected {
+    color: #ffffff;
+}
+
+.content-panel .card {
+    text-align: left;
+    align-items: flex-start;
+    display: block;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
+}
+
+.content-panel .card-header {
+    background-color: #ffffff;
+}
+
+.content-panel .card-header .profile-header {
+    color: #59595b;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.content-panel .card-header a {
+    color: #f0b75f !important;
+    cursor: pointer;
+}
+
+.content-panel .header-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.content-panel .content-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-item.is-full {
+    flex: none;
+    width: 100%;
+}
+
+.profile-item.is-half {
+    flex: none;
+    width: 50%;
+}
+
+.card-body {
+    background-color: #ffffff;
+}
+
+.has-text-grey {
+    font-size: 14px;
+    color: #9a9a9d;
+}
+
+.normal {
+    font-size: 14px;
+    font-weight: 700;
+    color: #59595b;
+}
+
+.payment-content .card-body {
+    background-color: #f7f7f7;
+    font-size: 18px;
+    color: #59595b;
+}

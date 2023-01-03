@@ -1,0 +1,33 @@
+.content-e-ticket {
+    background-color: #f5f5f5;
+}
+
+.content.container {
+    background-color: #ffffff;
+}
+
+/* .d-flex {
+    flex-wrap: wrap;
+} */
+
+.e-ticket-logo img {
+    height: 100px;
+}
+
+.is-bold {
+    font-weight: 700;
+    color: #59595b;
+}
+
+.is-grey {
+    color: #9a9a9d;
+}
+
+thead {
+    background-color: #13a2d7;
+    color: #ffffff;
+}
+
+tbody {
+    font-weight: 700;
+}

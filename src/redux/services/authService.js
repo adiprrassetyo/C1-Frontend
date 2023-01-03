@@ -1,5 +1,6 @@
-import api from "./api";
+import api from './api'
 
-export const register = (user) => api.post("/register", user);
-export const login = (user) => api.post("/login", user);
-export const logout = () => api.post("/logout");
+export const register = (formData) => api.post('/register', formData)
+export const login = (formData) => api.post('/login', formData)
+export const reset = (email) => api.post('/forget-password', { email })
+export const googleLogin = (formData) => api.post('/googleLogin', formData)
