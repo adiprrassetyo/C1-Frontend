@@ -34,6 +34,7 @@ const Header = () => {
     //NOTIFICATION
     const { notif, loading } = useSelector((state) => state.notif)
     const [notifData, setNotifData] = useState(notif)
+    console.info({ notifData })
 
     const dispatch = useDispatch()
 
@@ -49,7 +50,7 @@ const Header = () => {
 
             socket.on('disconnect', () => {})
         }
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         const handleScroll = () => {
@@ -64,6 +65,10 @@ const Header = () => {
             dispatch(retriveNotif())
         }
     }, [dispatch])
+
+    useEffect(() => {
+        dispatch(retriveNotif())
+    }, [])
 
     return (
         <>
@@ -203,11 +208,7 @@ const Header = () => {
                                                         </OverlayTrigger>
                                                     </Popover.Header>
                                                     <Popover.Body className='m-0 p-0'>
-                                                        {!notifData?.filter(
-                                                            (msg) =>
-                                                                msg.isRead ===
-                                                                false
-                                                        ) ? (
+                                                        {!notifData?.length ? (
                                                             <div className='d-flex align-items-center notif-msg mb-1'>
                                                                 Saat ini tidak
                                                                 ada notifikasi

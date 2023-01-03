@@ -20,6 +20,7 @@ import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { newTrans } from '../redux/slices/transactionSlice'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Booking = () => {
     const [phone, setPhone] = useState()
@@ -29,11 +30,12 @@ const Booking = () => {
     const [nation, setNation] = useState('')
     // const [title, setTitle] = useState("tuan");
     // const [sameContact, setSameContact] = useState(false);
-    const [promoCode, setPromoCode] = useState('')
+    const [promoCode, setPromoCode] = useState(null)
     const { search, ticketById } = useSelector((state) => state.ticket)
     const { loading, status, message, transactionById } = useSelector(
         (state) => state.transaction
     )
+
     const { user } = useSelector((state) => state.auth)
     const dispatch = useDispatch()
     const getTotalAmount = () => {
@@ -149,7 +151,7 @@ const Booking = () => {
         }
         const submitForm = {
             ticketsId: ticketById.id,
-            promo_code: promoCode,
+            promo_code: promoCode ? promoCode : null,
             quantity: {
                 adult: search.countDewasa,
                 child: search.countAnak,
@@ -157,29 +159,12 @@ const Booking = () => {
             traveler: travelers,
         }
         dispatch(newTrans({ submitForm, redirect }))
+        console.info({ message })
+        if (message === 'promo code not found / invalid') {
+            toast.error(message)
+        }
     }
-    // const handleDateChangeAdult = (index, date) => {
-    //     setAdultForm(prevFormData => {
-    //         return {
-    //             ...prevFormData,
-    //             [index]: {
-    //                 ...prevFormData[index],
-    //                 datebirth: date
-    //             }
-    //         }
-    //     })
-    // }
-    // const handleDateChangeChild = (index, date) => {
-    //     setChildForm(prevFormData => {
-    //         return {
-    //             ...prevFormData,
-    //             [index]: {
-    //                 ...prevFormData[index],
-    //                 datebirth: date
-    //             }
-    //         }
-    //     })
-    // }
+
     return (
         <div>
             <HeaderBooking />
@@ -363,7 +348,7 @@ const Booking = () => {
                                         {/* Form untuk dewasa */}
                                         {adultFormInit.map((item) => {
                                             return (
-                                                <Container>
+                                                <Container key={item.ids}>
                                                     <Row className='traveler-type'>
                                                         <Col
                                                             md={2}
@@ -1165,7 +1150,11 @@ const Booking = () => {
                                                     className='form-input'
                                                     placeholder='Masukkan Kode Disini'
                                                     value={promoCode}
-                                                    onChange={(e) => setPromoCode(e.target.value)}
+                                                    onChange={(e) =>
+                                                        setPromoCode(
+                                                            e.target.value
+                                                        )
+                                                    }
                                                 />
                                             </Form.Group>
                                         </Row>
@@ -1212,7 +1201,7 @@ const Booking = () => {
                                                             className='accordion-timeline d-flex flex-row-reverse'
                                                         >
                                                             <h3>
-                                                                {getTotalAmount()}{' '}
+                                                                {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}{' '}
                                                             </h3>
                                                         </Col>
                                                     </Row>
@@ -1238,7 +1227,7 @@ const Booking = () => {
                                                             xs={6}
                                                         >
                                                             <p className='d-flex flex-row-reverse'>
-                                                                {getAdultPrice()}
+                                                                {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                             </p>
                                                         </Col>
                                                     </Row>
@@ -1263,7 +1252,7 @@ const Booking = () => {
                                                                 xs={6}
                                                             >
                                                                 <p className='d-flex flex-row-reverse'>
-                                                                    {getChildPrice()}
+                                                                    {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                 </p>
                                                             </Col>
                                                         </Row>
@@ -1305,7 +1294,7 @@ const Booking = () => {
                                                                 className='accordion-timeline d-flex flex-row-reverse'
                                                             >
                                                                 <h3>
-                                                                    {getTotalAmount()}
+                                                                    {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                 </h3>
                                                             </Col>
                                                         </Row>
@@ -1358,7 +1347,7 @@ const Booking = () => {
                                                                     xs={6}
                                                                 >
                                                                     <p className='d-flex flex-row-reverse'>
-                                                                        {getChildPrice()}
+                                                                        {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                     </p>
                                                                 </Col>
                                                             </Row>
@@ -1375,7 +1364,7 @@ const Booking = () => {
                                             </Col>
                                             <Col md={5} sm={5} xs={5}>
                                                 <h3 className='d-flex flex-row-reverse'>
-                                                    {getTotalAmount()}
+                                                    {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                 </h3>
                                             </Col>
                                         </Row>

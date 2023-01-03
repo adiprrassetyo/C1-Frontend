@@ -56,7 +56,7 @@ const HeaderBooking = () => {
 
             socket.on('disconnect', () => {})
         }
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         const handleScroll = () => {
@@ -76,6 +76,11 @@ const HeaderBooking = () => {
         }
     }, [dispatch])
 
+    useEffect(() => {
+        if (user) {
+            dispatch(retriveNotif())
+        }
+    }, [])
     return (
         <>
             {['md'].map((expand) => (
@@ -206,11 +211,7 @@ const HeaderBooking = () => {
                                                         </OverlayTrigger>
                                                     </Popover.Header>
                                                     <Popover.Body className='m-0 p-0'>
-                                                        {!notifData?.filter(
-                                                            (msg) =>
-                                                                msg.isRead ===
-                                                                false
-                                                        ) ? (
+                                                        {!notifData?.length ? (
                                                             <div className='d-flex align-items-center notif-msg mb-1'>
                                                                 Saat ini tidak
                                                                 ada notifikasi

@@ -1,6 +1,7 @@
 import * as trans from '../services/transactionServices'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
+
 export const retriveTransAdmin = createAsyncThunk(
     'transAdmin/retriveAdmin',
     async (page, { rejectWithValue }) => {
@@ -210,7 +211,7 @@ const transSlice = createSlice({
             return {
                 ...state,
                 loading: false,
-                message: action.payload.message,
+                message: action.payload.data.msg,
                 status: action.payload.data.status,
             }
         },

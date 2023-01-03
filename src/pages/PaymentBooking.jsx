@@ -32,6 +32,8 @@ import copy from 'copy-to-clipboard'
 import { useSelector, useDispatch } from 'react-redux'
 import { retriveDirectTransUser } from '../redux/slices/transactionSlice'
 import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
+import { useEffect } from 'react'
 
 const PaymentBooking = () => {
     const { loading, status, message, transactionById } = useSelector(
@@ -74,13 +76,13 @@ const PaymentBooking = () => {
         return total
     }
     const isDiscount = () => {
-        if(transactionById[0].amounts != getTotalAmount()){
+        if (transactionById[0].amounts != getTotalAmount()) {
             return true
         }
         return false
     }
     const getDiscount = () => {
-        return 100 - transactionById[0].amounts/getTotalAmount() * 100
+        return 100 - (transactionById[0].amounts / getTotalAmount()) * 100
     }
 
     copyText = transactionById[0].amounts
@@ -88,10 +90,12 @@ const PaymentBooking = () => {
 
     const handleCopyText = (e) => {
         setCopyText(e.target.value)
+        toast.success('Berhasil disalin!')
     }
 
     const handleCopyRekening = (e) => {
         setCopyRekening(e.target.value)
+        toast.success('Berhasil disalin!')
     }
 
     const [showAlert, setShowAlert] = useState('')
@@ -128,9 +132,28 @@ const PaymentBooking = () => {
         </Popover>
     )
 
+    useEffect(() => {
+        if (showAlert) {
+            toast.success('Berhasil disalin!')
+        }
+        setShowAlert(false)
+    }, [showAlert])
+
     return (
         <div>
             <HeaderBooking />
+            <ToastContainer
+                position='top-center'
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme='light'
+            />
             <section className='payment-section'>
                 <div className='booking-countdown text-center'>
                     <p>
@@ -143,16 +166,6 @@ const PaymentBooking = () => {
                     </p>
                 </div>
                 <Container>
-                    {showAlert && (
-                        <Alert
-                            className='alert-payment'
-                            variant='success'
-                            onClose={() => setShowAlert(false)}
-                            dismissible
-                        >
-                            <p className='text-center'>Berhasil disalin!</p>
-                        </Alert>
-                    )}
                     <Row>
                         <Col md={8} className='left-payment-section'>
                             {paymentMethod && (
@@ -442,11 +455,14 @@ const PaymentBooking = () => {
                                                             >
                                                                 <p className='d-flex flex-row-reverse'>
                                                                     Rp.{' '}
-                                                                    {transactionById[0].amounts}
+                                                                    {
+                                                                        transactionById[0]
+                                                                            .amounts
+                                                                    }
                                                                 </p>
                                                             </Col>
                                                         </Row>
-                                                        
+
                                                         <Row>
                                                             <Col
                                                                 md={9}
@@ -464,7 +480,10 @@ const PaymentBooking = () => {
                                                             >
                                                                 <p className='d-flex flex-row-reverse fw-bold'>
                                                                     Rp.{' '}
-                                                                    {transactionById[0].amounts}
+                                                                    {
+                                                                        transactionById[0]
+                                                                            .amounts
+                                                                    }
                                                                 </p>
                                                             </Col>
                                                         </Row>
@@ -691,7 +710,8 @@ const PaymentBooking = () => {
                                                                     overlay={
                                                                         popover
                                                                     }
-                                                                    show='true'
+                                                                    trigger='click'
+                                                                    rootClose
                                                                 >
                                                                     <h3>
                                                                         <span>
@@ -1134,7 +1154,7 @@ const PaymentBooking = () => {
                                                         className='accordion-timeline d-flex flex-row-reverse'
                                                     >
                                                         <h3>
-                                                            {getTotalAmount()}{' '}
+                                                            {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}{' '}
                                                         </h3>
                                                     </Col>
                                                 </Row>
@@ -1154,7 +1174,7 @@ const PaymentBooking = () => {
                                                     </Col>
                                                     <Col md={5} sm={5} xs={6}>
                                                         <p className='d-flex flex-row-reverse'>
-                                                            {getAdultPrice()}
+                                                            {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                         </p>
                                                     </Col>
                                                 </Row>
@@ -1179,14 +1199,13 @@ const PaymentBooking = () => {
                                                             xs={6}
                                                         >
                                                             <p className='d-flex flex-row-reverse'>
-                                                                {getChildPrice()}
+                                                                {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                             </p>
                                                         </Col>
                                                     </Row>
                                                 )}
-                                                {
-                                                    isDiscount && (
-                                                        <Row>
+                                                {isDiscount && (
+                                                    <Row>
                                                         <Col
                                                             md={7}
                                                             sm={7}
@@ -1203,12 +1222,12 @@ const PaymentBooking = () => {
                                                             xs={6}
                                                         >
                                                             <p className='d-flex flex-row-reverse'>
-                                                                {getDiscount()} %
+                                                                {getDiscount()}{' '}
+                                                                %
                                                             </p>
                                                         </Col>
                                                     </Row>
-                                                    )
-                                                }
+                                                )}
                                             </Accordion.Body>
                                         </Accordion.Item>
                                         {ticketById.type == 'roundtrip' && (
@@ -1241,7 +1260,7 @@ const PaymentBooking = () => {
                                                             className='accordion-timeline d-flex flex-row-reverse'
                                                         >
                                                             <h3>
-                                                                {getTotalAmount()}
+                                                                {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                             </h3>
                                                         </Col>
                                                     </Row>
@@ -1267,7 +1286,7 @@ const PaymentBooking = () => {
                                                             xs={6}
                                                         >
                                                             <p className='d-flex flex-row-reverse'>
-                                                                {getAdultPrice()}
+                                                                {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                             </p>
                                                         </Col>
                                                     </Row>
@@ -1292,7 +1311,7 @@ const PaymentBooking = () => {
                                                                 xs={6}
                                                             >
                                                                 <p className='d-flex flex-row-reverse'>
-                                                                    {getChildPrice()}
+                                                                    {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                 </p>
                                                             </Col>
                                                         </Row>
@@ -1309,7 +1328,7 @@ const PaymentBooking = () => {
                                         </Col>
                                         <Col md={5} sm={5} xs={5}>
                                             <h3 className='d-flex flex-row-reverse'>
-                                                {transactionById[0].amounts}
+                                                {transactionById[0].amounts?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                             </h3>
                                         </Col>
                                     </Row>

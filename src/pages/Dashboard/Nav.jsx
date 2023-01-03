@@ -40,13 +40,19 @@ const Nav = ({ isToggled, setIsToggled, title }) => {
 
             socket.on('disconnect', () => {})
         }
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         if (user) {
             dispatch(retriveNotif())
         }
     }, [dispatch])
+
+    useEffect(() => {
+        if (user) {
+            dispatch(retriveNotif())
+        }
+    }, [])
 
     return (
         <nav className='navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4'>
@@ -158,9 +164,7 @@ const Nav = ({ isToggled, setIsToggled, title }) => {
                                             </OverlayTrigger>
                                         </Popover.Header>
                                         <Popover.Body className='m-0 p-0'>
-                                            {!notifData?.filter(
-                                                (msg) => msg.isRead === false
-                                            ) ? (
+                                            {!notifData?.length ? (
                                                 <div className='d-flex align-items-center notif-msg mb-1'>
                                                     Saat ini tidak ada
                                                     notifikasi

@@ -20,10 +20,10 @@ import { logout } from '../redux/slices/authSlice'
 import { io } from 'socket.io-client'
 import moment from 'moment'
 import {
-    retriveNotif,
-    readOneNotif,
+    read,
     readAllNotif,
-    // read,
+    readOneNotif,
+    retriveNotif,
 } from '../redux/slices/notifSlice'
 
 const HeaderBookingDone = () => {
@@ -46,7 +46,7 @@ const HeaderBookingDone = () => {
 
             socket.on('disconnect', () => {})
         }
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         if (user) {
@@ -61,6 +61,12 @@ const HeaderBookingDone = () => {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     })
+
+    useEffect(() => {
+        if (user) {
+            dispatch(retriveNotif())
+        }
+    }, [])
 
     return (
         <>
@@ -181,11 +187,7 @@ const HeaderBookingDone = () => {
                                                         </OverlayTrigger>
                                                     </Popover.Header>
                                                     <Popover.Body className='m-0 p-0'>
-                                                        {!notifData?.filter(
-                                                            (msg) =>
-                                                                msg.isRead ===
-                                                                false
-                                                        ) ? (
+                                                        {!notifData?.length ? (
                                                             <div className='d-flex align-items-center notif-msg mb-1'>
                                                                 Saat ini tidak
                                                                 ada notifikasi

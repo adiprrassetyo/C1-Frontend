@@ -659,7 +659,7 @@ const PaymentConfirmation = () => {
                                                                 className='accordion-timeline d-flex flex-row-reverse'
                                                             >
                                                                 <h3>
-                                                                    {getTotalAmount()}{' '}
+                                                                    {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}{' '}
                                                                 </h3>
                                                             </Col>
                                                         </Row>
@@ -687,7 +687,7 @@ const PaymentConfirmation = () => {
                                                                 xs={6}
                                                             >
                                                                 <p className='d-flex flex-row-reverse'>
-                                                                    {getAdultPrice()}
+                                                                    {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                 </p>
                                                             </Col>
                                                         </Row>
@@ -717,7 +717,7 @@ const PaymentConfirmation = () => {
                                                                     xs={6}
                                                                 >
                                                                     <p className='d-flex flex-row-reverse'>
-                                                                        {getChildPrice()}
+                                                                        {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                     </p>
                                                                 </Col>
                                                             </Row>
@@ -785,7 +785,7 @@ const PaymentConfirmation = () => {
                                                                     className='accordion-timeline d-flex flex-row-reverse'
                                                                 >
                                                                     <h3>
-                                                                        {getTotalAmount()}
+                                                                        {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                     </h3>
                                                                 </Col>
                                                             </Row>
@@ -811,7 +811,7 @@ const PaymentConfirmation = () => {
                                                                     xs={6}
                                                                 >
                                                                     <p className='d-flex flex-row-reverse'>
-                                                                        {getAdultPrice()}
+                                                                        {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                     </p>
                                                                 </Col>
                                                             </Row>
@@ -841,7 +841,7 @@ const PaymentConfirmation = () => {
                                                                         xs={6}
                                                                     >
                                                                         <p className='d-flex flex-row-reverse'>
-                                                                            {getChildPrice()}
+                                                                            {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                         </p>
                                                                     </Col>
                                                                 </Row>

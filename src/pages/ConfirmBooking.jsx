@@ -473,7 +473,7 @@ const ConfirmBooking = () => {
                                                             className='accordion-timeline d-flex flex-row-reverse'
                                                         >
                                                             <h3>
-                                                                {getTotalAmount()}{' '}
+                                                                {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                             </h3>
                                                         </Col>
                                                     </Row>
@@ -499,7 +499,7 @@ const ConfirmBooking = () => {
                                                             xs={6}
                                                         >
                                                             <p className='d-flex flex-row-reverse'>
-                                                                {getAdultPrice()}
+                                                                {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                             </p>
                                                         </Col>
                                                     </Row>
@@ -524,7 +524,7 @@ const ConfirmBooking = () => {
                                                                 xs={6}
                                                             >
                                                                 <p className='d-flex flex-row-reverse'>
-                                                                    {getChildPrice()}
+                                                                    {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                 </p>
                                                             </Col>
                                                         </Row>
@@ -582,7 +582,7 @@ const ConfirmBooking = () => {
                                                                 xs={6}
                                                             >
                                                                 <p className='d-flex flex-row-reverse'>
-                                                                    {getAdultPrice()}
+                                                                    {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                 </p>
                                                             </Col>
                                                         </Row>
@@ -609,7 +609,7 @@ const ConfirmBooking = () => {
                                                                     xs={6}
                                                                 >
                                                                     <p className='d-flex flex-row-reverse'>
-                                                                        {getChildPrice()}
+                                                                        {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                                     </p>
                                                                 </Col>
                                                             </Row>
@@ -617,7 +617,7 @@ const ConfirmBooking = () => {
                                                     </Accordion.Body>
                                                 </Accordion.Item>
                                             )}
-                                        </Accordion>
+                                        </Accordion>Keterangan Harga
                                     </div>
                                     <div className='price-total'>
                                         <Row>
@@ -626,7 +626,7 @@ const ConfirmBooking = () => {
                                             </Col>
                                             <Col md={5} sm={5} xs={5}>
                                                 <h3 className='d-flex flex-row-reverse'>
-                                                    {getTotalAmount()}
+                                                    {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
                                                 </h3>
                                             </Col>
                                         </Row>
