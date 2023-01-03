@@ -29,6 +29,7 @@ const Booking = () => {
     const [nation, setNation] = useState('')
     // const [title, setTitle] = useState("tuan");
     // const [sameContact, setSameContact] = useState(false);
+    const [promoCode, setPromoCode] = useState('')
     const { search, ticketById } = useSelector((state) => state.ticket)
     const { loading, status, message, transactionById } = useSelector(
         (state) => state.transaction
@@ -148,6 +149,7 @@ const Booking = () => {
         }
         const submitForm = {
             ticketsId: ticketById.id,
+            promo_code: promoCode,
             quantity: {
                 adult: search.countDewasa,
                 child: search.countAnak,
@@ -1148,7 +1150,28 @@ const Booking = () => {
                                         </div>
                                     </div>
                                 </div>
-
+                                {/* start voucher section */}
+                                <div className='voucher-section'>
+                                    <div className='voucher-header'>
+                                        <h3>Voucher/Kode Promo</h3>
+                                    </div>
+                                    <div className='voucher-content'>
+                                        <Row>
+                                            <Form.Group className='mb-4'>
+                                                <Form.Control
+                                                    autoComplete='off'
+                                                    required
+                                                    name='name'
+                                                    className='form-input'
+                                                    placeholder='Masukkan Kode Disini'
+                                                    value={promoCode}
+                                                    onChange={(e) => setPromoCode(e.target.value)}
+                                                />
+                                            </Form.Group>
+                                        </Row>
+                                    </div>
+                                </div>
+                                {/* end voucher section */}
                                 <div className='price-section'>
                                     <div className='price-header'>
                                         <h2 className='card-title'>

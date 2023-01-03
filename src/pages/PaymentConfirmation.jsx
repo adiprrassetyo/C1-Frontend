@@ -111,6 +111,15 @@ const PaymentConfirmation = () => {
             return 'Ms.'
         }
     }
+    const isDiscount = () => {
+        if(transactionById[0].amounts != getTotalAmount()){
+            return true
+        }
+        return false
+    }
+    const getDiscount = () => {
+        return 100 - transactionById[0].amounts/getTotalAmount() * 100
+    }
 
     return (
         <div>
@@ -713,6 +722,31 @@ const PaymentConfirmation = () => {
                                                                 </Col>
                                                             </Row>
                                                         )}
+                                                        {
+                                                            isDiscount && (
+                                                                <Row>
+                                                                <Col
+                                                                    md={7}
+                                                                    sm={7}
+                                                                    xs={6}
+                                                                    className='accordion-timeline'
+                                                                >
+                                                                    <p>
+                                                                        Potongan harga
+                                                                    </p>
+                                                                </Col>
+                                                                <Col
+                                                                    md={5}
+                                                                    sm={5}
+                                                                    xs={6}
+                                                                >
+                                                                    <p className='d-flex flex-row-reverse'>
+                                                                        {getDiscount()} %
+                                                                    </p>
+                                                                </Col>
+                                                            </Row>
+                                                            )
+                                                        }
                                                     </Accordion.Body>
                                                 </Accordion.Item>
                                                 {transactionById[0].ticket
@@ -824,7 +858,7 @@ const PaymentConfirmation = () => {
                                                 </Col>
                                                 <Col md={5} sm={5} xs={5}>
                                                     <h3 className='d-flex flex-row-reverse'>
-                                                        {getTotalAmount()}
+                                                        {transactionById[0].amounts}
                                                     </h3>
                                                 </Col>
                                             </Row>

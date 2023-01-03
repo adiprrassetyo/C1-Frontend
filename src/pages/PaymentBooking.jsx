@@ -63,9 +63,6 @@ const PaymentBooking = () => {
     const getTax = () => {
         return getTotalAmount() * 0.1
     }
-    const getTotalAmountWithTax = () => {
-        return getTotalAmount() + getTax()
-    }
     const getAdultPrice = () => {
         let total = 0
         total = total + ticketById.adult_price * search.countDewasa
@@ -76,8 +73,17 @@ const PaymentBooking = () => {
         total = total + ticketById.child_price * search.countAnak
         return total
     }
+    const isDiscount = () => {
+        if(transactionById[0].amounts != getTotalAmount()){
+            return true
+        }
+        return false
+    }
+    const getDiscount = () => {
+        return 100 - transactionById[0].amounts/getTotalAmount() * 100
+    }
 
-    copyText = getTotalAmountWithTax()
+    copyText = transactionById[0].amounts
     copyRekening = '8217631623'
 
     const handleCopyText = (e) => {
@@ -436,31 +442,11 @@ const PaymentBooking = () => {
                                                             >
                                                                 <p className='d-flex flex-row-reverse'>
                                                                     Rp.{' '}
-                                                                    {getTotalAmount()}
+                                                                    {transactionById[0].amounts}
                                                                 </p>
                                                             </Col>
                                                         </Row>
-                                                        <Row>
-                                                            <Col
-                                                                md={9}
-                                                                sm={9}
-                                                                xs={9}
-                                                            >
-                                                                <p>
-                                                                    Biaya Proses
-                                                                </p>
-                                                            </Col>
-                                                            <Col
-                                                                md={3}
-                                                                sm={3}
-                                                                xs={3}
-                                                            >
-                                                                <p className='d-flex flex-row-reverse'>
-                                                                    Rp.{' '}
-                                                                    {getTax()}
-                                                                </p>
-                                                            </Col>
-                                                        </Row>
+                                                        
                                                         <Row>
                                                             <Col
                                                                 md={9}
@@ -478,7 +464,7 @@ const PaymentBooking = () => {
                                                             >
                                                                 <p className='d-flex flex-row-reverse fw-bold'>
                                                                     Rp.{' '}
-                                                                    {getTotalAmountWithTax()}
+                                                                    {transactionById[0].amounts}
                                                                 </p>
                                                             </Col>
                                                         </Row>
@@ -1198,6 +1184,31 @@ const PaymentBooking = () => {
                                                         </Col>
                                                     </Row>
                                                 )}
+                                                {
+                                                    isDiscount && (
+                                                        <Row>
+                                                        <Col
+                                                            md={7}
+                                                            sm={7}
+                                                            xs={6}
+                                                            className='accordion-timeline'
+                                                        >
+                                                            <p>
+                                                                Potongan harga
+                                                            </p>
+                                                        </Col>
+                                                        <Col
+                                                            md={5}
+                                                            sm={5}
+                                                            xs={6}
+                                                        >
+                                                            <p className='d-flex flex-row-reverse'>
+                                                                {getDiscount()} %
+                                                            </p>
+                                                        </Col>
+                                                    </Row>
+                                                    )
+                                                }
                                             </Accordion.Body>
                                         </Accordion.Item>
                                         {ticketById.type == 'roundtrip' && (
@@ -1298,41 +1309,13 @@ const PaymentBooking = () => {
                                         </Col>
                                         <Col md={5} sm={5} xs={5}>
                                             <h3 className='d-flex flex-row-reverse'>
-                                                {getTotalAmount()}
+                                                {transactionById[0].amounts}
                                             </h3>
                                         </Col>
                                     </Row>
                                 </div>
                             </div>
                             {/* end price section */}
-
-                            {/* start voucher section */}
-                            <div className='voucher-section'>
-                                <div className='voucher-header'>
-                                    <h3>Voucher/Kode Promo</h3>
-                                </div>
-                                <div className='voucher-content'>
-                                    <Row>
-                                        <Col md={8} sm={8} xs={8}>
-                                            <Form.Group className='mb-4'>
-                                                <Form.Control
-                                                    autoComplete='off'
-                                                    required
-                                                    name='name'
-                                                    className='form-input'
-                                                    placeholder='Masukkan Kode Disini'
-                                                />
-                                            </Form.Group>
-                                        </Col>
-                                        <Col md={4} sm={4} xs={4}>
-                                            <Button className='verification-btn'>
-                                                Verifikasi
-                                            </Button>
-                                        </Col>
-                                    </Row>
-                                </div>
-                            </div>
-                            {/* end voucher section */}
 
                             {/* start traveler section */}
                             <div className='traveler-section'>

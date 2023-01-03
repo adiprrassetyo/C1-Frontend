@@ -62,6 +62,7 @@ export const newTrans = createAsyncThunk(
         try {
             const res = await trans.newTransaction(submitForm)
             if (res.data.status === 200) {
+                console.log(res.data)
                 redirect('/payment')
                 return res.data
             }
