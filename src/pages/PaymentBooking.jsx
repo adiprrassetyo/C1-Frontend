@@ -513,7 +513,14 @@ const PaymentBooking = () => {
                                             <Col md={12} sm={12} xs={12}>
                                                 <p>{payment} Bank Transfer</p>
                                                 <img
-                                                    src={`/src/assets/images/${payment}.webp`}
+                                                    src={
+                                                        payment === 'BCA' ? bca_va :
+                                                        payment === 'Mandiri' ? mandiri :
+                                                        payment === 'BNI' ? bni :
+                                                        payment === 'CIMB' ? cimb :
+                                                        payment === 'Permata' ? permata :
+                                                        null
+                                                    }
                                                     alt={payment}
                                                     loading='eager'
                                                 />
@@ -700,7 +707,14 @@ const PaymentBooking = () => {
                                                         E-Wallet - {payment}
                                                     </h4>
                                                     <img
-                                                        src={`/src/assets/images/${payment}.png`}
+                                                        src={
+                                                        payment === 'Gopay' ? gopay :
+                                                        payment === 'Ovo' ? ovo :
+                                                        payment === 'Dana' ? dana :
+                                                        payment === 'LinkAja' ? linkaja :
+                                                        payment === 'ShopeePay' ? shopeepay :
+                                                        null
+                                                    }
                                                         alt={payment}
                                                         loading='eager'
                                                     />
