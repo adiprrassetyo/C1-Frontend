@@ -265,7 +265,7 @@ const Booking = () => {
                                                     />
                                                 </Form.Group>
                                             </Col>
-                                            <Col md={4}>
+                                            <Col md={4} className='ps-0'>
                                                 <Form.Group className='mb-4'>
                                                     <Form.Label>
                                                         <h4>
@@ -314,7 +314,7 @@ const Booking = () => {
                                                     />
                                                 </Form.Group>
                                             </Col>
-                                            <Col md={4}>
+                                            <Col md={4} className='ps-0'>
                                                 <Form.Group className=' mb-4'>
                                                     <Form.Label>
                                                         <h4>
@@ -1012,7 +1012,7 @@ const Booking = () => {
                                                 <div className='timeline-status'>
                                                     {' '}
                                                 </div>
-                                                <Row className='timeline-content'>
+                                                <Row className='timeline-content pb-2'>
                                                     <Col md={5} sm={5} xs={5}>
                                                         <h3>
                                                             {
@@ -1034,7 +1034,7 @@ const Booking = () => {
                                                                 ticketById.airport_from
                                                             }
                                                         </p>
-                                                        <p>Terminal 1A</p>
+                                                        
                                                     </Col>
                                                 </Row>
                                             </div>
@@ -1072,7 +1072,7 @@ const Booking = () => {
                                                                 ticketById.airport_to
                                                             }
                                                         </p>
-                                                        <p>Terminal Domestic</p>
+                                                        
                                                     </Col>
                                                 </Row>
                                             </div>
@@ -1143,7 +1143,7 @@ const Booking = () => {
                                     </div>
                                     <div className='voucher-content'>
                                         <Row>
-                                            <Form.Group className='mb-4'>
+                                            <Form.Group className='mb-4 ps-0 pe-0'>
                                                 <Form.Control
                                                     autoComplete='off'
                                                     required

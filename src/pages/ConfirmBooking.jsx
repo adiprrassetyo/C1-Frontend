@@ -78,7 +78,7 @@ const ConfirmBooking = () => {
                                     {/* start flight content*/}
                                     <div className='flight-content'>
                                         <Row>
-                                            <Col md={2}>
+                                            <Col md={3}>
                                                 <img
                                                     src={logo}
                                                     alt='logo'
@@ -91,10 +91,10 @@ const ConfirmBooking = () => {
                                                 <p>ID7511</p>
                                                 <p>Airbus A320</p>
                                             </Col>
-                                            <Col md={7}>
+                                            <Col md={6}>
                                                 <div className='timeline timeline-object-flights not-completes'>
                                                     <div className='timeline-status-flights'></div>
-                                                    <Row className='timeline-content-flights'>
+                                                    <Row className='timeline-content-flights pb-1'>
                                                         <Col
                                                             md={4}
                                                             sm={4}
@@ -126,11 +126,10 @@ const ConfirmBooking = () => {
                                                                     ticketById.airport_from
                                                                 }
                                                             </p>
-                                                            <p>Terminal 1A</p>
                                                         </Col>
                                                     </Row>
                                                 </div>
-                                                <div className='duration-flight'>
+                                                <div className='duration-flight pb-1'>
                                                     <p>
                                                         <span>
                                                             <i className='ri-time-line'></i>
@@ -170,7 +169,7 @@ const ConfirmBooking = () => {
                                                                     ticketById.airport_to
                                                                 }
                                                             </p>
-                                                            <p>Terminal 1A</p>
+                                                            
                                                         </Col>
                                                     </Row>
                                                 </div>
@@ -655,7 +654,6 @@ const ConfirmBooking = () => {
                                                 </Accordion.Item>
                                             )}
                                         </Accordion>
-                                        Keterangan Harga
                                     </div>
                                     <div className='price-total'>
                                         <Row>

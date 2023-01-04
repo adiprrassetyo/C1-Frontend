@@ -1027,7 +1027,7 @@ const PaymentBooking = () => {
                                             <div className='timeline-status'>
                                                 {' '}
                                             </div>
-                                            <Row className='timeline-content'>
+                                            <Row className='timeline-content pb-2'>
                                                 <Col md={5} sm={5} xs={5}>
                                                     <h3>
                                                         {
@@ -1035,7 +1035,7 @@ const PaymentBooking = () => {
                                                         }
                                                     </h3>
                                                     <p>
-                                                        {ticketById.start_date}
+                                                        {ticketById.date_start}
                                                     </p>
                                                 </Col>
                                                 <Col md={7} sm={7} xs={7}>
@@ -1045,7 +1045,7 @@ const PaymentBooking = () => {
                                                             ticketById.airport_from
                                                         }
                                                     </p>
-                                                    <p>Terminal 1A</p>
+                                                    
                                                 </Col>
                                             </Row>
                                         </div>
@@ -1069,7 +1069,7 @@ const PaymentBooking = () => {
                                                         }
                                                     </h3>
                                                     <p>
-                                                        {ticketById.start_date}
+                                                        {ticketById.date_start}
                                                     </p>
                                                 </Col>
                                                 <Col md={7} sm={7} xs={7}>
@@ -1077,7 +1077,7 @@ const PaymentBooking = () => {
                                                     <p>
                                                         {ticketById.airport_to}
                                                     </p>
-                                                    <p>Terminal Domestic</p>
+                                                    
                                                 </Col>
                                             </Row>
                                         </div>
@@ -1449,7 +1449,7 @@ const PaymentBooking = () => {
                                 <div className='contact-header'>
                                     <h3>Keterangan Kontak</h3>
                                 </div>
-                                <div className='contact-content'>
+                                <div className='contact-content pt-2'>
                                     <h4 className='contact-name'>
                                         {user.gender == 'perempuan'
                                             ? `Ny. ${user.firstname} ${user.lastname}`

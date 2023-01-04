@@ -289,7 +289,7 @@ const PaymentConfirmation = () => {
                                 </p>
                                 <div className='button-payment-section'>
                                     <Row className='align-items-center'>
-                                        <Col md={4} sm={12} xs={12}>
+                                        <Col md={4} sm={12} xs={12} className='ps-0 pe-0'>
                                             <Link to={`/payment`}>
                                                 <Button
                                                     value='paymentMethod'
@@ -443,13 +443,13 @@ const PaymentConfirmation = () => {
                                             <hr></hr>
                                             {/* timeline pesawat*/}
                                             <div className='flight-timeline'>
-                                                <div className='departure-timeline bullet timeline-object not-complete'>
-                                                    <div className='timeline-status'>
+                                                <div className='departure-timeline bullet timeline-objects not-complete'>
+                                                    <div className='timeline-statuses'>
                                                         {' '}
                                                     </div>
-                                                    <Row className='timeline-content'>
+                                                    <Row className='timeline-contents pb-2'>
                                                         <Col
-                                                            md={3}
+                                                            md={5}
                                                             sm={5}
                                                             xs={5}
                                                         >
@@ -469,7 +469,7 @@ const PaymentConfirmation = () => {
                                                             </p>
                                                         </Col>
                                                         <Col
-                                                            md={4}
+                                                            md={7}
                                                             sm={7}
                                                             xs={7}
                                                         >
@@ -487,7 +487,7 @@ const PaymentConfirmation = () => {
                                                                         .airport_from
                                                                 }
                                                             </p>
-                                                            <p>Terminal 1A</p>
+                                                            
                                                         </Col>
                                                     </Row>
                                                 </div>
@@ -499,13 +499,13 @@ const PaymentConfirmation = () => {
                                                         1h 50m
                                                     </p>
                                                 </div>
-                                                <div className='homecoming-timeline bullet timeline-object complete'>
-                                                    <div className='timeline-status'>
+                                                <div className='homecoming-timeline bullet timeline-objects complete'>
+                                                    <div className='timeline-statuses'>
                                                         {' '}
                                                     </div>
-                                                    <Row className='timeline-content'>
+                                                    <Row className='timeline-contents'>
                                                         <Col
-                                                            md={3}
+                                                            md={5}
                                                             sm={5}
                                                             xs={5}
                                                         >
@@ -525,7 +525,7 @@ const PaymentConfirmation = () => {
                                                             </p>
                                                         </Col>
                                                         <Col
-                                                            md={4}
+                                                            md={7}
                                                             sm={7}
                                                             xs={7}
                                                         >
@@ -543,10 +543,7 @@ const PaymentConfirmation = () => {
                                                                         .airport_to
                                                                 }
                                                             </p>
-                                                            <p>
-                                                                Terminal
-                                                                Domestic
-                                                            </p>
+                                                            
                                                         </Col>
                                                     </Row>
                                                 </div>
@@ -971,7 +968,7 @@ const PaymentConfirmation = () => {
                                         <div className='contact-header'>
                                             <h3>Keterangan Kontak</h3>
                                         </div>
-                                        <div className='contact-content'>
+                                        <div className='contact-content pt-2'>
                                             <h4 className='contact-name'>
                                                 {user.gender == 'perempuan'
                                                     ? `Ny. ${user.firstname} ${user.lastname}`

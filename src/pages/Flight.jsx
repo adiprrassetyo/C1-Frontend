@@ -546,7 +546,7 @@ const Flight = () => {
                                 <Button
                                     variant='primary'
                                     type='submit'
-                                    className='btn-login my-3'
+                                    className='btn-login my-3 btn-search-flight'
                                 >
                                     Cari Penerbangan
                                 </Button>

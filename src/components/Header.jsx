@@ -147,11 +147,7 @@ const Header = () => {
                                             overlay={
                                                 <Popover
                                                     id='popover-positioned-bottom mt-3'
-                                                    style={{
-                                                        maxHeight: '300px',
-                                                        minHeight: '100px',
-                                                        overflow: 'scroll',
-                                                    }}
+                                                    className='popover-notification'
                                                 >
                                                     <Popover.Header
                                                         as='div'
@@ -164,7 +160,7 @@ const Header = () => {
                                                             trigger='click'
                                                             placement='bottom'
                                                             overlay={
-                                                                <Popover id='popover-positioned-bottom '>
+                                                                <Popover id='popover-positioned-bottom' className='popover-notif-info'>
                                                                     <Popover.Body className='p-1 m-0'>
                                                                         <button
                                                                             className='readAll-btn'
@@ -187,7 +183,7 @@ const Header = () => {
                                                                             }}
                                                                         >
                                                                             <h6
-                                                                                className=' m-0 p-0 d-flex align-items-center'
+                                                                                className='notif-info m-0 p-0 d-flex align-items-center'
                                                                                 style={{
                                                                                     fontSize:
                                                                                         '12px',
