@@ -899,10 +899,13 @@ const PaymentConfirmation = () => {
                                                 </Col>
                                                 <Col md={5} sm={5} xs={5}>
                                                     <h3 className='d-flex flex-row-reverse'>
-                                                        {
-                                                            transactionById[0]
-                                                                .amounts
-                                                        }
+                                                        {transactionById[0].amounts?.toLocaleString(
+                                                            'id-ID',
+                                                            {
+                                                                style: 'currency',
+                                                                currency: 'IDR',
+                                                            }
+                                                        )}
                                                     </h3>
                                                 </Col>
                                             </Row>
