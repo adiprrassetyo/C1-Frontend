@@ -58,16 +58,16 @@
 .flight-content .row {
     margin: 0 auto;
 }
-.flight-content .row .col-md-2,
 .flight-content .row .col-md-3,
+.flight-content .row .col-md-6,
 .flight-content .row .col-md-7 {
     padding: 0;
 }
 .flight-content .logo {
     width: 80px;
 }
-.flight-content .row .col-md-2 p,
 .flight-content .row .col-md-3 p,
+.flight-content .row .col-md-6 p,
 .flight-content .row .col-md-7 p {
     margin-bottom: 8px;
     font-size: 12px;
@@ -91,6 +91,7 @@ span {
     position: relative;
     align-items: center;
     margin: 0;
+    width: 100%;
 }
 .timeline-object-flights.not-completes::after {
     content: '';
@@ -98,7 +99,7 @@ span {
     position: absolute;
     width: 1px;
     background-color: #c4c4c4;
-    height: 80px;
+    height: 65px;
     top: 35px;
     left: -16px;
     trasnform: translateX(-50%);
@@ -109,7 +110,7 @@ span {
     border-radius: 100%;
     background-color: #c4c4c4;
     margin-left: -20px;
-    margin-top: -30px;
+    margin-top: -5px;
 }
 .timeline-object-flights.not-completes .timeline-status-flights {
     background-color: #fff;
@@ -117,10 +118,17 @@ span {
 }
 .timeline-content-flights {
     margin: 0 auto;
+    width: 100%; 
 }
 .timeline-content-flights .col-md-4,
 .timeline-content-flights .col-md-8 {
     padding: 0;
+}
+.timeline-content-flights .col-md-4{
+    width: 25%;
+}
+.timeline-content-flights .col-md-8 {
+    width: 75%;
 }
 .timeline-content-flights .col-md-4 p,
 .timeline-content-flights .col-md-8 p {
@@ -225,12 +233,12 @@ span {
         font-weight: 700;
         padding: 12px 18px;
     }
-    .flight-content .row .col-md-2,
     .flight-content .row .col-md-3,
-    .flight-content .row .col-md-7 {
+    .flight-content .row .col-md-6,
+    {
         width: 100%;
     }
-    .flight-content .row .col-md-2 {
+    .flight-content .row .col-md-3 {
         margin-bottom: 8px;
     }
     .timeline-content-flights {
@@ -242,8 +250,8 @@ span {
         position: absolute;
         width: 1px;
         background-color: #c4c4c4;
-        height: 85px;
-        top: 33px;
+        height: 75px;
+        top: 45px;
         left: 0px;
         trasnform: translateX(-50%);
     }
@@ -253,7 +261,7 @@ span {
         border-radius: 100%;
         background-color: #c4c4c4;
         margin-left: -4px;
-        margin-top: -30px;
+        margin-top: -5px;
     }
     .duration-flight p {
         margin-left: 25px;
@@ -295,12 +303,12 @@ span {
         font-weight: 700;
         padding: 12px 18px;
     }
-    .flight-content .row .col-md-2,
     .flight-content .row .col-md-3,
-    .flight-content .row .col-md-7 {
+    .flight-content .row .col-md-6,
+    .flight-content .row .col-md-3 {
         width: 100%;
     }
-    .flight-content .row .col-md-2 {
+    .flight-content .row .col-md-3 {
         margin-bottom: 8px;
     }
     .timeline-content-flights {
@@ -312,8 +320,8 @@ span {
         position: absolute;
         width: 1px;
         background-color: #c4c4c4;
-        height: 85px;
-        top: 33px;
+        height: 65px;
+        top: 35px;
         left: 0px;
         trasnform: translateX(-50%);
     }
@@ -323,7 +331,7 @@ span {
         border-radius: 100%;
         background-color: #c4c4c4;
         margin-left: -4px;
-        margin-top: -30px;
+        margin-top: -5px;
     }
     .duration-flight p {
         margin-left: 25px;
@@ -352,8 +360,8 @@ span {
         position: absolute;
         width: 1px;
         background-color: #c4c4c4;
-        height: 85px;
-        top: 33px;
+        height: 65px;
+        top: 35px;
         left: 0px;
         trasnform: translateX(-50%);
     }
@@ -363,7 +371,7 @@ span {
         border-radius: 100%;
         background-color: #c4c4c4;
         margin-left: -4px;
-        margin-top: -30px;
+        margin-top: -5px;
     }
     .duration-flight p {
         margin-left: 25px;
@@ -386,8 +394,8 @@ span {
         position: absolute;
         width: 1px;
         background-color: #c4c4c4;
-        height: 85px;
-        top: 33px;
+        height: 65px;
+        top: 35px;
         left: 0px;
         trasnform: translateX(-50%);
     }
@@ -397,7 +405,7 @@ span {
         border-radius: 100%;
         background-color: #c4c4c4;
         margin-left: -4px;
-        margin-top: -30px;
+        margin-top: -5px;
     }
     .duration-flight p {
         margin-left: 25px;
@@ -420,9 +428,9 @@ span {
         position: absolute;
         width: 1px;
         background-color: #c4c4c4;
-        height: 100px;
-        top: 44px;
-        left: 3px;
+        height: 65px;
+        top: 35px;
+        left: 4px;
         trasnform: translateX(-50%);
     }
     .timeline-status-flights {
@@ -431,7 +439,7 @@ span {
         border-radius: 100%;
         background-color: #c4c4c4;
         margin-left: 0px;
-        margin-top: -30px;
+        margin-top: -5px;
     }
     .duration-flight p {
         margin-left: 28px;

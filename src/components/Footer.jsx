@@ -14,22 +14,22 @@ const Footer = () => {
                             Home
                         </a>
                         <a href='#' className='d-block'>
-                            About Us
+                            Tentang Kami
                         </a>
-                        <a href='#' className='d-block'>
+                        <a href='/#/promo' className='d-block'>
                             Promo
                         </a>
-                        <a href='#' className='d-block'>
-                            All Flights
+                        <a href='/#/flight' className='d-block'>
+                            penerbangan
                         </a>
                     </Col>
                     <Col>
-                        <p className='link-footer-title'>Account</p>
-                        <a href='#' className='d-block'>
-                            Sign Up
+                        <p className='link-footer-title'>Akun</p>
+                        <a href='/#/auth' className='d-block'>
+                            Daftar
                         </a>
-                        <a href='#' className='d-block'>
-                            Forgot Password
+                        <a href='/#/auth' className='d-block'>
+                            Lupa Password
                         </a>
                     </Col>
                     <Col>

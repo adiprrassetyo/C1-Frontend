@@ -251,7 +251,13 @@
     color: #fff;
     font-weight: 500;
 }
-
+.btn-search-flight:hover,
+.btn-search-flight:focus,
+.btn-search-flight:active {
+    background-color: #DC6E19 !important;
+    color: #fff;
+    border: none !important;
+}
 @media screen and (max-width: 1000px) {
     .jumbotron-content {
         flex-direction: column-reverse;

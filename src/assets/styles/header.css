@@ -97,7 +97,15 @@ nav a.active {
     top: -5px;
     right: -5px;
 }
-
+.popover-notification{
+    max-height: 300px;
+    min-height: 100px;
+    overflow: scroll;
+    z-index: 200 !important;
+}
+.popover-notif-info{
+    z-index: 300!important;
+}
 .notif-msg {
     padding: 5px 15px;
     cursor: pointer;
