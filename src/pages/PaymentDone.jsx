@@ -51,7 +51,6 @@ const PaymentDone = () => {
                         <br />
                         <div className='d-flex justify-content-between m-5'>
                             <div className='e-ticket-logo'>
-                                loading="eager"
                                 <img src={logo} alt='' loading='eager' />
                             </div>
                             <div className='d-flex flex-column align-items-end'>
