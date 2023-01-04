@@ -300,7 +300,7 @@ const TicketsMenu = () => {
                                             }
                                         />
                                         {Array.from(
-                                            Array(totalPages).keys()
+                                            Array(totalPages-1).keys()
                                         ).map((page) => (
                                             <Pagination.Item
                                                 key={page}
@@ -323,7 +323,7 @@ const TicketsMenu = () => {
                                         />
                                         <Pagination.Last
                                             onClick={() =>
-                                                handlePageChange(totalPages - 1)
+                                                handlePageChange(totalPages - 2)
                                             }
                                         />
                                     </Pagination>
