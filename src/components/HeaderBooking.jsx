@@ -93,7 +93,11 @@ const HeaderBooking = () => {
                         <Navbar.Brand>
                             <Link to='/'>
                                 {' '}
-                                <img src={logo} alt='logo' />{' '}
+                                <img
+                                    src={logo}
+                                    alt='logo'
+                                    loading='eager'
+                                />{' '}
                             </Link>
                         </Navbar.Brand>
                         <Nav className='flex-grow-1 pe-3 '>
@@ -128,7 +132,11 @@ const HeaderBooking = () => {
                                 >
                                     <Navbar.Brand>
                                         <NavLink to='/'>
-                                            <img src={logo} alt='logo' />
+                                            <img
+                                                src={logo}
+                                                alt='logo'
+                                                loading='eager'
+                                            />
                                         </NavLink>
                                     </Navbar.Brand>
                                 </Offcanvas.Title>

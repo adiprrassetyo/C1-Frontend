@@ -144,6 +144,7 @@ const UsersMenu = () => {
                                                                 src={
                                                                     user.profile_image
                                                                 }
+                                                                loading='eager'
                                                             />
                                                         </div>
                                                         <div className='users-description d-flex flex-column '>

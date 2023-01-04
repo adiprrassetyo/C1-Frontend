@@ -57,6 +57,7 @@ const Footer = () => {
                                 src={google_play}
                                 alt='mobile-version'
                                 width='130'
+                                loading="eager"
                             />
                         </a>
                     </Col>

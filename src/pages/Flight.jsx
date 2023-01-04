@@ -611,6 +611,7 @@ const Flight = () => {
                                     src={feature1}
                                     alt='feature-1'
                                     className='feature-img'
+                                    loading='eager'
                                 ></img>
                                 <p className='feature-title'>
                                     Mempermudah Pengalaman Booking Anda
@@ -625,6 +626,7 @@ const Flight = () => {
                                     src={feature3}
                                     alt='feature-3'
                                     className='feature-img'
+                                    loading='eager'
                                 ></img>
                                 <p className='feature-title'>
                                     Banyak Pilihan Destinasi
@@ -639,6 +641,7 @@ const Flight = () => {
                                     src={feature6}
                                     alt='feature-6'
                                     className='feature-img'
+                                    loading='eager'
                                 ></img>
                                 <p className='feature-title'>
                                     Banyak Pilihan Destinasi
@@ -662,6 +665,7 @@ const Flight = () => {
                                 alt='mobile-mockup'
                                 className='mobile-mockup'
                                 width='430'
+                                loading='eager'
                             />
                         </Col>
                         <Col md={6} sm={6} xs={12}></Col>
@@ -687,6 +691,7 @@ const Flight = () => {
                                         alt='google play logo'
                                         width='150'
                                         className='google-play-logo'
+                                        loading='eager'
                                     />
                                 </a>
                             </Col>

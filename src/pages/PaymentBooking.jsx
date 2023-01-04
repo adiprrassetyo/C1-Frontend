@@ -195,6 +195,7 @@ const PaymentBooking = () => {
                                                         <img
                                                             src={bca_va}
                                                             alt='BCA'
+                                                            loading='eager'
                                                         />
                                                     </Button>
                                                 </div>
@@ -215,6 +216,7 @@ const PaymentBooking = () => {
                                                     <img
                                                         src={mandiri}
                                                         alt='Mandiri'
+                                                        loading='eager'
                                                     />
                                                 </Button>
                                             </Col>
@@ -231,7 +233,11 @@ const PaymentBooking = () => {
                                                         setPaymentMethod(false)
                                                     }}
                                                 >
-                                                    <img src={bni} alt='BNI' />
+                                                    <img
+                                                        src={bni}
+                                                        alt='BNI'
+                                                        loading='eager'
+                                                    />
                                                 </Button>
                                             </Col>
                                             <Col md={3} sm={4} xs={4}>
@@ -250,6 +256,7 @@ const PaymentBooking = () => {
                                                     <img
                                                         src={cimb}
                                                         alt='CIMB'
+                                                        loading='eager'
                                                     />
                                                 </Button>
                                             </Col>
@@ -269,6 +276,7 @@ const PaymentBooking = () => {
                                                     <img
                                                         src={permata}
                                                         alt='Permata'
+                                                        loading='eager'
                                                     />
                                                 </Button>
                                             </Col>
@@ -291,6 +299,7 @@ const PaymentBooking = () => {
                                                     <img
                                                         src={gopay}
                                                         alt='Gopay'
+                                                        loading='eager'
                                                     />
                                                 </Button>
                                             </Col>
@@ -307,7 +316,11 @@ const PaymentBooking = () => {
                                                         setPaymentMethod(false)
                                                     }}
                                                 >
-                                                    <img src={ovo} alt='Ovo' />
+                                                    <img
+                                                        src={ovo}
+                                                        alt='Ovo'
+                                                        loading='eager'
+                                                    />
                                                 </Button>
                                             </Col>
                                             <Col md={3} sm={4} xs={4}>
@@ -326,6 +339,7 @@ const PaymentBooking = () => {
                                                     <img
                                                         src={dana}
                                                         alt='Dana'
+                                                        loading='eager'
                                                     />
                                                 </Button>
                                             </Col>
@@ -345,6 +359,7 @@ const PaymentBooking = () => {
                                                     <img
                                                         src={linkaja}
                                                         alt='Link Aja'
+                                                        loading='eager'
                                                     />
                                                 </Button>
                                             </Col>
@@ -364,6 +379,7 @@ const PaymentBooking = () => {
                                                     <img
                                                         src={shopeepay}
                                                         alt='Shopee Pay'
+                                                        loading='eager'
                                                     />
                                                 </Button>
                                             </Col>
@@ -499,6 +515,7 @@ const PaymentBooking = () => {
                                                 <img
                                                     src={`/src/assets/images/${payment}.webp`}
                                                     alt={payment}
+                                                    loading='eager'
                                                 />
                                             </Col>
                                         </Row>
@@ -685,6 +702,7 @@ const PaymentBooking = () => {
                                                     <img
                                                         src={`/src/assets/images/${payment}.png`}
                                                         alt={payment}
+                                                        loading='eager'
                                                     />
                                                 </Col>
                                             </Row>
@@ -812,6 +830,7 @@ const PaymentBooking = () => {
                                                     src={qrcode}
                                                     alt='QR Code'
                                                     className='qr-code-img'
+                                                    loading='eager'
                                                 />
                                             </Col>
                                         </Row>
@@ -997,6 +1016,7 @@ const PaymentBooking = () => {
                                                 src={logo}
                                                 alt='logo'
                                                 className='logo-flight'
+                                                loading='eager'
                                             />
                                         </Col>
                                     </Row>
@@ -1154,7 +1174,14 @@ const PaymentBooking = () => {
                                                         className='accordion-timeline d-flex flex-row-reverse'
                                                     >
                                                         <h3>
-                                                            {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}{' '}
+                                                            {getTotalAmount()?.toLocaleString(
+                                                                'id-ID',
+                                                                {
+                                                                    style: 'currency',
+                                                                    currency:
+                                                                        'IDR',
+                                                                }
+                                                            )}{' '}
                                                         </h3>
                                                     </Col>
                                                 </Row>
@@ -1174,7 +1201,14 @@ const PaymentBooking = () => {
                                                     </Col>
                                                     <Col md={5} sm={5} xs={6}>
                                                         <p className='d-flex flex-row-reverse'>
-                                                            {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                            {getAdultPrice()?.toLocaleString(
+                                                                'id-ID',
+                                                                {
+                                                                    style: 'currency',
+                                                                    currency:
+                                                                        'IDR',
+                                                                }
+                                                            )}
                                                         </p>
                                                     </Col>
                                                 </Row>
@@ -1199,7 +1233,14 @@ const PaymentBooking = () => {
                                                             xs={6}
                                                         >
                                                             <p className='d-flex flex-row-reverse'>
-                                                                {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                {getChildPrice()?.toLocaleString(
+                                                                    'id-ID',
+                                                                    {
+                                                                        style: 'currency',
+                                                                        currency:
+                                                                            'IDR',
+                                                                    }
+                                                                )}
                                                             </p>
                                                         </Col>
                                                     </Row>
@@ -1260,7 +1301,14 @@ const PaymentBooking = () => {
                                                             className='accordion-timeline d-flex flex-row-reverse'
                                                         >
                                                             <h3>
-                                                                {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                {getTotalAmount()?.toLocaleString(
+                                                                    'id-ID',
+                                                                    {
+                                                                        style: 'currency',
+                                                                        currency:
+                                                                            'IDR',
+                                                                    }
+                                                                )}
                                                             </h3>
                                                         </Col>
                                                     </Row>
@@ -1286,7 +1334,14 @@ const PaymentBooking = () => {
                                                             xs={6}
                                                         >
                                                             <p className='d-flex flex-row-reverse'>
-                                                                {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                {getAdultPrice()?.toLocaleString(
+                                                                    'id-ID',
+                                                                    {
+                                                                        style: 'currency',
+                                                                        currency:
+                                                                            'IDR',
+                                                                    }
+                                                                )}
                                                             </p>
                                                         </Col>
                                                     </Row>
@@ -1311,7 +1366,14 @@ const PaymentBooking = () => {
                                                                 xs={6}
                                                             >
                                                                 <p className='d-flex flex-row-reverse'>
-                                                                    {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                    {getChildPrice()?.toLocaleString(
+                                                                        'id-ID',
+                                                                        {
+                                                                            style: 'currency',
+                                                                            currency:
+                                                                                'IDR',
+                                                                        }
+                                                                    )}
                                                                 </p>
                                                             </Col>
                                                         </Row>
@@ -1328,7 +1390,13 @@ const PaymentBooking = () => {
                                         </Col>
                                         <Col md={5} sm={5} xs={5}>
                                             <h3 className='d-flex flex-row-reverse'>
-                                                {transactionById[0].amounts?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                {transactionById[0].amounts?.toLocaleString(
+                                                    'id-ID',
+                                                    {
+                                                        style: 'currency',
+                                                        currency: 'IDR',
+                                                    }
+                                                )}
                                             </h3>
                                         </Col>
                                     </Row>

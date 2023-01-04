@@ -365,6 +365,7 @@ const Passenger = () => {
                                     src={Payment}
                                     alt='
                                             payment'
+                                    loading='eager'
                                 />
                             </Card.Text>
                         </Card.Body>

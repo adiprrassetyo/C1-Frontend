@@ -1001,6 +1001,7 @@ const Booking = () => {
                                                     src={logo}
                                                     alt='logo'
                                                     className='logo-flight'
+                                                    loading='eager'
                                                 />
                                             </Col>
                                         </Row>
@@ -1201,7 +1202,14 @@ const Booking = () => {
                                                             className='accordion-timeline d-flex flex-row-reverse'
                                                         >
                                                             <h3>
-                                                                {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}{' '}
+                                                                {getTotalAmount()?.toLocaleString(
+                                                                    'id-ID',
+                                                                    {
+                                                                        style: 'currency',
+                                                                        currency:
+                                                                            'IDR',
+                                                                    }
+                                                                )}{' '}
                                                             </h3>
                                                         </Col>
                                                     </Row>
@@ -1227,7 +1235,14 @@ const Booking = () => {
                                                             xs={6}
                                                         >
                                                             <p className='d-flex flex-row-reverse'>
-                                                                {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                {getAdultPrice()?.toLocaleString(
+                                                                    'id-ID',
+                                                                    {
+                                                                        style: 'currency',
+                                                                        currency:
+                                                                            'IDR',
+                                                                    }
+                                                                )}
                                                             </p>
                                                         </Col>
                                                     </Row>
@@ -1252,7 +1267,14 @@ const Booking = () => {
                                                                 xs={6}
                                                             >
                                                                 <p className='d-flex flex-row-reverse'>
-                                                                    {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                    {getChildPrice()?.toLocaleString(
+                                                                        'id-ID',
+                                                                        {
+                                                                            style: 'currency',
+                                                                            currency:
+                                                                                'IDR',
+                                                                        }
+                                                                    )}
                                                                 </p>
                                                             </Col>
                                                         </Row>
@@ -1294,7 +1316,14 @@ const Booking = () => {
                                                                 className='accordion-timeline d-flex flex-row-reverse'
                                                             >
                                                                 <h3>
-                                                                    {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                    {getTotalAmount()?.toLocaleString(
+                                                                        'id-ID',
+                                                                        {
+                                                                            style: 'currency',
+                                                                            currency:
+                                                                                'IDR',
+                                                                        }
+                                                                    )}
                                                                 </h3>
                                                             </Col>
                                                         </Row>
@@ -1347,7 +1376,14 @@ const Booking = () => {
                                                                     xs={6}
                                                                 >
                                                                     <p className='d-flex flex-row-reverse'>
-                                                                        {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                        {getChildPrice()?.toLocaleString(
+                                                                            'id-ID',
+                                                                            {
+                                                                                style: 'currency',
+                                                                                currency:
+                                                                                    'IDR',
+                                                                            }
+                                                                        )}
                                                                     </p>
                                                                 </Col>
                                                             </Row>
@@ -1364,7 +1400,13 @@ const Booking = () => {
                                             </Col>
                                             <Col md={5} sm={5} xs={5}>
                                                 <h3 className='d-flex flex-row-reverse'>
-                                                    {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                    {getTotalAmount()?.toLocaleString(
+                                                        'id-ID',
+                                                        {
+                                                            style: 'currency',
+                                                            currency: 'IDR',
+                                                        }
+                                                    )}
                                                 </h3>
                                             </Col>
                                         </Row>

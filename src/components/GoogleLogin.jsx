@@ -60,14 +60,19 @@ const GLogin = ({ isSignIn, loading }) => {
                 <Spinner animation='border' variant='info' />
             ) : (
                 <>
-                    <img className='me-1' src={GoogleLogo} alt='' />
+                    <img
+                        className='me-1'
+                        src={GoogleLogo}
+                        alt=''
+                        loading='eager'
+                    />
                     Sign in With Google
                 </>
             )}
         </Button>
     ) : (
         <Button className='btn' onClick={() => auth.signOut}>
-            <img src={GoogleLogo} alt='' />
+            <img src={GoogleLogo} alt='' loading='eager' />
             Sign out google
         </Button>
     )

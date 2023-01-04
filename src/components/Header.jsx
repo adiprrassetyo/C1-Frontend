@@ -82,7 +82,11 @@ const Header = () => {
                         <Navbar.Brand>
                             <Link to='/'>
                                 {' '}
-                                <img src={logo} alt='logo' />{' '}
+                                <img
+                                    src={logo}
+                                    alt='logo'
+                                    loading='eager'
+                                />{' '}
                             </Link>
                         </Navbar.Brand>
                         <Navbar.Toggle
@@ -99,7 +103,11 @@ const Header = () => {
                                 >
                                     <Navbar.Brand>
                                         <NavLink to='/'>
-                                            <img src={logo} alt='logo' />
+                                            <img
+                                                src={logo}
+                                                alt='logo'
+                                                loading='eager'
+                                            />
                                         </NavLink>
                                     </Navbar.Brand>
                                 </Offcanvas.Title>

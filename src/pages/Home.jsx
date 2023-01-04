@@ -64,6 +64,7 @@ const Home = () => {
                         alt='banner-pic'
                         width='100%'
                         className='banner-img'
+                        loading='eager'
                     ></img>
                 </div>
                 <div>
@@ -81,6 +82,7 @@ const Home = () => {
                                     src={feature1}
                                     alt='feature-1'
                                     className='feature-img'
+                                    loading='eager'
                                 ></img>
                                 <p className='feature-title'>
                                     Mempermudah Pengalaman Booking Anda
@@ -95,6 +97,7 @@ const Home = () => {
                                     src={feature2}
                                     alt='feature-2'
                                     className='feature-img'
+                                    loading='eager'
                                 ></img>
                                 <p className='feature-title'>
                                     Kenyamanan Booking Ke Seluruh Indonesia
@@ -109,6 +112,7 @@ const Home = () => {
                                     src={feature3}
                                     alt='feature-3'
                                     className='feature-img'
+                                    loading='eager'
                                 ></img>
                                 <p className='feature-title'>
                                     Banyak Pilihan Destinasi
@@ -123,6 +127,7 @@ const Home = () => {
                                     src={feature4}
                                     alt='feature-4'
                                     className='feature-img'
+                                    loading='eager'
                                 ></img>
                                 <p className='feature-title'>
                                     Tawaran Eksklusif Setiap Hari
@@ -137,6 +142,7 @@ const Home = () => {
                                     src={feature5}
                                     alt='feature-5'
                                     className='feature-img'
+                                    loading='eager'
                                 ></img>
                                 <p className='feature-title'>
                                     Ahlinya Travel Agent
@@ -152,6 +158,7 @@ const Home = () => {
                                     src={feature6}
                                     alt='feature-6'
                                     className='feature-img'
+                                    loading='eager'
                                 ></img>
                                 <p className='feature-title'>
                                     Layanan Pelanggan Yang Ramah
@@ -199,6 +206,7 @@ const Home = () => {
                                             src={promo.promo_image}
                                             width='500'
                                             alt={`${i}-slide`}
+                                            loading='eager'
                                         />
                                     </Carousel.Item>
                                 ))}
@@ -217,6 +225,7 @@ const Home = () => {
                                 alt='mobile-mockup'
                                 className='mobile-mockup'
                                 width='430'
+                                loading='eager'
                             />
                         </Col>
                         <Col md={6} sm={6} xs={12}></Col>
@@ -241,6 +250,7 @@ const Home = () => {
                                         src={google_play}
                                         alt='google play logo'
                                         width='150'
+                                        loading='eager'
                                         className='google-play-logo'
                                     />
                                 </a>

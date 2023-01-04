@@ -394,6 +394,7 @@ const Profile = () => {
                                     src={Payment}
                                     alt='
                                     payment'
+                                    loading='eager'
                                 />
                             </Card.Text>
                         </Card.Body>

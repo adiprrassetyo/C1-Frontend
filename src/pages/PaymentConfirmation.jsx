@@ -112,13 +112,13 @@ const PaymentConfirmation = () => {
         }
     }
     const isDiscount = () => {
-        if(transactionById[0].amounts != getTotalAmount()){
+        if (transactionById[0].amounts != getTotalAmount()) {
             return true
         }
         return false
     }
     const getDiscount = () => {
-        return 100 - transactionById[0].amounts/getTotalAmount() * 100
+        return 100 - (transactionById[0].amounts / getTotalAmount()) * 100
     }
 
     return (
@@ -273,6 +273,7 @@ const PaymentConfirmation = () => {
                                                 <img
                                                     src={selectedFile}
                                                     className='confirm-image'
+                                                    loading='eager'
                                                 />
                                             </Col>
                                             <p className='error-message'>
@@ -435,6 +436,7 @@ const PaymentConfirmation = () => {
                                                         src={logo}
                                                         alt='logo'
                                                         className='logo-flight'
+                                                        loading='eager'
                                                     />
                                                 </Col>
                                             </Row>
@@ -659,7 +661,14 @@ const PaymentConfirmation = () => {
                                                                 className='accordion-timeline d-flex flex-row-reverse'
                                                             >
                                                                 <h3>
-                                                                    {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}{' '}
+                                                                    {getTotalAmount()?.toLocaleString(
+                                                                        'id-ID',
+                                                                        {
+                                                                            style: 'currency',
+                                                                            currency:
+                                                                                'IDR',
+                                                                        }
+                                                                    )}{' '}
                                                                 </h3>
                                                             </Col>
                                                         </Row>
@@ -687,7 +696,14 @@ const PaymentConfirmation = () => {
                                                                 xs={6}
                                                             >
                                                                 <p className='d-flex flex-row-reverse'>
-                                                                    {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                    {getAdultPrice()?.toLocaleString(
+                                                                        'id-ID',
+                                                                        {
+                                                                            style: 'currency',
+                                                                            currency:
+                                                                                'IDR',
+                                                                        }
+                                                                    )}
                                                                 </p>
                                                             </Col>
                                                         </Row>
@@ -717,14 +733,20 @@ const PaymentConfirmation = () => {
                                                                     xs={6}
                                                                 >
                                                                     <p className='d-flex flex-row-reverse'>
-                                                                        {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                        {getChildPrice()?.toLocaleString(
+                                                                            'id-ID',
+                                                                            {
+                                                                                style: 'currency',
+                                                                                currency:
+                                                                                    'IDR',
+                                                                            }
+                                                                        )}
                                                                     </p>
                                                                 </Col>
                                                             </Row>
                                                         )}
-                                                        {
-                                                            isDiscount && (
-                                                                <Row>
+                                                        {isDiscount && (
+                                                            <Row>
                                                                 <Col
                                                                     md={7}
                                                                     sm={7}
@@ -732,7 +754,8 @@ const PaymentConfirmation = () => {
                                                                     className='accordion-timeline'
                                                                 >
                                                                     <p>
-                                                                        Potongan harga
+                                                                        Potongan
+                                                                        harga
                                                                     </p>
                                                                 </Col>
                                                                 <Col
@@ -741,12 +764,12 @@ const PaymentConfirmation = () => {
                                                                     xs={6}
                                                                 >
                                                                     <p className='d-flex flex-row-reverse'>
-                                                                        {getDiscount()} %
+                                                                        {getDiscount()}{' '}
+                                                                        %
                                                                     </p>
                                                                 </Col>
                                                             </Row>
-                                                            )
-                                                        }
+                                                        )}
                                                     </Accordion.Body>
                                                 </Accordion.Item>
                                                 {transactionById[0].ticket
@@ -785,7 +808,14 @@ const PaymentConfirmation = () => {
                                                                     className='accordion-timeline d-flex flex-row-reverse'
                                                                 >
                                                                     <h3>
-                                                                        {getTotalAmount()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                        {getTotalAmount()?.toLocaleString(
+                                                                            'id-ID',
+                                                                            {
+                                                                                style: 'currency',
+                                                                                currency:
+                                                                                    'IDR',
+                                                                            }
+                                                                        )}
                                                                     </h3>
                                                                 </Col>
                                                             </Row>
@@ -811,7 +841,14 @@ const PaymentConfirmation = () => {
                                                                     xs={6}
                                                                 >
                                                                     <p className='d-flex flex-row-reverse'>
-                                                                        {getAdultPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                        {getAdultPrice()?.toLocaleString(
+                                                                            'id-ID',
+                                                                            {
+                                                                                style: 'currency',
+                                                                                currency:
+                                                                                    'IDR',
+                                                                            }
+                                                                        )}
                                                                     </p>
                                                                 </Col>
                                                             </Row>
@@ -841,7 +878,14 @@ const PaymentConfirmation = () => {
                                                                         xs={6}
                                                                     >
                                                                         <p className='d-flex flex-row-reverse'>
-                                                                            {getChildPrice()?.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
+                                                                            {getChildPrice()?.toLocaleString(
+                                                                                'id-ID',
+                                                                                {
+                                                                                    style: 'currency',
+                                                                                    currency:
+                                                                                        'IDR',
+                                                                                }
+                                                                            )}
                                                                         </p>
                                                                     </Col>
                                                                 </Row>
@@ -858,7 +902,10 @@ const PaymentConfirmation = () => {
                                                 </Col>
                                                 <Col md={5} sm={5} xs={5}>
                                                     <h3 className='d-flex flex-row-reverse'>
-                                                        {transactionById[0].amounts}
+                                                        {
+                                                            transactionById[0]
+                                                                .amounts
+                                                        }
                                                     </h3>
                                                 </Col>
                                             </Row>

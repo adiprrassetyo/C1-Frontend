@@ -31,7 +31,9 @@ const DashboardLayout = () => {
                 {/* Sidebar */}
                 <div className='bg-white w-auto' id='sidebar-wrapper'>
                     <div className='sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom'>
-                        <Image src={Logo} />
+                        <Link to='/'>
+                            <Image src={Logo} loading='eager' />
+                        </Link>
                     </div>
                     <div className='list-group list-group-flush my-3'>
                         <Link

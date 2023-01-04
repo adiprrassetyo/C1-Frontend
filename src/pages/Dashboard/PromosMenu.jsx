@@ -145,6 +145,7 @@ const PromosMenu = () => {
                                                     width={300}
                                                     style={{ height: 100 }}
                                                     className='img-fluid rounded'
+                                                    loading='eager'
                                                 />
                                             </td>
                                             <td>

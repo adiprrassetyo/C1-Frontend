@@ -43,7 +43,7 @@ const PaymentDone = () => {
                 >
                     <Container className='content mb-5 mt-5 p-5'>
                         <div className='d-flex flex-column align-items-center mb-5'>
-                            <img src={paymentSuccess} alt='' />
+                            <img src={paymentSuccess} alt='' loading='eager' />
                             <h1 className='is-bold'>Pembayaran Selesai</h1>
                         </div>
 
@@ -51,7 +51,8 @@ const PaymentDone = () => {
                         <br />
                         <div className='d-flex justify-content-between m-5'>
                             <div className='e-ticket-logo'>
-                                <img src={logo} alt='' />
+                                loading="eager"
+                                <img src={logo} alt='' loading='eager' />
                             </div>
                             <div className='d-flex flex-column align-items-end'>
                                 <h2 className='is-bold'>E-Ticket</h2>
@@ -74,7 +75,7 @@ const PaymentDone = () => {
 
                         <div className='d-flex justify-content-between align-items-center m-5'>
                             <div className='flight-logo'>
-                                <img src={logo} alt='' />
+                                <img src={logo} alt='' loading='eager' />
                             </div>
                             <div className='me-3'>
                                 <p className='is-bold'>

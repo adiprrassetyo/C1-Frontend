@@ -180,6 +180,7 @@ const Whislist = () => {
                                                         <img
                                                             src={logo}
                                                             alt=''
+                                                            loading='eager'
                                                         />
                                                         {/* <p className="subheader-text mt-2 mb-0 ms-2">
                               Binair
@@ -354,7 +355,11 @@ const Whislist = () => {
                                 <strong>Jenis Pembayaran:</strong>
                             </Card.Title>
                             <Card.Text>
-                                <img src={Payment} alt='payment' />
+                                <img
+                                    src={Payment}
+                                    alt='payment'
+                                    loading='eager'
+                                />
                             </Card.Text>
                         </Card.Body>
                     </Card>

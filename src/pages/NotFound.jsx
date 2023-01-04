@@ -36,7 +36,11 @@ const NotFound = () => {
                 </div>
                 <div className='w-50'>
                     <Stack>
-                        <Image src={Ilustration404} className='fluid mx-auto' />
+                        <Image
+                            src={Ilustration404}
+                            className='fluid mx-auto'
+                            loading='eager'
+                        />
                     </Stack>
                 </div>
             </Stack>

@@ -248,6 +248,7 @@ const Order = () => {
                                                         <img
                                                             src={logo}
                                                             alt=''
+                                                            loading='eager'
                                                         />
                                                         {/* <p className="subheader-text mt-2 mb-0 ms-2">
                               Binair
@@ -406,7 +407,11 @@ const Order = () => {
                                     ))
                                 ) : (
                                     <>
-                                        <img src={Nodata} alt='' />
+                                        <img
+                                            src={Nodata}
+                                            alt=''
+                                            loading='eager'
+                                        />
                                         <p>
                                             <strong>Tidak Ada Data</strong>
                                         </p>
@@ -754,6 +759,7 @@ const Order = () => {
                                     src={Payment}
                                     alt='
                                             payment'
+                                    loading='eager'
                                 />
                             </Card.Text>
                         </Card.Body>

@@ -74,7 +74,7 @@ const Order = () => {
                         </div>
                         <div className='flight-detail-content d-flex'>
                             <div className='flight-detail-airline-info p-4'>
-                                <img src={logo} alt='' />
+                                <img src={logo} alt='logo' loading='eager' />
                                 <div>
                                     <p className='mb-0 mt-2'>BinAir</p>
                                     <p className='is-grey'>JT12</p>
@@ -174,31 +174,51 @@ const Order = () => {
                             <div className='modal-flight-facility p-4'>
                                 <div className='flight-facility pt-3'>
                                     <div className='facility-item d-flex mb-2'>
-                                        <img src={Refund} alt='' />
+                                        <img
+                                            src={Refund}
+                                            alt='refund'
+                                            loading='eager'
+                                        />
                                         <p className='normal ms-2 mb-0'>
                                             Bisa Refund
                                         </p>
                                     </div>
                                     <div className='facility-item d-flex mb-2'>
-                                        <img src={Reschedule} alt='' />
+                                        <img
+                                            src={Reschedule}
+                                            alt='re'
+                                            loading='eager'
+                                        />
                                         <p className='normal ms-2 mb-0'>
                                             Perubahan Jadwal
                                         </p>
                                     </div>
                                     <div className='facility-item d-flex mb-2'>
-                                        <img src={Cabin} alt='' />
+                                        <img
+                                            src={Cabin}
+                                            alt=''
+                                            loading='eager'
+                                        />
                                         <p className='normal ms-2 mb-0'>
                                             Bagasi Kabin 7kg
                                         </p>
                                     </div>
                                     <div className='facility-item d-flex mb-2'>
-                                        <img src={Baggage} alt='' />
+                                        <img
+                                            src={Baggage}
+                                            alt=''
+                                            loading='eager'
+                                        />
                                         <p className='normal ms-3 mb-0'>
                                             Bagasi 20kg
                                         </p>
                                     </div>
                                     <div className='facility-item d-flex mb-2'>
-                                        <img src={Entertainment} alt='' />
+                                        <img
+                                            src={Entertainment}
+                                            alt=''
+                                            loading='eager'
+                                        />
                                         <p className='normal ms-2 mb-0'>
                                             Hiburan
                                         </p>
@@ -229,7 +249,7 @@ const Order = () => {
                     <div className='modal-payment-history-container'>
                         <div className='modal-payment-detail d-flex justify-content-between align-items-center p-2'>
                             <div className='modal-payment-bank-info'>
-                                <img src={logo} alt='' />
+                                <img src={logo} alt='' loading='eager' />
                                 <h3 className='mt-3'>BinAir Virtual Account</h3>
                                 <h3>Rp 780.280</h3>
                             </div>
@@ -437,7 +457,8 @@ const Order = () => {
                                                     <img
                                                         src={Baggage}
                                                         className='ms-2'
-                                                        alt=''
+                                                        alt='bagage'
+                                                        loading='eager'
                                                     />
                                                     <p className='mb-0 ms-2'>
                                                         20kg
@@ -482,7 +503,11 @@ const Order = () => {
                                         <div className='panel-flight-detail ms-3'>
                                             <div className='flight-detail-content d-flex align-items-center'>
                                                 <div className='flight-detail-airline-info'>
-                                                    <img src={logo} alt='' />
+                                                    <img
+                                                        src={logo}
+                                                        alt='logo'
+                                                        loading='eager'
+                                                    />
                                                     <div>
                                                         <h3>BinAir</h3>
                                                         <h3 className='is-grey'>
@@ -626,6 +651,7 @@ const Order = () => {
                                                     src={logo}
                                                     alt='payment'
                                                     className='mb-3'
+                                                    loading='eager'
                                                 />
                                                 <h3>BinAir Virtual Account</h3>
                                                 <p className='normal'>
@@ -658,8 +684,8 @@ const Order = () => {
                             <Card.Text>
                                 <img
                                     src={Payment}
-                                    alt='
-                                            payment'
+                                    alt='payment'
+                                    loading='eager'
                                 />
                             </Card.Text>
                         </Card.Body>

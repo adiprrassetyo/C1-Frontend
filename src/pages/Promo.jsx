@@ -29,6 +29,7 @@ const Promo = () => {
                                 className='d-block'
                                 src={promo.promo_image}
                                 alt={`${i}-slide`}
+                                loading='eager'
                             />
                         </Carousel.Item>
                     ))}
@@ -198,6 +199,7 @@ const Promo = () => {
                         Jenis Pembayaran:
                     </h3>
                     <img
+                        loading='eager'
                         className='payment_img'
                         src={payment_img}
                         alt='Metode Pembayaran'

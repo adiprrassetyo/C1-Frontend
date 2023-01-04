@@ -74,6 +74,7 @@ const DetailPromo = () => {
                     src={promoById.promo_image}
                     alt='promo-banner'
                     className='jumbotron-img'
+                    loading='eager'
                 />
             </section>
             <SearchFlight />
@@ -200,6 +201,7 @@ const DetailPromo = () => {
                         className='payment_img'
                         src={payment_img}
                         alt='Metode Pembayaran'
+                        loading='eager'
                     />
                 </Container>
             </section>

@@ -64,7 +64,7 @@ const Tickets = () => {
             <Container className='search-header'>
                 <Row>
                     <Col className='mt-3 ms-5' sm='auto'>
-                        <img src={Plane} />
+                        <img src={Plane} loading='eager' />
                     </Col>
                     <Col>
                         <h3>
@@ -227,7 +227,10 @@ const Tickets = () => {
                                             <Row className='flight-header mt-4'>
                                                 <Col className='ms-4'>
                                                     <div className='flight-box-airline flight-flex'>
-                                                        <img src={Lion} />
+                                                        <img
+                                                            src={Lion}
+                                                            loading='eager'
+                                                        />
                                                         <p className='mt-2'>
                                                             BinAir
                                                         </p>
@@ -249,6 +252,7 @@ const Tickets = () => {
                                                             <img
                                                                 src={Arrow}
                                                                 alt=''
+                                                                loading='eager'
                                                             />
                                                         </span>
                                                         <div>
@@ -284,6 +288,7 @@ const Tickets = () => {
                                                             <img
                                                                 src={Baggage}
                                                                 alt='baggage'
+                                                                loading='eager'
                                                             />
                                                             <h4>20kg</h4>
                                                         </div>
@@ -330,7 +335,10 @@ const Tickets = () => {
                                                     className='pt-3 ms-4'
                                                 >
                                                     <div className='flight-detail-airline-info flight-flex'>
-                                                        <img src={Lion} />
+                                                        <img
+                                                            src={Lion}
+                                                            loading='eager'
+                                                        />
                                                         <h4 className='mt-4'>
                                                             BinAir
                                                         </h4>
@@ -348,6 +356,7 @@ const Tickets = () => {
                                                             <img
                                                                 src={Slider}
                                                                 alt=''
+                                                                loading='eager'
                                                             />
                                                         </Col>
                                                         <Col
@@ -397,6 +406,7 @@ const Tickets = () => {
                                                                             }
                                                                             alt=''
                                                                             className='me-1'
+                                                                            loading='eager'
                                                                         />
                                                                         {`${hours}h ${
                                                                             minutes >
@@ -450,6 +460,7 @@ const Tickets = () => {
                                                             <img
                                                                 src={Refund}
                                                                 alt=''
+                                                                loading='eager'
                                                             />
                                                             <p className='ms-2 mb-0'>
                                                                 Refundable
@@ -459,6 +470,7 @@ const Tickets = () => {
                                                             <img
                                                                 src={Reschedule}
                                                                 alt=''
+                                                                loading='eager'
                                                             />
                                                             <p className='ms-2 mb-0'>
                                                                 Reschedule
@@ -468,6 +480,7 @@ const Tickets = () => {
                                                             <img
                                                                 src={Cabin}
                                                                 alt=''
+                                                                loading='eager'
                                                             />
                                                             <p className='ms-2 mb-0'>
                                                                 Cabin Baggage
@@ -478,6 +491,7 @@ const Tickets = () => {
                                                             <img
                                                                 src={Baggage}
                                                                 alt=''
+                                                                loading='eager'
                                                             />
                                                             <p className='ms-3 mb-0'>
                                                                 Baggage 20kg
@@ -489,6 +503,7 @@ const Tickets = () => {
                                                                     Entertainment
                                                                 }
                                                                 alt=''
+                                                                loading='eager'
                                                             />
                                                             <p className='ms-2 mb-0'>
                                                                 Entertainment
@@ -504,7 +519,7 @@ const Tickets = () => {
                         })
                     ) : (
                         <Container className='d-flex flex-column align-items-center justify-content-center'>
-                            <img src={Ticket404} />
+                            <img src={Ticket404} loading='eager' />
                             <h3 className='text-secondary pt-4'>
                                 <strong>
                                     Maaf, tidak ada penerbangan yang sesuai
