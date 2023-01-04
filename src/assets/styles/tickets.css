@@ -114,6 +114,8 @@
 .flight-content .flight-header {
     font-size: 15px;
     color: #59595b;
+    border-bottom: none !important;
+    padding: 0;
 }
 
 .time-flight-flex {
@@ -125,7 +127,9 @@
 .flight-box-time.time-flight-flex .txt-langsung {
     color: #9a9a9d;
 }
-
+.flight-box-time p{
+    margin-bottom: 0;
+}
 .plus-one-day {
     box-shadow: 0px 2px 3px rgba(10, 10, 10, 0.1),
         0px 0px 0px 1px rgba(10, 10, 10, 0.1);
@@ -157,17 +161,20 @@
 
 .flight-box-price span {
     color: #9a9a9d;
+    
 }
 
 .btn-flight {
     background-color: #f37c20;
     color: #ffffff;
-    font-size: 10px;
+    font-size: 12px;
 }
 
-.btn-flight:hover {
-    color: white;
-    background-color: #ce681a;
+.btn-flight:hover,
+.btn-flight:focus,
+.btn-flight:active {
+    background-color: #DC6E19 !important;
+    color: #fff !important;
 }
 
 .btn-switch {
@@ -177,10 +184,12 @@
     font-weight: bold;
     font-size: 12px;
 }
-
-.btn-switch:hover {
-    color: white;
-    background-color: #ce681a;
+.btn-switch:hover,
+.btn-switch:focus,
+.btn-switch:active {
+    background-color: #F37C20 !important;
+    color: #fff !important;
+    border: none !important;
 }
 
 .facility-flex {
@@ -222,7 +231,9 @@
 .timeline-info {
     color: #9a9a9d;
 }
-
+.timeline-departure, .timeline-arrival {
+    width: 100% !important;
+}
 .timeline-departure-time strong {
     font-size: 25px;
     color: #59595b;
@@ -248,4 +259,81 @@
     font-size: 18px;
     color: #59595b;
     border: none;
+}
+
+.accordion-body .row .information{
+    color: #73b465;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .flight-header .ms-4, .me-5{
+        margin: 0 !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.9px) {
+    .flight-header .ms-4, .me-5{
+        margin: 0 !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.9px) {
+    .flight-header .ms-4, .me-5{
+        margin: 0 !important;
+    }
+    .flight-header .me-5{
+        
+        padding-bottom: 20px;
+    }
+    .flight-box-time div{
+        padding-bottom: 12px;
+    }
+    
+}
+
+@media (min-width: 419px) and (max-width: 575.9px) {
+    .flight-header .ms-4, .me-5{
+        margin: 0 !important;
+    }
+    .flight-header .ms-4{
+        width: 100%;
+    }
+    .flight-header .me-5{
+        flex: 0 0 210px;
+        padding-bottom: 20px;
+    }
+    .flight-box-airline{
+        margin-bottom: 20px;
+    }
+    .flight-box-price{
+        padding-top: 0 !important;
+    }
+    .flight-box-price h3{
+        margin: 0;
+        float: right; 
+    }
+    .baggage.time-flight-flex{
+        padding-top: 20px;
+    }
+    .flight-header .pt-2{
+        padding-top:0 !important;
+    }
+}
+
+@media (max-width: 418.9px) {
+    .flight-header .ms-4, .me-5{
+        margin: 0 !important;
+    }
+    .flight-header .ms-4{
+        width: 100%;
+    }
+    .flight-header .flight-box-time{
+        margin-bottom: 20px;
+    }
+    .col{
+        flex: none;
+    }
+    .flight-detail-content .row .ms-4{
+        margin-left: 0!important;
+    }
 }

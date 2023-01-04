@@ -3,6 +3,7 @@ import { Header, Footer } from '../components'
 import { Container, Row, Col, Form, Button, Carousel } from 'react-bootstrap'
 import SearchFlight from '../components/Homepage/SearchFlight'
 import banner_img_svg from '../assets/images/banner-img-svg.svg'
+import banner_img from '../assets/images/banner-img.png'
 import feature1 from '../assets/images/feature1.svg'
 import feature2 from '../assets/images/feature2.svg'
 import feature3 from '../assets/images/feature3.svg'
@@ -60,7 +61,7 @@ const Home = () => {
                         Temukan Pengalaman Terbang<br></br>Terbaik Bersama Kami
                     </h1>
                     <img
-                        src={banner_img_svg}
+                        src={banner_img}
                         alt='banner-pic'
                         width='100%'
                         className='banner-img'

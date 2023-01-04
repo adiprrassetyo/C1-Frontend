@@ -9,12 +9,12 @@
     border: none;
     margin-top: 12px;
 }
-.search-flight-btn:hover {
-    background-color: #f37c20;
-}
-.search-flight-btn:active,
-.search-flight-btn:focus {
-    background-color: #f37c20;
+.search-flight-btn:hover,
+.search-flight-btn:focus,
+.search-flight-btn:active {
+    background-color: #DC6E19 !important;
+    color: #fff;
+    border: none !important;
 }
 .opsi-flight {
     border-bottom: 1px solid #e7e7e7;

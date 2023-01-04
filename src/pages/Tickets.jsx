@@ -224,7 +224,7 @@ const Tickets = () => {
                                             </div>
                                         )}
                                         <Accordion.Header>
-                                            <Row className='flight-header mt-4'>
+                                            <Row className='flight-header mt-4 align-items-center'>
                                                 <Col className='ms-4'>
                                                     <div className='flight-box-airline flight-flex'>
                                                         <img
@@ -237,7 +237,7 @@ const Tickets = () => {
                                                     </div>
                                                 </Col>
                                                 <Col className='me-5'>
-                                                    <div className='flight-box-time time-flight-flex'>
+                                                    <div className='flight-box-time time-flight-flex align-items-center'>
                                                         <div>
                                                             <h3>
                                                                 <strong>
@@ -271,14 +271,14 @@ const Tickets = () => {
                                                     <div className='flight-box-time time-flight-flex'>
                                                         <div>
                                                             <h3>
-                                                                <center>
+                                                                
                                                                     <strong>{`${hours}h ${
                                                                         minutes >
                                                                         0
                                                                             ? `${minutes}m`
                                                                             : ''
                                                                     }`}</strong>
-                                                                </center>
+                                                                
                                                             </h3>
                                                             <p className='txt-langsung'>
                                                                 Langsung
@@ -363,7 +363,7 @@ const Tickets = () => {
                                                             xs={11}
                                                             className='timeline-info pt-3'
                                                         >
-                                                            <div className='timeline-departure timeline-flex'>
+                                                            <div className='timeline-departure timeline-flex align-items-center'>
                                                                 <div className='timeline-datetime me-5'>
                                                                     <h2 className='timeline-departure-time'>
                                                                         <strong>
@@ -379,7 +379,7 @@ const Tickets = () => {
                                                                     </p>
                                                                 </div>
                                                                 <div className='timeline-cityairport'>
-                                                                    <p className='timeline-departure-city mb-0'>
+                                                                    <p className='timeline-departure-city mb-3 fw-bold'>
                                                                         {
                                                                             item.from
                                                                         }
@@ -391,10 +391,7 @@ const Tickets = () => {
                                                                             item.airport_from
                                                                         }
                                                                     </p>
-                                                                    <p className='timeline-departure-terminal'>
-                                                                        Terminal
-                                                                        2E
-                                                                    </p>
+
                                                                 </div>
                                                             </div>
                                                             <div className='timeline-duration-wrapper mt-4 mb-4'>
@@ -417,7 +414,7 @@ const Tickets = () => {
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className='timeline-arrival timeline-flex'>
+                                                            <div className='timeline-arrival timeline-flex align-items-center'>
                                                                 <div className='timeline-datetime me-5'>
                                                                     <h2 className='timeline-arrival-time'>
                                                                         <strong>
@@ -433,7 +430,7 @@ const Tickets = () => {
                                                                     </p>
                                                                 </div>
                                                                 <div className='timeline-cityairport'>
-                                                                    <p className='timeline-arrival-city mb-0'>
+                                                                    <p className='timeline-arrival-city mb-3 fw-bold'>
                                                                         {
                                                                             item.to
                                                                         }
@@ -444,10 +441,6 @@ const Tickets = () => {
                                                                         {
                                                                             item.airport_to
                                                                         }
-                                                                    </p>
-                                                                    <p className='timeline-arrival-terminal'>
-                                                                        Terminal
-                                                                        2E
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -462,8 +455,8 @@ const Tickets = () => {
                                                                 alt=''
                                                                 loading='eager'
                                                             />
-                                                            <p className='ms-2 mb-0'>
-                                                                Refundable
+                                                            <p className='ms-2 mb-0 information'>
+                                                                Bisa Refund
                                                             </p>
                                                         </div>
                                                         <div className='facility-item facility-flex mb-2'>
@@ -472,8 +465,8 @@ const Tickets = () => {
                                                                 alt=''
                                                                 loading='eager'
                                                             />
-                                                            <p className='ms-2 mb-0'>
-                                                                Reschedule
+                                                            <p className='ms-2 mb-0 information'>
+                                                                Perubahan Jadwal
                                                             </p>
                                                         </div>
                                                         <div className='facility-item facility-flex mb-2'>
@@ -483,7 +476,7 @@ const Tickets = () => {
                                                                 loading='eager'
                                                             />
                                                             <p className='ms-2 mb-0'>
-                                                                Cabin Baggage
+                                                                Bagasi Kabin
                                                                 7kg
                                                             </p>
                                                         </div>
@@ -494,7 +487,7 @@ const Tickets = () => {
                                                                 loading='eager'
                                                             />
                                                             <p className='ms-3 mb-0'>
-                                                                Baggage 20kg
+                                                                Bagasi 20kg
                                                             </p>
                                                         </div>
                                                         <div className='facility-item facility-flex mb-2'>
@@ -506,7 +499,7 @@ const Tickets = () => {
                                                                 loading='eager'
                                                             />
                                                             <p className='ms-2 mb-0'>
-                                                                Entertainment
+                                                                Hiburan
                                                             </p>
                                                         </div>
                                                     </div>

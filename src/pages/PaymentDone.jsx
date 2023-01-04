@@ -92,7 +92,7 @@ const PaymentDone = () => {
                         <div className='d-flex justify-content-between align-items-center m-5'>
                             <div>
                                 <p className='is-bold'>
-                                    Indonesia AirAsia (QZ7518)
+                                    BinAir  (QZ7518)
                                 </p>
                             </div>
                             <div className='me-5'>
