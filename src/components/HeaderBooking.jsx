@@ -33,7 +33,7 @@ import {
     retriveNotif,
     readOneNotif,
     readAllNotif,
-    // read,
+    read,
 } from '../redux/slices/notifSlice'
 import { readAll } from '../redux/services/notifServices'
 import { toast } from 'react-toastify'
