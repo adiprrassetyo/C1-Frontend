@@ -210,7 +210,7 @@ const Order = () => {
                                 </Card.Body>
                             </Card>
                             <div className='img-box'>
-                                {transactionsByStatus.length ? (
+                                {transactionsByStatus?.length ? (
                                     transactionsByStatus.map((trans) => (
                                         <Card
                                             className='order-list mt-3'
