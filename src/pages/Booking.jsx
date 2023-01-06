@@ -197,8 +197,8 @@ const Booking = () => {
                                                         <option value=''>
                                                             {user?.gender ==
                                                             'perempuan'
-                                                                ? `Ny. ${user.firstname} ${user.lastname}`
-                                                                : `Tn. ${user.firstname} ${user.lastname}`}
+                                                                ? `Ny. ${user?.firstname} ${user?.lastname}`
+                                                                : `Tn. ${user?.firstname} ${user?.lastname}`}
                                                         </option>
                                                     </select>
                                                 </Form.Group>
@@ -261,7 +261,7 @@ const Booking = () => {
                                                         name='name'
                                                         className='form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0'
                                                         placeholder='ex: Rangga Laksana'
-                                                        value={user.firstname}
+                                                        value={user?.firstname}
                                                     />
                                                 </Form.Group>
                                             </Col>
@@ -282,7 +282,7 @@ const Booking = () => {
                                                         name='lastname'
                                                         className='form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0'
                                                         placeholder='ex: Haryanto'
-                                                        value={user.lastname}
+                                                        value={user?.lastname}
                                                     />
                                                 </Form.Group>
                                             </Col>
@@ -331,7 +331,7 @@ const Booking = () => {
                                                         name='email'
                                                         className='form-input border border-top-0 border-start-0 border-end-0 rounded-0 p-0'
                                                         placeholder='ex: yourmail@binair.com'
-                                                        value={user.email}
+                                                        value={user?.email}
                                                     />
                                                 </Form.Group>
                                             </Col>
@@ -421,8 +421,8 @@ const Booking = () => {
                                                                     <option value='tuan'>
                                                                         {user?.gender ==
                                                                         'perempuan'
-                                                                            ? `Ny. ${user.firstname} ${user.lastname}`
-                                                                            : `Tn. ${user.firstname} ${user.lastname}`}
+                                                                            ? `Ny. ${user?.firstname} ${user?.lastname}`
+                                                                            : `Tn. ${user?.firstname} ${user?.lastname}`}
                                                                     </option>
                                                                 </select>
                                                             </Form.Group>
@@ -800,8 +800,8 @@ const Booking = () => {
                                                                     <option value='tuan'>
                                                                         {user?.gender ==
                                                                         'perempuan'
-                                                                            ? `Ny. ${user.firstname} ${user.lastname}`
-                                                                            : `Tn. ${user.firstname} ${user.lastname}`}
+                                                                            ? `Ny. ${user?.firstname} ${user?.lastname}`
+                                                                            : `Tn. ${user?.firstname} ${user?.lastname}`}
                                                                     </option>
                                                                 </select>
                                                             </Form.Group>

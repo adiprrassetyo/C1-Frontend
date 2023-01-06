@@ -1467,10 +1467,10 @@ const PaymentBooking = () => {
                                 <div className='contact-content pt-2'>
                                     <h4 className='contact-name'>
                                         {user?.gender == 'perempuan'
-                                            ? `Ny. ${user.firstname} ${user.lastname}`
-                                            : `Tn. ${user.firstname} ${user.lastname}`}
+                                            ? `Ny. ${user?.firstname} ${user?.lastname}`
+                                            : `Tn. ${user?.firstname} ${user?.lastname}`}
                                     </h4>
-                                    <p>{user.email}</p>
+                                    <p>{user?.email}</p>
                                     <p>+62 82176319252</p>
                                 </div>
                             </div>

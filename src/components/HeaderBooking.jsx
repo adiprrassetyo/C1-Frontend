@@ -48,7 +48,7 @@ const HeaderBooking = () => {
         if (user) {
             const socket = io('wss://binair-backend-production.up.railway.app')
 
-            socket.emit('create', `${user.id}`)
+            socket.emit('create', `${user?.id}`)
 
             socket.on('notify-update', (newdatas) => {
                 setNotifData(newdatas)

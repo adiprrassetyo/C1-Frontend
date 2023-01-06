@@ -42,7 +42,7 @@ const Header = () => {
         if (user) {
             const socket = io('wss://binair-backend-production.up.railway.app')
 
-            socket.emit('create', `${user.id}`)
+            socket.emit('create', `${user?.id}`)
 
             socket.on('notify-update', (newdatas) => {
                 setNotifData(newdatas)
@@ -364,7 +364,7 @@ const Header = () => {
                                                         className='text-lg'
                                                         // style={{ fontSize: "1rem" }}
                                                     >
-                                                        {user.firstname
+                                                        {user?.firstname
                                                             ? user?.firstname
                                                                   .toLowerCase()
                                                                   .slice(0, 1)
