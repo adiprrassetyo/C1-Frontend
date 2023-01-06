@@ -1466,7 +1466,7 @@ const PaymentBooking = () => {
                                 </div>
                                 <div className='contact-content pt-2'>
                                     <h4 className='contact-name'>
-                                        {user.gender == 'perempuan'
+                                        {user?.gender == 'perempuan'
                                             ? `Ny. ${user.firstname} ${user.lastname}`
                                             : `Tn. ${user.firstname} ${user.lastname}`}
                                     </h4>

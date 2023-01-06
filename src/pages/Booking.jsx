@@ -195,7 +195,7 @@ const Booking = () => {
                                                         className='dropdown-toggle'
                                                     >
                                                         <option value=''>
-                                                            {user.gender ==
+                                                            {user?.gender ==
                                                             'perempuan'
                                                                 ? `Ny. ${user.firstname} ${user.lastname}`
                                                                 : `Tn. ${user.firstname} ${user.lastname}`}
@@ -221,7 +221,7 @@ const Booking = () => {
                                                         name='title'
                                                         className='dropdown-toggle'
                                                         value={
-                                                            user.gender ==
+                                                            user?.gender ==
                                                             'perempuan'
                                                                 ? `nyonya`
                                                                 : `tuan`
@@ -419,7 +419,7 @@ const Booking = () => {
                                                                     className='dropdown-toggle '
                                                                 >
                                                                     <option value='tuan'>
-                                                                        {user.gender ==
+                                                                        {user?.gender ==
                                                                         'perempuan'
                                                                             ? `Ny. ${user.firstname} ${user.lastname}`
                                                                             : `Tn. ${user.firstname} ${user.lastname}`}
@@ -798,7 +798,7 @@ const Booking = () => {
                                                                     className='dropdown-toggle '
                                                                 >
                                                                     <option value='tuan'>
-                                                                        {user.gender ==
+                                                                        {user?.gender ==
                                                                         'perempuan'
                                                                             ? `Ny. ${user.firstname} ${user.lastname}`
                                                                             : `Tn. ${user.firstname} ${user.lastname}`}
