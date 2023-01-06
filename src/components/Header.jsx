@@ -34,7 +34,6 @@ const Header = () => {
     //NOTIFICATION
     const { notif, loading } = useSelector((state) => state.notif)
     const [notifData, setNotifData] = useState(notif)
-    console.info({ notifData })
 
     const dispatch = useDispatch()
 

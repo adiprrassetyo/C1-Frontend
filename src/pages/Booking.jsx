@@ -159,7 +159,6 @@ const Booking = () => {
             traveler: travelers,
         }
         dispatch(newTrans({ submitForm, redirect }))
-        console.info({ message })
         if (message === 'promo code not found / invalid') {
             toast.error(message)
         }
