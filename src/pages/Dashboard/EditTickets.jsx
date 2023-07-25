@@ -77,7 +77,7 @@ const EditTicket = () => {
     useEffect(() => {
         const getOptions = async () => {
             const res = await axios.get(
-                'https://binair-backend-production.up.railway.app/api/v1/search'
+                'https://c1-backend-production.up.railway.app/api/v1/search'
             )
             setOptions(res.data.data)
         }

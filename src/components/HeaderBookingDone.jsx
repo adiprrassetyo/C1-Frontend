@@ -36,7 +36,7 @@ const HeaderBookingDone = () => {
 
     useEffect(() => {
         if (user) {
-            const socket = io('wss://binair-backend-production.up.railway.app')
+            const socket = io('wss://c1-backend-production.up.railway.app')
 
             socket.emit('create', `${user?.id}`)
 

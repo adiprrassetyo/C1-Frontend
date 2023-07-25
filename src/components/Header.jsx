@@ -39,7 +39,7 @@ const Header = () => {
 
     useEffect(() => {
         if (user) {
-            const socket = io('wss://binair-backend-production.up.railway.app')
+            const socket = io('wss://c1-backend-production.up.railway.app')
 
             socket.emit('create', `${user?.id}`)
 
@@ -159,7 +159,10 @@ const Header = () => {
                                                             trigger='click'
                                                             placement='bottom'
                                                             overlay={
-                                                                <Popover id='popover-positioned-bottom' className='popover-notif-info'>
+                                                                <Popover
+                                                                    id='popover-positioned-bottom'
+                                                                    className='popover-notif-info'
+                                                                >
                                                                     <Popover.Body className='p-1 m-0'>
                                                                         <button
                                                                             className='readAll-btn'
