@@ -8,13 +8,13 @@ import GoogleLogo from '../assets/images/google-logo.svg'
 
 const GLogin = ({ isSignIn, loading }) => {
     const firebaseConfig = {
-        apiKey: 'AIzaSyAWp_X-Vy6zhj8umNQFWSFkl-MEdecrl4Y',
-        authDomain: 'binairbuyer.firebaseapp.com',
-        projectId: 'binairbuyer',
-        storageBucket: 'binairbuyer.appspot.com',
-        messagingSenderId: '214017739948',
-        appId: '1:214017739948:web:b343985f68be56ce676309',
-        measurementId: 'G-E7C8CVJHYM',
+        apiKey: 'AIzaSyD0OK9l7ju9quyBtUl_j5G5lThdtRCZL9I',
+        authDomain: 'final-project-k1.firebaseapp.com',
+        projectId: 'final-project-k1',
+        storageBucket: 'final-project-k1.appspot.com',
+        messagingSenderId: '470478603116',
+        appId: '1:470478603116:web:49cfc9d55a058f7a9a6949',
+        measurementId: 'G-BQJFJ9NCE2',
     }
 
     const dispatch = useDispatch()
