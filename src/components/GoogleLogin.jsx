@@ -8,20 +8,19 @@ import GoogleLogo from '../assets/images/google-logo.svg'
 
 const GLogin = ({ isSignIn, loading }) => {
     const firebaseConfig = {
-        apiKey: 'AIzaSyD0OK9l7ju9quyBtUl_j5G5lThdtRCZL9I',
-        authDomain: 'final-project-k1.firebaseapp.com',
-        projectId: 'final-project-k1',
-        storageBucket: 'final-project-k1.appspot.com',
-        messagingSenderId: '470478603116',
-        appId: '1:470478603116:web:49cfc9d55a058f7a9a6949',
-        measurementId: 'G-BQJFJ9NCE2',
+        apiKey: 'AIzaSyAlc-gX9OVTbpz-9X3JdaB1SdVz1i7UbOM',
+        authDomain: 'binair-c2552.firebaseapp.com',
+        projectId: 'binair-c2552',
+        storageBucket: 'binair-c2552.appspot.com',
+        messagingSenderId: '312500654326',
+        appId: '1:312500654326:web:bb8de34016d0fb1dda1cd7',
     }
 
     const dispatch = useDispatch()
     const redirect = useNavigate()
 
     const app = initializeApp(firebaseConfig)
-    const auth = getAuth()
+    const auth = getAuth(app)
     const provider = new GoogleAuthProvider()
     provider.setCustomParameters({ prompt: 'select_account' })
     provider.addScope('profile')
